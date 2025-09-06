@@ -233,7 +233,7 @@ export default async function BlogSlugPage(props: Props) {
                       </div>
 
                       <div className="mb-5">
-                        <SharePost />
+                        <SharePost url={`${siteURL}/blog/${post?.slug?.current}`} title={post?.title} />
                       </div>
                     </div>
                   </div>
