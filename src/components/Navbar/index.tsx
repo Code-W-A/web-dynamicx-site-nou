@@ -154,7 +154,7 @@ export default function Navbar() {
               </div>
 
               <div className="hidden items-center justify-end gap-4 pr-16 sm:flex lg:pr-0">
-                <button
+                {/* <button
                   onClick={() => setSearchModalOpen(true)}
                   className="text-body-color hidden h-10 w-10 items-center justify-center rounded-full sm:flex"
                 >
@@ -182,7 +182,7 @@ export default function Navbar() {
                       </clipPath>
                     </defs>
                   </svg>
-                </button>
+                </button> */}
                 <Link
                   href="/contact"
                   className="bg-primary hover:bg-primary/90 hover:shadow-signUp rounded-full px-8 py-3 text-base font-bold whitespace-nowrap text-white transition duration-300 ease-in-out md:px-9 lg:px-8 xl:px-9"

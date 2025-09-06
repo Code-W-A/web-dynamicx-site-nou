@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { SharePost } from "@/app/(site)/blog/[slug]/_components/share-post";
 
+export const revalidate = 300;
+
 type Props = {
   params: Promise<{ slug: string }>;
 };

@@ -3,6 +3,8 @@ import { groq } from "next-sanity";
 export const postQuery = groq`*[_type == "post"] {
     title,
     metadata,
+    metaDescription,
+    excerpt,
     slug,
     tags,
     author->{
@@ -20,6 +22,8 @@ export const postQuery = groq`*[_type == "post"] {
 export const postQueryBySlug = groq`*[_type == "post" && slug.current == $slug][0] {
     title,
     metadata,
+    metaDescription,
+    excerpt,
     slug,
     tags,
     author->{
@@ -37,6 +41,8 @@ export const postQueryBySlug = groq`*[_type == "post" && slug.current == $slug][
 export const postQueryByCategory = groq`*[_type == "post" && category->slug.current == $slug] {
     title,
     metadata,
+    metaDescription,
+    excerpt,
     slug,
     tags,
     author->{
@@ -61,6 +67,8 @@ export const categoryQuery = groq`*[_type == "category"] {
 export const postQueryByTag = groq`*[_type == "post" && $tag in tags] {
     title,
     metadata,
+    metaDescription,
+    excerpt,
     slug,
     tags,
     author->{
