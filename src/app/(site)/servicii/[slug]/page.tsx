@@ -5,8 +5,15 @@ import { Service } from "@/types/service";
 import Link from "next/link";
 import JsonLd from "@/components/Common/JsonLd";
 import { Phone, MessageCircle, Mail } from "lucide-react";
-import Testimonial from "@/components/Home/Testimonial";
-import Portfolio from "@/components/Portfolio";
+import dynamic from "next/dynamic";
+
+const DynamicTestimonial = dynamic(() => import("@/components/Home/Testimonial"), {
+  ssr: false,
+});
+
+const DynamicPortfolio = dynamic(() => import("@/components/Portfolio"), {
+  ssr: false,
+});
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -149,11 +156,20 @@ export default async function ServiceDetailPage(props: Props) {
       )}
       <ServiceLayout service={service as Service} />
 
-      {/* Testimonials above CTA */}
-      <Testimonial />
+      {/* Testimonials above CTA (lazy-loaded) */}
+      <DynamicTestimonial />
 
-{/* Sectiunea portofoliu */}
-      <Portfolio />
+      {/* SSR crawl path link to portfolio */}
+      <section className="container py-8">
+        <div className="text-center">
+          <Link href="/portofoliu" className="hover:text-primary text-base font-medium underline">
+            Vezi portofoliul
+          </Link>
+        </div>
+      </section>
+
+      {/* Sectiunea portofoliu (lazy-loaded) */}
+      <DynamicPortfolio />
 
       {/* Contact CTA */}
       <section className="bg-gray-50 py-16">
