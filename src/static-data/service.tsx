@@ -1288,8 +1288,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "Servicii de web design orientate pe rezultate: UX/UI modern, design system și interfețe rapide care cresc conversiile.",
     slug: "web-design",
-    image: "/images/services/creare-site-prezentare.webp",
-    ogImage: "/images/services/creare-site-prezentare.webp",
+    image: "/images/services/agentie-web-design.webp",
+    ogImage: "/images/services/agentie-web-design.webp",
     details: detailsWebDesign,
     faqs: [
       { question: "Ce includ serviciile webdesign?", answer: "Serviciile noastre webdesign includ: UX/UI modern, arhitectură de pagini, componente și web design servicii orientate pe conversie și viteză de încărcare." },
@@ -1326,8 +1326,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "MVP, UX, backend/API, plăți și analytics. Nativ sau cross-platform, CI/CD și publicare în store-uri.",
     slug: "dezvoltare-aplicatii-mobile",
-    image: "/images/services/creare-site-prezentare.webp",
-    ogImage: "/images/services/creare-site-prezentare.webp",
+    image: "/images/services/dezvoltare-aplicatii-mobile.webp",
+    ogImage: "/images/services/dezvoltare-aplicatii-mobile.webp",
     details: detailsDezvoltareAplicatiiMobile,
     faqs: [
       { question: "Dezvoltați nativ sau cross-platform?", answer: "Recomandăm soluția potrivită: nativ pentru performanță, cross pentru time-to-market." },
@@ -1345,8 +1345,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "Servicii creare magazin online și realizare magazin online cu Shopify, WooCommerce. E-commerce optimizat pentru conversii și SEO. Consultație gratuită!",
     slug: "creare-magazin-online",
-    image: "/images/services/creare-site-prezentare.webp",
-    ogImage: "/images/services/creare-site-prezentare.webp",
+    image: "/images/services/creare-magazin-online.webp",
+    ogImage: "/images/services/creare-magazin-online.webp",
     details: detailsCreareMagazinOnline,
     faqs: [
       { question: "Cât costă serviciile de creare magazin online?", answer: "Serviciile noastre de creare magazin online pornesc de la 1200 EUR pentru implementări standard. Prețul pentru realizare magazin online variază după catalog și integrări." },
@@ -1402,8 +1402,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "Mentenanta website profesională: servicii optimizare site cu update-uri, backup, securitate și monitorizare uptime. Optimizări Core Web Vitals!",
     slug: "mentenanta-website",
-    image: "/images/services/creare-site-prezentare.webp",
-    ogImage: "/images/services/creare-site-prezentare.webp",
+    image: "/images/services/mentenanta-site-web.webp",
+    ogImage: "/images/services/mentenanta-site-web.webp",
     details: detailsMentenantaWebsite,
     faqs: [
       { question: "Ce include mentenanta website?", answer: "Serviciile noastre de mentenanta website includ: update-uri regulate, backup automat, securitate avansată, monitorizare uptime și servicii optimizare site pentru viteză." },
@@ -1421,8 +1421,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "Oferta realizare site web cu Next.js: website personalizat, SEO on-page corect și Core Web Vitals optimizate. Consultație gratuită!",
     slug: "creare-site-web",
-    image: "/images/services/creare-site-prezentare.webp",
-    ogImage: "/images/services/creare-site-prezentare.webp",
+    image: "/images/services/creare-site-web.webp",
+    ogImage: "/images/services/creare-site-web.webp",
     details: detailsCreareSiteWeb,
     faqs: [
       { question: "Cât costă oferta realizare site web?", answer: "Oferta noastră de realizare site web pornește de la 600 EUR pentru creare site prezentare, în funcție de pagini, funcționalități și design." },
