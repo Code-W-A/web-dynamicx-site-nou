@@ -11,7 +11,6 @@ export function SharePost() {
         <a
           href="#"
           target="_blank"
-          rel="noopener nofollow noreferrer"
           className="bg-primary/10 text-body-color hover:bg-primary inline-flex size-9 items-center justify-center rounded-xs transition hover:text-white sm:ml-3"
         >
           <LinkedinIcon />
@@ -20,7 +19,6 @@ export function SharePost() {
         <a
           href="#"
           target="_blank"
-          rel="noopener nofollow noreferrer"
           className="bg-primary/10 text-body-color hover:bg-primary ml-3 inline-flex h-9 w-9 items-center justify-center rounded-xs transition hover:text-white"
         >
           <XIcon />
@@ -29,7 +27,6 @@ export function SharePost() {
         <a
           href="#"
           target="_blank"
-          rel="noopener nofollow noreferrer"
           className="bg-primary/10 text-body-color hover:bg-primary ml-3 inline-flex size-9 items-center justify-center rounded-xs transition hover:text-white"
         >
           <FacebookIcon />

@@ -34,29 +34,23 @@ export default function SinglePricing({ price }: any) {
         
         <div>
           <span className="mb-4 block text-lg font-semibold text-primary">
-            {price?.nickname}
+            {price?.nickname === "Start" ? "Start Up Pro" : price?.nickname === "Business" ? "Business Pro" : price?.nickname === "Premium" ? "Enterprise Pro" : price?.nickname}
           </span>
-          <h3 className="mb-5 text-[42px] font-bold text-dark">
-            <span className="text-lg font-medium text-body-color">De la </span>
-            €{(price.unit_amount / 100).toLocaleString("ro-RO")}{" "}
-            <span className="text-base font-medium text-body-color"> / pachet </span>
-          </h3>
+          {price?.nickname === "Start" ? (
+            <h3 className="mb-5 text-[42px] font-bold text-dark">2500 lei</h3>
+          ) : price?.nickname === "Business" ? (
+            <h3 className="mb-5 text-[42px] font-bold text-dark">4000 lei</h3>
+          ) : price?.nickname === "Premium" ? (
+            <h3 className="mb-5 text-[42px] font-bold text-dark">7000 lei</h3>
+          ) : (
+            <h3 className="mb-5 text-[42px] font-bold text-dark">
+              <span className="text-lg font-medium text-body-color">De la </span>
+              €{(price.unit_amount / 100).toLocaleString("ro-RO")} {" "}
+              <span className="text-base font-medium text-body-color"> / pachet </span>
+            </h3>
+          )}
           
           {/* Include text */}
-          {price?.nickname === "Business" && (
-            <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-100">
-              <p className="text-sm text-blue-800 font-medium">
-                <span className="text-primary">✓</span> Include tot ce este în <strong>Start</strong> + UI personalizat, schemă, viteză, blog
-              </p>
-            </div>
-          )}
-          {price?.nickname === "Premium" && (
-            <div className="mb-4 p-3 bg-purple-50 rounded-lg border border-purple-100">
-              <p className="text-sm text-purple-800 font-medium">
-                <span className="text-primary">✓</span> Include tot ce este în <strong>Business</strong> + CRM, automatizări, SEO tehnic
-              </p>
-            </div>
-          )}
           
           <p className="mb-6 border-b border-[#F2F2F2] pb-6 text-base text-body-color">{price?.subtitle}</p>
           
@@ -154,29 +148,115 @@ export default function SinglePricing({ price }: any) {
         <div className="mb-7 space-y-1">
           {price?.nickname === "Start" && (
             <>
-              <SingleOffer text="1–5 pagini (Acasă, Servicii, Despre, Contact)" />
-              <SingleOffer text="Design responsive + implementare Next.js" />
-              <SingleOffer text="SEO on‑page de bază (titles, meta, headings)" />
-              <SingleOffer text="Formular de contact + Google Analytics" />
-              <SingleOffer text="1 rundă de revizii" />
+              <p className="mt-4 font-semibold text-[#496cf6]">Administrare</p>
+              <SingleOffer text="Maxim 4 pagini" />
+              <SingleOffer text="Găzduire performantă - LiteSpeed Server ( gratuită în primele 12 luni )" />
+              <SingleOffer text="Panou de administrare" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Design & conținut</p>
+              <SingleOffer text="Design personalizat" />
+              <SingleOffer text="Design responsive ( desktop, tabletă, mobile )" />
+              <SingleOffer text="UX/UI Design: navigare ușoară, intuitivă" />
+              <SingleOffer text="Conținut media ( iconițe, imagini, video, galerie foto & video )" />
+              <SingleOffer text="Conținut text ( copywriting )" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Marketing & SEO</p>
+              <SingleOffer text="SEO on-page ( conținut unic, titluri, meta descrieri, research cuvinte cheie, friendly URL, sitemap )" />
+              <SingleOffer text="Integrare instrumente de marketing & analiză ( Google Maps, Google Analytics, Search Console, Facebook Pixel )" />
+              <SingleOffer text="Optimizare viteză de încărcare ( optimizare text GZIP/Brotli, imagini, HTML, CSS, JS, LiteSpeed Cache )" />
+              <SingleOffer text="Buton apelare rapidă ( mobile / Whatsapp )" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Securitate & mentenanță</p>
+              <SingleOffer text="Securitate ( certificat SSL , modul securitate, link panou de administrare personalizat )" />
+              <SingleOffer text="GDPR ( General Data Protection Regulation )" />
+              <SingleOffer text="Back-up zilnic" />
+              <SingleOffer text="1 intervenție de mentenanță gratuită" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Altele</p>
+              <SingleOffer text="Maxim 2 adrese de e-mail" />
+              <SingleOffer text="Formular De Contact ( Implementare Google reCAPTCHA / Honeypot )" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Suport tehnic</p>
             </>
           )}
           {price?.nickname === "Business" && (
             <>
-              <SingleOffer text="6–12 pagini + șabloane reutilizabile" />
-              <SingleOffer text="UI personalizat, componente dedicate" />
-              <SingleOffer text="Schema (Organization, FAQ), optimizări viteză" />
-              <SingleOffer text="Blog/Articole + pagini de listare" />
-              <SingleOffer text="2 runde de revizii" />
+              <p className="mt-4 font-semibold text-[#496cf6]">Administrare</p>
+              <SingleOffer text="Maxim 8 pagini" />
+              <SingleOffer text="Găzduire performantă - LiteSpeed Server ( gratuită în primele 12 luni )" />
+              <SingleOffer text="Panou de administrare" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Design & conținut</p>
+              <SingleOffer text="Design personalizat" />
+              <SingleOffer text="Realizare elemente de branding ( logo vectorial, bannere )" />
+              <SingleOffer text="Secțiuni și elemente animate" />
+              <SingleOffer text="Design responsive ( desktop, tabletă, mobile )" />
+              <SingleOffer text="UX/UI Design: navigare ușoară, intuitivă" />
+              <SingleOffer text="Conținut media ( iconițe, imagini, video, galerie foto & video )" />
+              <SingleOffer text="Conținut text ( copywriting )" />
+              <SingleOffer text="Sectiune Blog" />
+              <SingleOffer text="Motor de căutare intern" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Marketing & SEO</p>
+              <SingleOffer text="SEO on-page ( conținut unic, titluri, meta descrieri, research cuvinte cheie, friendly URL, sitemap )" />
+              <SingleOffer text="Integrare instrumente de marketing & analiză ( Google Maps, Google Analytics, Search Console, Facebook Pixel )" />
+              <SingleOffer text="Optimizare viteză de încărcare ( optimizare text GZIP/Brotli, imagini, HTML, CSS, JS, LiteSpeed Cache )" />
+              <SingleOffer text="Integrare newsletter" />
+              <SingleOffer text="Integrare social media ( Facebook, Instagram, butoane de share / like )" />
+              <SingleOffer text="Buton apelare rapidă ( mobile / Whatsapp )" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Securitate & mentenanță</p>
+              <SingleOffer text="Securitate ( certificat SSL , modul securitate, link panou de administrare personalizat )" />
+              <SingleOffer text="GDPR ( General Data Protection Regulation )" />
+              <SingleOffer text="Back-up zilnic" />
+              <SingleOffer text="2 intervenții de mentenanță gratuite" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Altele</p>
+              <SingleOffer text="Maxim 3 adrese de e-mail" />
+              <SingleOffer text="Formular De Contact ( Implementare Google reCAPTCHA / Honeypot )" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Suport tehnic</p>
             </>
           )}
           {price?.nickname === "Premium" && (
             <>
-              <SingleOffer text="Pagini nelimitate, layout‑uri avansate" />
-              <SingleOffer text="Conținut structurat + topic clusters" />
-              <SingleOffer text="SEO tehnic, audit & plan lunar" />
-              <SingleOffer text="Integrare CRM, automatizări, tracking avansat" />
-              <SingleOffer text="3 runde de revizii + suport 3 luni" />
+              <p className="mt-4 font-semibold text-[#496cf6]">Administrare</p>
+              <SingleOffer text="Maxim 16 pagini" />
+              <SingleOffer text="Găzduire performantă - LiteSpeed Server ( gratuită în primele 12 luni )" />
+              <SingleOffer text="Panou de administrare" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Design & conținut</p>
+              <SingleOffer text="Design personalizat" />
+              <SingleOffer text="Realizare elemente de branding ( logo vectorial, bannere )" />
+              <SingleOffer text="Secțiuni și elemente animate, parallax, scroll & mouse effect" />
+              <SingleOffer text="Design responsive ( desktop, tabletă, mobile )" />
+              <SingleOffer text="UX/UI Design: navigare ușoară, intuitivă" />
+              <SingleOffer text="Conținut media ( iconițe, imagini, video, galerie foto & video )" />
+              <SingleOffer text="Conținut text ( copywriting )" />
+              <SingleOffer text="Sectiune Blog" />
+              <SingleOffer text="Motor de căutare intern" />
+              <SingleOffer text="Creare cont client pe website" />
+              <SingleOffer text="Sistem de comandă online" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Marketing & SEO</p>
+              <SingleOffer text="SEO on-page ( conținut unic, titluri, meta descrieri, research cuvinte cheie, friendly URL, sitemap )" />
+              <SingleOffer text="Integrare instrumente de marketing & analiză ( Google Maps, Google Analytics, Search Console, Facebook Pixel )" />
+              <SingleOffer text="Optimizare viteză de încărcare ( optimizare text GZIP/Brotli, imagini, HTML, CSS, JS, LiteSpeed Cache )" />
+              <SingleOffer text="Integrare newsletter" />
+              <SingleOffer text="Integrare social media ( Facebook, Instagram, butoane de share / like )" />
+              <SingleOffer text="Live chat clienți" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Securitate & mentenanță</p>
+              <SingleOffer text="Securitate ( certificat SSL , modul securitate, link panou de administrare personalizat )" />
+              <SingleOffer text="GDPR ( General Data Protection Regulation )" />
+              <SingleOffer text="Back-up zilnic" />
+              <SingleOffer text="3 intervenții de mentenanță gratuite" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Altele</p>
+              <SingleOffer text="Maxim 4 adrese de e-mail" />
+              <SingleOffer text="Formular De Contact ( Implementare Google reCAPTCHA / Honeypot )" />
+
+              <p className="mt-4 font-semibold text-[#496cf6]">Suport tehnic</p>
             </>
           )}
         </div>

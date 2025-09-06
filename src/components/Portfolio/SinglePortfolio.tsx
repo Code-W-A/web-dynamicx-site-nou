@@ -69,7 +69,7 @@ export default function SinglePortfolio({
         )}
         <h3 className="mt-6">
           <Link
-            href={`/portofoliu/${portfolio?.slug}`}
+            href={`/portofoliu`}
             className="hover:text-primary mb-3 inline-block text-xl font-semibold text-black"
           >
             {portfolio?.title}

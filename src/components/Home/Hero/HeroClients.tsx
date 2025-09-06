@@ -13,7 +13,6 @@ export default function HeroClients() {
             key={client?.id}
             href={client?.link}
             target="_blank"
-            rel="nofollow noreferrer"
             className="rounded-full border border-black/10 px-3 py-1 text-xs text-body-color hover:border-black hover:text-black"
           >
             {client?.name}

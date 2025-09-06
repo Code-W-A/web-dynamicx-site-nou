@@ -11,7 +11,6 @@ export default function FooterBottom() {
               href={link?.href}
               aria-label="social-link"
               target="_blank"
-              rel="nofollow noreferrer noopener"
               className="mx-2 flex h-8 w-8 items-center justify-center rounded-full bg-body-color text-dark duration-200 hover:bg-primary hover:text-white"
             >
               {link?.icon}
