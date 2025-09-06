@@ -71,7 +71,7 @@ export default function WebsitePreview({
           <img
             src={imageSrc}
             alt={`Preview ${title}`}
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.01]"
             loading="lazy"
             decoding="async"
             sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 600px"

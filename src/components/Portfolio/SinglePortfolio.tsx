@@ -47,7 +47,7 @@ export default function SinglePortfolio({
               alt={portfolio?.title ? `Proiect portofoliu: ${portfolio.title}` : "Proiect portofoliu"}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
-              className="object-cover object-center"
+              className="object-contain object-center bg-white"
             />
             <div className="bg-primary/[17%] pointer-events-none absolute top-0 left-0 flex h-full w-full items-center justify-center opacity-0 transition group-hover:pointer-events-auto group-hover:opacity-100">
               <button
