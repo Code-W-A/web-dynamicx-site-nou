@@ -3,6 +3,8 @@ import PageTitle from "@/components/Common/PageTitle";
 import { getPosts } from "@/sanity/sanity-utils";
 import { Metadata } from "next";
 
+export const revalidate = 300;
+
 const siteName = process.env.SITE_NAME;
 const siteUrl = process.env.SITE_URL || "https://www.webdynamicx.ro";
 

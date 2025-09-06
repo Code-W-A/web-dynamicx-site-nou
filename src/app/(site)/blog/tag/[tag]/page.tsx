@@ -3,6 +3,8 @@ import PageTitle from "@/components/Common/PageTitle";
 import { getPostByTag } from "@/sanity/sanity-utils";
 import { Blog } from "@/types/blog";
 
+export const revalidate = 300;
+
 type Props = {
   params: Promise<{ tag: string }>;
 };
