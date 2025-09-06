@@ -31,42 +31,31 @@ export default function SinglePortfolio({
     <>
       <div className="mb-4">
         {/* Show website preview if liveUrl exists, otherwise show image */}
-        {portfolio?.liveUrl ? (
-          <div className="shadow-service mb-8 overflow-hidden rounded-md bg-[#F8F9FF] aspect-[2940/1414]">
-            <WebsitePreview
-              url={portfolio.liveUrl}
-              title={portfolio.title}
-              fallbackImage={portfolio.image as string}
-              className="w-full"
-            />
-          </div>
-        ) : (
-          <div className="group shadow-service relative mb-8 overflow-hidden rounded-md bg-[#F8F9FF] aspect-[2940/1414]">
-            <Image
-              src={portfolio?.image}
-              alt={portfolio?.title ? `Proiect portofoliu: ${portfolio.title}` : "Proiect portofoliu"}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
-              className="object-contain object-center bg-white"
-            />
-            <div className="bg-primary/[17%] pointer-events-none absolute top-0 left-0 flex h-full w-full items-center justify-center opacity-0 transition group-hover:pointer-events-auto group-hover:opacity-100">
-              <button
-                onClick={() => setOpen(true)}
-                className="glightbox bg-primary flex h-10 w-10 items-center justify-center rounded-full text-white"
+        <div className="group shadow-service relative mb-8 overflow-hidden rounded-md bg-[#F8F9FF] aspect-[2940/1414]">
+          <Image
+            src={portfolio?.image}
+            alt={portfolio?.title ? `Proiect portofoliu: ${portfolio.title}` : "Proiect portofoliu"}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
+            className="object-contain object-center bg-white"
+          />
+          <div className="bg-primary/[17%] pointer-events-none absolute top-0 left-0 flex h-full w-full items-center justify-center opacity-0 transition group-hover:pointer-events-auto group-hover:opacity-100">
+            <button
+              onClick={() => setOpen(true)}
+              className="glightbox bg-primary flex h-10 w-10 items-center justify-center rounded-full text-white"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="white" />
-                </svg>
-              </button>
-            </div>
+                <path d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="white" />
+              </svg>
+            </button>
           </div>
-        )}
+        </div>
         <h3 className="mt-6">
           <Link
             href={`/portofoliu`}
@@ -86,15 +75,26 @@ export default function SinglePortfolio({
         </div>
       </div>
 
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        slides={[
-          {
-            src: portfolio?.image as string,
-          },
-        ]}
-      />
+      {portfolio?.liveUrl ? (
+        <WebsitePreview
+          url={portfolio.liveUrl}
+          title={portfolio.title}
+          fallbackImage={portfolio.image as string}
+          className="w-full"
+          open={open}
+          onClose={() => setOpen(false)}
+        />
+      ) : (
+        <Lightbox
+          open={open}
+          close={() => setOpen(false)}
+          slides={[
+            {
+              src: portfolio?.image as string,
+            },
+          ]}
+        />
+      )}
     </>
   );
 }

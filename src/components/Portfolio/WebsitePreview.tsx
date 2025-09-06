@@ -7,14 +7,19 @@ interface WebsitePreviewProps {
   title: string;
   fallbackImage: string;
   className?: string;
+  open?: boolean; // controlled modal state
+  onClose?: () => void; // controlled close handler
 }
 
 export default function WebsitePreview({ 
   url, 
   title, 
   fallbackImage, 
-  className = "" 
+  className = "",
+  open,
+  onClose,
 }: WebsitePreviewProps) {
+  const isControlled = typeof open === "boolean";
   const [showModal, setShowModal] = useState(false);
   const [iframeError, setIframeError] = useState(false);
   const [imageSrc, setImageSrc] = useState<string>(fallbackImage);
@@ -25,12 +30,20 @@ export default function WebsitePreview({
   )}&screenshot=true&meta=false&embed=screenshot.url`;
 
   const handlePreviewClick = () => {
-    setShowModal(true);
-    setIframeError(false);
+    if (!isControlled) {
+      setShowModal(true);
+      setIframeError(false);
+    } else {
+      // In controlled mode, opening is handled by parent
+    }
   };
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    if (isControlled) {
+      onClose?.();
+    } else {
+      setShowModal(false);
+    }
   };
 
   const handleIframeError = () => {
@@ -41,10 +54,15 @@ export default function WebsitePreview({
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setShowModal(false);
+        if (isControlled) {
+          onClose?.();
+        } else {
+          setShowModal(false);
+        }
       }
     };
-    if (showModal) {
+    const isOpen = isControlled ? !!open : showModal;
+    if (isOpen) {
       document.addEventListener('keydown', handleEsc);
       document.body.style.overflow = 'hidden'; // Prevent background scroll
     }
@@ -52,7 +70,7 @@ export default function WebsitePreview({
       document.removeEventListener('keydown', handleEsc);
       document.body.style.overflow = 'unset';
     };
-  }, [showModal]);
+  }, [showModal, isControlled, open, onClose]);
 
   // Preload screenshot; if it loads, swap from fallback to screenshot
   useEffect(() => {
@@ -62,6 +80,8 @@ export default function WebsitePreview({
     img.src = screenshotUrl;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screenshotUrl, fallbackImage]);
+
+  const modalOpen = isControlled ? !!open : showModal;
 
   return (
     <>
@@ -118,7 +138,7 @@ export default function WebsitePreview({
       </div>
 
       {/* Fullscreen Modal */}
-      {showModal && (
+      {modalOpen && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center">
           {/* Backdrop */}
           <div
