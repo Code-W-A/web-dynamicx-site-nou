@@ -7,7 +7,7 @@ export default function SingleService({ service }: { service: Service }) {
     <article className="relative bg-white">
       <div className="relative aspect-34/23">
         <Image
-          src={service.image || "/images/services/service-01.jpg"}
+          src={service.image || "/images/services/creare-site-prezentare.webp"}
           alt={service.title || "Serviciu Web Dynamicx"}
           fill
           className="w-full object-cover object-center"

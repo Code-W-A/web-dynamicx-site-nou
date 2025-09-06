@@ -1288,8 +1288,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "Servicii de web design orientate pe rezultate: UX/UI modern, design system și interfețe rapide care cresc conversiile.",
     slug: "web-design",
-    image: "/images/services/service-01.jpg",
-    ogImage: "/images/services/service-01.jpg",
+    image: "/images/services/creare-site-prezentare.webp",
+    ogImage: "/images/services/creare-site-prezentare.webp",
     details: detailsWebDesign,
     faqs: [
       { question: "Ce includ serviciile webdesign?", answer: "Serviciile noastre webdesign includ: UX/UI modern, arhitectură de pagini, componente și web design servicii orientate pe conversie și viteză de încărcare." },
@@ -1307,8 +1307,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "Logo, paletă, tipografie și manual de brand. Identitate coerentă, aplicabilă pe toate canalele.",
     slug: "creare-logo-branding",
-    image: "/images/services/service-01.jpg",
-    ogImage: "/images/services/service-01.jpg",
+    image: "/images/services/creare-site-prezentare.webp",
+    ogImage: "/images/services/creare-site-prezentare.webp",
     details: detailsBranding,
     faqs: [
       { question: "Ce livrabile primesc?", answer: "Logo în formate multiple, paletă cromatică, tipografie, guideline-uri și fișiere sursă." },
@@ -1326,8 +1326,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "MVP, UX, backend/API, plăți și analytics. Nativ sau cross-platform, CI/CD și publicare în store-uri.",
     slug: "dezvoltare-aplicatii-mobile",
-    image: "/images/services/service-01.jpg",
-    ogImage: "/images/services/service-01.jpg",
+    image: "/images/services/creare-site-prezentare.webp",
+    ogImage: "/images/services/creare-site-prezentare.webp",
     details: detailsDezvoltareAplicatiiMobile,
     faqs: [
       { question: "Dezvoltați nativ sau cross-platform?", answer: "Recomandăm soluția potrivită: nativ pentru performanță, cross pentru time-to-market." },
@@ -1345,8 +1345,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "Servicii creare magazin online și realizare magazin online cu Shopify, WooCommerce. E-commerce optimizat pentru conversii și SEO. Consultație gratuită!",
     slug: "creare-magazin-online",
-    image: "/images/services/service-01.jpg",
-    ogImage: "/images/services/service-01.jpg",
+    image: "/images/services/creare-site-prezentare.webp",
+    ogImage: "/images/services/creare-site-prezentare.webp",
     details: detailsCreareMagazinOnline,
     faqs: [
       { question: "Cât costă serviciile de creare magazin online?", answer: "Serviciile noastre de creare magazin online pornesc de la 1200 EUR pentru implementări standard. Prețul pentru realizare magazin online variază după catalog și integrări." },
@@ -1364,8 +1364,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "Servicii optimizare SEO și optimizare SEO site profesionale: audit tehnic, on-page, conținut. Servicii SEO profesionale cu rezultate măsurabile!",
     slug: "optimizare-seo",
-    image: "/images/services/service-01.jpg",
-    ogImage: "/images/services/service-01.jpg",
+    image: "/images/services/creare-site-prezentare.webp",
+    ogImage: "/images/services/creare-site-prezentare.webp",
     details: detailsOptimizareSeo,
     faqs: [
       { question: "Ce includ serviciile SEO profesionale?", answer: "Serviciile noastre SEO profesionale includ: audit tehnic complet, optimizare SEO site on-page, crearea de conținut optimizat și servicii optimizare SEO pentru autoritate de domeniu." },
@@ -1383,8 +1383,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "Servicii creare site prezentare cu design modern, optimizare SEO și conversii măsurabile. Tehnologii avansate, livrare rapidă. Cere ofertă gratuită!",
     slug: "creare-site-prezentare",
-    image: "/images/services/service-01.jpg",
-    ogImage: "/images/services/service-01.jpg",
+    image: "/images/services/creare-site-prezentare.webp",
+    ogImage: "/images/services/creare-site-prezentare.webp",
     details: detailsCreareSitePrezentare,
     faqs: [
       { question: "Ce includ serviciile de creare site de prezentare?", answer: "Serviciile noastre de creare site prezentare includ: design personalizat, implementare responsive, optimizare SEO completă, formulare de contact, analytics și mentenanță 3 luni gratuită." },
@@ -1402,8 +1402,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "Mentenanta website profesională: servicii optimizare site cu update-uri, backup, securitate și monitorizare uptime. Optimizări Core Web Vitals!",
     slug: "mentenanta-website",
-    image: "/images/services/service-01.jpg",
-    ogImage: "/images/services/service-01.jpg",
+    image: "/images/services/creare-site-prezentare.webp",
+    ogImage: "/images/services/creare-site-prezentare.webp",
     details: detailsMentenantaWebsite,
     faqs: [
       { question: "Ce include mentenanta website?", answer: "Serviciile noastre de mentenanta website includ: update-uri regulate, backup automat, securitate avansată, monitorizare uptime și servicii optimizare site pentru viteză." },
@@ -1421,8 +1421,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "Oferta realizare site web cu Next.js: website personalizat, SEO on-page corect și Core Web Vitals optimizate. Consultație gratuită!",
     slug: "creare-site-web",
-    image: "/images/services/service-01.jpg",
-    ogImage: "/images/services/service-01.jpg",
+    image: "/images/services/creare-site-prezentare.webp",
+    ogImage: "/images/services/creare-site-prezentare.webp",
     details: detailsCreareSiteWeb,
     faqs: [
       { question: "Cât costă oferta realizare site web?", answer: "Oferta noastră de realizare site web pornește de la 600 EUR pentru creare site prezentare, în funcție de pagini, funcționalități și design." },
@@ -1440,8 +1440,8 @@ export const serviceData: Service[] = [
     metaDescription:
       "Promovare site prin SEO, Google Ads și marketing digital. Servicii optimizare site pentru creștere organică și trafic calificat. Rezultate măsurabile!",
     slug: "promovare-site",
-    image: "/images/services/service-01.jpg",
-    ogImage: "/images/services/service-01.jpg",
+    image: "/images/services/creare-site-prezentare.webp",
+    ogImage: "/images/services/creare-site-prezentare.webp",
     details: (
       <div>
         <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
