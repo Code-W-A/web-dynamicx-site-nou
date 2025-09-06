@@ -1,5 +1,6 @@
 import { NavbarItem } from "@/types/navbar";
 import { v4 as uuid } from "uuid";
+import { serviceData } from "./service";
 
 export const navbarData: NavbarItem[] = [
   {
@@ -13,6 +14,12 @@ export const navbarData: NavbarItem[] = [
     title: "Servicii",
     href: "/servicii",
     external: false,
+    submenu: serviceData.map((service) => ({
+      id: uuid(),
+      title: service.title,
+      href: `/servicii/${service.slug}`,
+      external: false,
+    })),
   },
   {
     id: uuid(),

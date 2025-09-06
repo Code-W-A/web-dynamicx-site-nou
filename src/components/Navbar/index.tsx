@@ -85,7 +85,7 @@ export default function Navbar() {
                 </button>
                 <nav
                   id="navbarCollapse"
-                  className={`${!navigationOpen ? "hidden lg:block" : ""} absolute top-full right-4 w-full max-w-[250px] rounded-lg bg-white p-5 py-5 shadow-lg max-lg:max-h-[350px] max-lg:overflow-y-auto lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none xl:px-6`}
+                  className={`${!navigationOpen ? "hidden lg:block" : ""} absolute top-full right-4 w-full max-w-[250px] rounded-lg bg-white p-5 py-5 shadow-lg ${dropdownToggler ? "max-lg:max-h-[500px]" : "max-lg:max-h-[350px]"} max-lg:overflow-y-auto lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none xl:px-6`}
                 >
                   <ul className="block lg:flex">
                     {navbarData.map((item) => (
@@ -93,7 +93,7 @@ export default function Navbar() {
                         key={item?.id}
                         className={`group relative lg:px-5 ${item?.submenu ? "submenu-item" : ""}`}
                       >
-                        {item?.href ? (
+                        {item?.href && !item?.submenu ? (
                           <Link
                             href={
                               item?.external
@@ -109,37 +109,72 @@ export default function Navbar() {
                           </Link>
                         ) : (
                           <>
-                            <button
-                              onClick={() =>
-                                setDropdownToggler(!dropdownToggler)
-                              }
-                              className="group-hover:text-primary flex w-full items-center justify-between py-2 text-base text-black lg:mr-0 lg:inline-flex lg:px-0 lg:py-6"
-                            >
-                              {item?.title}
-
-                              <span className="pl-3">
-                                <svg
-                                  width="14"
-                                  height="8"
-                                  viewBox="0 0 14 8"
-                                  className={`fill-current duration-200 lg:group-hover:-scale-y-100 ${dropdownToggler ? "max-lg:-scale-y-100" : ""}`}
+                            {item?.href && item?.submenu ? (
+                              <div className="flex w-full items-center justify-between py-2 text-base text-black lg:mr-0 lg:inline-flex lg:px-0 lg:py-6">
+                                <Link
+                                  href={
+                                    item?.external
+                                      ? item.href
+                                      : item?.href?.startsWith("/") || item?.href?.startsWith("#")
+                                      ? item.href
+                                      : `/${item.href}`
+                                  }
+                                  onClick={navigationHandler}
+                                  className={`${pathUrl === `${item?.href}` ? "text-primary" : ""} group-hover:text-primary flex-1 ${item?.href?.startsWith("#") ? "menu-scroll" : ""}`}
                                 >
-                                  <path d="M6.54564 5.09128L11.6369 0L13.0913 1.45436L6.54564 8L0 1.45436L1.45436 0L6.54564 5.09128Z" />
-                                </svg>
-                              </span>
-                            </button>
+                                  {item?.title}
+                                </Link>
+                                <button
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setDropdownToggler(!dropdownToggler);
+                                  }}
+                                  className="pl-3 lg:hidden"
+                                >
+                                  <svg
+                                    width="14"
+                                    height="8"
+                                    viewBox="0 0 14 8"
+                                    className={`fill-current duration-200 ${dropdownToggler ? "max-lg:-scale-y-100" : ""}`}
+                                  >
+                                    <path d="M6.54564 5.09128L11.6369 0L13.0913 1.45436L6.54564 8L0 1.45436L1.45436 0L6.54564 5.09128Z" />
+                                  </svg>
+                                </button>
+                              </div>
+                            ) : (
+                              <button
+                                onClick={() =>
+                                  setDropdownToggler(!dropdownToggler)
+                                }
+                                className="group-hover:text-primary flex w-full items-center justify-between py-2 text-base text-black lg:mr-0 lg:inline-flex lg:px-0 lg:py-6"
+                              >
+                                {item?.title}
+
+                                <span className="pl-3">
+                                  <svg
+                                    width="14"
+                                    height="8"
+                                    viewBox="0 0 14 8"
+                                    className={`fill-current duration-200 lg:group-hover:-scale-y-100 ${dropdownToggler ? "max-lg:-scale-y-100" : ""}`}
+                                  >
+                                    <path d="M6.54564 5.09128L11.6369 0L13.0913 1.45436L6.54564 8L0 1.45436L1.45436 0L6.54564 5.09128Z" />
+                                  </svg>
+                                </span>
+                              </button>
+                            )}
                             {item?.submenu && (
                               <ul
                                 className={`${dropdownToggler ? "" : "hidden lg:block"} submenu relative top-full left-0 rounded-xs bg-white transition-[top] duration-300 group-hover:opacity-100 lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full`}
                               >
-                                {item?.submenu.map((item) => (
-                                  <li key={item?.id}>
+                                {item?.submenu.map((subItem) => (
+                                  <li key={subItem?.id}>
                                     <Link
-                                      href={item?.href}
+                                      href={subItem?.href}
                                       onClick={navigationHandler}
-                                      className={`block rounded-sm px-4 py-[10px] text-sm ${pathUrl === item?.href ? "text-primary" : "hover:text-primary text-black"}`}
+                                      className={`block rounded-sm px-4 py-[10px] text-sm ${pathUrl === subItem?.href ? "text-primary" : "hover:text-primary text-black"}`}
                                     >
-                                      {item?.title}
+                                      {subItem?.title}
                                     </Link>
                                   </li>
                                 ))}
