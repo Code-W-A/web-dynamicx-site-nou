@@ -182,7 +182,7 @@ export default function AboutPage() {
                         </div>
                         <div className="order-1 md:order-2">
                              <Image
-                                src="/images/portofoliu/Studio-by-Cristian-Design&Furniture-portofoliu.png"
+                                src="/images/portofoliu/Studio-by-Cristian-Design&Furniture-portofoliu.webp"
                                 alt="Studiu de caz: Studio by Cristian – proiect web design Web Dynamicx"
                                 width={600}
                                 height={600}
@@ -201,7 +201,7 @@ export default function AboutPage() {
                         {/* Imagine stânga */}
                         <div className="order-1">
                             <Image
-                                src="/images/portofoliu/FirstTech-Echipamente-Industriale-portofoliu.png"
+                                src="/images/portofoliu/FirstTech-Echipamente-Industriale-portofoliu.webp"
                                 alt="Exemplu proiect: FirstTech — web design performant și optimizat SEO"
                                 width={600}
                                 height={600}
