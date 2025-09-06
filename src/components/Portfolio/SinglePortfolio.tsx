@@ -5,14 +5,17 @@ import Link from "next/link";
 import { useState, useMemo } from "react";
 import WebsitePreview from "./WebsitePreview";
 
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
+import dynamic from "next/dynamic";
 
 export default function SinglePortfolio({
   portfolio,
 }: {
   portfolio: Portfolio;
 }) {
+  const Lightbox = useMemo(
+    () => dynamic(() => import("./LightboxClient"), { ssr: false }),
+    [],
+  );
   const [open, setOpen] = useState<boolean>(false);
 
   const relatedService = useMemo(() => {
@@ -29,7 +32,7 @@ export default function SinglePortfolio({
       <div className="mb-4">
         {/* Show website preview if liveUrl exists, otherwise show image */}
         {portfolio?.liveUrl ? (
-          <div className="shadow-service mb-8 overflow-hidden rounded-md bg-[#F8F9FF]" style={{ aspectRatio: "2940 / 1414" }}>
+          <div className="shadow-service mb-8 overflow-hidden rounded-md bg-[#F8F9FF] aspect-[2940/1414]">
             <WebsitePreview
               url={portfolio.liveUrl}
               title={portfolio.title}
@@ -38,7 +41,7 @@ export default function SinglePortfolio({
             />
           </div>
         ) : (
-          <div className="group shadow-service relative mb-8 overflow-hidden rounded-md bg-[#F8F9FF]" style={{ aspectRatio: "2940 / 1414" }}>
+          <div className="group shadow-service relative mb-8 overflow-hidden rounded-md bg-[#F8F9FF] aspect-[2940/1414]">
             <Image
               src={portfolio?.image}
               alt={portfolio?.title ? `Proiect portofoliu: ${portfolio.title}` : "Proiect portofoliu"}

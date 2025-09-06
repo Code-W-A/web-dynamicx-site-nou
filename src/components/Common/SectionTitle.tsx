@@ -8,11 +8,16 @@ export default function SectionTitle({
   color,
   titleWidth,
   paragraphWidth,
+  className,
 }: any) {
   return (
     <div
-      className={`${center ? "mx-auto text-center" : ""}`}
-      style={{ maxWidth: width, marginBottom: marginBottom }}
+      className={`${center ? "mx-auto text-center" : ""} ${className || ""}`}
+      style={
+        className
+          ? undefined
+          : { maxWidth: width, marginBottom: marginBottom }
+      }
     >
       <span className="mb-2 block text-lg font-semibold text-primary">
         {mainTitle}
