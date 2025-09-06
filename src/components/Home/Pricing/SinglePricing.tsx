@@ -37,11 +37,11 @@ export default function SinglePricing({ price }: any) {
             {price?.nickname === "Start" ? "Start Up Pro" : price?.nickname === "Business" ? "Business Pro" : price?.nickname === "Premium" ? "Enterprise Pro" : price?.nickname}
           </span>
           {price?.nickname === "Start" ? (
-            <h3 className="mb-5 text-[42px] font-bold text-dark">2500 lei</h3>
+            <h3 className="mb-5 text-[42px] font-bold text-dark">1800 lei</h3>
           ) : price?.nickname === "Business" ? (
-            <h3 className="mb-5 text-[42px] font-bold text-dark">4000 lei</h3>
+            <h3 className="mb-5 text-[42px] font-bold text-dark">3300 lei</h3>
           ) : price?.nickname === "Premium" ? (
-            <h3 className="mb-5 text-[42px] font-bold text-dark">7000 lei</h3>
+            <h3 className="mb-5 text-[42px] font-bold text-dark">5500 lei</h3>
           ) : (
             <h3 className="mb-5 text-[42px] font-bold text-dark">
               <span className="text-lg font-medium text-body-color">De la </span>
