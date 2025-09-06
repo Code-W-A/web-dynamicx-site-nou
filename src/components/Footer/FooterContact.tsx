@@ -1,9 +1,9 @@
 export default function FooterContact() {
   return (
     <div className="mb-10">
-      <h2 className="mb-5 text-4xl font-bold leading-tight text-white md:text-[44px]">
+      <h3 className="mb-5 text-4xl font-bold leading-tight text-white md:text-[44px]">
         Hai să vorbim!
-      </h2>
+      </h3>
       <h3 className="mb-2 text-2xl font-bold text-white opacity-70">
         Date de contact
       </h3>

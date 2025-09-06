@@ -3,7 +3,13 @@ import Image from "next/image";
 export default function HeroImage() {
   return (
     <div className="relative z-10 flex aspect-491/515 w-full max-w-[491px] pt-11 lg:justify-end lg:pt-0">
-      <Image src="/images/hero/hero-image-01.png" alt="Echipa Web Dynamicx – web design si creare site" fill />
+      <Image
+        src="/images/hero/hero-image-01.png"
+        alt="Echipa Web Dynamicx – web design si creare site"
+        fill
+        priority
+        sizes="(max-width: 1024px) 90vw, 491px"
+      />
 
       <span className="absolute -bottom-8 -left-8 z-[-1]">
         <svg

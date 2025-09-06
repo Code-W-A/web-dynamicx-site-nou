@@ -7,6 +7,7 @@ import "@/styles/globals.css";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
+import Script from "next/script";
 import AuthProvider from "../context/AuthContext";
 import ToasterContext from "../context/ToastContext";
 
@@ -85,12 +86,13 @@ export default function RootLayout({
             )}
             {gaId && (
               <>
-                <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
-                <script
-                  dangerouslySetInnerHTML={{
-                    __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config','${gaId}',{page_path: window.location.pathname});`,
-                  }}
+                <Script
+                  src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+                  strategy="afterInteractive"
                 />
+                <Script id="ga-init" strategy="afterInteractive">
+                  {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config','${gaId}',{page_path: window.location.pathname});`}
+                </Script>
               </>
             )}
             <Navbar />

@@ -15,9 +15,9 @@ export default function ProjectCTA() {
       <div className="container">
         <div className="bg-primary relative z-10 overflow-hidden rounded-md py-[70px] text-center">
           <div className="relative z-10 mx-auto max-w-[770px] px-6">
-            <h2 className="mb-10 text-2xl leading-tight font-bold text-white md:text-[40px]">
+            <h3 className="mb-10 text-2xl leading-tight font-bold text-white md:text-[40px]">
               Începe proiectul tău acum
-            </h2>
+            </h3>
             <div className="relative mx-auto max-w-[480px]">
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <button

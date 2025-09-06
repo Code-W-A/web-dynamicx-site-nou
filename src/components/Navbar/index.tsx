@@ -53,12 +53,16 @@ export default function Navbar() {
           <div className="relative mx-[-16px] flex items-center justify-between">
             <div className="w-52 max-w-full px-4 xl:w-60">
               <Link href="/" className="header-logo flex w-full items-center justify-center py-5 lg:py-6">
-                <Image
-                  src="/images/logo/logo.svg"
-                  alt="Logo Web Dynamicx"
-                  width={56}
-                  height={56}
-                />
+                <span className="relative block h-14 w-14">
+                  <Image
+                    src="/images/logo/logo.svg"
+                    alt="Logo Web Dynamicx"
+                    fill
+                    sizes="56px"
+                    className="object-contain"
+                    priority
+                  />
+                </span>
               </Link>
             </div>
             <div className="flex w-full items-center justify-between px-4">

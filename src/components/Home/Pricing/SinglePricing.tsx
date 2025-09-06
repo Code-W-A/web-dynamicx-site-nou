@@ -36,11 +36,11 @@ export default function SinglePricing({ price }: any) {
           <span className="mb-4 block text-lg font-semibold text-primary">
             {price?.nickname}
           </span>
-          <h2 className="mb-5 text-[42px] font-bold text-dark">
+          <h3 className="mb-5 text-[42px] font-bold text-dark">
             <span className="text-lg font-medium text-body-color">De la </span>
             €{(price.unit_amount / 100).toLocaleString("ro-RO")}{" "}
             <span className="text-base font-medium text-body-color"> / pachet </span>
-          </h2>
+          </h3>
           
           {/* Include text */}
           {price?.nickname === "Business" && (
