@@ -40,20 +40,39 @@ export default function SinglePortfolio({
             className="object-contain object-center bg-white"
           />
           <div className="bg-primary/[17%] pointer-events-none absolute top-0 left-0 flex h-full w-full items-center justify-center opacity-0 transition group-hover:pointer-events-auto group-hover:opacity-100">
-            <button
-              onClick={() => setOpen(true)}
-              className="glightbox bg-primary flex h-10 w-10 items-center justify-center rounded-full text-white"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            {portfolio?.liveUrl ? (
+              <a
+                href={portfolio.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glightbox bg-primary flex h-10 w-10 items-center justify-center rounded-full text-white hover:bg-primary/90 transition-colors"
               >
-                <path d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="white" />
-              </svg>
-            </button>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="white" />
+                </svg>
+              </a>
+            ) : (
+              <button
+                onClick={() => setOpen(true)}
+                className="glightbox bg-primary flex h-10 w-10 items-center justify-center rounded-full text-white hover:bg-primary/90 transition-colors"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="white" />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
         <h3 className="mt-6">
@@ -67,6 +86,28 @@ export default function SinglePortfolio({
         <p className="text-body-color text-base font-medium">
           {portfolio?.sortDescription}
         </p>
+        
+        {/* Vezi proiect button */}
+        <div className="mt-4">
+          {portfolio?.liveUrl ? (
+            <a
+              href={portfolio.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+            >
+              Vezi proiect ↗
+            </a>
+          ) : (
+            <button
+              onClick={() => setOpen(true)}
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+            >
+              Vezi proiect
+            </button>
+          )}
+        </div>
+        
         <div className="mt-3 text-sm text-gray-600">
           <span className="mr-1">Vezi serviciul relevant:</span>
           <Link href={relatedService.href} className="text-primary underline">
@@ -75,26 +116,7 @@ export default function SinglePortfolio({
         </div>
       </div>
 
-      {portfolio?.liveUrl ? (
-        <WebsitePreview
-          url={portfolio.liveUrl}
-          title={portfolio.title}
-          fallbackImage={portfolio.image as string}
-          className="w-full"
-          open={open}
-          onClose={() => setOpen(false)}
-        />
-      ) : (
-        <Lightbox
-          open={open}
-          close={() => setOpen(false)}
-          slides={[
-            {
-              src: portfolio?.image as string,
-            },
-          ]}
-        />
-      )}
+   
     </>
   );
 }
