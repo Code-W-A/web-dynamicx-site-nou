@@ -67,13 +67,14 @@ export default function WebsitePreview({
     <>
       <div className={`group relative cursor-pointer overflow-hidden rounded-lg ${className}`}>
         {/* Always show something: start with fallback, swap to screenshot when ready */}
-        <div className="relative">
+        <div className="relative aspect-[2940/1414]">
           <img
             src={imageSrc}
             alt={`Preview ${title}`}
-            className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
             decoding="async"
+            sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 600px"
           />
           
           {/* Overlay */}

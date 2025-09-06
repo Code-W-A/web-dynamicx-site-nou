@@ -46,7 +46,7 @@ export default function SinglePortfolio({
               src={portfolio?.image}
               alt={portfolio?.title ? `Proiect portofoliu: ${portfolio.title}` : "Proiect portofoliu"}
               fill
-              sizes="(min-width: 768px) 50vw, 100vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
               className="object-cover object-center"
             />
             <div className="bg-primary/[17%] pointer-events-none absolute top-0 left-0 flex h-full w-full items-center justify-center opacity-0 transition group-hover:pointer-events-auto group-hover:opacity-100">

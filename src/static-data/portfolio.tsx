@@ -53,7 +53,7 @@ export const portfolioData: Portfolio[] = [
     slug: "studio-by-cristian-design",
     sortDescription:
       "Site premium pentru studio de design interior și mobilier personalizat. Design elegant și prezentare profesională.",
-    image: "/images/portofoliu/Studio-by-Cristian-Design&Furniture-portofoliu.png",
+    image: "/images/portofoliu/Studio-by-Cristian-Design&Furniture-portofoliu.webp",
     liveUrl: "https://www.studiobycristian.com/",
     tags: ["web design", "premium"],
     categories: ["design studio"],
@@ -65,7 +65,7 @@ export const portfolioData: Portfolio[] = [
     slug: "firsttech-echipamente-industriale",
     sortDescription:
       "Platformă B2B pentru echipamente de testare HV/MV/LV și sisteme de monitorizare industrială. Soluții tehnice complete.",
-    image: "/images/portofoliu/FirstTech-Echipamente-Industriale-portofoliu.png",
+    image: "/images/portofoliu/FirstTech-Echipamente-Industriale-portofoliu.webp",
     liveUrl: "https://www.firsttech.ro/",
     tags: ["web design", "B2B", "industrial"],
     categories: ["corporate"],
@@ -77,7 +77,7 @@ export const portfolioData: Portfolio[] = [
     slug: "alex-relax-hotel",
     sortDescription:
       "Website de prezentare pentru hotel: camere, facilități și rezervări online.",
-    image: "/images/portofoliu/Alex-Relax-Hotel-portofoliu.png",
+    image: "/images/portofoliu/Alex-Relax-Hotel-portofoliu.webp",
     liveUrl: "https://alex-relax-hotel.vercel.app/",
     tags: ["web design", "hospitality"],
     categories: ["hotel"],
@@ -89,7 +89,7 @@ export const portfolioData: Portfolio[] = [
     slug: "juridic-broker-asigurari",
     sortDescription:
       "Agenție de asigurări: prezentare servicii, lead‑gen și conținut educațional.",
-    image: "/images/portofoliu/Juridic-Broker-Asigurari-portofoliu.png",
+    image: "/images/portofoliu/Juridic-Broker-Asigurari-portofoliu.webp",
     liveUrl: "https://juridic-broker.vercel.app/",
     tags: ["web design", "asigurari"],
     categories: ["servicii"],
@@ -101,7 +101,7 @@ export const portfolioData: Portfolio[] = [
     slug: "promovare-digitala",
     sortDescription:
       "Site de agenție marketing: servicii, studii de caz, blog și contact rapid.",
-    image: "/images/portofoliu/Promovare-Digitala-Marketing-Portofoliu.png",
+    image: "/images/portofoliu/Promovare-Digitala-Marketing-Portofoliu.webp",
     liveUrl: "https://www.promovare-digitala.ro/",
     tags: ["web design", "marketing"],
     categories: ["agenție"],
@@ -113,7 +113,7 @@ export const portfolioData: Portfolio[] = [
     slug: "cristina-zurba",
     sortDescription:
       "Platformă de conținut: articole, servicii, consultanță și aplicație mobilă.",
-    image: "/images/portofoliu/cristina-zurba-portofoliu.png",
+    image: "/images/portofoliu/cristina-zurba-portofoliu.webp",
     liveUrl: "https://www.cristinazurba.com/",
     tags: ["web design", "content"],
     categories: ["personal"],
