@@ -146,9 +146,9 @@ export const detailsCreareSiteWeb = (
     </p>
 
     {/* Interlinking (ajută SEO și UX) */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Servicii conexe recomandate</span>
-    </h2>
+    </h3>
     <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       După lansare, recomandăm să continui cu optimizarea și promovarea:
       {" "}
@@ -359,9 +359,9 @@ export const detailsCreareMagazinOnline = (
     </p>
 
     {/* Interlinking (ajuta SEO si UX) */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Servicii conexe recomandate</span>
-    </h2>
+    </h3>
     <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Pentru crestere sustinuta, continua cu
       {" "}
@@ -386,9 +386,9 @@ export const detailsCreareMagazinOnline = (
     </p>
 
     {/* CTA final */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Hai sa incepem</span>
-    </h2>
+    </h3>
     <p className="mb-0 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Spune-ne ce vinzi si ce obiective ai, iar noi iti recomandam platforma, structura si integrările potrivite.
       Iti trimitem un plan cu timeline si costuri transparente. <strong>Cere o oferta pentru creare magazin online</strong>
@@ -528,9 +528,9 @@ export const detailsOptimizareSeo = (
     </p>
 
     {/* Interlinking (ajută SEO și UX) */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Servicii conexe recomandate</span>
-    </h2>
+    </h3>
     <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Pentru rezultate complete, combina <Link href="/servicii/creare-site-web" className="text-primary underline">Creare site web</Link>,
       {" "} <Link href="/servicii/web-design" className="text-primary underline">Web design</Link> si
@@ -550,9 +550,9 @@ export const detailsOptimizareSeo = (
     </p>
 
     {/* CTA final */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Hai sa incepem</span>
-    </h2>
+    </h3>
     <p className="mb-0 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Cere un audit gratuit si iti trimitem lista de prioritati cu impact imediat. Stabilim obiective clare, implementam
       rapid imbunatatirile si optimizam lunar pe baza datelor. <strong>Solicita o oferta pentru optimizare SEO site</strong>
@@ -738,9 +738,9 @@ export const detailsCreareSitePrezentare = (
     </p>
 
     {/* Interlinking */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Servicii conexe recomandate</span>
-    </h2>
+    </h3>
     <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Pentru o prezenta completa, combina
       {" "}
@@ -765,9 +765,9 @@ export const detailsCreareSitePrezentare = (
     </p>
 
     {/* CTA final */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Hai sa incepem</span>
-    </h2>
+    </h3>
     <p className="mb-0 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Spune-ne obiectivele si construim o structura care sa le atinga. Iti trimitem un plan cu timeline si costuri
       transparente. <strong>Cere o oferta pentru creare site de prezentare</strong> si primesti rapid pasii urmatori.
@@ -923,9 +923,9 @@ export const detailsWebDesign = (
     </p>
 
     {/* Interlinking (ajută SEO și UX) */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Servicii conexe recomandate</span>
-    </h2>
+    </h3>
     <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Designul bun strălucește alături de implementare și SEO:
       {" "}
@@ -952,9 +952,9 @@ export const detailsWebDesign = (
     </p>
 
     {/* CTA final */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Hai sa incepem</span>
-    </h2>
+    </h3>
     <p className="mb-0 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Spune-ne obiectivele și publicul, iar noi propunem arhitectura, stilul vizual și componentizarea potrivite.
       <strong> Cere o ofertă pentru servicii webdesign</strong> și primești un plan clar de pagini, timeline și livrabile.
@@ -992,9 +992,9 @@ export const detailsMentenantaWebsite = (
     </p>
 
     {/* Interlinking */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Servicii conexe recomandate</span>
-    </h2>
+    </h3>
     <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Împreună cu mentenanța, recomandăm
       {" "}
@@ -1194,9 +1194,9 @@ export const detailsDezvoltareAplicatiiMobile = (
     </p>
 
     {/* Interlinking (ecosistem complet) */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Servicii conexe recomandate</span>
-    </h2>
+    </h3>
     <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Pentru o lansare completa, adauga
       {" "}
@@ -1224,9 +1224,9 @@ export const detailsDezvoltareAplicatiiMobile = (
     </p>
 
     {/* CTA final */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Hai sa incepem</span>
-    </h2>
+    </h3>
     <p className="mb-0 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Spune-ne obiectivele si publicul tinta, iar noi propunem arhitectura, tehnologia si planul de livrare potrivit.
       <strong> Cere o oferta pentru dezvoltare aplicatii mobile</strong> si primesti rapid un roadmap clar cu timeline si costuri.

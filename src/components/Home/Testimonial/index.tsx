@@ -11,9 +11,9 @@ export default function Testimonial() {
               <span className="mb-2 block text-lg font-semibold text-primary">
                 TESTIMONIALE
               </span>
-              <h2 className="mb-5 text-3xl font-bold text-black sm:text-4xl md:text-[45px]">
+              <h3 className="mb-5 text-3xl font-bold text-black sm:text-4xl md:text-[45px]">
                 Ce spun clienții noștri
-              </h2>
+              </h3>
               <p className="text-lg font-medium text-body-color">
                 Parteneriate pe termen lung și rezultate măsurabile în online.
               </p>

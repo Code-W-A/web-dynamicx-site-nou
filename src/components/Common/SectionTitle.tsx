@@ -22,12 +22,12 @@ export default function SectionTitle({
       <span className="mb-2 block text-lg font-semibold text-primary">
         {mainTitle}
       </span>
-      <h2
+      <h3
         className={`text-3xl font-bold sm:text-4xl md:text-[45px]/[55px] ${color === "white" ? "text-white" : "text-black"} ${paragraph && "mb-5"} ${titleWidth && center && "mx-auto"}`}
         style={{ maxWidth: titleWidth }}
       >
         {title}
-      </h2>
+      </h3>
       {paragraph && (
         <p
           className={`text-lg font-medium text-body-color ${paragraphWidth && center && "mx-auto"}`}
