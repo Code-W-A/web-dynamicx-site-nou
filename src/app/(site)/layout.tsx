@@ -1,16 +1,11 @@
-"use client";
-
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import BottomCTA from "@/components/Common/BottomCTA";
 import "@/styles/globals.css";
-import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
-import NextTopLoader from "nextjs-toploader";
 import Script from "next/script";
-import { GoogleTagManager, GoogleAnalytics } from "next/third-parties/google";
-import AuthProvider from "../context/AuthContext";
-import ToasterContext from "../context/ToastContext";
+import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
+import ClientProviders from "./ClientProviders";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,21 +50,8 @@ export default function RootLayout({
     <html lang="ro" suppressHydrationWarning>
       {gtmId && <GoogleTagManager gtmId={gtmId as string} />}
       <body className={inter.className}>
-        <NextTopLoader
-          color="#006BFF"
-          crawlSpeed={300}
-          showSpinner={false}
-          shadow="none"
-          zIndex={9999999}
-        />
-        <ThemeProvider
-          enableSystem={false}
-          attribute="class"
-          defaultTheme="light"
-        >
-          <AuthProvider>
-            <ToasterContext />
-            {/* JSON-LD: Organization */}
+        <ClientProviders>
+          {/* JSON-LD: Organization */}
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
@@ -82,13 +64,12 @@ export default function RootLayout({
             {gsv && (
               <meta name="google-site-verification" content={gsv} />
             )}
-            {/* GTM loaded via <GoogleTagManager /> */}
+            {/* GTM/GA injected via Next official components */}
             <Navbar />
             {children}
             <Footer />
             <BottomCTA />
-          </AuthProvider>
-        </ThemeProvider>
+        </ClientProviders>
       </body>
       {gaId && <GoogleAnalytics gaId={gaId as string} />}
     </html>
