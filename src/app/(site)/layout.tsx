@@ -8,6 +8,7 @@ import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import Script from "next/script";
+import { GoogleTagManager, GoogleAnalytics } from "next/third-parties/google";
 import AuthProvider from "../context/AuthContext";
 import ToasterContext from "../context/ToastContext";
 
@@ -47,10 +48,12 @@ export default function RootLayout({
   };
 
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
   const gsv = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
   return (
     <html lang="ro" suppressHydrationWarning>
+      {gtmId && <GoogleTagManager gtmId={gtmId as string} />}
       <body className={inter.className}>
         <NextTopLoader
           color="#006BFF"
@@ -79,17 +82,7 @@ export default function RootLayout({
             {gsv && (
               <meta name="google-site-verification" content={gsv} />
             )}
-            {gaId && (
-              <>
-                <Script
-                  src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-                  strategy="afterInteractive"
-                />
-                <Script id="ga-init" strategy="afterInteractive">
-                  {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config','${gaId}',{page_path: window.location.pathname});`}
-                </Script>
-              </>
-            )}
+            {/* GTM loaded via <GoogleTagManager /> */}
             <Navbar />
             {children}
             <Footer />
@@ -97,6 +90,7 @@ export default function RootLayout({
           </AuthProvider>
         </ThemeProvider>
       </body>
+      {gaId && <GoogleAnalytics gaId={gaId as string} />}
     </html>
   );
 }
