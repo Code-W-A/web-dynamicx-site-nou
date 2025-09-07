@@ -119,6 +119,60 @@ export default async function ServiceDetailPage(props: Props) {
           }}
         />
       )}
+      {/* JSON-LD: HowTo for timeline when applicable */}
+      {service && (service.slug === "creare-site-web" || service.slug === "creare-site-prezentare" || service.slug === "dezvoltare-aplicatii-mobile" || service.slug === "mentenanta-website") && (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            name:
+              service.slug === "creare-site-web"
+                ? "Etape Creare Site Web"
+                : service.slug === "creare-site-prezentare"
+                  ? "Etape Creare Site Prezentare"
+                  : service.slug === "dezvoltare-aplicatii-mobile"
+                    ? "Etape Dezvoltare Aplicații Mobile"
+                    : "Etape Mentenanță Website",
+            description: service.description,
+            step:
+              service.slug === "creare-site-web"
+                ? [
+                    { "@type": "HowToStep", name: "Analiză", text: "Obiective, public, competiție, structură pagini și mesaje.", position: 1 },
+                    { "@type": "HowToStep", name: "Wireframe & conținut", text: "Secțiuni, ordinea informațiilor și CTA-uri.", position: 2 },
+                    { "@type": "HowToStep", name: "UI design", text: "Interfețe moderne, componente reutilizabile, sistem vizual coerent.", position: 3 },
+                    { "@type": "HowToStep", name: "Implementare", text: "Next.js, optimizări de viteză, testare pe dispozitive reale.", position: 4 },
+                    { "@type": "HowToStep", name: "SEO & lansare", text: "Meta-uri, schema, sitemap/robots, GSC/GA4, training.", position: 5 },
+                    { "@type": "HowToStep", name: "Mentenanță", text: "Actualizări periodice, optimizări și evoluții pe baza datelor.", position: 6 },
+                  ]
+                : service.slug === "creare-site-prezentare"
+                  ? [
+                      { "@type": "HowToStep", name: "Analiză", text: "Obiective, public, diferențiatori, sitemap.", position: 1 },
+                      { "@type": "HowToStep", name: "Wireframe & conținut", text: "Secțiuni, mesaje, CTA-uri.", position: 2 },
+                      { "@type": "HowToStep", name: "UI design", text: "Componente reutilizabile, ritm vizual.", position: 3 },
+                      { "@type": "HowToStep", name: "Implementare", text: "Next.js, optimizări viteză, testare.", position: 4 },
+                      { "@type": "HowToStep", name: "SEO & lansare", text: "Meta-uri, schema, sitemap/robots, GSC/GA4.", position: 5 },
+                      { "@type": "HowToStep", name: "Mentenanță", text: "Actualizări, optimizări, evoluții.", position: 6 },
+                    ]
+                  : service.slug === "dezvoltare-aplicatii-mobile"
+                  ? [
+                      { "@type": "HowToStep", name: "Discovery", text: "Obiective, utilizatori, MVP, roadmap.", position: 1 },
+                      { "@type": "HowToStep", name: "UX/UI Design", text: "Flow-uri, wireframe, prototip, design system.", position: 2 },
+                      { "@type": "HowToStep", name: "Dezvoltare", text: "App + backend/API, integrări, notificări, payments.", position: 3 },
+                      { "@type": "HowToStep", name: "QA & Beta", text: "Testare pe device-uri reale, optimizări performanță și stabilitate.", position: 4 },
+                      { "@type": "HowToStep", name: "Publicare", text: "Listare în App Store/Google Play, ASO de bază.", position: 5 },
+                      { "@type": "HowToStep", name: "Mentenanță & Creștere", text: "Monitorizare, iterații și noi funcționalități.", position: 6 },
+                    ]
+                  : [
+                      { "@type": "HowToStep", name: "Audit inițial", text: "Stare actuală, riscuri, priorități.", position: 1 },
+                      { "@type": "HowToStep", name: "Update-uri & compatibilitate", text: "Platformă, module, rollback controlat.", position: 2 },
+                      { "@type": "HowToStep", name: "Monitorizare & alerte", text: "Uptime, erori, securitate.", position: 3 },
+                      { "@type": "HowToStep", name: "Optimizări performanță", text: "Imagini, cache, Core Web Vitals.", position: 4 },
+                      { "@type": "HowToStep", name: "Raportare & recomandări", text: "Lunar: status, task-uri, evoluții.", position: 5 },
+                    ],
+            url: `${process.env.SITE_URL}/servicii/${service.slug}`,
+          }}
+        />
+      )}
       {/* JSON-LD: Breadcrumbs */}
       {service && (
         <JsonLd

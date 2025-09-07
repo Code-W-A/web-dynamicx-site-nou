@@ -1,6 +1,8 @@
 import { Service } from "@/types/service";
 import { v4 as uuid } from "uuid";
 import Link from "next/link";
+import Image from "next/image";
+import Timeline from "@/components/Common/Timeline";
 
 
 
@@ -109,30 +111,69 @@ export const detailsCreareSiteWeb = (
       <li className="mb-2 text-base text-body-color">Formulare și tracking setate, plus instrucțiuni de administrare (video/ghid).</li>
     </ul>
 
-    {/* Procesul nostru */}
+    {/* Etape Creare Site Web */}
     <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
-      <span className="text-primary">Procesul nostru</span>
+      <span className="text-primary">Etape Creare Site Web</span>
     </h2>
-    <ul className="list mb-7 list-inside list-decimal">
-      <li className="mb-2 text-base text-body-color">
-        <strong>Analiză:</strong> obiective, public, competiție, structură pagini și mesaje.
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>Wireframe & conținut:</strong> stabilim secțiunile, CTA-urile și ordinea informațiilor.
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>UI design:</strong> interfețe moderne, componente reutilizabile, sistem vizual coerent.
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>Implementare:</strong> Next.js, optimizări de viteză, testare pe dispozitive reale.
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>SEO & lansare:</strong> meta-uri, schema, sitemap/robots, conectare GSC/GA4, training de administrare.
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>Mentenață:</strong> actualizări periodice, optimizări și mici evoluții pe baza datelor.
-      </li>
-    </ul>
+    <Timeline
+      ariaLabel="Etape Creare Site Web"
+      items={[
+        {
+          id: "analiza",
+          title: "Analiză",
+          subtitle: "Obiective, public, competiție, structură pagini și mesaje.",
+          description:
+            "Clarificăm obiectivele, definim publicul țintă și organizăm informația pentru o navigare fluentă și relevantă.",
+          tags: ["Goal setting", "Audience", "IA"],
+          duration: "Ziua 1-2",
+        },
+        {
+          id: "wireframe",
+          title: "Wireframe & conținut",
+          subtitle: "Stabilim secțiunile, CTA-urile și ordinea informațiilor.",
+          description:
+            "Construim scheletul paginilor și fluxul de conținut pentru conversii: structură clară, mesaje scurte și CTA-uri vizibile.",
+          tags: ["Wireframe", "Content", "CTA"],
+          duration: "Ziua 3-4",
+        },
+        {
+          id: "ui-design",
+          title: "UI design",
+          subtitle: "Interfețe moderne, componente reutilizabile, sistem vizual coerent.",
+          description:
+            "Aplicăm design system-ul pentru consistență: culori, tipografie, componente responsive și accesibile.",
+          tags: ["Design system", "Components", "Accessibility"],
+          duration: "Săpt. 1",
+        },
+        {
+          id: "implementare",
+          title: "Implementare",
+          subtitle: "Next.js, optimizări de viteză, testare pe dispozitive reale.",
+          description:
+            "Dezvoltăm paginile în Next.js, optimizăm performanța (imagini, code-splitting) și testăm pe device-uri reale.",
+          tags: ["Next.js", "Performance", "Testing"],
+          duration: "Săpt. 2",
+        },
+        {
+          id: "seo-lansare",
+          title: "SEO & lansare",
+          subtitle: "Meta-uri, schema, sitemap/robots, conectare GSC/GA4, training.",
+          description:
+            "Setăm SEO on-page complet, schema.org, sitemap/robots și instrumentele de măsurare. Livrăm training de administrare.",
+          tags: ["SEO", "Schema", "Analytics"],
+          duration: "Săpt. 2 (final)",
+        },
+        {
+          id: "mentenanta",
+          title: "Mentenanță",
+          subtitle: "Actualizări periodice, optimizări și evoluții pe baza datelor.",
+          description:
+            "Monitorizăm performanța și comportamentul utilizatorilor, iterăm conținutul și îmbunătățim constant conversiile.",
+          tags: ["Monitoring", "Optimization", "Growth"],
+          duration: "Ongoing",
+        },
+      ]}
+    />
 
     {/* Prețuri & pachete (orientativ) */}
     <h2 id="preturi" className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
@@ -575,10 +616,18 @@ export const detailsCreareSitePrezentare = (
       maximizează rata de conversie. Folosim Next.js pentru performanță superioară și SEO on-page avansat.
     </p>
 
-    {/* Ce este si cand alegi - optimizat pentru cuvinte cheie */}
+    {/* De ce noi */}
     <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">De ce să alegi serviciile noastre de creare site de prezentare</span>
     </h2>
+    <Image
+      src="/images/services/agentie-web-design.webp"
+      alt="De ce sa alegi web dynamicx"
+      width={2400}
+      height={1400}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+      className="mb-6 h-auto w-full rounded-lg"
+    />
     <ul className="list mb-6 list-inside list-disc">
       <li className="mb-2 text-base text-body-color">
         <strong>Experiență în creare site prezentare:</strong> peste 50 de proiecte livrate cu rata medie de conversie de 3.2%.
@@ -605,9 +654,22 @@ export const detailsCreareSitePrezentare = (
       Serviciile noastre de <strong>creare site prezentare</strong> acoperă toate etapele: de la analiza cerințelor până la lansare și mentenanță.
       Un website compact (5–12 pagini) care prezintă brandul, serviciile, portofoliul și modalitățile de contact.
       Dacă obiectivul tău principal este <em>generarea de lead-uri</em> (cereri de ofertă, programări, apeluri),
-      serviciile noastre de <strong>creare site de prezentare</strong> sunt soluția potrivită. Pentru vânzări online, vezi
-      {" "}
+      serviciile noastre de <strong>creare site de prezentare</strong> sunt soluția potrivită. Pentru vânzări online, vezi{" "}
       <Link href="/servicii/creare-magazin-online" className="text-primary underline">servicii creare magazin online</Link>.
+    </p>
+
+    {/* + Paragraf nou: Beneficii directe pentru afaceri locale */}
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Un <strong>site de prezentare</strong> bine structurat îți crește vizibilitatea locală și încrederea clienților.
+      Prezinți clar cine ești, ce oferi și cum poți fi contactat, iar mesajele orientate pe beneficii
+      transformă vizitatorii în cereri de ofertă reale. Rezultatul: mai multe oportunități și o imagine profesională consecventă.
+    </p>
+
+    {/* + Paragraf nou: Diferența față de alte tipuri de site-uri */}
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Spre deosebire de un magazin online sau portaluri complexe, <strong>crearea unui site de prezentare</strong>
+      urmărește viteza în comunicare: cine ești, ce probleme rezolvi și de ce ești o alegere bună.
+      Conținutul este compact, ușor de navigat și orientat către acțiune (apel, formular, WhatsApp).
     </p>
 
     {/* Structura pentru conversie */}
@@ -615,25 +677,20 @@ export const detailsCreareSitePrezentare = (
       <span className="text-primary">Structura orientata pe conversie</span>
     </h2>
     <ul className="list mb-6 list-inside list-disc">
-      <li className="mb-2 text-base text-body-color">
-        <strong>Hero clar:</strong> promisiune + sub-beneficii + CTA vizibil („Cere oferta”, „Programeaza o discutie”).
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>Servicii pe scurt:</strong> 3–6 carduri cu beneficii, link spre paginile dedicate fiecărui serviciu.
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>Dovada sociala:</strong> testimoniale reale, logo-uri clienti, certificari, note din studii de caz.
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>Despre noi:</strong> cine livreaza, procese, valori; pune fata brandului, creste increderea.
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>Portofoliu scurt:</strong> 3–6 proiecte reprezentative; link spre pagina „Toate proiectele” (opțional).
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>Contact simplu:</strong> formular scurt, telefon clicabil, WhatsApp, harta (daca e relevant local).
-      </li>
+      <li className="mb-2 text-base text-body-color"><strong>Hero clar:</strong> promisiune + sub-beneficii + CTA vizibil („Cere oferta”, „Programeaza o discutie”).</li>
+      <li className="mb-2 text-base text-body-color"><strong>Servicii pe scurt:</strong> 3–6 carduri cu beneficii, link spre paginile dedicate fiecărui serviciu.</li>
+      <li className="mb-2 text-base text-body-color"><strong>Dovada sociala:</strong> testimoniale reale, logo-uri clienti, certificari, note din studii de caz.</li>
+      <li className="mb-2 text-base text-body-color"><strong>Despre noi:</strong> cine livreaza, procese, valori; pune fata brandului, creste increderea.</li>
+      <li className="mb-2 text-base text-body-color"><strong>Portofoliu scurt:</strong> 3–6 proiecte reprezentative; link spre pagina „Toate proiectele” (opțional).</li>
+      <li className="mb-2 text-base text-body-color"><strong>Contact simplu:</strong> formular scurt, telefon clicabil, WhatsApp, harta (daca e relevant local).</li>
     </ul>
+
+    {/* + Paragraf nou: Importanța conținutului și a mesajelor */}
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Conținutul bun clarifică rapid diferențiatorii tăi. Scriem mesaje scurte, la obiect,
+      cu titluri care promit beneficii concrete și paragrafe ușor de scanat. Evităm jargonul,
+      folosim voce activă și plasăm <em>call-to-action</em> acolo unde utilizatorul se așteaptă.
+    </p>
 
     {/* UX/UI si accesibilitate */}
     <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
@@ -646,6 +703,13 @@ export const detailsCreareSitePrezentare = (
       <li className="mb-2 text-base text-body-color">Imagistica relevanta si usoara (optimizata), micro-interactii discrete.</li>
     </ul>
 
+    {/* + Paragraf nou: Local SEO & încredere */}
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Pentru clienții locali, optimizăm NAP (nume, adresă, telefon), integrăm hărți și marcaje <em>schema.org</em> relevante.
+      Astfel, când cineva caută „<strong>creare site de prezentare</strong>” în orașul tău, ai șanse mai mari să apari
+      în rezultate și să primești contact direct.
+    </p>
+
     {/* Performanta & CWV */}
     <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Performanta si Core Web Vitals</span>
@@ -656,10 +720,18 @@ export const detailsCreareSitePrezentare = (
       scripturile nefolosite si incarcam deferrred ceea ce nu este critic pentru prima interactiune.
     </p>
 
-    {/* SEO on-page pentru site de prezentare */}
+    {/* SEO on-page */}
     <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">SEO on-page: fundatia corecta</span>
     </h2>
+    <Image
+      src="/images/services/seo-on-page.webp"
+      alt="SEO on-page"
+      width={2400}
+      height={1400}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+      className="mb-6 h-auto w-full rounded-lg"
+    />
     <p className="mb-5 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Fiecare pagina are <strong>un singur cuvant-cheie principal</strong>, meta title (~50–60c) si meta description (~140–160c)
       orientate spre CTR. Structuram <em>H1/H2/H3</em> logic, folosim <strong>interlinking</strong> contextual si setam canonical
@@ -667,30 +739,31 @@ export const detailsCreareSitePrezentare = (
       Breadcrumb), generam sitemap si robots si conectam Search Console pentru monitorizare.
     </p>
 
-    {/* Blueprint de continut pentru pagini frecvente */}
+    {/* + Paragraf nou: Conținut evergreen & topic clusters */}
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Pentru autoritate pe termen lung, recomandăm articole scurte și utile conexe (ghiduri, studii de caz,
+      explicații despre costuri și timp de livrare). Grupate pe teme, ele susțin pagina principală „<strong>creare site prezentare</strong>”
+      și îmbunătățesc vizibilitatea pe interogări conexe.
+    </p>
+
+    {/* Blueprint */}
     <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Blueprint de continut (pagini esentiale)</span>
     </h2>
     <ul className="list mb-6 list-inside list-disc">
-      <li className="mb-2 text-base text-body-color">
-        <strong>Acasa:</strong> promisiune + beneficii + servicii + dovezi sociale + CTA + scurt „Despre”.
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>Servicii:</strong> lista cu 4–8 servicii, fiecare cu beneficiu, icon si link catre pagina dedicata.
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>Despre:</strong> cine suntem, proces, valori, echipa; cresterea increderii si a diferentei fata de competitie.
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>Portofoliu:</strong> proiecte reprezentative, scurt context, rezultate/metrici (cand se pot comunica).
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>Contact:</strong> formular scurt, alternative de contact, program, harta (daca e relevant).
-      </li>
-      <li className="mb-2 text-base text-body-color">
-        <strong>FAQ:</strong> raspunsuri concise la obiectii (pret, timp, mentenanta, SEO, continut).
-      </li>
+      <li className="mb-2 text-base text-body-color"><strong>Acasa:</strong> promisiune + beneficii + servicii + dovezi sociale + CTA + scurt „Despre”.</li>
+      <li className="mb-2 text-base text-body-color"><strong>Servicii:</strong> lista cu 4–8 servicii, fiecare cu beneficiu, icon si link catre pagina dedicata.</li>
+      <li className="mb-2 text-base text-body-color"><strong>Despre:</strong> cine suntem, proces, valori, echipa; cresterea increderii si a diferentei fata de competitie.</li>
+      <li className="mb-2 text-base text-body-color"><strong>Portofoliu:</strong> proiecte reprezentative, scurt context, rezultate/metrici (cand se pot comunica).</li>
+      <li className="mb-2 text-base text-body-color"><strong>Contact:</strong> formular scurt, alternative de contact, program, harta (daca e relevant).</li>
+      <li className="mb-2 text-base text-body-color"><strong>FAQ:</strong> raspunsuri concise la obiectii (pret, timp, mentenanta, SEO, continut).</li>
     </ul>
+
+    {/* + Paragraf nou: Conformitate & încredere */}
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Respectăm bunele practici de confidențialitate (banner cookie, politici clare) și accesibilitate.
+      Un <strong>site de prezentare</strong> conform inspiră încredere și reduce riscurile, mai ales când colectezi date din formulare.
+    </p>
 
     {/* Formular & tracking */}
     <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
@@ -706,6 +779,14 @@ export const detailsCreareSitePrezentare = (
     <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Ce primesti concret</span>
     </h2>
+    <Image
+      src="/images/services/Ce-primesti-concret.webp"
+      alt="Ce primesti concret"
+      width={2400}
+      height={1400}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+      className="mb-6 h-auto w-full rounded-lg"
+    />
     <ul className="list mb-6 list-inside list-disc">
       <li className="mb-2 text-base text-body-color">Site de prezentare complet, responsiv si accesibil.</li>
       <li className="mb-2 text-base text-body-color">Sistem de componente si stiluri (mini design system).</li>
@@ -714,20 +795,78 @@ export const detailsCreareSitePrezentare = (
       <li className="mb-2 text-base text-body-color">Plan de continut scurt (ce pagini/articole sa adaugi in primele luni).</li>
     </ul>
 
-    {/* Proces & timeline */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
-      <span className="text-primary">Proces & timeline</span>
-    </h2>
-    <ul className="list mb-7 list-inside list-decimal">
-      <li className="mb-2 text-base text-body-color"><strong>Analiza:</strong> obiective, public, diferentiatori, sitemap.</li>
-      <li className="mb-2 text-base text-body-color"><strong>Wireframe & continut:</strong> sectiuni, mesaje, CTA-uri.</li>
-      <li className="mb-2 text-base text-body-color"><strong>UI design:</strong> componente reutilizabile, ritm vizual.</li>
-      <li className="mb-2 text-base text-body-color"><strong>Implementare:</strong> Next.js, optimizari de viteza, testare.</li>
-      <li className="mb-2 text-base text-body-color"><strong>SEO & lansare:</strong> meta-uri, schema, sitemap/robots, GSC/GA4.</li>
-      <li className="mb-2 text-base text-body-color"><strong>Mentenanta:</strong> actualizari, optimizari si mici evolutii.</li>
-    </ul>
+    {/* + Paragraf nou: Nișe & long-tail */}
+    <p className="mb-7 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Adaptăm <strong>crearea site-ului de prezentare</strong> pentru nișa ta: avocați, medici, consultanți,
+      construcții, HORECA, servicii locale. Limbajul, structura și elementele de încredere diferă de la o industrie la alta,
+      iar această adaptare îți crește relevanța și rata de conversie.
+    </p>
 
-    {/* Preturi (orientativ) */}
+    {/* Etape Creare Site Prezentare */}
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Etape Creare Site Prezentare</span>
+    </h2>
+    <Timeline
+      ariaLabel="Etape Creare Site Prezentare"
+      items={[
+        {
+          id: "analiza",
+          title: "Analiză",
+          subtitle: "Obiective, public, diferențiatori, sitemap",
+          description:
+            "Definim obiectivele, publicul țintă și structura paginilor pentru o navigare clară și orientată pe conversie.",
+          tags: ["Goals", "Audience", "Sitemap"],
+          duration: "Ziua 1-2",
+        },
+        {
+          id: "wireframe",
+          title: "Wireframe & conținut",
+          subtitle: "Secțiuni, mesaje, CTA-uri",
+          description:
+            "Stabilim scheletul paginii și mesajele cheie, cu CTA-uri vizibile și flux logic al informațiilor.",
+          tags: ["Wireframe", "Copy", "CTA"],
+          duration: "Ziua 3-4",
+        },
+        {
+          id: "ui-design",
+          title: "UI design",
+          subtitle: "Componente reutilizabile, ritm vizual",
+          description:
+            "Aplicăm design system pentru consistență: tipografie, paletă, componente responsive și accesibile.",
+          tags: ["Design system", "Components", "Accessibility"],
+          duration: "Săpt. 1",
+        },
+        {
+          id: "implementare",
+          title: "Implementare",
+          subtitle: "Next.js, optimizări viteză, testare",
+          description:
+            "Implementăm în Next.js cu imagini optimizate, code-splitting și testare pe dispozitive reale.",
+          tags: ["Next.js", "Performance", "Testing"],
+          duration: "Săpt. 2",
+        },
+        {
+          id: "seo-lansare",
+          title: "SEO & lansare",
+          subtitle: "Meta-uri, schema, sitemap/robots, GSC/GA4",
+          description:
+            "Configurăm SEO on-page complet, schema.org, sitemap/robots și tracking. Livrăm guideline de administrare.",
+          tags: ["SEO", "Schema", "Analytics"],
+          duration: "Săpt. 2 (final)",
+        },
+        {
+          id: "mentenanta",
+          title: "Mentenanță",
+          subtitle: "Actualizări, optimizări, evoluții",
+          description:
+            "Monitorizăm metrici, iterăm conținutul și optimizăm performanța pentru rezultate constante.",
+          tags: ["Monitoring", "Optimization", "Growth"],
+          duration: "Ongoing",
+        },
+      ]}
+    />
+
+    {/* Preturi */}
     <h2 id="preturi" className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Preturi (orientativ)</span>
     </h2>
@@ -742,15 +881,11 @@ export const detailsCreareSitePrezentare = (
       <span className="text-primary">Servicii conexe recomandate</span>
     </h3>
     <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
-      Pentru o prezenta completa, combina
-      {" "}
-      <Link href="/servicii/web-design" className="text-primary underline">Web design</Link>,
-      {" "}
-      <Link href="/servicii/creare-site-web" className="text-primary underline">Creare site web</Link> si
-      {" "}
+      Pentru o prezenta completa, combina{" "}
+      <Link href="/servicii/web-design" className="text-primary underline">Web design</Link>,{" "}
+      <Link href="/servicii/creare-site-web" className="text-primary underline">Creare site web</Link> si{" "}
       <Link href="/servicii/optimizare-seo" className="text-primary underline">Servicii SEO profesionale</Link>.
-      Daca ai nevoie de identitate vizuala, vezi si
-      {" "}
+      Daca ai nevoie de identitate vizuala, vezi si{" "}
       <Link href="/servicii/creare-logo-branding" className="text-primary underline">Creare logo & branding</Link>.
     </p>
 
@@ -774,6 +909,7 @@ export const detailsCreareSitePrezentare = (
     </p>
   </div>
 );
+
 
 
 export const detailsWebDesign = (
@@ -970,10 +1106,80 @@ export const detailsMentenantaWebsite = (
       performanța SEO. Intervenim rapid pe probleme critice și propunem optimizări pe baza datelor (GA4, Search Console).
     </p>
 
-    {/* Ce include */}
+    {/* Ce este & de ce contează */}
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Ce este mentenanța website și de ce contează pentru SEO, viteză și conversii</span>
+    </h2>
+    <p className="mb-4">
+      Mentenanța website înseamnă un ansamblu de acțiuni recurente prin care site-ul tău rămâne <em>funcțional, securizat
+      și performant</em>. Indiferent că folosești WordPress, un framework precum Next.js ori o platformă eCommerce, mediul
+      online evoluează: apar versiuni noi de software, schimbări de API, actualizări de securitate, noi cerințe de la Google
+      privind Core Web Vitals. Fără un plan de mentenanță, riscurile se acumulează și afectează pozițiile organice, rata de
+      conversie și încrederea utilizatorilor.
+    </p>
+    <p className="mb-4">
+      Un serviciu profesionist de <strong>mentenanță website</strong> combină prevenția (update-uri, patch-uri, backup),
+      monitorizarea (uptime, erori, alerte), optimizarea (viteză, imagini, caching, CWV) și micro-evoluțiile de conținut
+      (texte, secțiuni, UX) astfel încât site-ul să livreze constant o experiență bună. Obiectivul nostru este simplu:
+      <strong> continuitate + siguranță + performanță</strong>, măsurate transparent în rapoarte lunare.
+    </p>
+
+    {/* Tipuri de mentenanță */}
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Tipuri de mentenanță website: tehnică, securitate, SEO și conținut</span>
+    </h2>
+
+    <Image
+      src="/images/services/mentenanta-unu.webp"
+      alt="Tipuri de mentenanță website"
+      width={2400}
+      height={1400}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+      className="mb-6 h-auto w-full rounded-lg"
+    />
+      
+
+    <h3 className="font-semibold mb-2">Mentenanță tehnică</h3>
+    <p className="mb-4">
+      Include actualizări de platformă, framework și module, verificări de compatibilitate între pluginuri/depedențe,
+      curățarea erorilor din loguri și optimizarea configurației serverului/CDN. În lipsa acesteia apar bug-uri, pagini
+      care „cad” și funcții care se comportă imprevizibil. Mentenanța tehnică previne aceste scenarii și asigură stabilitatea.
+    </p>
+
+    <h3 className="font-semibold mb-2">Mentenanță de securitate</h3>
+    <p className="mb-4">
+      Aici intră patch-urile critice, întărirea autentificării, reguli WAF, scanări anti-malware, limitarea încercărilor
+      de login și politici corecte de permisiuni. Un site exploatat produce downtime, liste de e-mail compromise și
+      pierdere de încredere. Prevenția e mult mai ieftină decât remedierea.
+    </p>
+
+    <h3 className="font-semibold mb-2">Mentenanță SEO</h3>
+    <p className="mb-4">
+      Ne asigurăm că site-ul respectă bune practici: structură clară H1–H3, meta-uri corecte, sitemap și robots, viteze
+      bune pe mobil, erori 4xx/5xx remediate. Monitorizăm <em>Core Web Vitals</em> (LCP, CLS, INP), indexarea și keyword-urile
+      cheie, astfel încât <strong>mentenanța website</strong> să susțină poziționarea în Google, nu doar să „țină site-ul în viață”.
+    </p>
+
+    <h3 className="font-semibold mb-2">Mentenanță de conținut</h3>
+    <p className="mb-4">
+      Corectăm informații depășite, actualizăm secțiuni, adăugăm pagini, optimizăm intertitlurile și listele, creăm
+      micro-elemente utile (FAQ-uri locale, glosare, microcopy). Conținutul curat și actualizat îmbunătățește UX și
+      crește relevanța pentru intenția de căutare.
+    </p>
+
+    {/* Ce include (lista ta inițială) */}
     <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Ce include mentenanța website</span>
     </h2>
+
+    <Image
+      src="/images/services/creare-site-web.webp"
+      alt="Ce include mentenanța website"
+      width={2400}
+      height={1400}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+      className="mb-6 h-auto w-full rounded-lg"
+    />
     <ul className="list mb-6 list-inside list-disc">
       <li className="mb-2 text-base text-body-color">Actualizări platformă/module, verificări compatibilitate și rollback sigur.</li>
       <li className="mb-2 text-base text-body-color">Backup automat și restaurare la nevoie (policy zilnic/săptămânal).</li>
@@ -982,27 +1188,176 @@ export const detailsMentenantaWebsite = (
       <li className="mb-2 text-base text-body-color">Mică evoluție: conținut, secțiuni, bugfix-uri și suport editorial.</li>
     </ul>
 
-    {/* SLA & timp de răspuns */}
+    {/* Etape Mentenanță Website (AI LĂSAT EXACT CUM AI DORIT) */}
     <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
-      <span className="text-primary">Timp de răspuns și SLA</span>
+      <span className="text-primary">Etape Mentenanță Website</span>
     </h2>
-    <p className="mb-5 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
-      Tichete prioritizate pe severitate, cu timp de răspuns rapid pentru incidente critice. Comunicare clară și jurnal de
-      schimbări la fiecare intervenție. Raport lunar cu status, task-uri și recomandări.
+    <Timeline
+      ariaLabel="Etape Mentenanță Website"
+      items={[
+        {
+          id: "audit-initial",
+          title: "Audit inițial",
+          subtitle: "Stare actuală, riscuri, priorități",
+          description:
+            "Verificăm versiunile platformei, module, securitate, backup și performanță. Propunem un plan etapizat.",
+          tags: ["Security", "Performance", "Backup"],
+          duration: "Ziua 1",
+        },
+        {
+          id: "update-uri",
+          title: "Update-uri & compatibilitate",
+          subtitle: "Platformă, module, rollback controlat",
+          description:
+            "Aplicăm update-uri în mediu de staging, testăm compatibilitatea și apoi lansăm în producție cu jurnal de schimbări.",
+          tags: ["Updates", "Staging", "Changelog"],
+          duration: "Săpt. 1 și lunar",
+        },
+        {
+          id: "monitorizare",
+          title: "Monitorizare & alerte",
+          subtitle: "Uptime, erori, securitate",
+          description:
+            "Setăm monitorizare uptime, loguri de erori și alerte de securitate. Intervenim rapid la incidente critice.",
+          tags: ["Uptime", "Alerts", "Incidents"],
+          duration: "Non-stop",
+        },
+        {
+          id: "optimizari",
+          title: "Optimizări performanță",
+          subtitle: "Imagini, cache, Core Web Vitals",
+          description:
+            "Îmbunătățim scorurile CWV prin optimizări de imagini, caching și eliminarea resurselor nefolosite.",
+          tags: ["LCP", "CLS", "INP"],
+          duration: "Lunar",
+        },
+        {
+          id: "raportare",
+          title: "Raportare & recomandări",
+          subtitle: "Lunar: status, task-uri, evoluții",
+          description:
+            "Trimitem raport cu acțiuni efectuate, metrici cheie și propuneri de îmbunătățiri pentru luna următoare.",
+          tags: ["Report", "Roadmap", "KPI"],
+          duration: "Lunar",
+        },
+      ]}
+    />
+
+    {/* Checklist practic (înlocuiește FAQ, adaugă valoare) */}
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Checklist de mentenanță website (lunar & trimestrial)</span>
+    </h2>
+    <h3 className="font-semibold mb-2">Lunar</h3>
+    <ul className="list mb-4 list-disc list-inside">
+      <li>Actualizează platforma și modulele după ce testezi pe staging; păstrează un <em>changelog</em> clar.</li>
+      <li>Rulează scanări de securitate, verifică alertele WAF, schimbă parolele expuse și elimină userii inactivi.</li>
+      <li>Verifică <strong>backup-urile</strong> (există, sunt valide și restaurabile). Fă un test de restore trimestrial.</li>
+      <li>Optimizează imagini noi (format modern, dimensiuni corecte), curăță CSS/JS nefolosit, verifică <em>preload</em>-urile.</li>
+      <li>Monitorizează erorile 4xx/5xx, link-urile rupte, redirecționările în lanț, starea sitemap-ului și a robots.txt.</li>
+      <li>Analizează GA4 &amp; Search Console: pagini lente, căderi de trafic, interogări noi; planifică micro-optimizări.</li>
+      <li>Îmbunătățește conținutul paginilor cheie cu intertitluri (H2/H3), liste, exemple și elemente de încredere.</li>
+    </ul>
+
+    <h3 className="font-semibold mb-2">Trimestrial</h3>
+    <ul className="list mb-6 list-disc list-inside">
+      <li>Audit mai amplu de performanță (CWV), real-user metrics și compatibilitate cu browsere/sisteme.</li>
+      <li>Revizuiește politicile de permisiuni (FTP/SSH/DB/CDN), chei API, acces la panoul de administrare și pluginuri.</li>
+      <li>Curăță media veche nefolosită, revizuiește structura URL-urilor și canibalizarea cuvintelor cheie.</li>
+      <li>Reprioritizează backlog-ul de optimizări pe baza datelor și a obiectivelor de business.</li>
+    </ul>
+
+    {/* Studii de caz & exemple practice */}
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Studii de caz și exemple practice</span>
+    </h2>
+    <Image
+      src="/images/services/creare-site-prezentare.webp"
+      alt="Tipuri de mentenanță website"
+      width={2400}
+      height={1400}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+      className="mb-6 h-auto w-full rounded-lg"
+    />
+    <h3 className="font-semibold mb-2">eCommerce: restore din backup în &lt; 1 oră</h3>
+    <p className="mb-4">
+      Un magazin online a fost afectat de un plugin cu vulnerabilitate zero-day. Datorită politicii de backup zilnic +
+      incremental și a procedurii de rollback, am revenit la o versiune stabilă în mai puțin de o oră. Comenzile nu s-au
+      pierdut, iar echipa a putut continua activitatea normal.
+    </p>
+    <h3 className="font-semibold mb-2">B2B: +29% îmbunătățire LCP prin optimizări lunare</h3>
+    <p className="mb-4">
+      Pe un site de prezentare B2B, am redus LCP prin <em>image preloading</em>, <em>font-display</em>, convertirea imaginilor
+      în format modern și curățarea CSS-ului nefolosit. Rezultatul: timpi mai buni pe mobil, bounce rate mai mic și o creștere
+      treptată a conversiilor din formular.
+    </p>
+    <h3 className="font-semibold mb-2">Edu: actualizări critice fără downtime</h3>
+    <p className="mb-6">
+      O platformă educațională a necesitat update major de framework. Am rulat migrarea pe staging, am remediat conflictele,
+      apoi am programat lansarea într-o fereastră cu trafic scăzut. Monitorizarea post-deployment a confirmat stabilitatea.
     </p>
 
-    {/* Interlinking */}
+    {/* Metrici & raportare */}
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Metrici urmărite și raportare lunară</span>
+    </h2>
+    <p className="mb-4">
+      Mentenanța este valoroasă atunci când este măsurabilă. În rapoartele lunare includem: acțiuni efectuate, starea
+      backup-urilor, alertele critice, îmbunătățiri de viteză, status CWV, erori rezolvate, propuneri pentru luna următoare.
+      Astfel, ai vizibilitate asupra muncii și a impactului în performanță, SEO și conversii.
+    </p>
+    <ul className="list mb-6 list-disc list-inside">
+      <li><strong>Stabilitate:</strong> uptime, erori server, erori JavaScript, timp de răspuns.</li>
+      <li><strong>Performanță:</strong> LCP, INP, CLS, mărime pagină, număr de request-uri, timpi pe mobil.</li>
+      <li><strong>SEO tehnic:</strong> indexare, sitemap, erori de explorare, linkuri rupte, redirecționări.</li>
+      <li><strong>Securitate:</strong> patch-uri aplicate, tentative blocare, audit permisiuni, scanări malware.</li>
+      <li><strong>Conținut & UX:</strong> pagini actualizate, intertitluri adăugate, microcopy, elemente de încredere.</li>
+    </ul>
+
+    {/* Bune practici tehnologice */}
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Bune practici tehnologice: Next.js, WordPress & infrastructură</span>
+    </h2>
+    <h3 className="font-semibold mb-2">Next.js / React</h3>
+    <ul className="list mb-4 list-disc list-inside">
+      <li>Imagini optimizate (next/image), dimensiuni corecte, lazy-loading și preloading pentru elementele above-the-fold.</li>
+      <li>Split de cod și eliminarea dependențelor nefolosite; audit periodic al pachetelor.</li>
+      <li>Cache strategic la nivel de CDN, revalidare ISR și fallback sigur la build-uri.</li>
+    </ul>
+
+    <h3 className="font-semibold mb-2">WordPress</h3>
+    <ul className="list mb-4 list-disc list-inside">
+      <li>Update-uri controlate de core, teme și pluginuri, cu testare pe staging și <em>rollback</em> disponibil.</li>
+      <li>Firewall, limitare login, politici de backup zilnic + incremental; curățare bază de date.</li>
+      <li>Curățare pluginuri redundante, înlocuiri cu soluții mai ușoare, menținere compatibilitate PHP.</li>
+    </ul>
+
+    <h3 className="font-semibold mb-2">Infrastructură & livrare</h3>
+    <ul className="list mb-6 list-disc list-inside">
+      <li>CDN configurat corect, HTTP/2/3, compresie, <em>server push/preload</em> pentru resurse critice.</li>
+      <li>Politici stricte de acces (principiul „least privilege”), audit periodic de chei/API și rotație parole.</li>
+      <li>Monitorizare externă independentă pentru uptime și alerte în timp real.</li>
+    </ul>
+
+    {/* Costuri & pachete */}
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Costuri și pachete de mentenanță website</span>
+    </h2>
+    <p className="mb-4">
+      Costul depinde de complexitatea site-ului, numărul de integrări, trafic și nivelul de SLA. Structurăm pachete
+      predictibile (Basic, Growth, Pro) și putem lucra și pe nevoi punctuale (intervenții, migrări, audituri). Important:
+      <strong> prevenția e mai ieftină decât remedierea</strong>, iar rapoartele lunare îți arată clar investiția și
+      rezultatele.
+    </p>
+
+    {/* Interlinking (păstrat) */}
     <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Servicii conexe recomandate</span>
     </h3>
     <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
-      Împreună cu mentenanța, recomandăm
-      {" "}
-      <Link href="/servicii/optimizare-seo" className="text-primary underline">Servicii SEO profesionale</Link>,
-      {" "}
-      <Link href="/servicii/creare-site-prezentare" className="text-primary underline">Creare site de prezentare</Link>
-      {" "}și
-      {" "}
+      Împreună cu mentenanța, recomandăm{" "}
+      <Link href="/servicii/optimizare-seo" className="text-primary underline">Servicii SEO profesionale</Link>,{" "}
+      <Link href="/servicii/creare-site-prezentare" className="text-primary underline">Creare site de prezentare</Link>{" "}
+      și{" "}
       <Link href="/servicii/creare-magazin-online" className="text-primary underline">Creare magazin online</Link>.
     </p>
 
@@ -1016,6 +1371,7 @@ export const detailsMentenantaWebsite = (
     </p>
   </div>
 );
+
 
 
 export const detailsDezvoltareAplicatiiMobile = (
@@ -1152,6 +1508,14 @@ export const detailsDezvoltareAplicatiiMobile = (
     <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
       <span className="text-primary">Mentenanta, suport si crestere</span>
     </h2>
+    <Image
+      src="/images/services/mentenanta-aplicatie-mobila.webp"
+      alt="Mentenanta, suport si crestere"
+      width={2400}
+      height={1400}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+      className="mb-6 h-auto w-full rounded-lg"
+    />
     <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
       Dupa lansare, asiguram actualizari periodice, corectii rapide, monitorizare si optimizari pe baza datelor.
       Putem extinde produsul cu functii noi si optimiza funnel-urile de activare si retentie (onboarding, notificari,
@@ -1170,18 +1534,120 @@ export const detailsDezvoltareAplicatiiMobile = (
       <li className="mb-2 text-base text-body-color">Setari analytics, crash reporting si dashboard KPIs.</li>
     </ul>
 
-    {/* Proces & timeline (etape) */}
-    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
-      <span className="text-primary">Proces & timeline</span>
+    {/* Etape Dezvoltare Aplicații Mobile */}
+    <h2 className="mb-8 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Etape Dezvoltare Aplicații Mobile</span>
     </h2>
-    <ul className="list mb-7 list-inside list-decimal">
-      <li className="mb-2 text-base text-body-color"><strong>Discovery:</strong> obiective, utilizatori, MVP, roadmap.</li>
-      <li className="mb-2 text-base text-body-color"><strong>UX/UI:</strong> flow-uri, wireframe, prototip, design system.</li>
-      <li className="mb-2 text-base text-body-color"><strong>Dezvoltare:</strong> app + backend/API, integrari, notificari, payments.</li>
-      <li className="mb-2 text-base text-body-color"><strong>QA & beta:</strong> testare pe device-uri reale, optimizari performanta si stabilitate.</li>
-      <li className="mb-2 text-base text-body-color"><strong>Publicare:</strong> listare in App Store/Google Play, ASO de baza.</li>
-      <li className="mb-2 text-base text-body-color"><strong>Mententa & crestere:</strong> monitorizare, iteratii si noi functionalitati.</li>
-    </ul>
+    
+    <Timeline 
+      ariaLabel="Etape Dezvoltare Aplicații Mobile"
+      items={[
+        {
+          id: "discovery",
+          title: "Discovery",
+          subtitle: "Obiective, utilizatori, MVP, roadmap.",
+          description: "Analizăm în detaliu nevoile afacerii tale, identificăm publicul țintă și definim funcționalitățile esențiale pentru prima versiune. Stabilim arhitectura tehnică, platformele vizate și prioritizăm feature-urile pentru lansarea rapidă.",
+          duration: "Săptămâna 1",
+          tags: ["Research", "User personas", "MVP definition"]
+        },
+        {
+          id: "ux-ui",
+          title: "UX/UI Design",
+          subtitle: "Flow-uri, wireframe, prototip, design system.",
+          description: "Creăm user journey-urile complete, wireframe-urile pentru toate ecranele și prototipuri interactive. Dezvoltăm design system-ul cu componente reutilizabile, palete de culori și tipografie adaptată brandului tău.",
+          duration: "Săptămânile 2-3",
+          tags: ["Wireframing", "UI Design", "Prototyping"]
+        },
+        {
+          id: "dezvoltare",
+          title: "Dezvoltare",
+          subtitle: "App + backend/API, integrări, notificări, payments.",
+          description: "Implementăm aplicația mobilă și backend-ul, integrăm serviciile terțe (plăți, notificări push, analytics), configurăm baza de date și API-urile. Dezvoltarea se face în sprint-uri săptămânale cu demo-uri regulate.",
+          duration: "Săptămânile 4-8",
+          tags: ["Frontend", "Backend API", "Integrări"]
+        },
+        {
+          id: "qa-beta",
+          title: "QA & Beta Testing",
+          subtitle: "Testare pe device-uri reale, optimizări performanță și stabilitate.",
+          description: "Rulăm teste comprehensive pe diferite dispozitive și sisteme de operare, optimizăm performanța și corectăm bug-urile. Beta testing cu utilizatori reali pentru feedback și ajustări finale.",
+          duration: "Săptămâna 9",
+          tags: ["Testing", "Bug fixes", "Beta feedback"]
+        },
+        {
+          id: "publicare",
+          title: "Publicare",
+          subtitle: "Listare în App Store/Google Play, ASO de bază.",
+          description: "Pregătim toate materialele pentru store-uri (descrieri, screenshots, video preview), optimizăm pentru căutare și gestionăm procesul de aprobare. Configurăm analytics și crash reporting pentru monitorizare.",
+          duration: "Săptămâna 10",
+          tags: ["App Store", "Google Play", "ASO"]
+        },
+        {
+          id: "mentenanta",
+          title: "Mentenanță & Creștere",
+          subtitle: "Monitorizare, iterații și noi funcționalități.",
+          description: "Urmărim metrici importante, analizăm comportamentul utilizatorilor și implementăm îmbunătățiri continue. Adăugăm funcționalități noi pe baza feedback-ului și evoluției afacerii tale.",
+          duration: "Ongoing",
+          tags: ["Monitoring", "Updates", "New features"]
+        }
+      ]}
+    />
+
+       {/* Mentenanta & suport */}
+       <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Soluții Mobile Personalizate pentru Diverse Industrii</span>
+    </h2>
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Aplicații de Food Ordering</span>
+    </h3>
+    <Image
+      src="/images/services/aplicatie-food-ordering.webp"
+      alt="Aplicație de Food Ordering pentru restaurante – exemplu interfață"
+      width={2400}
+      height={1400}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+      className="mb-6 h-auto w-full rounded-lg"
+    />
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+    Aplicațiile mobile pentru industria alimentară transformă modul în care restaurantele și clienții interacționează. Printr-o aplicație personalizată de comandă mâncare, le poți oferi utilizatorilor o experiență rapidă și intuitivă, fie că aleg livrarea la domiciliu, fie preluarea direct din restaurant.
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+    Funcționalități precum urmărirea livrării în timp real, plăți online securizate și recomandări personalizate sporesc încrederea și loialitatea clienților. În același timp, echipa noastră de dezvoltare îți pune la dispoziție soluții digitale care simplifică gestionarea comenzilor, optimizează fluxurile de lucru și contribuie direct la creșterea veniturilor afacerii tale.    
+    </p>
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Aplicații de Booking</span>
+    </h3>
+    <Image
+      src="/images/services/aplicatie-mobila-booking.webp"
+      alt="Aplicație mobilă de Booking – facilități de rezervare în timp real"
+      width={2400}
+      height={1400}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+      className="mb-6 h-auto w-full rounded-lg"
+    />
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+    Aplicațiile de rezervare (booking) schimbă radical modul în care clienții își organizează călătoriile, ieșirile în oraș sau programările la servicii. Indiferent dacă ai nevoie de o soluție pentru rezervări hoteliere, închirieri auto sau programări la salon, îți oferim o platformă digitală completă, creată să automatizeze procesele și să îmbunătățească experiența utilizatorilor.    
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+    Funcționalități esențiale precum rezervări în timp real, notificări push pentru confirmare și plăți online integrate contribuie la eficientizarea activității, reducerea costurilor operaționale și consolidarea relației cu clienții.   
+     </p>
+     <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">Aplicații de E-commerce</span>
+    </h3>
+    <Image
+      src="/images/services/aplicatie-mobila-ecommerce.webp"
+      alt="Aplicație mobilă de E-commerce – prezentare produse și checkout optimizat"
+      width={2400}
+      height={1400}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+      className="mb-6 h-auto w-full rounded-lg"
+    />
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+    E-commerce-ul este într-o expansiune continuă, iar o aplicație mobilă dedicată poate oferi afacerii tale un avantaj competitiv real pe această piață în schimbare rapidă. Printr-o aplicație de vânzări online, îți poți prezenta produsele într-un mod atractiv, poți oferi reduceri personalizate și ai posibilitatea să comunici direct cu clienții.    
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+    Funcționalități precum căutare rapidă și intuitivă, coș de cumpărături optimizat și suport pentru multiple metode de plată sunt elemente cheie pentru succesul unei aplicații mobile de e-commerce. Echipa noastră dezvoltă soluții care nu doar atrag utilizatori, ci cresc rata de conversie și stimulează vânzările pe termen lung.   
+      </p>
 
     {/* Preturi (orientativ) */}
     <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
@@ -1222,6 +1688,13 @@ export const detailsDezvoltareAplicatiiMobile = (
       apoi am iterat pe baza feedback-ului: onboarding mai scurt, mesajele clarificate si optimizari de performanta.
       Dupa listare, rata de activare a crescut datorita imbunatatirilor ghidate de date (analytics si crash reporting).
     </p>
+
+    <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">De Ce Să Alegi Serviciile Noastre?</span>
+    </h3>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+    Experiența noastră în dezvoltarea aplicațiilor mobile ne permite să înțelegem nevoile și provocările fiecărui proiect în parte. Ne asumăm responsabilitatea de a furniza soluții optimizate pentru performanță, securitate și ușurință în utilizare, astfel încât să ne asigurăm că aplicațiile livrate respectă cele mai înalte standarde de calitate. Împreună, putem aduce afacerea ta la următorul nivel prin soluții
+        </p>
 
     {/* CTA final */}
     <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">

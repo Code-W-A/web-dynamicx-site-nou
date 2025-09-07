@@ -57,22 +57,11 @@ export default function Home() {
     sameAs: [siteURL],
   };
 
-  const webSiteLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: siteName,
-    url: siteURL,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${siteURL}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
-  };
+  // Removed duplicate WebSite JSON-LD; kept only in layout
 
   return (
     <>
       <JsonLd data={professionalServiceLd} />
-      <JsonLd data={webSiteLd} />
 
       <Hero />
      

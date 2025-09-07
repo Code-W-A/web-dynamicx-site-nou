@@ -44,11 +44,6 @@ export default function RootLayout({
     "@type": "WebSite",
     name: siteName,
     url: siteUrl,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${siteUrl}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
