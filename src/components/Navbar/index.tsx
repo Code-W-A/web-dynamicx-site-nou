@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import GlobalSearchModal from "../GlobalSearch";
+import { trackCTA } from "@/components/Analytics/GTMLeadEvents";
 
 export default function Navbar() {
   const [navigationOpen, setNavigationOpen] = useState(false);
@@ -221,6 +222,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   className="bg-primary hover:bg-primary/90 hover:shadow-signUp rounded-full px-8 py-3 text-base font-bold whitespace-nowrap text-white transition duration-300 ease-in-out md:px-9 lg:px-8 xl:px-9"
+                  onClick={() => { try { trackCTA("Navbar - Cere oferta"); } catch {} }}
                 >
                   Cere ofertă
                 </Link>

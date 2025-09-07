@@ -3,6 +3,7 @@ import SectionTitle from "../Common/SectionTitle";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { trackLead } from "@/components/Analytics/GTMLeadEvents";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -23,6 +24,7 @@ export default function Contact() {
         headers: { "Content-Type": "application/json" },
       });
       toast.success("Mesaj trimis cu succes. Îți mulțumim!");
+      try { trackLead("contact_form", { form_name: "ContactSection" }); } catch {}
       setForm({ name: "", company: "", email: "", phone: "", message: "" });
     } catch (err: any) {
       toast.error(

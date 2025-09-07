@@ -3,8 +3,7 @@ import Navbar from "@/components/Navbar";
 import BottomCTA from "@/components/Common/BottomCTA";
 import "@/styles/globals.css";
 import { Inter } from "next/font/google";
-import Script from "next/script";
-import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google';
 import ClientProviders from "./ClientProviders";
 
 const inter = Inter({ subsets: ["latin"] });

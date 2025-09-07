@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import ContactModal from "./ContactModal";
 import { usePathname } from "next/navigation";
+import { trackLead, trackCTA } from "@/components/Analytics/GTMLeadEvents";
 
 export default function BottomCTA() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
@@ -85,6 +86,7 @@ export default function BottomCTA() {
 
   const openContact = () => {
     vibrate();
+    try { trackCTA("BottomCTA - Contact"); } catch {}
     setContactModalOpen(true);
   };
 
@@ -138,7 +140,7 @@ export default function BottomCTA() {
             <a
               href="tel:0774550758"
               aria-label="Sună Web Dynamicx: consultanță rapidă la 0774 550 758"
-              onClick={vibrate}
+              onClick={() => { vibrate(); try { trackLead("phone"); } catch {} }}
               className="flex flex-col items-center justify-center bg-green-500 text-white transition-colors hover:bg-green-600"
             >
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="mb-0.5">
@@ -154,7 +156,7 @@ export default function BottomCTA() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Scrie-ne pe WhatsApp: disponibil acum, răspuns în câteva minute"
-              onClick={vibrate}
+              onClick={() => { vibrate(); try { trackLead("whatsapp"); } catch {} }}
               className="flex flex-col items-center justify-center border-l border-green-400 bg-green-500 text-white transition-colors hover:bg-green-600"
             >
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="mb-0.5">
