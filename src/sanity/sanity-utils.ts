@@ -14,13 +14,18 @@ export async function sanityFetch<QueryResponse>({
   query,
   qParams,
   tags,
+  useCdnOverride,
 }: {
   query: string;
   qParams: QueryParams;
   tags: string[];
+  useCdnOverride?: boolean;
 }): Promise<QueryResponse> {
   if (integrations?.isSanityEnabled) {
-    const client = createClient(clientConfig);
+    const client = createClient({
+      ...clientConfig,
+      useCdn: typeof useCdnOverride === "boolean" ? useCdnOverride : (clientConfig as any).useCdn,
+    } as any);
     return client.fetch<QueryResponse>(query, qParams as any, {
       cache: "force-cache",
       next: { tags },
@@ -35,6 +40,7 @@ export async function getPosts() {
     query: postQuery,
     qParams: {},
     tags: ["post"],
+    useCdnOverride: false,
   });
 
   return posts;

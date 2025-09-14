@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const postQuery = groq`*[_type == "post"] {
+export const postQuery = groq`*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc) {
     title,
     metadata,
     metaDescription,
