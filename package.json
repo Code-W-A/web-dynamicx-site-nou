@@ -24,7 +24,7 @@
     "next-sanity": "^9.9.9",
     "next-themes": "^0.2.1",
     "nextjs-toploader": "^1.6.6",
-    "nodemailer": "^6.9.11",
+    "nodemailer": "^7.0.7",
     "prismjs": "^1.29.0",
     "react": "^19.1.0",
     "react-clipboard.js": "^2.0.16",
@@ -50,6 +50,7 @@
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.14",
+    
     "@types/prismjs": "^1.26.3",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.1",
