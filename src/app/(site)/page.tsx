@@ -10,6 +10,7 @@ import Team from "@/components/Home/Team";
 import Testimonial from "@/components/Home/Testimonial";
 import Portfolio from "@/components/Portfolio";
 import Link from "next/link";
+import MiniLeadClient from "@/components/Common/MiniLeadClient";
 import { Metadata } from "next";
 import JsonLd from "@/components/Common/JsonLd";
 import { integrations } from "../../../integrations.config";
@@ -97,6 +98,9 @@ export default function Home() {
       <Testimonial />
       {integrations?.isSanityEnabled && <HomeBlogSection />}
       <Contact />
+      {/* Client-only mini lead form; rendered only on interaction and never during SSR */}
+      {/** Keep it at the end to avoid layout shifts and ensure non-blocking hydration */}
+      <MiniLeadClient />
     </>
   );
 }

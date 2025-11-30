@@ -1751,6 +1751,205 @@ const detailsBranding = (
   </div>
 );
 
+const detailsCreareMagazinOnlineShopify = (
+  <div>
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">1. Hero / Introducere</span>
+    </h2>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Servicii complete de ecommerce pe Shopify
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Creare magazin online Shopify pentru afaceri care vor să vândă mai mult
+    </p>
+
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">2. Secțiunea: Shopify pentru scalare rapidă</span>
+    </h2>
+    <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+      Shopify pentru scalare rapidă, conversii mai mari și operare simplă
+    </h3>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Oferim servicii complete de creare magazin online Shopify, de la structură și design până la integrarea aplicațiilor esențiale. Construim magazine rapide, stabile și optimizate SEO, astfel încât clienții tăi să găsească ușor produsele, să înțeleagă oferta și să finalizeze comanda fără bariere.
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Dacă ești la început de drum și ai nevoie, în paralel, și de un site de prezentare pentru brandul tău, putem combina serviciul de creare magazin online Shopify cu servicii de dezvoltare site web, astfel încât prezența ta online să fie unitară și pregătită pentru campanii de marketing pe termen lung.
+    </p>
+
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">3. Secțiunea: Lansare rapidă și creștere previzibilă</span>
+    </h2>
+    <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+      Lansare rapidă și creștere previzibilă cu un magazin online Shopify
+    </h3>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Shopify îți oferă o infrastructură sigură, mentenanță automatizată și un ecosistem bogat de aplicații. Noi ne ocupăm de configurarea temei, a navigației, colecțiilor și paginilor de produs, astfel încât magazinul tău online Shopify să fie lansat repede, corect și gata de promovat în campanii.
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Structurăm colecțiile și filtrele în funcție de modul în care gândesc clienții tăi, nu în funcție de „cum e mai simplu tehnic”. Paginile de produs includ descrieri clare, micro-copy orientat pe conversie, secțiuni pentru beneficii, recenzii și recomandări de produse complementare (upsell și cross-sell acolo unde are sens).
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Configurăm plățile, curierii, taxele și facturarea, apoi integrăm aplicațiile de care ai nevoie: reviews, căutare avansată, promoții, email/SMS marketing. În paralel, setăm fundația de SEO tehnic (URL-uri curate, meta corecte, schema, sitemap) și urmărirea conversiilor în Google Analytics 4 și Google Ads, pentru ca fiecare campanie să poată fi măsurată.
+    </p>
+
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">4. Secțiunea: De ce să lucrezi cu Web App Dynamicx</span>
+    </h2>
+    <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+      De ce să lucrezi cu Web App Dynamicx pentru creare magazin online Shopify
+    </h3>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Abordăm fiecare proiect de creare magazin online Shopify ca pe un parteneriat pe termen lung. Ne interesează ca magazinul tău să vândă constant, nu doar să arate bine într-un demo.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Specializare pe Shopify și ecommerce – folosim bune practici testate în proiecte reale, nu doar setări implicite.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Focus pe obiectivele tale de business – adaptăm structura, aplicațiile și automatizările la modelul tău de vânzare și la marjele pe care le urmărești.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Comunicare clară, fără jargon inutil – explicăm pas cu pas ce facem, ce primești și de ce este important pentru magazinul tău online Shopify.
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Experiență în optimizare și conversii – ne uităm la traseul complet al clientului, de la prima vizită până la confirmarea comenzii.
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Gândire pe termen lung – pregătim magazinul pentru campanii viitoare, extindere în alte piețe și integrare cu alte sisteme pe măsură ce afacerea ta crește.
+    </p>
+
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">5. Secțiunea: Procesul nostru</span>
+    </h2>
+    <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+      Procesul nostru de creare magazin online Shopify
+    </h3>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Lucrăm structurat, astfel încât să știi mereu în ce etapă este proiectul tău de magazin online Shopify și ce urmează.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Analiză și strategie – înțelegem modelul tău de business, tipul de produse, marjele și obiectivele de vânzări, apoi propunem o structură de magazin care să susțină această strategie.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Arhitectură și UX – definim meniul, colecțiile, filtrele și traseul clientului de la prima vizită până la finalizarea comenzii.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Design și configurare temă Shopify – personalizăm tema aleasă (sau recomandăm una nouă), păstrând un design curat, ușor de scanat și adaptat pe mobil.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Integrare aplicații și automatizări – conectăm plăți, curieri, facturare, reviews, email/SMS și, acolo unde este cazul, integrări externe.
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      SEO, tracking și testare – optimizăm paginile cheie, configurăm monitorizarea conversiilor și testăm fluxul complet de comandă, astfel încât magazinul să fie pregătit pentru trafic plătit și organic.
+    </p>
+
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">6. Secțiunea: Pentru cine este potrivit Shopify</span>
+    </h2>
+    <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+      Pentru cine este potrivit un magazin online Shopify
+    </h3>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Serviciul nostru de creare magazin online Shopify este ideal pentru afaceri care vor să se concentreze pe vânzări, nu pe partea tehnică. Lucrăm cu antreprenori la început de drum, magazine fizice care vor să intre în online, branduri care își lansează propriul magazin direct-to-consumer și businessuri care vor să migreze de pe alte platforme către Shopify pentru o operare mai simplă.
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Dacă ai deja un magazin online, dar te lovești constant de limitări tehnice, viteză slabă sau dificultăți în administrare, Shopify poate fi o soluție scalabilă. Te ajutăm să planifici migrarea, să păstrezi SEO-ul existent pe cât posibil și să profiți de avantajele ecosistemului Shopify.
+    </p>
+
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">7. Secțiunea: Cum arată un magazin pregătit pentru vânzări</span>
+    </h2>
+    <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+      Cum arată un magazin online Shopify pregătit pentru vânzări
+    </h3>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Un magazin online Shopify bine construit nu înseamnă doar un design modern. Înseamnă o structură clară, texte ușor de înțeles și un flux de comandă care nu pune obstacole între client și butonul de „Plasează comanda”. Atunci când lucrăm la creare magazin online Shopify, ne uităm la toate aceste detalii înainte de lansare.
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Ne asigurăm că paginile esențiale (acasă, colecții, pagini de produs, coș, checkout) sunt conectate logic între ele și răspund la întrebările firești ale clientului: „Ce primesc?”, „Cât costă?”, „Cum ajunge la mine?” și „Ce se întâmplă dacă vreau să returnez produsul?”.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Structură clară a meniului – categoriile sunt organizate după modul în care clienții caută produsele, nu după o logică internă complicată.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Pagini de produs complete – descrieri orientate pe beneficii, imagini relevante, informații despre livrare și retur, plus elemente de încredere (reviews, note, testimoniale).
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Mesaje simple și directe – evităm jargonul tehnic și formulările abstracte. Textele explică pe scurt ce vinzi, cui te adresezi și de ce merită să cumpere de la tine.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Flux de comandă fără fricțiune – clientul poate ajunge din pagină de produs în coș și apoi în checkout în câțiva pași simpli, fără formulare inutile sau câmpuri confuze.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Elemente cheie de încredere – afișăm metodele de plată, curierii, politica de retur și datele de contact în zone ușor de observat, pentru ca utilizatorii să se simtă în siguranță.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Performanță și viteză – optimizăm imaginile, structura temei și aplicațiile folosite, astfel încât magazinul online Shopify să se încarce rapid, inclusiv pe mobil și pe conexiuni mai slabe.
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      SEO pregătit pentru creștere – URL-uri logice, meta descrieri clare, headings organizate și conținut care răspunde la întrebările reale ale clienților, nu doar la nevoia de a introduce cuvinte cheie.
+    </p>
+
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">8. Secțiunea: Ce primești / De ce să alegi Shopify</span>
+    </h2>
+    <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+      Ce primești când alegi un magazin online Shopify
+    </h3>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Magazin online Shopify construit pe o temă modernă, optimizată pentru viteză și mobile;
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Arhitectură SEO corectă: colecții, produse, pagini statice și meta date gândite pentru căutări reale;
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Checkout performant, cu metode de plată populare în România și UE;
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Integrare de aplicații pentru recenzii, căutare avansată, promoții și recomandări de produse;
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Configurare GA4, Google Ads și feed de produse pentru campanii de Performance Max și remarketing;
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Onboarding clar pentru administrare: cum adaugi produse, cum creezi campanii și cum urmărești rezultatele; Automatizări acolo unde este posibil: email/SMS, curieri, facturare și notificări pentru comenzi.
+    </p>
+    <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+      De ce să alegi Shopify pentru magazinul tău online
+    </h3>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Shopify este o platformă stabilă, scalabilă și sigură, cu update-uri constante și un ecosistem mare de aplicații. În loc să îți consumi energia pe probleme tehnice și mentenanță, îți poți concentra eforturile pe produse, marketing și relația cu clienții.
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Îți livrăm un magazin online Shopify ușor de administrat, în care poți adăuga rapid produse, colecții, campanii și coduri promoționale. Structura este gândită astfel încât echipa ta să poată lucra eficient, fără să depindă permanent de programatori pentru fiecare mică modificare.
+    </p>
+
+    <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="text-primary">10. Secțiunea: Următorii pași</span>
+    </h2>
+    <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+      Următorii pași dacă vrei să lucrăm împreună
+    </h3>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Dacă simți că a venit momentul să îți duci afacerea la nivelul următor cu un magazin online Shopify, procesul de început este simplu. Nu ai nevoie de specificații tehnice detaliate de la primul contact, ci doar de o imagine clară asupra afacerii tale, a bugetului și a obiectivelor pe care le ai pentru următoarele luni.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      1. Discuție inițială – ne povestești pe scurt ce vinzi, cui te adresezi și ce așteptări ai de la un magazin online Shopify. În această etapă identificăm nivelul de complexitate și ce integrări sunt necesare.
+    </p>
+    <p className="mb-2 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      2. Propunere și structură – venim cu o propunere de structură de magazin, funcționalități recomandate și o estimare de timp și costuri. Scopul este să ai o imagine realistă asupra proiectului înainte să luăm orice decizie.
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      3. Implementare și lansare – după confirmare, trecem la implementare: creare magazin online Shopify, configurare temă, integrare aplicații, setare SEO de bază și testare. La final, facem împreună o sesiune de onboarding, astfel încât să poți folosi magazinul în siguranță din prima zi.
+    </p>
+    <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Poți face primul pas trimițându-ne câteva detalii despre proiectul tău prin pagina de contact. Vom reveni cu întrebările esențiale și cu o propunere clară, astfel încât să știi exact ce include serviciul nostru de creare magazin online Shopify și cum te poate ajuta să vinzi mai mult, cu mai puțin stres.
+    </p>
+    <p className="mb-0 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+      Punem accent pe claritate, viteză și experiența utilizatorului. Un magazin online Shopify bine construit nu înseamnă doar un design plăcut, ci și mesaje clare, pași logici în procesul de comandă și timp de încărcare redus – toate acestea duc la o rată de conversie mai bună. Ai deja un magazin online Shopify? Putem realiza un audit tehnic și de conversie, să optimizăm paginile importante, să simplificăm procesele interne și să adăugăm funcționalități noi, astfel încât magazinul tău să susțină obiectivele actuale de business, nu să le limiteze.
+    </p>
+  </div>
+);
+
 export const serviceData: Service[] = [
   {
     id: uuid(),
@@ -1826,6 +2025,25 @@ export const serviceData: Service[] = [
       { question: "Ce platformă alegeți pentru creare magazin online?", answer: "Pentru servicii creare magazin online recomandăm: Shopify pentru lansare rapidă, WooCommerce pentru flexibilitate, sau soluții custom pentru cerințe complexe de realizare magazin online." },
       { question: "În cât timp finalizați serviciile de creare magazin online?", answer: "Serviciile noastre de creare magazin online se finalizează în 4-6 săptămâni în medie, în funcție de complexitatea proiectului de realizare magazin online și feedback." },
       { question: "Serviciile de creare magazin online includ SEO?", answer: "Da, toate serviciile noastre de creare magazin online includ optimizare SEO completă: meta tags pentru produse, viteză încărcare și schema de date e-commerce." },
+    ],
+  },
+  {
+    id: uuid(),
+    title: "Creare magazin online Shopify",
+    description:
+      "Creare magazin online Shopify pentru afaceri care vor să vândă mai mult",
+    metaTitle: "Creare magazin online Shopify || Web Dynamicx",
+    metaDescription:
+      "Creare magazin online Shopify realizată de Web App Dynamicx. Magazin rapid, optimizat SEO, ușor de administrat și pregătit pentru campanii profitabile.",
+    slug: "creare-magazin-online-shopify",
+    image: "/images/services/creare-magazin-online.webp",
+    ogImage: "/images/services/creare-magazin-online.webp",
+    details: detailsCreareMagazinOnlineShopify,
+    faqs: [
+      { question: "Cât durează să lansăm un magazin online Shopify?", answer: "Durata depinde de complexitate și de cât de repede primim informațiile de la tine (texte, imagini, structura de categorii). În general, proiectul tău de magazin online pe Shopify poate fi lansat în câteva săptămâni, nu în luni, dacă lucrăm organizat și avem un plan clar de conținut." },
+      { question: "Ce trebuie să pregătesc înainte să începem proiectul?", answer: "Ideal este să ai o listă de produse, imagini de bază, informații despre prețuri, stocuri, metode de livrare și politica de retur. Dacă nu ai încă toate aceste elemente, te ghidăm pas cu pas, astfel încât procesul de dezvoltare a magazinului tău Shopify să rămână clar și ușor de gestionat." },
+      { question: "Mă puteți ajuta și după ce este gata magazinul?", answer: "Da. Putem continua cu mentenanță, optimizări de conversie, ajustări de pagini și consultanță pentru campanii. Scopul este ca magazinul tău online Shopify să rămână actualizat și pregătit pentru schimbările din piață. Ne poți scrie oricând prin formularul de contact." },
+      { question: "Pot migra de pe o altă platformă pe Shopify?", answer: "În multe cazuri, da. Analizăm platforma actuală, stabilim ce date pot fi migrate (produse, clienți, comenzi) și planificăm trecerea către Shopify astfel încât să reducem la minimum riscurile și întreruperile. Putem combina migrarea cu o restructurare SEO și UX, pentru ca noul magazin să fie mai bine organizat decât cel vechi." },
     ],
   },
   {

@@ -49,6 +49,18 @@ const portfolioDetails = (
 export const portfolioData: Portfolio[] = [
   {
     id: uuid(),
+    title: "Auto Detailing Parts - Magazin Online Piese Auto",
+    slug: "auto-detailing-parts",
+    sortDescription:
+      "Magazin online complet pentru piese și accesorii auto: anvelope, baterii, sisteme de frânare, suspensii și multe altele. E-commerce modern și funcțional.",
+    image: "/images/portofoliu/auto-datiling-parts.webp",
+    liveUrl: "https://auto-detailing-parts.ro/",
+    tags: ["web design", "e-commerce", "automotive"],
+    categories: ["magazin online"],
+    details: portfolioDetails,
+  },
+  {
+    id: uuid(),
     title: "Studio by Cristian - Design & Furniture",
     slug: "studio-by-cristian-design",
     sortDescription:
