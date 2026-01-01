@@ -2135,39 +2135,363 @@ export const serviceData: Service[] = [
     ogImage: "/images/services/creare-site-prezentare.webp",
     details: (
       <div>
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">Promovare site</span>
+        </h2>
+
         <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
-          Serviciile noastre de <strong>promovare site</strong> combină SEO avansat cu marketing digital strategic pentru 
-          creștere organică și sustenabilă în Google. Specializarea noastră în <strong>servicii optimizare site</strong> 
-          include audit tehnic complet, optimizare on-page, crearea de conținut optimizat și campanii de link building. 
-          Fiecare strategie de <strong>promovare site</strong> este personalizată în funcție de nișa ta și competiția locală, 
-          cu focus pe cuvinte cheie cu intenție de cumpărare și rezultate măsurabile. Dacă pornești de la zero, vezi
-          {" "}
-          <Link href="/servicii/creare-site-web" className="text-primary underline">Creare site web</Link>;
-          pentru e‑commerce, vezi
-          {" "}
-          <Link href="/servicii/creare-magazin-online" className="text-primary underline">Creare magazin online</Link>;
-          iar pentru baza tehnică și conținut, vezi
-          {" "}
-          <Link href="/servicii/optimizare-seo" className="text-primary underline">Servicii SEO profesionale</Link>.
+          Serviciile noastre de promovare site combină SEO avansat cu marketing digital strategic pentru creștere organică și sustenabilă în Google. Specializarea noastră în servicii optimizare site include audit tehnic complet, optimizare on-page, crearea de conținut optimizat și campanii de link building. Fiecare strategie de promovare site este personalizată în funcție de nișa ta și competiția locală, cu focus pe cuvinte cheie cu intenție de cumpărare și rezultate măsurabile. Dacă pornești de la zero, vezi{" "}
+          <Link href="/servicii/creare-site-web" className="text-primary underline">
+            Creare site web
+          </Link>
+          ; pentru e-commerce, vezi{" "}
+          <Link href="/servicii/creare-magazin-online" className="text-primary underline">
+            Creare magazin online
+          </Link>
+          ; iar pentru baza tehnică și conținut, vezi{" "}
+          <Link href="/servicii/optimizare-seo" className="text-primary underline">
+            Servicii SEO profesionale
+          </Link>
+          .
         </p>
-        
+
         <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
           <span className="text-primary">De ce să alegi serviciile noastre de promovare site</span>
         </h2>
         <ul className="list mb-6 list-inside list-disc">
           <li className="mb-2 text-base text-body-color">
-            <strong>Experiență în promovare site:</strong> peste 100 de proiecte cu creștere medie de 150% în trafic organic în 6 luni.
+            Experiență în promovare site: peste 100 de proiecte cu creștere medie de 150% în trafic organic în 6 luni.
           </li>
           <li className="mb-2 text-base text-body-color">
-            <strong>Servicii optimizare site complete:</strong> de la audit tehnic la link building și monitorizare competiție.
+            Servicii optimizare site complete: de la audit tehnic la link building și monitorizare competiție.
           </li>
           <li className="mb-2 text-base text-body-color">
-            <strong>Strategii personalizate de promovare site:</strong> analizăm nișa ta și construim planuri specifice pentru rezultate rapide.
+            Strategii personalizate de promovare site: analizăm nișa ta și construim planuri specifice pentru rezultate rapide.
           </li>
           <li className="mb-2 text-base text-body-color">
-            <strong>Raportare transparentă:</strong> dashboard lunar cu progresul în Google și servicii optimizare site implementate.
+            Raportare transparentă: dashboard lunar cu progresul în Google și servicii optimizare site implementate.
           </li>
         </ul>
+
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">Promovare site în Google: SEO care aduce trafic și clienți</span>
+        </h2>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Ai un site, dar nu primești suficiente cereri? Sau ai trafic, însă nu se transformă în clienți? În majoritatea cazurilor, soluția nu este „mai mult content” la întâmplare, ci o strategie completă de promovare site: analiză, optimizare, conținut, autoritate și conversie.
+        </p>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Promovarea organică în Google rămâne una dintre cele mai profitabile investiții pe termen lung, pentru că îți aduce trafic relevant fără să depinzi permanent de reclame plătite. Iar când promovarea este făcută corect, începi să atragi exact oamenii care caută serviciile sau produsele tale, în momentul în care au intenție reală de cumpărare.
+        </p>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          În cele ce urmează îți arătăm ce înseamnă promovare site în mod profesionist, ce include, cum lucrăm și ce rezultate poți aștepta realist.
+        </p>
+
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">Ce înseamnă, concret, promovare site?</span>
+        </h2>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Prin promovare site înțelegem setul de acțiuni prin care creștem vizibilitatea website-ului tău în Google și îl transformăm într-un canal stabil de achiziție (lead-uri / vânzări). Promovarea site-ului include:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">SEO tehnic (ca Google să poată înțelege și indexa corect paginile)</li>
+          <li className="mb-2 text-base text-body-color">optimizare on-page (ca paginile să fie relevante pe căutări importante)</li>
+          <li className="mb-2 text-base text-body-color">conținut optimizat SEO (pagini și articole care atrag trafic)</li>
+          <li className="mb-2 text-base text-body-color">link building (creșterea autorității site-ului)</li>
+          <li className="mb-2 text-base text-body-color">SEO local (dacă vinzi local – oraș/județ)</li>
+          <li className="mb-2 text-base text-body-color">optimizare pentru conversie (ca vizitatorii să devină clienți)</li>
+        </ul>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Pe scurt, promovarea site-ului nu este o singură acțiune, ci un proces continuu, măsurabil, cu pași clari.
+        </p>
+
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">Când ai nevoie de servicii de promovare site?</span>
+        </h2>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Ai nevoie de promovare site dacă te regăsești în una dintre situațiile de mai jos:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">Site-ul nu apare în Google pe cuvintele cheie relevante</li>
+          <li className="mb-2 text-base text-body-color">Concurența ta este constant deasupra, deși ai servicii/produse comparabile</li>
+          <li className="mb-2 text-base text-body-color">Ai trafic, dar nu ai cereri, apeluri sau comenzi</li>
+          <li className="mb-2 text-base text-body-color">Ai scăderi de trafic după modificări sau redesign</li>
+          <li className="mb-2 text-base text-body-color">Site-ul se încarcă greu pe mobil și utilizatorii ies repede</li>
+          <li className="mb-2 text-base text-body-color">Ai pagini importante care nu sunt indexate sau nu rankează</li>
+          <li className="mb-2 text-base text-body-color">Nu ai o strategie de conținut și publici „după inspirație”</li>
+        </ul>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Dacă ai bifat 2–3 puncte, o strategie serioasă de promovare site îți poate aduce rezultate vizibile.
+        </p>
+
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">Promovare site: cum arată o strategie care funcționează</span>
+        </h2>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          O strategie bună începe cu o întrebare simplă: ce vrei să vinzi și cui? Apoi construim totul în jurul intenției de căutare:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">oameni care caută „serviciu + oraș” (intenție mare de cumpărare)</li>
+          <li className="mb-2 text-base text-body-color">oameni care compară opțiuni („cel mai bun…”, „preț…”, „recomandări…”)</li>
+          <li className="mb-2 text-base text-body-color">oameni care se informează (trafic top-of-funnel, bun pentru autoritate)</li>
+        </ul>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Scopul este să ai pagini dedicate pentru fiecare etapă din decizia clientului, astfel încât Google să te considere relevant, iar utilizatorul să găsească exact ce are nevoie.
+        </p>
+
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">Servicii de promovare site: ce includ</span>
+        </h2>
+
+        <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+          1. Audit SEO complet (tehnic, conținut, concurență)
+        </h3>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Orice campanie de promovare site începe cu un audit, pentru că nu are sens să „împingem” un site care are blocaje tehnice sau pagini slab structurate.
+        </p>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Auditul include, în funcție de proiect:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">indexare, sitemap, robots, canonical, pagini duplicate</li>
+          <li className="mb-2 text-base text-body-color">structură URL și arhitectură (meniuri, categorii, silozuri)</li>
+          <li className="mb-2 text-base text-body-color">erori tehnice, redirecturi, pagini lente, resurse inutile</li>
+          <li className="mb-2 text-base text-body-color">analiză conținut: pagini subțiri, canibalizare, lipsă de intenție</li>
+          <li className="mb-2 text-base text-body-color">analiză concurență: ce pagini îi urcă, ce tip de conținut folosesc</li>
+        </ul>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          La final primești o listă clară de acțiuni prioritizate pe impact.
+        </p>
+
+        <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+          2. Optimizare site (SEO tehnic) pentru performanță și indexare
+        </h3>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          În promovarea site-ului, partea tehnică este fundația. Dacă site-ul se încarcă greu sau are probleme de indexare, rezultatele SEO vor veni mai lent.
+        </p>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Aici intră:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">viteză și performanță pe mobil</li>
+          <li className="mb-2 text-base text-body-color">imagini optimizate și încărcare eficientă</li>
+          <li className="mb-2 text-base text-body-color">structură curată, eliminare balast (scripturi inutile)</li>
+          <li className="mb-2 text-base text-body-color">corectarea erorilor de indexare și a paginilor redundante</li>
+          <li className="mb-2 text-base text-body-color">îmbunătățiri de experiență (layout stabil, navigare clară)</li>
+        </ul>
+
+        <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+          3. Optimizare on-page (pagini care rankează și convertesc)
+        </h3>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Promovare site înseamnă și să faci paginile ușor de înțeles pentru Google și convingătoare pentru oameni.
+        </p>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Optimizăm:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">H1/H2/H3, structură logică și scanabilă</li>
+          <li className="mb-2 text-base text-body-color">meta title &amp; meta description orientate pe click (CTR)</li>
+          <li className="mb-2 text-base text-body-color">texte clare, cu exemple și beneficii</li>
+          <li className="mb-2 text-base text-body-color">elemente de încredere: testimoniale, portofoliu, certificări</li>
+          <li className="mb-2 text-base text-body-color">CTA-uri vizibile: „Cere ofertă”, „Sună acum”, „Programează”</li>
+        </ul>
+
+        <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+          4. Conținut SEO (care aduce trafic relevant)
+        </h3>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Conținutul este motorul oricărei campanii de promovare site, dar trebuie făcut strategic.
+        </p>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Creăm sau rescriem conținut pentru:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">pagini de servicii (cu intenție mare de cumpărare)</li>
+          <li className="mb-2 text-base text-body-color">articole tip ghid (autoritate + trafic)</li>
+          <li className="mb-2 text-base text-body-color">pagini locale (serviciu + oraș / zonă)</li>
+          <li className="mb-2 text-base text-body-color">pagini de comparație (preț, avantaje, diferențe)</li>
+        </ul>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Conținutul este structurat ușor de parcurs: paragrafe scurte, liste, exemple, răspunsuri rapide.
+        </p>
+
+        <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+          5. Link building și autoritate (natural, fără riscuri)
+        </h3>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Google are nevoie de semnale externe că site-ul tău merită poziții bune. Aici intervine link building-ul.
+        </p>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Folosim:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">mențiuni în publicații și portaluri de nișă</li>
+          <li className="mb-2 text-base text-body-color">parteneriate și guest posts</li>
+          <li className="mb-2 text-base text-body-color">listări locale (acolo unde are sens)</li>
+          <li className="mb-2 text-base text-body-color">recuperare mențiuni fără link și corectări</li>
+        </ul>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Scopul nu este cantitatea, ci relevanța și calitatea surselor.
+        </p>
+
+        <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+          6. SEO local (Google Business Profile)
+        </h3>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Dacă ai servicii locale, promovarea site-ului trebuie completată cu prezența în Google Maps.
+        </p>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Optimizăm:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">profilul Google Business (categorii, descrieri, servicii)</li>
+          <li className="mb-2 text-base text-body-color">consistența NAP (nume, adresă, telefon)</li>
+          <li className="mb-2 text-base text-body-color">pagini locale pe site (unde e justificat)</li>
+          <li className="mb-2 text-base text-body-color">strategie de recenzii și reputație</li>
+        </ul>
+
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">Cum lucrăm: procesul nostru de promovare site în 6 pași</span>
+        </h2>
+        <ol className="list mb-6 list-inside list-decimal">
+          <li className="mb-2 text-base text-body-color">Stabilim obiectivul (lead-uri, vânzări, local / național)</li>
+          <li className="mb-2 text-base text-body-color">Audit + analiză competiție (oportunități și blocaje)</li>
+          <li className="mb-2 text-base text-body-color">Plan editorial + pagini țintă (priorități pe intenție de cumpărare)</li>
+          <li className="mb-2 text-base text-body-color">Implementare optimizări (tehnic + on-page + conținut)</li>
+          <li className="mb-2 text-base text-body-color">Creștere autoritate (link building + mențiuni)</li>
+          <li className="mb-2 text-base text-body-color">Raportare și optimizare lunară (KPI, concluzii, next steps)</li>
+        </ol>
+
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">Ce rezultate poți aștepta realist din promovare site?</span>
+        </h2>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          SEO este un canal pe termen lung, dar are etape clare:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">4–6 săptămâni: primele îmbunătățiri (indexare, pagini, semnale)</li>
+          <li className="mb-2 text-base text-body-color">2–3 luni: creșteri vizibile pe cuvinte cheie importante</li>
+          <li className="mb-2 text-base text-body-color">3–6 luni: trafic stabil + mai multe cereri/vânzări</li>
+          <li className="mb-2 text-base text-body-color">6+ luni: autoritate mai mare și creștere predictibilă</li>
+        </ul>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Rezultatele depind de competiție, starea inițială a site-ului și consecvența implementării.
+        </p>
+
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">Promovare site pentru servicii vs. e-commerce: ce se schimbă</span>
+        </h2>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Strategia de promovare site diferă în funcție de modelul de business. Pentru un site de servicii (ex: avocați, clinici, service auto, construcții, consultanță), cele mai importante pagini sunt paginile de servicii și paginile locale. Aici contează intenția de căutare: „serviciu + oraș”, „preț + serviciu”, „programare” sau „near me”. În plus, SEO local și profilul Google Business pot genera un volum semnificativ de apeluri și cereri.
+        </p>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          În schimb, pentru e-commerce, promovarea site-ului are o structură mai complexă: categorii, subcategorii, filtre, pagini de produs, branduri, colecții și conținut suport (ghiduri de alegere, comparații). În acest caz, accentul cade pe:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">optimizarea categoriilor pentru cuvinte cheie tranzacționale</li>
+          <li className="mb-2 text-base text-body-color">prevenirea conținutului duplicat (mai ales din filtre)</li>
+          <li className="mb-2 text-base text-body-color">îmbunătățirea experienței pe mobil (viteza influențează conversiile)</li>
+          <li className="mb-2 text-base text-body-color">descrieri de produs unice și utile (nu copy-paste de la furnizor)</li>
+          <li className="mb-2 text-base text-body-color">linkuri interne care împing autoritatea către paginile cu marjă bună</li>
+        </ul>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Indiferent de tipul site-ului, o campanie eficientă de promovare site pornește de la arhitectură și intenție, nu doar de la „mai mult conținut”.
+        </p>
+
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">Greșeli frecvente care blochează promovarea site-ului</span>
+        </h2>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          În multe proiecte, creșterea se blochează din câteva motive repetate. Iată cele mai comune:
+        </p>
+        <ol className="list mb-6 list-inside list-decimal">
+          <li className="mb-2 text-base text-body-color">
+            Pagini de servicii prea generale – o singură pagină „Servicii” nu poate acoperi toate căutările. E nevoie de pagini dedicate pe servicii și pe zone (când e relevant).
+          </li>
+          <li className="mb-2 text-base text-body-color">
+            Conținut scris pentru Google, nu pentru oameni – texte umflate, fără structură, fără exemple, fără beneficii și fără CTA.
+          </li>
+          <li className="mb-2 text-base text-body-color">
+            Lipsa interlinking-ului – linkurile interne sunt „autostrăzile” prin care distribui autoritate către paginile importante.
+          </li>
+          <li className="mb-2 text-base text-body-color">
+            Viteză slabă pe mobil – scade conversia și crește rata de abandon; în plus, îngreunează crawling-ul.
+          </li>
+          <li className="mb-2 text-base text-body-color">
+            Canibalizarea cuvintelor cheie – mai multe pagini țintesc același termen și se „încurcă” între ele în Google.
+          </li>
+          <li className="mb-2 text-base text-body-color">
+            Link building riscant – linkuri din surse slabe sau artificiale pot întârzia sau destabiliza rezultatele.
+          </li>
+          <li className="mb-2 text-base text-body-color">
+            Fără măsurare corectă – dacă nu urmărești ce se întâmplă, nu știi ce să îmbunătățești (trafic pe pagini, query-uri, conversii).
+          </li>
+        </ol>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Când corectăm aceste blocaje, promovarea site-ului devine predictibilă, pentru că fiecare acțiune are un scop și un indicator clar.
+        </p>
+
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">KPI și raportare: cum măsurăm promovarea site</span>
+        </h2>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          În fiecare lună, promovare site înseamnă monitorizare și decizii pe date, nu pe presupuneri. În raportare urmărim, de regulă:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">evoluția pozițiilor pe cuvinte cheie (mai ales cele tranzacționale)</li>
+          <li className="mb-2 text-base text-body-color">creșterea traficului organic pe pagini importante</li>
+          <li className="mb-2 text-base text-body-color">performanța din Search Console (CTR, impresii, clickuri)</li>
+          <li className="mb-2 text-base text-body-color">conversii: formulare trimise, apeluri, comenzi (în funcție de site)</li>
+          <li className="mb-2 text-base text-body-color">pagini care au crescut / pagini care au stagnat și de ce</li>
+          <li className="mb-2 text-base text-body-color">acțiuni implementate și acțiunile propuse pentru luna următoare</li>
+        </ul>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Astfel, campania de promovare site rămâne transparentă: știi ce s-a făcut, ce efect a avut și care sunt pașii următori.
+        </p>
+
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">Vrei să începem cu un audit și un plan pe 90 de zile?</span>
+        </h2>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Dacă vrei să știi exact ce trebuie făcut pentru promovare site, îți putem oferi un plan clar, pe pași:
+        </p>
+        <ul className="list mb-6 list-inside list-disc">
+          <li className="mb-2 text-base text-body-color">ce pagini optimizăm primele și de ce</li>
+          <li className="mb-2 text-base text-body-color">ce conținut adăugăm pentru trafic cu intenție de cumpărare</li>
+          <li className="mb-2 text-base text-body-color">ce blocaje tehnice îți încetinesc creșterea</li>
+          <li className="mb-2 text-base text-body-color">ce KPI urmărim lunar</li>
+        </ul>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Trimite-ne URL-ul și obiectivul (lead-uri sau vânzări), iar noi îți propunem pașii pentru următoarele 90 de zile.
+        </p>
+
+        <h2 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
+          <span className="text-primary">Întrebări frecvente</span>
+        </h2>
+        <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+          Ce includ serviciile de promovare site?
+        </h3>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Serviciile noastre de promovare site includ: audit SEO complet, optimizare tehnică, crearea de conținut, link building și servicii optimizare site pentru Google Business Profile.
+        </p>
+        <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+          Cât costă promovarea site-ului?
+        </h3>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Serviciile de promovare site pornesc de la 400 EUR/lună, în funcție de competitivitatea nișei și servicii optimizare site necesare.
+        </p>
+        <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+          Când văd rezultate cu promovarea site-ului?
+        </h3>
+        <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Serviciile noastre de promovare site oferă primele îmbunătățiri în 4–6 săptămâni, iar creșteri semnificative în 3–4 luni prin servicii optimizare site constante.
+        </p>
+        <h3 className="mb-2 text-lg font-semibold text-black sm:text-xl lg:text-lg xl:text-xl">
+          Promovarea site-ului include Google Ads?
+        </h3>
+        <p className="mb-0 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
+          Da, serviciile noastre de promovare site pot include și Google Ads pentru rezultate rapide, complementar cu servicii optimizare site organice pe termen lung.
+        </p>
       </div>
     ),
     faqs: [

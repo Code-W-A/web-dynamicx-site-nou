@@ -4,7 +4,8 @@ import Image from "next/image";
 export default function ServiceTabContent({ service }: { service: Service }) {
   return (
     <div>
-      <div className="relative mb-8 aspect-34/20 rounded-xs bg-stone-100">
+      {/* Prevent the hero image block from underlapping the floated left sidebar on desktop */}
+      <div className="relative mb-8 flow-root aspect-34/20 rounded-xs bg-stone-100">
         {service?.image ? (
           <Image
             src={service?.image}
