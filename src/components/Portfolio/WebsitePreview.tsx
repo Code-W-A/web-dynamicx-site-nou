@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 interface WebsitePreviewProps {
@@ -82,18 +83,19 @@ export default function WebsitePreview({
   }, [screenshotUrl, fallbackImage]);
 
   const modalOpen = isControlled ? !!open : showModal;
+  const isRemoteImage = imageSrc.startsWith("http");
 
   return (
     <>
       <div className={`group relative cursor-pointer overflow-hidden rounded-lg ${className}`}>
         {/* Always show something: start with fallback, swap to screenshot when ready */}
         <div className="relative aspect-[2940/1414]">
-          <img
+          <Image
             src={imageSrc}
             alt={`Preview ${title}`}
+            fill
+            unoptimized={isRemoteImage}
             className="absolute inset-0 h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.01]"
-            loading="lazy"
-            decoding="async"
             sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 600px"
           />
           

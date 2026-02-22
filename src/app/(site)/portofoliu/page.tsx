@@ -4,7 +4,7 @@ import { portfolioData } from "@/static-data/portfolio";
 
 import { Metadata } from "next";
 
-const siteName = process.env.SITE_NAME;
+const siteName = process.env.SITE_NAME || "Web Dynamicx";
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
 
 export const metadata: Metadata = {

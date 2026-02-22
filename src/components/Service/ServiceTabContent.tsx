@@ -11,6 +11,7 @@ export default function ServiceTabContent({ service }: { service: Service }) {
             src={service?.image}
             alt={service?.title || "Serviciu"}
             fill
+            sizes="(max-width: 1024px) 100vw, 66vw"
             className="w-full object-cover object-center"
           />
         ) : (

@@ -1,7 +1,7 @@
 import Signup from "@/components/Auth/Signup";
 import { Metadata } from "next";
 
-const siteName = process.env.SITE_NAME;
+const siteName = process.env.SITE_NAME || "Web Dynamicx";
 
 export const metadata: Metadata = {
   title: `Creeaza cont | ${siteName}`,

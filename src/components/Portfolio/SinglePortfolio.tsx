@@ -20,7 +20,7 @@ export default function SinglePortfolio({
 
   const relatedService = useMemo(() => {
     const tags = (portfolio.tags || []).map((t) => t.toLowerCase());
-    if (tags.includes("marketing")) return { href: "/servicii/optimizare-seo-site", label: "optimizare SEO site" };
+    if (tags.includes("marketing")) return { href: "/servicii/optimizare-seo", label: "optimizare SEO site" };
     if (tags.includes("hospitality") || tags.includes("ecommerce") || tags.includes("magazin")) return { href: "/servicii/creare-magazin-online", label: "creare magazin online" };
     if (tags.includes("content")) return { href: "/servicii/web-design", label: "servicii webdesign" };
     if (tags.includes("web design") || tags.includes("premium") || tags.includes("b2b")) return { href: "/servicii/creare-site-prezentare", label: "creare site de prezentare" };

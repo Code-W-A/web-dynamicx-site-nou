@@ -15,7 +15,7 @@ import { Metadata } from "next";
 import JsonLd from "@/components/Common/JsonLd";
 import { integrations } from "../../../integrations.config";
 
-const siteName = process.env.SITE_NAME;
+const siteName = process.env.SITE_NAME || "Web Dynamicx";
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
 
 export const metadata: Metadata = {

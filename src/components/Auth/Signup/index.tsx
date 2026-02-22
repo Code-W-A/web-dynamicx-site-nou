@@ -160,6 +160,7 @@ export default function Signup() {
                   <a
                     href="https://nextjstemplates.com/docs/authentication"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-body-color hover:border-primary hover:bg-primary/5 hover:text-primary flex h-[50px] w-[50px] items-center justify-center rounded-md border"
                   >
                     <svg
@@ -180,6 +181,7 @@ export default function Signup() {
                   <a
                     href="https://nextjstemplates.com/docs/authentication"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-body-color hover:border-primary hover:bg-primary/5 hover:text-primary flex h-[50px] w-[50px] items-center justify-center rounded-md border"
                   >
                     <svg

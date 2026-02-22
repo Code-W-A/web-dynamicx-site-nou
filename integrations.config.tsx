@@ -1,7 +1,6 @@
 const integrations = {
   isSanityEnabled: true,
   isStripeEnabled: false,
-  isAlgoliaEnabled: false,
   isMailchimpEnabled: false,
   isAuthEnabled: false,
 };
@@ -29,18 +28,6 @@ const messages = {
         className="text-primary underline"
         target="_blank"
         rel="noopener noreferrer"
-      >
-        documentation
-      </a>{" "}
-      to enable it.
-    </div>
-  ),
-  algolia: (
-    <div style={{ whiteSpace: "pre-wrap" }}>
-      Algolia is not enabled. Follow the{" "}
-      <a
-        href="https://nextjstemplates.com/docs/enableintegration"
-        className="text-primary underline"
       >
         documentation
       </a>{" "}

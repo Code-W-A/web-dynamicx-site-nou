@@ -1,10 +1,10 @@
-import { structuredAlgoliaHtmlData } from "@/app/libs/crawlIndex";
 import RenderBodyContent from "@/components/Blog/BlogDetails/RenderBodyContent";
 import { getPostBySlug, imageBuilder } from "@/sanity/sanity-utils";
-import { Blog } from "@/types/blog";
 import Image from "next/image";
 import Link from "next/link";
 import { SharePost } from "@/app/(site)/blog/[slug]/_components/share-post";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 export const revalidate = 300;
 
@@ -12,72 +12,74 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata(props: Props) {
+export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
   const { slug } = params;
   const post: any = await getPostBySlug(slug);
 
-  const siteURL = process.env.SITE_URL;
-  const siteName = process.env.SITE_NAME;
-  const authorName = process.env.AUTHOR_NAME;
+  const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
+  const siteName = process.env.SITE_NAME || "Web Dynamicx";
+  const authorName = process.env.AUTHOR_NAME || "Web Dynamicx";
+  const rawTwitterHandle = process.env.NEXT_PUBLIC_TWITTER_HANDLE?.trim();
+  const twitterHandle = rawTwitterHandle
+    ? rawTwitterHandle.startsWith("@")
+      ? rawTwitterHandle
+      : `@${rawTwitterHandle}`
+    : undefined;
 
-  if (post) {
-    const title = post.metaTitle || post.title || `Articol | ${siteName}`;
-    const description =
-      post.metaDescription || post.excerpt || post.metadata || "Articol de pe blogul Web Dynamicx.";
-    const canonical = post.canonicalUrl || `${siteURL}/blog/${post?.slug?.current}`;
-    const ogImage = post.mainImage ? imageBuilder(post.mainImage).url() : undefined;
+  if (!post) {
+    notFound();
+  }
 
-    return {
-      title,
-      description,
-      alternates: { canonical },
-      authors: authorName ? [{ name: authorName }] : undefined,
-      robots: {
+  const title = post.metaTitle || post.title || `Articol | ${siteName}`;
+  const description =
+    post.metaDescription || post.excerpt || post.metadata || "Articol de pe blogul Web Dynamicx.";
+  const canonical = post.canonicalUrl || `${siteURL}/blog/${post?.slug?.current}`;
+  const ogImage = post.mainImage ? imageBuilder(post.mainImage).url() : undefined;
+
+  return {
+    title,
+    description,
+    alternates: { canonical },
+    authors: [{ name: authorName }],
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
         index: true,
         follow: true,
-        nocache: true,
-        googleBot: {
-          index: true,
-          follow: true,
-          "max-video-preview": -1,
-          "max-image-preview": "large",
-          "max-snippet": -1,
-        },
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
-      openGraph: {
-        title,
-        description,
-        url: canonical,
-        siteName: siteName,
-        images: ogImage
-          ? [
-              {
-                url: ogImage,
-                width: 1800,
-                height: 1600,
-                alt: post.title,
-              },
-            ]
-          : undefined,
-        locale: "ro_RO",
-        type: "article",
-      },
-      twitter: {
-        card: "summary_large_image",
-        title,
-        description,
-        creator: authorName ? `@${authorName}` : undefined,
-        site: siteName ? `@${siteName}` : undefined,
-        images: ogImage ? [ogImage] : undefined,
-      },
-    } as any;
-  } else {
-    return {
-      title: "Articol negăsit",
-      description: "Nu am găsit acest articol.",
-    } as any;
-  }
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: siteName,
+      images: ogImage
+        ? [
+            {
+              url: ogImage,
+              width: 1800,
+              height: 1600,
+              alt: post.title,
+            },
+          ]
+        : undefined,
+      locale: "ro_RO",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      ...(twitterHandle ? { creator: twitterHandle, site: twitterHandle } : {}),
+      images: ogImage ? [ogImage] : undefined,
+    },
+  };
 }
 
 export default async function BlogSlugPage(props: Props) {
@@ -86,20 +88,14 @@ export default async function BlogSlugPage(props: Props) {
 
   const post: any = await getPostBySlug(slug);
 
-  if (post) {
-    await structuredAlgoliaHtmlData({
-      type: "blog",
-      title: post?.title || "",
-      htmlString: post?.metaDescription || post?.excerpt || post?.metadata || "",
-      pageUrl: `${process.env.SITE_URL}/blog/${post?.slug?.current}`,
-      imageURL: post?.mainImage ? imageBuilder(post?.mainImage).url() : "",
-    });
+  if (!post) {
+    notFound();
   }
 
-  const siteURL = process.env.SITE_URL;
-  const siteName = process.env.SITE_NAME;
+  const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
+  const siteName = process.env.SITE_NAME || "Web Dynamicx";
 
-  const breadcrumbLd = post && {
+  const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
@@ -109,7 +105,7 @@ export default async function BlogSlugPage(props: Props) {
     ],
   };
 
-  const articleLd = post && {
+  const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post?.metaTitle || post?.title,
@@ -123,20 +119,16 @@ export default async function BlogSlugPage(props: Props) {
 
   return (
     <>
-      {post && (
-        <>
-          <script
-            type="application/ld+json"
-            // @ts-ignore
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
-          />
-          <script
-            type="application/ld+json"
-            // @ts-ignore
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
-          />
-        </>
-      )}
+      <script
+        type="application/ld+json"
+        // @ts-ignore
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // @ts-ignore
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
 
       <section className="bg-white pt-[150px]">
         <div className="container">

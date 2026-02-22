@@ -36,44 +36,64 @@ export async function sanityFetch<QueryResponse>({
 }
 
 export async function getPosts() {
-  const posts: Blog[] = await sanityFetch({
-    query: postQuery,
-    qParams: {},
-    tags: ["post"],
-    useCdnOverride: false,
-  });
+  try {
+    const posts: Blog[] = await sanityFetch({
+      query: postQuery,
+      qParams: {},
+      tags: ["post"],
+      useCdnOverride: false,
+    });
 
-  return posts;
+    return Array.isArray(posts) ? posts : [];
+  } catch (error) {
+    console.error("[sanity] getPosts failed", error);
+    return [];
+  }
 }
 
 export async function getCategories() {
-  const categories = await sanityFetch({
-    query: categoryQuery,
-    qParams: {},
-    tags: ["category"],
-  });
+  try {
+    const categories = await sanityFetch({
+      query: categoryQuery,
+      qParams: {},
+      tags: ["category"],
+    });
 
-  return categories;
+    return Array.isArray(categories) ? categories : [];
+  } catch (error) {
+    console.error("[sanity] getCategories failed", error);
+    return [];
+  }
 }
 
 export async function getPostBySlug(slug: string) {
-  const post: Blog = await sanityFetch({
-    query: postQueryBySlug,
-    tags: ["post"],
-    qParams: { slug },
-  });
+  try {
+    const post: Blog = await sanityFetch({
+      query: postQueryBySlug,
+      tags: ["post"],
+      qParams: { slug },
+    });
 
-  return post;
+    return post || null;
+  } catch (error) {
+    console.error("[sanity] getPostBySlug failed", error);
+    return null;
+  }
 }
 
 export async function getPostByTag(tag: string) {
-  const posts: Blog[] = await sanityFetch({
-    query: postQueryByTag,
-    qParams: { tag: tag as any },
-    tags: ["post"],
-  });
+  try {
+    const posts: Blog[] = await sanityFetch({
+      query: postQueryByTag,
+      qParams: { tag: tag as any },
+      tags: ["post"],
+    });
 
-  return posts;
+    return Array.isArray(posts) ? posts : [];
+  } catch (error) {
+    console.error("[sanity] getPostByTag failed", error);
+    return [];
+  }
 }
 
 export function imageBuilder(source: string) {

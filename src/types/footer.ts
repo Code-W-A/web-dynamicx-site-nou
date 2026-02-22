@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export type FooterLink = {
   id: string | number;
   title: string;
@@ -9,5 +11,5 @@ export type FooterSocial = {
   id: string | number;
   title: string;
   href: string;
-  icon: JSX.Element;
+  icon: ReactNode;
 };

@@ -7,120 +7,123 @@ import JsonLd from "@/components/Common/JsonLd";
 import { Phone, MessageCircle, Mail } from "lucide-react";
 import LazyTestimonial from "../../../../components/Lazy/LazyTestimonial";
 import LazyPortfolio from "../../../../components/Lazy/LazyPortfolio";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata(props: Props) {
+export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
-  const siteURL = process.env.SITE_URL as string;
-  const siteName = process.env.SITE_NAME;
-  const authorName = process.env.AUTHOR_NAME;
+  const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
+  const siteName = process.env.SITE_NAME || "Web Dynamicx";
+  const authorName = process.env.AUTHOR_NAME || "Web Dynamicx";
+  const rawTwitterHandle = process.env.NEXT_PUBLIC_TWITTER_HANDLE?.trim();
+  const twitterHandle = rawTwitterHandle
+    ? rawTwitterHandle.startsWith("@")
+      ? rawTwitterHandle
+      : `@${rawTwitterHandle}`
+    : undefined;
 
   const service = serviceData.find((item) => item?.slug === params?.slug);
 
-  if (service) {
-    const baseImage = service.ogImage || service.image;
-    const ogImage = baseImage ? `${siteURL}${baseImage}` : undefined;
-    const title = service.metaTitle || `${service?.title || "Serviciu Web Dynamicx"} | ${siteName}`;
-    const description = service.metaDescription || `${service?.description?.slice(0, 136)}...`;
-    return {
-      title,
-      description,
-      author: authorName,
-      alternates: {
-        canonical: `${siteURL}/servicii/${service?.slug}`,
-      },
+  if (!service) {
+    notFound();
+  }
 
-      robots: {
+  const baseImage = service.ogImage || service.image;
+  const ogImage = baseImage ? `${siteURL}${baseImage}` : undefined;
+  const title = service.metaTitle || `${service.title || "Serviciu Web Dynamicx"} | ${siteName}`;
+  const description = service.metaDescription || `${service.description?.slice(0, 136)}...`;
+  return {
+    title,
+    description,
+    authors: [{ name: authorName }],
+    alternates: {
+      canonical: `${siteURL}/servicii/${service.slug}`,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
         index: true,
         follow: true,
-        nocache: true,
-        googleBot: {
-          index: true,
-          follow: true,
-          "max-video-preview": -1,
-          "max-image-preview": "large",
-          "max-snippet": -1,
-        },
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
+    },
 
-      openGraph: {
-        title,
-        description,
-        url: `${siteURL}/servicii/${service?.slug}`,
-        siteName: siteName,
-        locale: "ro_RO",
-        type: "article",
-        images: ogImage
-          ? [
-              {
-                url: ogImage,
-                width: 1200,
-                height: 630,
-                alt: service.title,
-              },
-            ]
-          : undefined,
-      },
+    openGraph: {
+      title,
+      description,
+      url: `${siteURL}/servicii/${service.slug}`,
+      siteName: siteName,
+      locale: "ro_RO",
+      type: "article",
+      images: ogImage
+        ? [
+            {
+              url: ogImage,
+              width: 1200,
+              height: 630,
+              alt: service.title,
+            },
+          ]
+        : undefined,
+    },
 
-      twitter: {
-        card: ogImage ? "summary_large_image" : "summary",
-        title,
-        description,
-        creator: `@${authorName}`,
-        site: `@${siteName}`,
-        url: `${siteURL}/servicii/${service?.slug}`,
-        images: ogImage ? [ogImage] : undefined,
-      },
-    } as any;
-  } else {
-    return {
-      title: "Nu a fost găsit",
-      description: "Serviciul nu a fost găsit",
-    } as any;
-  }
+    twitter: {
+      card: ogImage ? "summary_large_image" : "summary",
+      title,
+      description,
+      ...(twitterHandle ? { creator: twitterHandle, site: twitterHandle } : {}),
+      images: ogImage ? [ogImage] : undefined,
+    },
+  };
 }
 
 export default async function ServiceDetailPage(props: Props) {
   const params = await props.params;
+  const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
   const service = serviceData.find((item) => item?.slug === params?.slug);
+
+  if (!service) {
+    notFound();
+  }
   
   // Create breadcrumbs for service detail page
   const breadcrumbs = [
     { name: "Acasă", href: "/" },
     { name: "Servicii", href: "/servicii" },
-    { name: service?.title || "Serviciu", current: true }
+    { name: service.title, current: true }
   ];
 
   return (
     <>
       <PageTitle
-        pageTitle={service?.title || "Detalii serviciu"}
-        pageDescription={
-          service?.description ||
-          "Servicii webdesign, creare site, creare magazin online, creare logo și dezvoltare aplicații mobile."
-        }
+        pageTitle={service.title}
+        pageDescription={service.description}
         breadcrumbs={breadcrumbs}
       />
       {/* JSON-LD: Service for SEO */}
-      {service && (
-        <JsonLd
-          data={{
-            "@context": "https://schema.org",
-            "@type": "Service",
-            name: service.title,
-            provider: { "@type": "Organization", name: "Web Dynamicx" },
-            areaServed: "România",
-            serviceType: service.title,
-            description: service.description,
-            url: `${process.env.SITE_URL}/servicii/${service.slug}`,
-          }}
-        />
-      )}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: service.title,
+          provider: { "@type": "Organization", name: "Web Dynamicx" },
+          areaServed: "România",
+          serviceType: service.title,
+          description: service.description,
+          url: `${siteURL}/servicii/${service.slug}`,
+        }}
+      />
       {/* JSON-LD: HowTo for timeline when applicable */}
-      {service && (service.slug === "creare-site-web" || service.slug === "creare-site-prezentare" || service.slug === "dezvoltare-aplicatii-mobile" || service.slug === "mentenanta-website") && (
+      {(service.slug === "creare-site-web" || service.slug === "creare-site-prezentare" || service.slug === "dezvoltare-aplicatii-mobile" || service.slug === "mentenanta-website") && (
         <JsonLd
           data={{
             "@context": "https://schema.org",
@@ -169,26 +172,24 @@ export default async function ServiceDetailPage(props: Props) {
                       { "@type": "HowToStep", name: "Optimizări performanță", text: "Imagini, cache, Core Web Vitals.", position: 4 },
                       { "@type": "HowToStep", name: "Raportare & recomandări", text: "Lunar: status, task-uri, evoluții.", position: 5 },
                     ],
-            url: `${process.env.SITE_URL}/servicii/${service.slug}`,
+            url: `${siteURL}/servicii/${service.slug}`,
           }}
         />
       )}
       {/* JSON-LD: Breadcrumbs */}
-      {service && (
-        <JsonLd
-          data={{
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Acasă", item: `${process.env.SITE_URL}` },
-              { "@type": "ListItem", position: 2, name: "Servicii", item: `${process.env.SITE_URL}/servicii` },
-              { "@type": "ListItem", position: 3, name: service.title, item: `${process.env.SITE_URL}/servicii/${service.slug}` },
-            ],
-          }}
-        />
-      )}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Acasă", item: `${siteURL}` },
+            { "@type": "ListItem", position: 2, name: "Servicii", item: `${siteURL}/servicii` },
+            { "@type": "ListItem", position: 3, name: service.title, item: `${siteURL}/servicii/${service.slug}` },
+          ],
+        }}
+      />
       {/* JSON-LD: FAQPage when FAQs exist */}
-      {service?.faqs && service.faqs.length > 0 && (
+      {service.faqs && service.faqs.length > 0 && (
         <JsonLd
           data={{
             "@context": "https://schema.org",

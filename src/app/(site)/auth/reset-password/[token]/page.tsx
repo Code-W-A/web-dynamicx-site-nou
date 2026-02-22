@@ -2,7 +2,7 @@ import ResetPassword from "@/components/Auth/ResetPassword";
 
 import { Metadata } from "next";
 
-const siteName = process.env.SITE_NAME;
+const siteName = process.env.SITE_NAME || "Web Dynamicx";
 
 export const metadata: Metadata = {
   title: `Resetează parola | ${siteName}`,

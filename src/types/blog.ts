@@ -24,4 +24,5 @@ export type Blog = {
   author?: Author;
   tags?: string[];
   publishedAt?: string;
+  _updatedAt?: string;
 };

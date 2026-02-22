@@ -1,8 +1,29 @@
 import PageTitle from "@/components/Common/PageTitle";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Politica de confidentialitate – prelucrare date | Web Dynamicx",
-  description: "Politica de confidentialitate si prelucrare date pentru www.webdynamicx.ro. Afla cum colectam, folosim si protejam informatiile tale.",
+const siteName = process.env.SITE_NAME || "Web Dynamicx";
+const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
+
+export const metadata: Metadata = {
+  title: `Politica de confidentialitate – prelucrare date | ${siteName}`,
+  description:
+    "Politica de confidentialitate si prelucrare date pentru www.webdynamicx.ro. Afla cum colectam, folosim si protejam informatiile tale.",
+  alternates: { canonical: `${siteURL}/politica-de-confidentialitate` },
+  openGraph: {
+    title: `Politica de confidentialitate – prelucrare date | ${siteName}`,
+    description:
+      "Politica de confidentialitate si prelucrare date pentru www.webdynamicx.ro. Afla cum colectam, folosim si protejam informatiile tale.",
+    url: `${siteURL}/politica-de-confidentialitate`,
+    siteName,
+    locale: "ro_RO",
+    type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: `Politica de confidentialitate – prelucrare date | ${siteName}`,
+    description:
+      "Politica de confidentialitate si prelucrare date pentru www.webdynamicx.ro. Afla cum colectam, folosim si protejam informatiile tale.",
+  },
 };
 
 export default function PrivacyPage() {
@@ -68,5 +89,4 @@ export default function PrivacyPage() {
     </>
   );
 }
-
 

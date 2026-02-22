@@ -1,4 +1,5 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import type { ReactNode } from "react";
 
 export type Portfolio = {
   id: string | number;
@@ -12,5 +13,5 @@ export type Portfolio = {
   liveUrl?: string;
   location?: string;
   completedDate?: string;
-  details?: JSX.Element;
+  details?: ReactNode;
 };

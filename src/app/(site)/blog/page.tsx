@@ -5,7 +5,7 @@ import { Metadata } from "next";
 
 export const revalidate = 300;
 
-const siteName = process.env.SITE_NAME;
+const siteName = process.env.SITE_NAME || "Web Dynamicx";
 const siteUrl = process.env.SITE_URL || "https://www.webdynamicx.ro";
 
 export const metadata: Metadata = {

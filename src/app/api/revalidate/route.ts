@@ -4,10 +4,16 @@ import { parseBody } from "next-sanity/webhook";
 
 export async function POST(req: NextRequest) {
   try {
+    const webhookSecret = process.env.SANITY_HOOK_SECRET;
+
+    if (!webhookSecret) {
+      return new Response("Missing SANITY_HOOK_SECRET", { status: 500 });
+    }
+
     const { body, isValidSignature } = await parseBody<{
       _type: string;
       slug?: string | undefined;
-    }>(req, process.env.NEXT_PUBLIC_SANITY_HOOK_SECRET);
+    }>(req, webhookSecret);
 
     if (!isValidSignature) {
       return new Response("Invalid Signature", { status: 401 });

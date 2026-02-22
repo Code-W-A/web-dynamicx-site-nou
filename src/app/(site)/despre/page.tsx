@@ -6,7 +6,7 @@ import Hero from "@/components/Home/Hero";
 import Contact from "@/components/Contact";
 
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
-const siteName = process.env.SITE_NAME;
+const siteName = process.env.SITE_NAME || "Web Dynamicx";
 
 export const metadata: Metadata = {
     title: "Despre noi — Web Dynamicx | Agenție web design & SEO",

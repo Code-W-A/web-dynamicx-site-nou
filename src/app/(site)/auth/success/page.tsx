@@ -2,7 +2,7 @@ import CommonCard from "@/components/Common/CommonCard";
 import { Metadata } from "next";
 import Link from "next/link";
 
-const siteName = process.env.SITE_NAME;
+const siteName = process.env.SITE_NAME || "Web Dynamicx";
 
 export const metadata: Metadata = {
   title: `Autentificare reusita | ${siteName}`,

@@ -2,6 +2,7 @@ import SingleBlog from "@/components/Blog/SingleBlog";
 import PageTitle from "@/components/Common/PageTitle";
 import { getPostByTag } from "@/sanity/sanity-utils";
 import { Blog } from "@/types/blog";
+import type { Metadata } from "next";
 
 export const revalidate = 300;
 
@@ -9,10 +10,11 @@ type Props = {
   params: Promise<{ tag: string }>;
 };
 
-const siteName = process.env.SITE_NAME;
-const authorName = process.env.AUTHOR_NAME;
+const siteName = process.env.SITE_NAME || "Web Dynamicx";
+const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
+const authorName = process.env.AUTHOR_NAME || "Web Dynamicx";
 
-export async function generateMetadata(props: Props) {
+export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
   const { tag } = params;
 
@@ -20,20 +22,23 @@ export async function generateMetadata(props: Props) {
 
   if (tag) {
     return {
-      title: ` ${formattedTag} | ${siteName}`,
-      description: `This is the Tag page for ${siteName}`,
-      author: authorName,
+      title: `${formattedTag} | ${siteName}`,
+      description: `Articole din blog etichetate cu "${formattedTag}" pe ${siteName}.`,
+      authors: [{ name: authorName }],
+      alternates: {
+        canonical: `${siteURL}/blog/tag/${tag}`,
+      },
 
       robots: {
         index: false,
-        follow: false,
+        follow: true,
         nocache: true,
       },
     };
   } else {
     return {
-      title: "Not Found",
-      description: "No tag has been found",
+      title: "Etichetă inexistentă",
+      description: "Nu a fost găsită eticheta solicitată.",
     };
   }
 }
@@ -49,7 +54,7 @@ export default async function TagSlugPage(props: Props) {
     <>
       <PageTitle
         pageTitle={`${formattedTag}`}
-        pageDescription="Autem, molestias eum voluptatibus quaerat praesentium laboriosam, eaque accusantium quam ratione veritatis magni ab."
+        pageDescription={`Articole etichetate cu "${formattedTag}" din blogul Web Dynamicx.`}
       />
       <section className="container grid gap-8 bg-white pb-20 min-[400px]:grid-cols-[repeat(auto-fill,minmax(23rem,1fr))] sm:pt-[90px]">
         {posts.map((post) => (

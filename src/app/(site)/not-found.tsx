@@ -1,16 +1,7 @@
 import CommonCard from "@/components/Common/CommonCard";
-import { Metadata } from "next";
 import Link from "next/link";
 
-const siteName = process.env.SITE_NAME || "Web Dynamicx";
-
-export const metadata: Metadata = {
-  title: `Pagina nu a fost gasita | ${siteName}`,
-  description: "Pagina nu a fost gasita.",
-  robots: { index: false, follow: false },
-};
-
-export default function ErrorPage() {
+export default function NotFound() {
   return (
     <section className="py-[120px] lg:pt-[200px]">
       <div className="px-4 xl:container">

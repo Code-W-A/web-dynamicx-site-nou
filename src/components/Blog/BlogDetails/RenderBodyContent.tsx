@@ -83,28 +83,33 @@ const myPortableTextComponents = {
 
   marks: {
     link: ({ value, children }: any) => {
-      if (value?.blank === true) {
+      const rawHref = value?.href?.toString()?.trim() || "";
+
+      if (!rawHref) {
+        return <>{children}</>;
+      }
+
+      const isExternal = /^https?:\/\//i.test(rawHref);
+      const isSpecial = /^(mailto:|tel:|#)/i.test(rawHref);
+      const openInNewTab = value?.blank === true;
+
+      if (isExternal || isSpecial) {
         return (
           <a
-            href={value?.href}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
+            href={rawHref}
+            target={openInNewTab ? "_blank" : undefined}
+            rel={openInNewTab ? "noopener noreferrer nofollow" : undefined}
           >
             {children}
           </a>
         );
       }
-      return (
-        <Link
-          href={
-            value?.href?.toString()?.startsWith("/")
-              ? `${value?.href}`
-              : `/${value?.href}`
-          }
-        >
-          {children}
-        </Link>
-      );
+
+      const normalizedPath = rawHref.startsWith("/")
+        ? rawHref
+        : `/${rawHref.replace(/^\/+/, "")}`;
+
+      return <Link href={normalizedPath}>{children}</Link>;
     },
   },
 };
