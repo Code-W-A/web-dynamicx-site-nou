@@ -7,6 +7,24 @@ const nextConfig = {
         destination: "/servicii/optimizare-seo",
         statusCode: 301,
       },
+      {
+        source: "/my-butterfly-legal",
+        destination: "/apps/my-butterfly/legal",
+        statusCode: 308,
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: "/apps/my-butterfly/legal",
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow",
+          },
+        ],
+      },
     ];
   },
   images: {
