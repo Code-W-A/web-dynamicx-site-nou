@@ -13,7 +13,7 @@ type FormState = {
 };
 
 const supportEmail =
-  process.env.NEXT_PUBLIC_SUPPORT_EMAIL?.trim() || "support@your-domain.com";
+  process.env.NEXT_PUBLIC_SUPPORT_EMAIL?.trim() || "mobitoolsro@gmail.com";
 
 const content = {
   ro: {
