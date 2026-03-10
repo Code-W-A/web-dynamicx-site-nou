@@ -75,19 +75,19 @@ export const processSteps = [
 export const pricingTiers = [
   {
     title: "Site de prezentare",
-    range: "de la 1.200 EUR",
+    range: "de la 2.000 RON",
     details: "Ideal pentru business-uri care au nevoie de prezență profesională și lead-uri clare.",
     includes: ["Structură pagini esențiale", "Design personalizat", "Formular lead", "Setup bază analytics"],
   },
   {
     title: "Magazin online",
-    range: "de la 2.800 EUR",
+    range: "de la 4.000 RON",
     details: "Pentru vânzare online cu checkout optimizat, catalog produse și integrare logistică.",
     includes: ["Catalog produse", "Plăți online", "Curieri", "Admin comenzi și produse"],
   },
   {
     title: "Platformă avansată",
-    range: "de la 6.000 EUR",
+    range: "de la 8.000 RON",
     details: "Pentru proiecte complexe cu fluxuri custom, integrări multiple și scalare.",
     includes: ["Funcționalități custom", "Integrare CRM/ERP", "Automatizări", "Roadmap post-lansare"],
   },

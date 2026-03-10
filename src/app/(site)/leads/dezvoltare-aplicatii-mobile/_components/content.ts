@@ -206,21 +206,21 @@ export const testimonials = [
 export const pricingTiers = [
   {
     title: "MVP / Validare idee",
-    range: "de la 3.500 EUR",
+    range: "de la 1.500 EUR",
     details:
       "Potrivit pentru testare rapidă de piață, funcționalități esențiale și timp scurt de lansare.",
     includes: ["Flow-uri principale", "Design UI de bază", "Publicare inițială", "Suport lansare"],
   },
   {
     title: "Aplicație business",
-    range: "de la 7.500 EUR",
+    range: "de la 8.000 EUR",
     details:
       "Pentru companii care au nevoie de fluxuri complete, design personalizat și integrări cheie.",
     includes: ["Design personalizat", "Integrări API", "Panou administrare", "QA extins"],
   },
   {
     title: "Platformă avansată",
-    range: "de la 15.000 EUR",
+    range: "de la 20.000 EUR",
     details:
       "Pentru produse complexe, mai multe roluri, scalare, integrări extinse și roadmap de creștere.",
     includes: ["Arhitectură scalabilă", "Roluri complexe", "Automatizări avansate", "Roadmap post-lansare"],
