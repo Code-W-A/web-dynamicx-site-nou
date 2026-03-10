@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { Mail, MessageCircle, PhoneCall } from "lucide-react";
 import validateEmail from "@/app/libs/validate";
 import { trackLead, trackCustomLeadEvent } from "@/components/Analytics/GTMLeadEvents";
-import { contactData } from "./content";
+import { contactData, leadPath } from "./content";
 import SectionHeading from "./section-heading";
 
 type FormState = {
@@ -53,26 +53,22 @@ export default function LeadFormSection() {
   const isPhoneContact = useMemo(() => validatePhone(form.contact), [form.contact]);
   const hasValidContact = isEmailContact || isPhoneContact;
 
-  const canSubmit = useMemo(() => {
-    return Boolean(form.name.trim() && hasValidContact && form.message.trim().length >= 10 && form.consent);
-  }, [form, hasValidContact]);
+  const canSubmit = useMemo(
+    () => Boolean(form.name.trim() && hasValidContact && form.message.trim().length >= 10 && form.consent),
+    [form, hasValidContact],
+  );
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitted(false);
     setError(null);
     const nextErrors: Partial<Record<keyof FormState, string>> = {};
-
-    if (!form.name.trim() || form.name.trim().length < 2) nextErrors.name = "Introdu un nume valid (minim 2 caractere).";
+    if (!form.name.trim() || form.name.trim().length < 2) nextErrors.name = "Introdu un nume valid.";
     if (!hasValidContact) nextErrors.contact = "Introdu un email valid sau un numar de telefon valid.";
-    if (!form.message.trim() || form.message.trim().length < 10) nextErrors.message = "Mesajul trebuie sa aiba cel putin 10 caractere.";
-    if (!form.consent) nextErrors.consent = "Ai nevoie de acord GDPR pentru a trimite formularul.";
-
+    if (!form.message.trim() || form.message.trim().length < 10) nextErrors.message = "Mesajul trebuie sa fie mai clar.";
+    if (!form.consent) nextErrors.consent = "Acordul GDPR este obligatoriu.";
     setFieldErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0) {
-      setError("Verifica campurile marcate si incearca din nou.");
-      return;
-    }
+    if (Object.keys(nextErrors).length > 0) return;
 
     try {
       setLoading(true);
@@ -85,10 +81,10 @@ export default function LeadFormSection() {
           phone: isPhoneContact ? form.contact.trim() : "",
           projectType: form.projectType,
           budget: form.budget,
-          source: "lead-mobile-apps",
-          page: "/leads/dezvoltare-aplicatii-mobile",
+          source: "lead-web-magazin",
+          page: leadPath,
           message: [
-            "Sursa lead: Lead Page Dezvoltare Aplicatii Mobile",
+            "Sursa lead: Lead Page Creare Site Web + Magazin Online",
             selectedProject ? `Proiect selectat: ${selectedProject}` : "Proiect selectat: Nespecificat",
             form.projectType ? `Tip proiect: ${form.projectType}` : "Tip proiect: Nespecificat",
             form.budget ? `Buget estimativ: ${form.budget}` : "Buget estimativ: Nespecificat",
@@ -99,23 +95,13 @@ export default function LeadFormSection() {
         },
         { headers: { "Content-Type": "application/json" } },
       );
-
+      try {
+        trackLead("contact_form", { source: "lead-web-magazin", form_name: "lead_web_magazin_form" });
+        trackCustomLeadEvent("lead_web_magazin_form_submit", { source: "lead-web-magazin" });
+      } catch {}
       setSubmitted(true);
       setForm(initialState);
       setFieldErrors({});
-      try {
-        trackLead("contact_form", {
-          form_name: "lead_mobile_apps_form",
-          source: "lead-mobile-apps",
-          project_type: form.projectType || "unspecified",
-          budget: form.budget || "unspecified",
-        });
-        trackCustomLeadEvent("lead_mobile_apps_form_submit", {
-          source: "lead-mobile-apps",
-          project_type: form.projectType || "unspecified",
-          budget: form.budget || "unspecified",
-        });
-      } catch {}
       toast.success("Mesaj trimis cu succes. Revenim in cel mai scurt timp.");
     } catch (err: any) {
       const apiError = err?.response?.data?.error || "A aparut o eroare. Incearca din nou.";
@@ -127,36 +113,25 @@ export default function LeadFormSection() {
   };
 
   return (
-    <section id="formular-lead" className="scroll-mt-28 bg-white py-18 sm:py-20">
+    <section id="formular-lead" className="scroll-mt-28 bg-white py-20">
       <div className="container">
         <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr]">
           <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6 sm:p-8">
             <SectionHeading
               eyebrow="Contact"
-              title="Solicita oferta pentru aplicatia ta mobila"
-              description="Completeaza formularul scurt si revenim rapid cu directie tehnica si estimare initiala."
+              title="Solicita oferta pentru website sau magazin online"
+              description="Completeaza formularul scurt si revenim rapid cu directie si estimare."
             />
             <div className="space-y-3">
-              <a
-                href={contactData.whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-primary/30 hover:text-primary"
-              >
+              <a href={contactData.whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800">
                 <MessageCircle size={16} />
                 WhatsApp rapid
               </a>
-              <a
-                href={contactData.phoneHref}
-                className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-primary/30 hover:text-primary"
-              >
+              <a href={contactData.phoneHref} className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800">
                 <PhoneCall size={16} />
                 {contactData.phoneDisplay}
               </a>
-              <a
-                href={contactData.emailHref}
-                className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-primary/30 hover:text-primary"
-              >
+              <a href={contactData.emailHref} className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800">
                 <Mail size={16} />
                 {contactData.email}
               </a>
@@ -170,7 +145,7 @@ export default function LeadFormSection() {
               </div>
             ) : null}
             <div className="mb-4 rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
-              Raspundem in maxim 2 ore in timpul programului si iti trimitem pasii recomandati pentru proiect.
+              Raspundem in maxim 2 ore in timpul programului.
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="text-sm font-medium text-gray-700">
@@ -178,51 +153,32 @@ export default function LeadFormSection() {
                 <input
                   type="text"
                   value={form.name}
-                  onChange={(e) => {
-                    setForm((prev) => ({ ...prev, name: e.target.value }));
-                    if (fieldErrors.name) setFieldErrors((prev) => ({ ...prev, name: undefined }));
-                  }}
-                  className={`mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition focus:border-primary ${
-                    fieldErrors.name ? "border-red-400" : "border-gray-200"
-                  }`}
-                  placeholder="Numele tau"
+                  onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))}
+                  className={`mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition focus:border-primary ${fieldErrors.name ? "border-red-400" : "border-gray-200"}`}
                 />
-                {fieldErrors.name ? <span className="mt-1 block text-xs text-red-600">{fieldErrors.name}</span> : null}
               </label>
-
               <label className="text-sm font-medium text-gray-700">
                 Tip proiect (optional)
                 <select
                   value={form.projectType}
-                  onChange={(e) => {
-                    setForm((prev) => ({ ...prev, projectType: e.target.value }));
-                  }}
+                  onChange={(e) => setForm((p) => ({ ...p, projectType: e.target.value }))}
                   className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-primary"
                 >
                   <option value="">Selecteaza</option>
-                  <option value="mvp">MVP / validare idee</option>
-                  <option value="business-app">Aplicatie business</option>
-                  <option value="advanced-platform">Platforma avansata</option>
+                  <option value="site-prezentare">Site de prezentare</option>
+                  <option value="magazin-online">Magazin online</option>
+                  <option value="platforma-custom">Platforma custom</option>
                 </select>
               </label>
-
               <label className="text-sm font-medium text-gray-700 sm:col-span-2">
                 Telefon sau Email *
                 <input
                   type="text"
                   value={form.contact}
-                  onChange={(e) => {
-                    setForm((prev) => ({ ...prev, contact: e.target.value }));
-                    if (fieldErrors.contact) setFieldErrors((prev) => ({ ...prev, contact: undefined }));
-                  }}
-                  className={`mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition focus:border-primary ${
-                    fieldErrors.contact ? "border-red-400" : "border-gray-200"
-                  }`}
+                  onChange={(e) => setForm((p) => ({ ...p, contact: e.target.value }))}
+                  className={`mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition focus:border-primary ${fieldErrors.contact ? "border-red-400" : "border-gray-200"}`}
                   placeholder="07xx xxx xxx sau nume@companie.ro"
                 />
-                {fieldErrors.contact ? (
-                  <span className="mt-1 block text-xs text-red-600">{fieldErrors.contact}</span>
-                ) : null}
               </label>
             </div>
 
@@ -231,23 +187,13 @@ export default function LeadFormSection() {
               <textarea
                 rows={4}
                 value={form.message}
-                onChange={(e) => {
-                  setForm((prev) => ({ ...prev, message: e.target.value }));
-                  if (fieldErrors.message) setFieldErrors((prev) => ({ ...prev, message: undefined }));
-                }}
-                className={`mt-2 w-full resize-none rounded-xl border px-4 py-3 text-sm outline-none transition focus:border-primary ${
-                  fieldErrors.message ? "border-red-400" : "border-gray-200"
-                }`}
-                placeholder="Ce vrei sa construiesti si care este obiectivul principal?"
+                onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
+                className={`mt-2 w-full resize-none rounded-xl border px-4 py-3 text-sm outline-none transition focus:border-primary ${fieldErrors.message ? "border-red-400" : "border-gray-200"}`}
+                placeholder="Descrie ce ai nevoie si obiectivul principal al proiectului."
               />
-              {fieldErrors.message ? <span className="mt-1 block text-xs text-red-600">{fieldErrors.message}</span> : null}
             </label>
 
-            <button
-              type="button"
-              onClick={() => setShowOptional((prev) => !prev)}
-              className="mt-3 text-sm font-semibold text-primary hover:text-primary/80"
-            >
+            <button type="button" onClick={() => setShowOptional((v) => !v)} className="mt-3 text-sm font-semibold text-primary">
               {showOptional ? "Ascunde detalii optionale" : "Adauga detalii optionale"}
             </button>
 
@@ -258,7 +204,7 @@ export default function LeadFormSection() {
                   <input
                     type="text"
                     value={form.company}
-                    onChange={(e) => setForm((prev) => ({ ...prev, company: e.target.value }))}
+                    onChange={(e) => setForm((p) => ({ ...p, company: e.target.value }))}
                     className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-primary"
                   />
                 </label>
@@ -266,13 +212,13 @@ export default function LeadFormSection() {
                   Buget estimativ (optional)
                   <select
                     value={form.budget}
-                    onChange={(e) => setForm((prev) => ({ ...prev, budget: e.target.value }))}
+                    onChange={(e) => setForm((p) => ({ ...p, budget: e.target.value }))}
                     className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-primary"
                   >
                     <option value="">Selecteaza intervalul</option>
-                    <option value="3500-7500">3.500 - 7.500 EUR</option>
-                    <option value="7500-15000">7.500 - 15.000 EUR</option>
-                    <option value="15000+">Peste 15.000 EUR</option>
+                    <option value="1200-2800">1.200 - 2.800 EUR</option>
+                    <option value="2800-6000">2.800 - 6.000 EUR</option>
+                    <option value="6000+">Peste 6.000 EUR</option>
                   </select>
                 </label>
               </div>
@@ -282,22 +228,14 @@ export default function LeadFormSection() {
               <input
                 type="checkbox"
                 checked={form.consent}
-                onChange={(e) => {
-                  setForm((prev) => ({ ...prev, consent: e.target.checked }));
-                  if (fieldErrors.consent) setFieldErrors((prev) => ({ ...prev, consent: undefined }));
-                }}
+                onChange={(e) => setForm((p) => ({ ...p, consent: e.target.checked }))}
                 className="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
               />
               Sunt de acord cu prelucrarea datelor conform politicii GDPR.
             </label>
-            {fieldErrors.consent ? <p className="mt-1 text-xs text-red-600">{fieldErrors.consent}</p> : null}
 
             {error ? <p className="mt-3 text-sm font-medium text-red-600">{error}</p> : null}
-            {submitted ? (
-              <p className="mt-3 text-sm font-medium text-green-700">
-                Multumim! Cererea ta a fost trimisa. Revenim cu o estimare initiala in cel mai scurt timp.
-              </p>
-            ) : null}
+            {submitted ? <p className="mt-3 text-sm font-medium text-green-700">Mesaj trimis cu succes. Revenim rapid.</p> : null}
 
             <button
               type="submit"

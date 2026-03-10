@@ -8,7 +8,9 @@ function isAccountDeletionPath(pathname: string) {
 function isMobileLeadPath(pathname: string) {
   return (
     pathname === "/leads/dezvoltare-aplicatii-mobile" ||
-    pathname === "/leads/dezvoltare-aplicatii-mobile/"
+    pathname === "/leads/dezvoltare-aplicatii-mobile/" ||
+    pathname === "/leads/creare-site-web-magazin-online" ||
+    pathname === "/leads/creare-site-web-magazin-online/"
   );
 }
 
@@ -38,5 +40,7 @@ export const config = {
     "/account-deletion/",
     "/leads/dezvoltare-aplicatii-mobile",
     "/leads/dezvoltare-aplicatii-mobile/",
+    "/leads/creare-site-web-magazin-online",
+    "/leads/creare-site-web-magazin-online/",
   ],
 };
