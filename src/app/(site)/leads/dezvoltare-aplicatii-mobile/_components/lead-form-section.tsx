@@ -1,6 +1,7 @@
 "use client";
 
 import { type FormEvent, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Mail, MessageCircle, PhoneCall } from "lucide-react";
@@ -30,12 +31,14 @@ const initialState: FormState = {
 };
 
 export default function LeadFormSection() {
+  const searchParams = useSearchParams();
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [showOptional, setShowOptional] = useState(false);
+  const selectedProject = searchParams.get("selectedProject");
 
   const validatePhone = (phone: string) => {
     const numeric = phone.replace(/\D/g, "");
@@ -47,7 +50,7 @@ export default function LeadFormSection() {
   const hasValidContact = isEmailContact || isPhoneContact;
 
   const canSubmit = useMemo(() => {
-    return Boolean(form.name.trim() && hasValidContact && form.projectType && form.message.trim().length >= 10 && form.consent);
+    return Boolean(form.name.trim() && hasValidContact && form.message.trim().length >= 10 && form.consent);
   }, [form, hasValidContact]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -58,7 +61,6 @@ export default function LeadFormSection() {
 
     if (!form.name.trim() || form.name.trim().length < 2) nextErrors.name = "Introdu un nume valid (minim 2 caractere).";
     if (!hasValidContact) nextErrors.contact = "Introdu un email valid sau un numar de telefon valid.";
-    if (!form.projectType) nextErrors.projectType = "Selecteaza tipul proiectului.";
     if (!form.message.trim() || form.message.trim().length < 10) nextErrors.message = "Mesajul trebuie sa aiba cel putin 10 caractere.";
     if (!form.consent) nextErrors.consent = "Ai nevoie de acord GDPR pentru a trimite formularul.";
 
@@ -83,6 +85,7 @@ export default function LeadFormSection() {
           page: "/leads/dezvoltare-aplicatii-mobile",
           message: [
             "Sursa lead: Lead Page Dezvoltare Aplicatii Mobile",
+            selectedProject ? `Proiect selectat: ${selectedProject}` : "Proiect selectat: Nespecificat",
             form.projectType ? `Tip proiect: ${form.projectType}` : "Tip proiect: Nespecificat",
             form.budget ? `Buget estimativ: ${form.budget}` : "Buget estimativ: Nespecificat",
             "",
@@ -157,6 +160,14 @@ export default function LeadFormSection() {
           </div>
 
           <form onSubmit={handleSubmit} className="rounded-3xl border border-gray-200 bg-white p-6 shadow-service sm:p-8">
+            {selectedProject ? (
+              <div className="mb-3 rounded-2xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm text-primary">
+                Proiect selectat: <span className="font-semibold">{selectedProject}</span>
+              </div>
+            ) : null}
+            <div className="mb-4 rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
+              Raspundem in maxim 2 ore in timpul programului si iti trimitem pasii recomandati pentru proiect.
+            </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="text-sm font-medium text-gray-700">
                 Nume *
@@ -176,25 +187,19 @@ export default function LeadFormSection() {
               </label>
 
               <label className="text-sm font-medium text-gray-700">
-                Tip proiect *
+                Tip proiect (optional)
                 <select
                   value={form.projectType}
                   onChange={(e) => {
                     setForm((prev) => ({ ...prev, projectType: e.target.value }));
-                    if (fieldErrors.projectType) setFieldErrors((prev) => ({ ...prev, projectType: undefined }));
                   }}
-                  className={`mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition focus:border-primary ${
-                    fieldErrors.projectType ? "border-red-400" : "border-gray-200"
-                  }`}
+                  className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-primary"
                 >
                   <option value="">Selecteaza</option>
                   <option value="mvp">MVP / validare idee</option>
                   <option value="business-app">Aplicatie business</option>
                   <option value="advanced-platform">Platforma avansata</option>
                 </select>
-                {fieldErrors.projectType ? (
-                  <span className="mt-1 block text-xs text-red-600">{fieldErrors.projectType}</span>
-                ) : null}
               </label>
 
               <label className="text-sm font-medium text-gray-700 sm:col-span-2">

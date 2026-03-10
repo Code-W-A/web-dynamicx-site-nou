@@ -67,45 +67,96 @@ export const appTypes = [
 ];
 
 export const processSteps = [
-  "Analiză și clarificare cerințe",
-  "Wireframing și structură",
-  "Design UI/UX",
-  "Dezvoltare",
-  "Testare",
-  "Lansare",
-  "Suport și optimizare",
+  {
+    title: "Analiza si clarificare cerinte",
+    description: "Definim obiectivele, utilizatorii si criteriile de succes ale proiectului.",
+  },
+  {
+    title: "Wireframing si structura",
+    description: "Schitam fluxurile principale si ordinea logica a ecranelor importante.",
+  },
+  {
+    title: "Design UI/UX",
+    description: "Proiectam o interfata moderna, clara si usor de folosit pe mobil.",
+  },
+  {
+    title: "Dezvoltare",
+    description: "Implementam aplicatia si integrarile necesare intr-un ritm predictibil.",
+  },
+  {
+    title: "Testare",
+    description: "Verificam functional, vizual si pe dispozitive reale inainte de lansare.",
+  },
+  {
+    title: "Lansare",
+    description: "Publicam controlat si monitorizam atent primele zile dupa release.",
+  },
+  {
+    title: "Suport",
+    description: "Optimizam continuu pe baza feedback-ului si a datelor de utilizare.",
+  },
 ];
 
 export const portfolioProjects = [
   {
     title: "FlowReserve",
     category: "Servicii & programări",
+    summary: "Aplicație mobilă pentru rezervări rapide și confirmări automate.",
+    intro:
+      "FlowReserve a fost gândit pentru business-uri de servicii care aveau nevoie de un sistem digital clar pentru programări și comunicare cu clienții.",
     challenge:
       "Clientul gestiona rezervările manual, iar rata de no-show afecta programul echipei.",
     solution:
       "Am livrat o aplicație mobilă cu calendar inteligent, confirmări automate și reminder push.",
     features: ["Rezervări", "Notificări push", "Plăți online", "Dashboard administrare"],
     impact: "Reducere no-show și proces mai rapid de confirmare a programărilor.",
+    idealFor: [
+      "Clinici și centre de servicii",
+      "Business-uri locale cu programări recurente",
+      "Companii care vor automatizare operațională",
+    ],
+    techNote: "Implementare cross-platform, API custom și notificări push segmentate pe tip client.",
+    previewBlocks: ["Ecran programari", "Calendar inteligent", "Reminder push", "Plata rapida"],
   },
   {
     title: "QuickRoute",
     category: "Comenzi & livrări",
+    summary: "Platformă mobilă pentru comenzi, tracking și flux logistic centralizat.",
+    intro:
+      "QuickRoute a fost creat pentru o companie care avea nevoie de vizibilitate în timp real pe întregul traseu al comenzilor.",
     challenge:
       "Compania avea comenzi dispersate pe mai multe canale și timpi mari de procesare.",
     solution:
       "Am creat o aplicație cu management de comenzi, tracking în timp real și integrare ERP.",
     features: ["Tracking GPS", "Status comenzi", "Integrare ERP", "Rapoarte"],
     impact: "Vizibilitate operațională mai bună și timp redus de procesare comenzi.",
+    idealFor: [
+      "Companii de distribuție și livrare",
+      "Business-uri cu echipe în teren",
+      "Firme care folosesc ERP și au nevoie de sincronizare mobilă",
+    ],
+    techNote: "Integrare API cu ERP existent, status-uri live și modul de raportare operațională.",
+    previewBlocks: ["Harta livrari", "Timeline comenzi", "Status in timp real", "Rapoarte zilnice"],
   },
   {
     title: "ClubConnect",
     category: "Comunități & membership",
+    summary: "Aplicație membership cu abonamente, comunicare internă și engagement continuu.",
+    intro:
+      "ClubConnect a fost proiectat pentru un model de business bazat pe comunitate, conținut premium și retenție pe termen lung.",
     challenge:
       "Business-ul avea nevoie de o platformă mobilă pentru abonamente, conținut și engagement constant.",
     solution:
       "Am dezvoltat aplicația cu autentificare pe roluri, abonamente recurente și chat intern.",
     features: ["Abonamente", "Autentificare roluri", "Chat", "Analytics"],
     impact: "Creștere a engagement-ului și retenție mai bună a membrilor activi.",
+    idealFor: [
+      "Comunități premium și programe membership",
+      "Platforme educaționale cu abonament",
+      "Branduri care monetizează conținut digital",
+    ],
+    techNote: "Plăți recurente, roluri de acces și evenimente tracking pentru retenție și analiză.",
+    previewBlocks: ["Zona membri", "Chat comunitate", "Abonamente active", "Dashboard engagement"],
   },
 ];
 

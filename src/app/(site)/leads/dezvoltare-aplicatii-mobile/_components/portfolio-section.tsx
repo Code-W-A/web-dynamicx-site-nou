@@ -1,7 +1,23 @@
+"use client";
+
+import { useState } from "react";
 import { portfolioProjects } from "./content";
 import SectionHeading from "./section-heading";
+import ProjectDetailsDialog from "./project-details-dialog";
+
+type PortfolioProject = (typeof portfolioProjects)[number];
 
 export default function PortfolioSection() {
+  const [activeProject, setActiveProject] = useState<PortfolioProject | null>(null);
+
+  const scrollToLeadForm = (projectName: string) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("selectedProject", projectName);
+    const next = `${window.location.pathname}?${params.toString()}#formular-lead`;
+    window.history.replaceState({}, "", next);
+    document.getElementById("formular-lead")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section className="bg-gray-50 py-20">
       <div className="container">
@@ -26,6 +42,7 @@ export default function PortfolioSection() {
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-black">{project.title}</h3>
                 <p className="mt-1 text-sm font-medium text-primary">{project.category}</p>
+                <p className="mt-3 text-sm text-gray-700">{project.summary}</p>
                 <p className="mt-4 text-sm text-gray-700">
                   <span className="font-semibold">Provocare:</span> {project.challenge}
                 </p>
@@ -42,11 +59,38 @@ export default function PortfolioSection() {
                     </span>
                   ))}
                 </div>
+                <div className="mt-5 flex items-center justify-between gap-3 border-t border-gray-100 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setActiveProject(project)}
+                    className="inline-flex items-center justify-center rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary/90"
+                  >
+                    Vezi detalii
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollToLeadForm(project.title)}
+                    className="text-sm font-semibold text-primary transition hover:text-primary/80"
+                  >
+                    Vreau ceva similar
+                  </button>
+                </div>
               </div>
             </article>
           ))}
         </div>
       </div>
+      <ProjectDetailsDialog
+        open={Boolean(activeProject)}
+        project={activeProject}
+        onClose={() => setActiveProject(null)}
+        onPrimaryCta={(projectName) => {
+          setActiveProject(null);
+          requestAnimationFrame(() => {
+            scrollToLeadForm(projectName);
+          });
+        }}
+      />
     </section>
   );
 }
