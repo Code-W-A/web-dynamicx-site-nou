@@ -21,6 +21,16 @@ export function trackCTA(label: string) {
   } catch {}
 }
 
+export function trackCustomLeadEvent(eventName: string, extra?: Record<string, any>) {
+  try {
+    sendGTMEvent({
+      event: eventName,
+      page_location: typeof window !== "undefined" ? window.location.href : undefined,
+      ...extra,
+    });
+  } catch {}
+}
+
 // Optional: direct GA4 events (use only if you want to bypass GTM for these)
 export function sendGALead(eventType: LeadType, extra?: Record<string, any>) {
   try {
