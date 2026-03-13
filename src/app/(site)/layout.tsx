@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import BottomCTA from "@/components/Common/BottomCTA";
+import SiteFloatingCtas from "@/components/Common/SiteFloatingCtas";
 import "@/styles/globals.css";
 import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google';
 import ClientProviders from "./ClientProviders";
@@ -68,7 +68,7 @@ export default function RootLayout({
             <Navbar />
             {children}
             <Footer />
-            <BottomCTA />
+            <SiteFloatingCtas />
         </ClientProviders>
       </body>
       {gaId && <GoogleAnalytics gaId={gaId as string} />}

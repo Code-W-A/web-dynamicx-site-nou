@@ -8,7 +8,7 @@ export default function FinalCtaSection() {
       <div className="container">
         <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-primary p-8 text-white md:p-12">
           <h2 className="max-w-3xl text-3xl font-bold sm:text-4xl">
-            Spune-ne ce vrei sa construiesti si iti propunem o solutie clara pentru website sau magazin online.
+            Spune-ne ce magazin online vrei sa construiesti si iti propunem o solutie clara, orientata pe vanzari.
           </h2>
           <p className="mt-4 max-w-2xl text-sm text-white/85 sm:text-base">
             Primești pași concreți, estimare realistă și direcție tehnică potrivită obiectivelor tale de business.

@@ -8,7 +8,7 @@ export default function PricingSection() {
       <div className="container">
         <SectionHeading
           eyebrow="Estimare cost"
-          title="Cum estimam costul unui site web sau magazin online"
+          title="Cum estimam costul unui magazin online"
           description="Costul final depinde de complexitate, funcționalități, integrări și ritmul de livrare."
           center
         />

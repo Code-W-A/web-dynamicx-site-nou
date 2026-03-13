@@ -12,7 +12,7 @@ import PricingEstimateSection from "./_components/pricing-estimate-section";
 import FaqSection from "./_components/faq-section";
 import FinalCtaSection from "./_components/final-cta-section";
 import LeadFormSection from "./_components/lead-form-section";
-import StickyMobileCtaBar from "./_components/sticky-mobile-cta-bar";
+import LeadDesktopContactFab from "../_components/lead-desktop-contact-fab";
 
 const siteName = process.env.SITE_NAME || "Web Dynamicx";
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
@@ -56,7 +56,7 @@ export default function MobileAppsLeadPage() {
       <ServicesGridSection />
       <FeatureHighlightsSection />
       <FinalCtaSection />
-      <StickyMobileCtaBar />
+      <LeadDesktopContactFab />
     </>
   );
 }

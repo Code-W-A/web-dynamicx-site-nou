@@ -39,6 +39,18 @@ export const brandsData: Brand[] = [
     image: lineicons2,
     link: "https://www.studiobycristian.com/",
   },
+  {
+    id: uuid(),
+    name: "D-toate.ro",
+    image: lineicons2,
+    link: "https://d-toate.ro/",
+  },
+  {
+    id: uuid(),
+    name: "Butterfly Romania",
+    image: lineicons2,
+    link: "/apps/my-butterfly/legal",
+  },
 ];
 
 export const heroClientsData: Brand[] = [
@@ -81,4 +93,3 @@ export const heroClientsData: Brand[] = [
   
  
 ];
-

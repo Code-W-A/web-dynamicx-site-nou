@@ -131,4 +131,16 @@ export const portfolioData: Portfolio[] = [
     categories: ["personal"],
     details: portfolioDetails,
   },
+  {
+    id: uuid(),
+    title: "D‑Toate — Magazin online",
+    slug: "d-toate-magazin-online",
+    sortDescription:
+      "Magazin online cu produse diverse, structură clară și UX orientat pe conversie.",
+    image: "/images/portofoliu/d-toate.webp",
+    liveUrl: "https://d-toate.ro/",
+    tags: ["web design", "e-commerce"],
+    categories: ["magazin online"],
+    details: portfolioDetails,
+  },
 ];

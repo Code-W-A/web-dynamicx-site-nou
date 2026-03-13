@@ -81,10 +81,10 @@ export default function LeadFormSection() {
           phone: isPhoneContact ? form.contact.trim() : "",
           projectType: form.projectType,
           budget: form.budget,
-          source: "lead-web-magazin",
+          source: "lead-magazin-online",
           page: leadPath,
           message: [
-            "Sursa lead: Lead Page Creare Site Web + Magazin Online",
+            "Sursa lead: Lead Page Creare Magazin Online",
             selectedProject ? `Proiect selectat: ${selectedProject}` : "Proiect selectat: Nespecificat",
             form.projectType ? `Tip proiect: ${form.projectType}` : "Tip proiect: Nespecificat",
             form.budget ? `Buget estimativ: ${form.budget}` : "Buget estimativ: Nespecificat",
@@ -96,8 +96,8 @@ export default function LeadFormSection() {
         { headers: { "Content-Type": "application/json" } },
       );
       try {
-        trackLead("contact_form", { source: "lead-web-magazin", form_name: "lead_web_magazin_form" });
-        trackCustomLeadEvent("lead_web_magazin_form_submit", { source: "lead-web-magazin" });
+        trackLead("contact_form", { source: "lead-magazin-online", form_name: "lead_magazin_online_form" });
+        trackCustomLeadEvent("lead_magazin_online_form_submit", { source: "lead-magazin-online" });
       } catch {}
       setSubmitted(true);
       setForm(initialState);
@@ -119,8 +119,8 @@ export default function LeadFormSection() {
           <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6 sm:p-8">
             <SectionHeading
               eyebrow="Contact"
-              title="Solicita oferta pentru website sau magazin online"
-              description="Completeaza formularul scurt si revenim rapid cu directie si estimare."
+              title="Solicita oferta pentru creare magazin online"
+              description="Completeaza formularul scurt si revenim rapid cu directie si estimare pentru e-commerce."
             />
             <div className="space-y-3">
               <a href={contactData.whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800">
@@ -165,9 +165,9 @@ export default function LeadFormSection() {
                   className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-primary"
                 >
                   <option value="">Selecteaza</option>
-                  <option value="site-prezentare">Site de prezentare</option>
                   <option value="magazin-online">Magazin online</option>
-                  <option value="platforma-custom">Platforma custom</option>
+                  <option value="marketplace">Marketplace</option>
+                  <option value="platforma-ecommerce-custom">Platforma e-commerce custom</option>
                 </select>
               </label>
               <label className="text-sm font-medium text-gray-700 sm:col-span-2">

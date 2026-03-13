@@ -8,7 +8,7 @@ export default function BenefitsSection() {
       <div className="container">
         <SectionHeading
           eyebrow="Beneficii"
-          title="De ce sa alegi WebDynamicx pentru site-ul sau magazinul tau online"
+          title="De ce sa alegi WebDynamicx pentru creare magazin online"
           description="Optimizam tot fluxul digital: de la prima impresie pana la conversie si administrare zilnica."
           center
         />

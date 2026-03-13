@@ -3,6 +3,7 @@ import { v4 as uuid } from "uuid";
 import Link from "next/link";
 import Image from "next/image";
 import Timeline from "@/components/Common/Timeline";
+import WebsiteSubscriptionAlternative from "@/components/Sections/WebsiteSubscriptionAlternative";
 
 
 
@@ -185,6 +186,26 @@ export const detailsCreareSiteWeb = (
       complexitate, integrări și deadline. Oferim pachete flexibile și îți recomandăm varianta potrivită în funcție
       de obiective și buget.
     </p>
+
+    <WebsiteSubscriptionAlternative
+      title="Nu ai buget pentru un site complet acum? Ai și varianta asta."
+      subtitle="Poți începe cu un site la abonament: design profesionist, implementare, hosting, mentenanță și suport pentru modificările esențiale, într-un cost predictibil. Este o opțiune bună pentru afaceri la început de drum sau pentru business-uri care vor să intre rapid online fără o investiție mare din prima."
+      monthlyLabel="Cost predictibil • Pornire rapidă • Mentenanță inclusă"
+      features={[
+        "Pornire rapidă",
+        "Cost lunar predictibil",
+        "Hosting și mentenanță incluse",
+        "Actualizări esențiale incluse",
+        "Potrivit pentru business-uri locale",
+        "Upgrade ulterior către variantă custom",
+      ]}
+      primaryCtaText="Vreau varianta la abonament"
+      primaryCtaHref="/contact"
+      secondaryCtaText="Vezi și oferta pentru site complet"
+      secondaryCtaHref="#preturi"
+      variant="service"
+      className="mt-10"
+    />
 
     {/* Interlinking (ajută SEO și UX) */}
     <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
@@ -1057,6 +1078,26 @@ export const detailsWebDesign = (
       necesare (wireframe, UI, design system, prototip). Proiectele standard pornesc de la un pachet de bază și cresc
       în funcție de complexitate. După o discuție scurtă, propunem varianta optimă pentru obiectivele tale.
     </p>
+
+    <WebsiteSubscriptionAlternative
+      title="Nu ai buget pentru un site complet acum? Ai și varianta asta."
+      subtitle="Poți începe cu un site la abonament: design profesionist, implementare, hosting, mentenanță și suport pentru modificările esențiale, într-un cost predictibil. Este o opțiune bună pentru afaceri la început de drum sau pentru business-uri care vor să intre rapid online fără o investiție mare din prima."
+      monthlyLabel="Cost predictibil • Pornire rapidă • Mentenanță inclusă"
+      features={[
+        "Pornire rapidă",
+        "Cost lunar predictibil",
+        "Hosting și mentenanță incluse",
+        "Actualizări esențiale incluse",
+        "Potrivit pentru business-uri locale",
+        "Upgrade ulterior către variantă custom",
+      ]}
+      primaryCtaText="Vreau varianta la abonament"
+      primaryCtaHref="/contact"
+      secondaryCtaText="Vezi și oferta pentru site complet"
+      secondaryCtaHref="#preturi"
+      variant="service"
+      className="mt-10"
+    />
 
     {/* Interlinking (ajută SEO și UX) */}
     <h3 className="mb-3 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">
@@ -2502,4 +2543,3 @@ export const serviceData: Service[] = [
     ],
   },
 ];
-

@@ -7,7 +7,7 @@ import { MessageCircle } from "lucide-react";
 export default function StickyMobileCtaBar() {
   const pathname = usePathname();
   const whatsappHref = useMemo(() => {
-    const message = `Salut! Sunt pe pagina ${pathname} si vreau o oferta pentru creare site web sau magazin online.`;
+    const message = `Salut! Sunt pe pagina ${pathname} si vreau o oferta pentru creare magazin online.`;
     return `https://wa.me/40774550758?text=${encodeURIComponent(message)}`;
   }, [pathname]);
 

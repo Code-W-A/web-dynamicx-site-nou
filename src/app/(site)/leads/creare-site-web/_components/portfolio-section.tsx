@@ -8,7 +8,7 @@ export default function PortfolioSection() {
         <div className="mx-auto mb-10 max-w-3xl text-center">
           <p className="mb-3 text-sm font-semibold tracking-[0.16em] text-primary uppercase">Portofoliu</p>
           <h2 className="text-3xl font-bold text-black sm:text-4xl">
-            Proiecte relevante pentru site-uri web si magazine online
+            Proiecte relevante pentru creare site web
           </h2>
           <p className="mt-4 text-base leading-relaxed text-body-color">
             Folosim aceeasi abordare orientata pe rezultate pentru proiecte similare cu al tau.

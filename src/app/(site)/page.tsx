@@ -14,6 +14,7 @@ import MiniLeadClient from "@/components/Common/MiniLeadClient";
 import { Metadata } from "next";
 import JsonLd from "@/components/Common/JsonLd";
 import { integrations } from "../../../integrations.config";
+import WebsiteSubscriptionAlternative from "@/components/Sections/WebsiteSubscriptionAlternative";
 
 const siteName = process.env.SITE_NAME || "Web Dynamicx";
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
@@ -95,6 +96,24 @@ export default function Home() {
       </section>
       {/* <Team /> */}
       <Pricing />
+      <WebsiteSubscriptionAlternative
+        title="Nu ai buget pentru un site complet acum? Ai și varianta asta."
+        subtitle="Poți începe cu un site la abonament: design profesionist, implementare, hosting, mentenanță și suport pentru modificările esențiale, într-un cost predictibil. Este o opțiune bună pentru afaceri la început de drum sau pentru business-uri care vor să intre rapid online fără o investiție mare din prima."
+        monthlyLabel="Cost predictibil • Pornire rapidă • Mentenanță inclusă"
+        features={[
+          "Pornire rapidă",
+          "Cost lunar predictibil",
+          "Hosting și mentenanță incluse",
+          "Actualizări esențiale incluse",
+          "Potrivit pentru business-uri locale",
+          "Upgrade ulterior către variantă custom",
+        ]}
+        primaryCtaText="Vreau varianta la abonament"
+        primaryCtaHref="/contact"
+        secondaryCtaText="Vezi și oferta pentru site complet"
+        secondaryCtaHref="/#pricing"
+        variant="default"
+      />
       <Testimonial />
       {integrations?.isSanityEnabled && <HomeBlogSection />}
       <Contact />

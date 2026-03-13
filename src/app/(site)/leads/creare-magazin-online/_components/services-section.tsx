@@ -8,7 +8,7 @@ export default function ServicesSection() {
       <div className="container">
         <SectionHeading
           eyebrow="Ce livram"
-          title="Servicii pentru website-uri si magazine online"
+          title="Servicii pentru creare magazin online"
           description="Acoperim lansarea completa: strategie, design, dezvoltare, integrare si optimizare."
           center
         />
