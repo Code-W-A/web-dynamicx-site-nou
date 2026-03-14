@@ -1,23 +1,14 @@
 import Image from "next/image";
 import Timeline from "@/components/Common/Timeline";
-import CallToActionCard from "@/components/Service/CallToActionCard";
-import ServiceTabButtons from "@/components/Service/ServiceTabButtons";
-import { serviceData } from "@/static-data/service";
+import ServiceSidebar from "@/components/Service/ServiceSidebar";
 import { mobileAppsServicePageData } from "./mobile-app-service-data";
 
 export default function MobileAppServicePageContent() {
   return (
     <section className="bg-gray-50 pt-[90px] pb-20">
       <div className="container">
-        <div className="-mx-5 lg:clearfix">
-          <div className="w-full px-5 lg:float-left lg:w-4/12">
-            <div className="space-y-10">
-              <ServiceTabButtons serviceData={serviceData} />
-              <CallToActionCard />
-            </div>
-          </div>
-
-          <div className="w-full px-5 lg:w-auto lg:pl-10">
+        <div className="grid gap-10 px-5 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start lg:gap-12">
+          <main className="min-w-0 lg:order-2">
             <div>
               <div className="relative mb-8 flow-root aspect-34/20 rounded-xs bg-stone-100">
                 <Image
@@ -29,7 +20,7 @@ export default function MobileAppServicePageContent() {
                 />
               </div>
               <h2 className="mb-7 text-2xl font-bold text-black sm:text-4xl lg:text-3xl">
-                {mobileAppsServicePageData.title}
+                Servicii de dezvoltare aplicații mobile pentru firme și startup-uri
               </h2>
 
               <p className="mb-6 text-base text-body-color sm:text-lg lg:text-base xl:text-lg">
@@ -351,7 +342,11 @@ export default function MobileAppServicePageContent() {
                 </div>
               </div>
             </div>
-          </div>
+          </main>
+
+          <aside className="lg:order-1" aria-label="Servicii și contact">
+            <ServiceSidebar />
+          </aside>
         </div>
       </div>
     </section>
