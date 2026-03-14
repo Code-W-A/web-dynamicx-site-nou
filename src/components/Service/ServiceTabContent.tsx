@@ -1,10 +1,9 @@
 import { Service } from "@/types/service";
 import Image from "next/image";
 
-export default function ServiceTabContent({ service }: { service: Service }) {
+export function ServiceTabIntro({ service }: { service: Service }) {
   return (
-    <div>
-      {/* Prevent the hero image block from underlapping the floated left sidebar on desktop */}
+    <>
       <div className="relative mb-8 flow-root aspect-34/20 rounded-xs bg-stone-100">
         {service?.image ? (
           <Image
@@ -21,7 +20,13 @@ export default function ServiceTabContent({ service }: { service: Service }) {
       <h2 className="mb-7 text-2xl font-bold text-black sm:text-4xl lg:text-3xl">
         {service?.title}
       </h2>
+    </>
+  );
+}
 
+export function ServiceTabBody({ service }: { service: Service }) {
+  return (
+    <>
       {service?.details}
 
       {service?.faqs && service.faqs.length > 0 && (
@@ -39,6 +44,15 @@ export default function ServiceTabContent({ service }: { service: Service }) {
       )}
 
       {/* Studii de caz eliminate conform cerinței */}
+    </>
+  );
+}
+
+export default function ServiceTabContent({ service }: { service: Service }) {
+  return (
+    <div>
+      <ServiceTabIntro service={service} />
+      <ServiceTabBody service={service} />
     </div>
   );
 }
