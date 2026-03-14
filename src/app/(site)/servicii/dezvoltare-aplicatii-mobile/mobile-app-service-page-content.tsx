@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowRight,
   BadgeCheck,
@@ -50,6 +51,21 @@ export default function MobileAppServicePageContent() {
               </p>
               <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
                 {hero.supporting}
+              </p>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
+                Dacă vrei să validezi mai întâi produsul și ecosistemul digital din jurul lui, putem conecta această etapă cu
+                servicii de{" "}
+                <Link href="/servicii/web-design" className="font-semibold text-primary underline-offset-4 hover:underline">
+                  web design
+                </Link>
+                ,{" "}
+                <Link
+                  href="/servicii/creare-site-web"
+                  className="font-semibold text-primary underline-offset-4 hover:underline"
+                >
+                  creare site web
+                </Link>{" "}
+                sau o pagină de prezentare optimizată pentru lansare și conversie.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -117,12 +133,12 @@ export default function MobileAppServicePageContent() {
                     <div className="mt-2 text-sm font-semibold">iOS + Android</div>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white/90">
-                    <div className="text-xs uppercase tracking-[0.24em] text-white/50">Focus</div>
-                    <div className="mt-2 text-sm font-semibold">MVP & scalare</div>
+                    <div className="text-xs uppercase tracking-[0.24em] text-white/50">Obiectiv</div>
+                    <div className="mt-2 text-sm font-semibold">Prima versiune și scalare</div>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white/90">
-                    <div className="text-xs uppercase tracking-[0.24em] text-white/50">Livrare</div>
-                    <div className="mt-2 text-sm font-semibold">Store-ready</div>
+                    <div className="text-xs uppercase tracking-[0.24em] text-white/50">Lansare</div>
+                    <div className="mt-2 text-sm font-semibold">Pregătit pentru App Store și Google Play</div>
                   </div>
                 </div>
               </div>
@@ -166,6 +182,14 @@ export default function MobileAppServicePageContent() {
               <span className="text-sm font-semibold uppercase tracking-[0.24em] text-primary/80">Pentru cine este</span>
               <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{audience.title}</h2>
               <p className="mt-6 text-base leading-8 text-white/72 sm:text-lg">{audience.intro}</p>
+              <p className="mt-5 text-base leading-8 text-white/72 sm:text-lg">
+                Pentru proiecte care au nevoie și de validare vizuală sau de exemple concrete de execuție, poți vedea și
+                selecții din{" "}
+                <Link href="/portofoliu" className="font-semibold text-primary underline-offset-4 hover:underline">
+                  portofoliul nostru
+                </Link>
+                .
+              </p>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               {audience.items.map((item) => (
@@ -190,7 +214,7 @@ export default function MobileAppServicePageContent() {
       <section className="py-20 sm:py-24">
         <div className="container px-5">
           <div className="max-w-3xl">
-            <span className="text-sm font-semibold uppercase tracking-[0.24em] text-primary/80">Use cases</span>
+            <span className="text-sm font-semibold uppercase tracking-[0.24em] text-primary/80">Tipuri de aplicații</span>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
               {appTypes.title}
             </h2>
@@ -268,6 +292,23 @@ export default function MobileAppServicePageContent() {
             </div>
           </div>
           <p className="mt-8 max-w-4xl text-base leading-8 text-slate-600 sm:text-lg">{technology.outro}</p>
+          <p className="mt-4 max-w-4xl text-base leading-8 text-slate-600 sm:text-lg">
+            Dacă proiectul implică și fluxuri comerciale, checkout sau integrare cu catalog de produse, putem continua și cu{" "}
+            <Link
+              href="/servicii/creare-magazin-online"
+              className="font-semibold text-primary underline-offset-4 hover:underline"
+            >
+              creare magazin online
+            </Link>{" "}
+            sau{" "}
+            <Link
+              href="/servicii/creare-magazin-online-shopify"
+              className="font-semibold text-primary underline-offset-4 hover:underline"
+            >
+              dezvoltare Shopify
+            </Link>
+            .
+          </p>
         </div>
       </section>
 
@@ -359,16 +400,23 @@ export default function MobileAppServicePageContent() {
                 <h2 className="mt-4 text-2xl font-bold">{pricing.durationTitle}</h2>
                 <p className="mt-4 text-sm leading-7 text-white/74 sm:text-base">{pricing.durationText}</p>
                 <div className="mt-5 rounded-3xl border border-white/10 bg-white/6 px-5 py-4 text-base font-semibold text-white">
-                  8-10 săptămâni pentru multe proiecte de tip MVP
+                  8-10 săptămâni pentru multe proiecte de tip primă versiune (MVP)
                 </div>
                 <p className="mt-5 text-sm leading-7 text-white/70 sm:text-base">{pricing.durationNote}</p>
               </article>
             </div>
 
             <aside className="rounded-[2rem] border border-primary/15 bg-[linear-gradient(180deg,_rgba(74,108,247,0.08),_rgba(255,255,255,1))] p-7 shadow-[0_20px_70px_rgba(74,108,247,0.12)]">
-              <span className="text-sm font-semibold uppercase tracking-[0.24em] text-primary/80">CTA rapid</span>
+              <span className="text-sm font-semibold uppercase tracking-[0.24em] text-primary/80">Estimare rapidă</span>
               <h2 className="mt-4 text-2xl font-bold text-slate-950">{pricing.cta.title}</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">{pricing.cta.text}</p>
+              <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                Dacă preferi, poți merge direct în pagina de{" "}
+                <Link href="/contact" className="font-semibold text-primary underline-offset-4 hover:underline">
+                  contact
+                </Link>{" "}
+                pentru a trimite cerințele proiectului tău.
+              </p>
               <div className="mt-8 flex flex-col gap-3">
                 <a
                   href={pricing.cta.primaryHref}
@@ -442,7 +490,7 @@ export default function MobileAppServicePageContent() {
               FAQ despre dezvoltarea aplicațiilor mobile
             </h2>
             <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
-              Păstrăm informațiile importante despre aplicații mobile iOS și Android, backend, publicare și mentenanță
+              Păstrăm informațiile importante despre aplicații mobile iOS și Android, sistem backend, publicare și mentenanță
               într-un format mai clar și mai ușor de parcurs.
             </p>
           </div>

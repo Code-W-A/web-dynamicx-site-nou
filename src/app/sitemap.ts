@@ -15,6 +15,11 @@ async function getFileLastModified(relativePath: string, fallback: Date) {
   }
 }
 
+async function getLatestLastModified(relativePaths: string[], fallback: Date) {
+  const dates = await Promise.all(relativePaths.map((relativePath) => getFileLastModified(relativePath, fallback)));
+  return dates.reduce((latest, current) => (current > latest ? current : latest), fallback);
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
   const fallbackDate = new Date("2025-01-01T00:00:00.000Z");
@@ -54,9 +59,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   const serviceDataLastModified = await getFileLastModified("src/static-data/service.tsx", fallbackDate);
+  const mobileAppsServiceLastModified = await getLatestLastModified(
+    [
+      "src/static-data/service.tsx",
+      "src/app/(site)/servicii/[slug]/page.tsx",
+      "src/app/(site)/servicii/dezvoltare-aplicatii-mobile/mobile-app-service-data.ts",
+      "src/app/(site)/servicii/dezvoltare-aplicatii-mobile/mobile-app-service-page-content.tsx",
+      "src/app/(site)/servicii/dezvoltare-aplicatii-mobile/mobile-app-service-faq.tsx",
+      "src/app/(site)/servicii/dezvoltare-aplicatii-mobile/mobile-app-service-sidebar.tsx",
+    ],
+    fallbackDate,
+  );
+
   const servicesRoutes: MetadataRoute.Sitemap = serviceData.map((s) => ({
     url: `${siteURL}/servicii/${s.slug}`,
-    lastModified: serviceDataLastModified,
+    lastModified: s.slug === "dezvoltare-aplicatii-mobile" ? mobileAppsServiceLastModified : serviceDataLastModified,
     changeFrequency: "monthly",
     priority: 0.85,
   }));

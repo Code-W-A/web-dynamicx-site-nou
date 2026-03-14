@@ -1,25 +1,25 @@
 export const mobileAppsServiceSlug = "dezvoltare-aplicatii-mobile";
 
 export const mobileAppsServicePageData = {
-  title: "Dezvoltare aplicații mobile",
+  title: "Dezvoltare aplicații mobile iOS și Android pentru firme",
   description:
     "Dezvoltăm aplicații mobile iOS și Android pentru firme, startup-uri și produse digitale scalabile.",
   metaTitle: "Dezvoltare aplicații mobile iOS și Android pentru firme | Web Dynamicx",
   metaDescription:
-    "Oferim servicii de dezvoltare aplicații mobile pentru iOS și Android: MVP, UX/UI, backend, integrări, publicare în store-uri și mentenanță. Cere ofertă.",
+    "Oferim servicii de dezvoltare aplicații mobile pentru iOS și Android: MVP, UX/UI, sistem backend, integrări, publicare în App Store și Google Play și mentenanță. Cere ofertă.",
   image: "/images/services/dezvoltare-aplicatii-mobile.webp",
   ogImage: "/images/services/dezvoltare-aplicatii-mobile.webp",
   hero: {
-    eyebrow: "iOS + Android + MVP",
+    eyebrow: "iOS + Android + prima versiune",
     title: "Servicii de dezvoltare aplicații mobile pentru firme și startup-uri",
     intro:
       "Construim aplicații mobile personalizate pentru companii, startup-uri și antreprenori care vor să lanseze un produs digital util, stabil și ușor de folosit.",
     supporting:
       "Dezvoltăm aplicații pentru iOS și Android, pornind de la obiectivele reale ale afacerii tale: validarea rapidă a unei idei, automatizarea unor procese, creșterea vânzărilor sau îmbunătățirea relației cu clienții.",
-    chips: ["Aplicații mobile iOS și Android", "MVP", "UX/UI", "Backend & API", "App Store", "Google Play"],
+    chips: ["Aplicații mobile iOS și Android", "MVP", "UX/UI", "Backend și API", "App Store", "Google Play"],
     highlights: [
       "Aplicație mobilă personalizată, gândită pentru utilizare reală",
-      "Lansare rapidă pentru MVP-uri și produse validate în etape",
+      "Lansare rapidă pentru prima versiune și produse validate în etape",
       "Scalare sigură pentru firme care vor un produs digital solid",
     ],
     ctaPrimary: { label: "Cere ofertă", href: "#contact-rapid" },
@@ -27,7 +27,7 @@ export const mobileAppsServicePageData = {
   },
   valueProps: [
     {
-      title: "Lansare rapidă pentru MVP",
+      title: "Lansare rapidă pentru prima versiune",
       description:
         "Definim funcționalitățile esențiale și evităm supradezvoltarea din prima etapă, astfel încât investiția să fie eficientă.",
     },
@@ -39,7 +39,7 @@ export const mobileAppsServicePageData = {
     {
       title: "Backend, administrare și integrări",
       description:
-        "Putem acoperi backend-ul, autentificarea, panoul de administrare, plățile, notificările și serviciile externe necesare.",
+        "Putem acoperi sistemul backend, autentificarea, panoul de administrare, plățile, notificările și serviciile externe necesare.",
     },
     {
       title: "UX/UI orientat pe claritate",
@@ -52,7 +52,7 @@ export const mobileAppsServicePageData = {
         "Gândim arhitectura și roadmap-ul astfel încât produsul să poată evolua în siguranță după lansare.",
     },
     {
-      title: "Publicare în store-uri",
+      title: "Publicare în App Store și Google Play",
       description:
         "Pregătim materialele și gestionăm procesul de publicare în App Store și Google Play.",
     },
@@ -60,13 +60,13 @@ export const mobileAppsServicePageData = {
   audience: {
     title: "Pentru cine este serviciul",
     intro:
-      "Oferim servicii complete de dezvoltare aplicații mobile, de la analiza produsului până la publicarea în store-uri. Ne adresăm companiilor care vor să lanseze o aplicație de la zero, dar și firmelor care au deja o idee, un prototip sau un sistem intern și vor să îl transforme într-un produs mobil performant.",
+      "Oferim servicii complete de dezvoltare aplicații mobile, de la analiza produsului până la publicarea în App Store și Google Play. Ne adresăm companiilor care vor să lanseze o aplicație de la zero, dar și firmelor care au deja o idee, un prototip sau un sistem intern și vor să îl transforme într-un produs mobil performant.",
     items: [
-      "startup-uri care vor să valideze rapid o idee printr-un MVP",
+      "startup-uri care vor să valideze rapid o idee printr-o primă versiune (MVP)",
       "companii care au nevoie de digitalizarea proceselor interne",
       "afaceri care vor o aplicație pentru clienți, comenzi, rezervări sau plăți",
       "branduri care vor să își extindă prezența digitală prin iOS și Android",
-      "firme care au nevoie de integrare între aplicație, backend, panou de administrare și alte sisteme externe",
+      "firme care au nevoie de integrare între aplicație, sistem backend, panou de administrare și alte sisteme externe",
     ],
     outro:
       "Punem accent pe claritate, funcționalitate și rezultate concrete. Nu încărcăm produsul inutil din prima etapă, ci definim ce este cu adevărat necesar pentru lansare.",
@@ -102,7 +102,7 @@ export const mobileAppsServicePageData = {
       {
         title: "Aplicații interne pentru companii",
         description:
-          "Pentru gestionarea echipelor, taskurilor, locațiilor, intervențiilor, rapoartelor sau altor procese operaționale.",
+        "Pentru gestionarea echipelor, sarcinilor, locațiilor, intervențiilor, rapoartelor sau altor procese operaționale.",
       },
       {
         title: "Aplicații de marketplace sau servicii",
@@ -124,7 +124,7 @@ export const mobileAppsServicePageData = {
       {
         title: "Dezvoltare cross-platform",
         description:
-          "Pentru multe proiecte, dezvoltarea cross-platform este varianta optimă. Permite lansarea mai rapidă pe ambele platforme și reduce costurile de dezvoltare și mentenanță. Este o alegere foarte bună pentru MVP-uri și pentru aplicații mobile comerciale care trebuie lansate eficient.",
+          "Pentru multe proiecte, dezvoltarea cross-platform este varianta optimă. Permite lansarea mai rapidă pe ambele platforme și reduce costurile de dezvoltare și mentenanță. Este o alegere foarte bună pentru prima versiune a produsului și pentru aplicații mobile comerciale care trebuie lansate eficient.",
       },
     ],
     outro:
@@ -137,30 +137,30 @@ export const mobileAppsServicePageData = {
     steps: [
       {
         id: "discovery",
-        title: "Discovery și definirea MVP-ului",
+        title: "Analiză și definirea primei versiuni",
         subtitle: "Business, public țintă, fluxuri, funcționalități esențiale.",
         description:
           "Începem prin înțelegerea afacerii, a publicului țintă și a scopului aplicației. Definim fluxurile principale, funcționalitățile esențiale și ceea ce trebuie să existe în prima versiune pentru a livra valoare reală.",
         duration: "Etapa 1",
-        tags: ["Discovery", "MVP", "Prioritizare"],
+        tags: ["Analiză", "Prima versiune", "Prioritizare"],
       },
       {
         id: "ux-ui",
-        title: "UX/UI Design",
+        title: "Design UX/UI",
         subtitle: "Structură ecrane, navigare, interfață intuitivă.",
         description:
           "Construim structura ecranelor, logica de navigare și interfața aplicației. Punem accent pe claritate, viteză de utilizare și o experiență intuitivă pentru utilizator.",
         duration: "Etapa 2",
-        tags: ["UX", "UI", "Prototype"],
+        tags: ["UX", "UI", "Prototip"],
       },
       {
         id: "development",
-        title: "Dezvoltare aplicație + backend",
-        subtitle: "Aplicație mobilă, backend, bază de date, integrări.",
+        title: "Dezvoltare aplicație + sistem backend",
+        subtitle: "Aplicație mobilă, sistem backend, bază de date, integrări.",
         description:
-          "Implementăm aplicația mobilă și, dacă este nevoie, backend-ul, baza de date, autentificarea, panoul de administrare și integrările externe.",
+          "Implementăm aplicația mobilă și, dacă este nevoie, sistemul backend, baza de date, autentificarea, panoul de administrare și integrările externe.",
         duration: "Etapa 3",
-        tags: ["Mobile App", "Backend", "Integrări"],
+        tags: ["Aplicație mobilă", "Sistem backend", "Integrări"],
       },
       {
         id: "testing",
@@ -173,12 +173,12 @@ export const mobileAppsServicePageData = {
       },
       {
         id: "publishing",
-        title: "Publicare în store-uri",
+        title: "Publicare în App Store și Google Play",
         subtitle: "Pregătire App Store și Google Play.",
         description:
           "Pregătim toate materialele necesare pentru App Store și Google Play și gestionăm procesul de listare.",
         duration: "Etapa 5",
-        tags: ["App Store", "Google Play", "Publishing"],
+        tags: ["App Store", "Google Play", "Publicare"],
       },
       {
         id: "growth",
@@ -198,13 +198,13 @@ export const mobileAppsServicePageData = {
       {
         title: "Strategie & design",
         items: [
-          "analiză de produs și definire MVP",
+          "analiză de produs și definire a primei versiuni",
           "structură funcțională și user flows",
           "design UX/UI pentru mobil",
         ],
       },
       {
-        title: "Development",
+        title: "Dezvoltare",
         items: [
           "dezvoltare aplicație iOS și Android",
           "autentificare și conturi de utilizator",
@@ -213,9 +213,9 @@ export const mobileAppsServicePageData = {
         ],
       },
       {
-        title: "Backend & integrări",
+        title: "Backend și integrări",
         items: [
-          "backend și API",
+          "sistem backend și API",
           "integrare cu servicii externe",
           "panou de administrare",
           "analytics și crash reporting",
@@ -225,7 +225,7 @@ export const mobileAppsServicePageData = {
         title: "Lansare & mentenanță",
         items: [
           "testare și optimizare",
-          "publicare în store-uri",
+          "publicare în App Store și Google Play",
           "suport și mentenanță după lansare",
         ],
       },
@@ -237,21 +237,21 @@ export const mobileAppsServicePageData = {
     title: "Buget și durată estimativă",
     budgetTitle: "Cât costă dezvoltarea unei aplicații mobile?",
     budgetText:
-      "Costul diferă în funcție de complexitate, funcționalități, numărul de platforme și nivelul de integrare necesar. O aplicație simplă, de tip MVP, are un cost diferit față de o aplicație cu plăți, notificări, roluri multiple, administrare și logică complexă în backend.",
-    budgetHighlight: "Proiectele de tip MVP pot porni de la aproximativ 4.000 EUR.",
+      "Costul diferă în funcție de complexitate, funcționalități, numărul de platforme și nivelul de integrare necesar. O aplicație simplă, de tip primă versiune (MVP), are un cost diferit față de o aplicație cu plăți, notificări, roluri multiple, administrare și logică complexă în sistemul backend.",
+    budgetHighlight: "Proiectele de tip primă versiune (MVP) pot porni de la aproximativ 4.000 EUR.",
     budgetFactors: [
       "ce funcționalități sunt esențiale pentru lansare",
       "dacă aplicația va fi nativă sau cross-platform",
-      "dacă este necesar backend personalizat",
+      "dacă este necesar un sistem backend personalizat",
       "dacă există panou de administrare",
       "ce integrări externe sunt necesare",
       "ce nivel de mentenanță este dorit după lansare",
     ],
     durationTitle: "Cât durează dezvoltarea unei aplicații mobile?",
     durationText:
-      "Pentru multe aplicații de tip MVP, un interval realist este de aproximativ 8-10 săptămâni pentru etapele importante: analiză, design, dezvoltare, testare și publicare.",
+      "Pentru multe aplicații de tip primă versiune (MVP), un interval realist este de aproximativ 8-10 săptămâni pentru etapele importante: analiză, design, dezvoltare, testare și publicare.",
     durationNote:
-      "Un proiect mai complex, cu funcționalități avansate, roluri multiple, backend extins sau integrări speciale, poate necesita mai mult timp. Important este că planificăm proiectul etapizat și prioritizăm funcționalitățile esențiale.",
+      "Un proiect mai complex, cu funcționalități avansate, roluri multiple, sistem backend extins sau integrări speciale, poate necesita mai mult timp. Important este că planificăm proiectul etapizat și prioritizăm funcționalitățile esențiale.",
     cta: {
       title: "Vrei o estimare realistă pentru proiectul tău?",
       text:
@@ -265,10 +265,10 @@ export const mobileAppsServicePageData = {
   reasons: {
     title: "De ce să alegi serviciile noastre de dezvoltare aplicații mobile",
     intro:
-      "Lucrăm cu focus pe claritate, eficiență și scalare. Nu tratăm aplicația ca pe un simplu exercițiu de design sau programare, ci ca pe un produs digital care trebuie să susțină o nevoie reală de business.",
+      "Lucrăm cu accent pe claritate, eficiență și scalare. Nu tratăm aplicația ca pe un simplu exercițiu de design sau programare, ci ca pe un produs digital care trebuie să susțină o nevoie reală de business.",
     items: [
       "comunicare clară pe parcursul proiectului",
-      "accent pe MVP și lansare eficientă",
+      "accent pe prima versiune și lansare eficientă",
       "soluții tehnice alese în funcție de obiective, nu din rutină",
       "atenție la experiența utilizatorului",
       "structură gândită pentru creștere ulterioară",
@@ -280,7 +280,7 @@ export const mobileAppsServicePageData = {
   finalCta: {
     title: "Hai să discutăm despre aplicația ta",
     text:
-      "Dacă vrei să lansezi un MVP, să digitalizezi un proces intern sau să construiești un produs mobil complet pentru clienții tăi, te putem ajuta cu o soluție clară și realistă.",
+      "Dacă vrei să lansezi o primă versiune (MVP), să digitalizezi un proces intern sau să construiești un produs mobil complet pentru clienții tăi, te putem ajuta cu o soluție clară și realistă.",
     supporting:
       "Spune-ne ce vrei să obții, care este publicul țintă și ce funcționalități ai în minte, iar noi îți propunem direcția potrivită pentru proiect: tehnologia recomandată, structura de lansare, etapele de lucru și o estimare orientativă de cost.",
     primaryLabel: "Cere ofertă pentru dezvoltare aplicații mobile",
@@ -301,9 +301,9 @@ export const mobileAppsServicePageData = {
         "Da. Putem dezvolta aplicații pentru iOS și Android, fie prin abordare cross-platform, fie nativ, în funcție de cerințele proiectului.",
     },
     {
-      question: "Puteți realiza și backend-ul aplicației?",
+      question: "Puteți realiza și sistemul backend al aplicației?",
       answer:
-        "Da. Putem livra atât aplicația mobilă, cât și backend-ul, baza de date, API-urile, autentificarea și panoul de administrare.",
+        "Da. Putem livra atât aplicația mobilă, cât și sistemul backend, baza de date, API-urile, autentificarea și panoul de administrare.",
     },
     {
       question: "Oferiți și design pentru aplicația mobilă?",
@@ -323,18 +323,18 @@ export const mobileAppsServicePageData = {
   ],
   howToSteps: [
     {
-      name: "Discovery și definirea MVP-ului",
+      name: "Analiză și definirea primei versiuni",
       text: "Înțelegem afacerea, publicul țintă, fluxurile principale și funcționalitățile esențiale pentru lansare.",
       position: 1,
     },
     {
-      name: "UX/UI Design",
-      text: "Construim structura ecranelor, navigarea și interfața aplicației cu focus pe claritate și viteză de utilizare.",
+      name: "Design UX/UI",
+      text: "Construim structura ecranelor, navigarea și interfața aplicației cu accent pe claritate și viteză de utilizare.",
       position: 2,
     },
     {
-      name: "Dezvoltare aplicație + backend",
-      text: "Implementăm aplicația mobilă, backend-ul, baza de date, autentificarea și integrările necesare.",
+      name: "Dezvoltare aplicație + sistem backend",
+      text: "Implementăm aplicația mobilă, sistemul backend, baza de date, autentificarea și integrările necesare.",
       position: 3,
     },
     {
@@ -343,7 +343,7 @@ export const mobileAppsServicePageData = {
       position: 4,
     },
     {
-      name: "Publicare în store-uri",
+      name: "Publicare în App Store și Google Play",
       text: "Pregătim materialele pentru App Store și Google Play și gestionăm procesul de listare.",
       position: 5,
     },
