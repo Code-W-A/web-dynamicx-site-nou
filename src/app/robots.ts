@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/api", "/apps/my-butterfly/legal"],
+        disallow: ["/admin", "/api", "/apps/my-butterfly/legal", "/apps/do-it-now/legal"],
       },
     ],
     sitemap: `${siteURL}/sitemap.xml`,
