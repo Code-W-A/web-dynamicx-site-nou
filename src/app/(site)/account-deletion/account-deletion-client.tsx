@@ -5,7 +5,7 @@ import { FormEvent, useMemo, useState } from "react";
 type Language = "ro" | "en";
 
 type FormState = {
-  app: "my-butterfly";
+  app: "my-butterfly" | "do-it-now";
   email: string;
   name: string;
   reason: string;
@@ -24,7 +24,7 @@ const content = {
       "Dacă dorești ștergerea contului, poți folosi opțiunea din aplicație sau formularul de mai jos.",
     inAppTitle: "Varianta 1: Ștergere din aplicație",
     inAppText:
-      "În aplicație: Settings/Setări → Account/Cont → Delete account / Șterge contul",
+      "În aplicațiile My Butterfly sau DO IT NOW: Settings/Setări → Account/Cont → Delete account / Șterge contul",
     webTitle: "Varianta 2: Cerere pe web",
     webDescription:
       "Dacă nu mai ai acces la aplicație, trimite cererea de ștergere folosind formularul.",
@@ -55,7 +55,7 @@ const content = {
     pageDescription:
       "If you want to delete your account, you can use the in-app option or the web request form below.",
     inAppTitle: "Option 1: Delete from the app",
-    inAppText: "In the app: Settings → Account → Delete account",
+    inAppText: "In My Butterfly or DO IT NOW: Settings → Account → Delete account",
     webTitle: "Option 2: Web request",
     webDescription:
       "If you no longer have access to the app, send an account deletion request using the form.",
@@ -220,6 +220,7 @@ export default function AccountDeletionClient() {
                   required
                 >
                   <option value="my-butterfly">My Butterfly</option>
+                  <option value="do-it-now">DO IT NOW</option>
                 </select>
               </div>
 
