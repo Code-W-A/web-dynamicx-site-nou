@@ -3,14 +3,65 @@
 import { FormEvent, useMemo, useState } from "react";
 
 type Language = "ro" | "en";
+export type AccountDeletionApp =
+  | "my-butterfly"
+  | "do-it-now"
+  | "cristina-zurba-tarot-astrology";
 
 type FormState = {
-  app: "my-butterfly" | "do-it-now";
+  app: AccountDeletionApp;
   email: string;
   name: string;
   reason: string;
   confirmOwnership: boolean;
 };
+
+type AccountDeletionClientProps = {
+  forcedApp?: AccountDeletionApp;
+  showAppSelector?: boolean;
+};
+
+type AppContent = {
+  appName: string;
+  developerName: string;
+  packageName: string;
+  roInAppPath: string;
+  enInAppPath: string;
+};
+
+const appContent: Record<AccountDeletionApp, AppContent> = {
+  "my-butterfly": {
+    appName: "My Butterfly",
+    developerName: "Mobi Tools ROU",
+    packageName: "com.prosoft.mybutterfly",
+    roInAppPath: "Settings/Setări → Account/Cont → Delete account / Șterge contul",
+    enInAppPath: "Settings → Account → Delete account",
+  },
+  "do-it-now": {
+    appName: "DO IT NOW",
+    developerName: "Mobi Tools ROU",
+    packageName: "com.doitnow.zurba",
+    roInAppPath: "Settings/Setări → Account/Cont → Delete account / Șterge contul",
+    enInAppPath: "Settings → Account → Delete account",
+  },
+  "cristina-zurba-tarot-astrology": {
+    appName: "Cristina Zurba Tarot&Astrology",
+    developerName: "Mobi Tools ROU",
+    packageName: "com.cristina.zurba.tarot",
+    roInAppPath: "Settings/Setări → Account/Cont → Delete account / Șterge contul",
+    enInAppPath: "Settings → Account → Delete account",
+  },
+};
+
+function createInitialForm(app: AccountDeletionApp): FormState {
+  return {
+    app,
+    email: "",
+    name: "",
+    reason: "",
+    confirmOwnership: false,
+  };
+}
 
 const supportEmail =
   process.env.NEXT_PUBLIC_SUPPORT_EMAIL?.trim() || "mobitoolsro@gmail.com";
@@ -19,15 +70,17 @@ const content = {
   ro: {
     langRo: "RO",
     langEn: "EN",
-    pageTitle: "Ștergerea contului (Account deletion)",
-    pageDescription:
-      "Dacă dorești ștergerea contului, poți folosi opțiunea din aplicație sau formularul de mai jos.",
-    inAppTitle: "Varianta 1: Ștergere din aplicație",
-    inAppText:
-      "În aplicațiile My Butterfly sau DO IT NOW: Settings/Setări → Account/Cont → Delete account / Șterge contul",
-    webTitle: "Varianta 2: Cerere pe web",
-    webDescription:
-      "Dacă nu mai ai acces la aplicație, trimite cererea de ștergere folosind formularul.",
+    officialLine1:
+      "Aceasta este pagina oficială de ștergere cont pentru {app}, publicată pe Google Play de {developer}.",
+    officialLine2:
+      "Această pagină este găzduită de Web Dynamicx ca website de suport tehnic pentru {developer} și {app}.",
+    officialLine3:
+      "Din această pagină, utilizatorii pot solicita ștergerea contului {app} și a datelor asociate.",
+    howToDeleteTitle: "Cum îți ștergi contul",
+    inAppStepLabel: "1. În aplicație:",
+    onPageStepLabel: "2. Pe această pagină:",
+    onPageStepText: "trimite formularul de ștergere cont de mai jos.",
+    formTitle: "Formular ștergere cont",
     appLabel: "Aplicație",
     emailLabel: "Email",
     nameLabel: "Nume (opțional)",
@@ -37,11 +90,19 @@ const content = {
     submitting: "Se trimite...",
     success:
       "Cererea ta a fost trimisă cu succes. Te vom contacta pe email pentru confirmare, dacă este necesar.",
-    policyTitle: "Politică de procesare",
-    policyText:
-      "Cererea se procesează în max. 10 zile lucrătoare. Ștergem datele asociate contului, cu excepția celor pe care suntem obligați să le păstrăm conform legii (dacă este cazul).",
-    altContactTitle: "Contact alternativ",
-    altContactText: "Dacă preferi, ne poți scrie direct la:",
+    whatDeletedTitle: "Ce se va șterge",
+    whatDeletedText:
+      "Când cererea este procesată, vom șterge contul {app} și datele asociate acelui cont.",
+    retainedDataTitle: "Date care pot fi păstrate",
+    retainedDataText:
+      "Anumite date pot fi păstrate acolo unde este necesar pentru obligații legale, securitate, prevenirea fraudei, soluționarea disputelor sau conformitate de reglementare.",
+    processingTimeTitle: "Timp de procesare",
+    processingTimeText:
+      "Procesăm cererile de ștergere cont în maximum 10 zile lucrătoare.",
+    supportContactTitle: "Contact suport",
+    supportContactText: "Dacă preferi, ne poți contacta și la:",
+    developerTitle: "Developer",
+    packageNameTitle: "Package name",
     errors: {
       emailRequired: "Adresa de email este obligatorie.",
       confirmRequired: "Trebuie să confirmi că ești titularul contului.",
@@ -51,14 +112,17 @@ const content = {
   en: {
     langRo: "RO",
     langEn: "EN",
-    pageTitle: "Account deletion",
-    pageDescription:
-      "If you want to delete your account, you can use the in-app option or the web request form below.",
-    inAppTitle: "Option 1: Delete from the app",
-    inAppText: "In My Butterfly or DO IT NOW: Settings → Account → Delete account",
-    webTitle: "Option 2: Web request",
-    webDescription:
-      "If you no longer have access to the app, send an account deletion request using the form.",
+    officialLine1:
+      "This is the official account deletion page for {app}, published on Google Play by {developer}.",
+    officialLine2:
+      "This page is hosted by Web Dynamicx as the technical support website for {developer} and {app}.",
+    officialLine3:
+      "From this page, users can request deletion of their {app} account and associated data.",
+    howToDeleteTitle: "How to delete your account",
+    inAppStepLabel: "1. In the app:",
+    onPageStepLabel: "2. On this page:",
+    onPageStepText: "submit the account deletion form below.",
+    formTitle: "Account deletion form",
     appLabel: "Application",
     emailLabel: "Email",
     nameLabel: "Name (optional)",
@@ -68,11 +132,19 @@ const content = {
     submitting: "Sending...",
     success:
       "Your request was submitted successfully. We will contact you by email for confirmation if needed.",
-    policyTitle: "Processing policy",
-    policyText:
-      "The request is processed in up to 10 business days. We delete account-related data, except data we are legally required to retain (if applicable).",
-    altContactTitle: "Alternative contact",
-    altContactText: "If you prefer, you can email us directly at:",
+    whatDeletedTitle: "What will be deleted",
+    whatDeletedText:
+      "When your request is processed, we will delete your {app} account and the data associated with that account.",
+    retainedDataTitle: "Data that may be retained",
+    retainedDataText:
+      "Certain data may be retained where required for legal obligations, security, fraud prevention, dispute resolution, or regulatory compliance.",
+    processingTimeTitle: "Processing time",
+    processingTimeText:
+      "We process account deletion requests within 10 business days.",
+    supportContactTitle: "Support contact",
+    supportContactText: "If you prefer, you can also contact us at:",
+    developerTitle: "Developer",
+    packageNameTitle: "Package name",
     errors: {
       emailRequired: "Email is required.",
       confirmRequired: "You must confirm that you are the account owner.",
@@ -81,22 +153,45 @@ const content = {
   },
 } as const;
 
-const initialForm: FormState = {
-  app: "my-butterfly",
-  email: "",
-  name: "",
-  reason: "",
-  confirmOwnership: false,
-};
+function replaceVars(
+  value: string,
+  vars: { app: string; developer: string },
+): string {
+  return value
+    .replace("{app}", vars.app)
+    .replace("{developer}", vars.developer);
+}
 
-export default function AccountDeletionClient() {
+export default function AccountDeletionClient({
+  forcedApp,
+  showAppSelector = true,
+}: AccountDeletionClientProps) {
   const [language, setLanguage] = useState<Language>("ro");
-  const [form, setForm] = useState<FormState>(initialForm);
+  const [form, setForm] = useState<FormState>(
+    createInitialForm(forcedApp || "my-butterfly"),
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
   const t = useMemo(() => content[language], [language]);
+  const selectedApp = forcedApp || form.app;
+  const selectedAppConfig = appContent[selectedApp];
+
+  const replaceData = {
+    app: selectedAppConfig.appName,
+    developer: selectedAppConfig.developerName,
+  };
+
+  const inAppPath =
+    language === "ro"
+      ? selectedAppConfig.roInAppPath
+      : selectedAppConfig.enInAppPath;
+
+  const officialLine1 = replaceVars(t.officialLine1, replaceData);
+  const officialLine2 = replaceVars(t.officialLine2, replaceData);
+  const officialLine3 = replaceVars(t.officialLine3, replaceData);
+  const whatDeletedText = replaceVars(t.whatDeletedText, replaceData);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -137,7 +232,7 @@ export default function AccountDeletionClient() {
       }
 
       setSuccessMessage(t.success);
-      setForm(initialForm);
+      setForm(createInitialForm(forcedApp || selectedApp));
     } catch (error: any) {
       setErrorMessage(error?.message || t.errors.generic);
     } finally {
@@ -177,52 +272,69 @@ export default function AccountDeletionClient() {
           </div>
 
           <h1 className="mb-3 text-3xl font-bold text-black sm:text-4xl">
-            {t.pageTitle}
+            {selectedAppConfig.appName} – Account Deletion
           </h1>
-          <p className="mb-8 text-base leading-relaxed text-body-color">
-            {t.pageDescription}
+          <p className="mb-2 text-xl font-semibold text-primary">
+            {t.developerTitle}: {selectedAppConfig.developerName}
           </p>
+
+          <div className="mb-8 space-y-3 text-base leading-relaxed text-body-color">
+            <p>{officialLine1}</p>
+            <p>{officialLine2}</p>
+            <p>{officialLine3}</p>
+          </div>
 
           <div className="mb-8 rounded-xs border border-stroke bg-[#fafbff] p-6">
             <h2 className="mb-3 text-xl font-semibold text-black">
-              {t.inAppTitle}
+              {t.howToDeleteTitle}
             </h2>
-            <p className="text-base leading-relaxed text-body-color">
-              {t.inAppText}
-            </p>
+            <ol className="space-y-3 text-base leading-relaxed text-body-color">
+              <li>
+                <span className="font-semibold text-black">{t.inAppStepLabel}</span>{" "}
+                {inAppPath}
+              </li>
+              <li>
+                <span className="font-semibold text-black">{t.onPageStepLabel}</span>{" "}
+                {t.onPageStepText}
+              </li>
+            </ol>
           </div>
 
           <div className="rounded-xs border border-stroke p-6 sm:p-8">
-            <h2 className="mb-3 text-xl font-semibold text-black">{t.webTitle}</h2>
-            <p className="mb-6 text-base leading-relaxed text-body-color">
-              {t.webDescription}
-            </p>
+            <h2 className="mb-6 text-xl font-semibold text-black">{t.formTitle}</h2>
 
             <form onSubmit={handleSubmit} noValidate>
-              <div className="mb-6">
-                <label
-                  htmlFor="app"
-                  className="mb-2 block text-sm font-semibold text-black"
-                >
-                  {t.appLabel}
-                </label>
-                <select
-                  id="app"
-                  name="app"
-                  className="input-field"
-                  value={form.app}
-                  onChange={(event) =>
-                    setForm({
-                      ...form,
-                      app: event.target.value as FormState["app"],
-                    })
-                  }
-                  required
-                >
-                  <option value="my-butterfly">My Butterfly</option>
-                  <option value="do-it-now">DO IT NOW</option>
-                </select>
-              </div>
+              {showAppSelector ? (
+                <div className="mb-6">
+                  <label
+                    htmlFor="app"
+                    className="mb-2 block text-sm font-semibold text-black"
+                  >
+                    {t.appLabel}
+                  </label>
+                  <select
+                    id="app"
+                    name="app"
+                    className="input-field"
+                    value={form.app}
+                    onChange={(event) =>
+                      setForm({
+                        ...form,
+                        app: event.target.value as FormState["app"],
+                      })
+                    }
+                    required
+                  >
+                    <option value="my-butterfly">My Butterfly</option>
+                    <option value="do-it-now">DO IT NOW</option>
+                    <option value="cristina-zurba-tarot-astrology">
+                      Cristina Zurba Tarot&Astrology
+                    </option>
+                  </select>
+                </div>
+              ) : (
+                <input type="hidden" name="app" value={selectedApp} />
+              )}
 
               <div className="mb-6">
                 <label
@@ -237,9 +349,7 @@ export default function AccountDeletionClient() {
                   name="email"
                   className="input-field"
                   value={form.email}
-                  onChange={(event) =>
-                    setForm({ ...form, email: event.target.value })
-                  }
+                  onChange={(event) => setForm({ ...form, email: event.target.value })}
                   required
                 />
               </div>
@@ -257,9 +367,7 @@ export default function AccountDeletionClient() {
                   name="name"
                   className="input-field"
                   value={form.name}
-                  onChange={(event) =>
-                    setForm({ ...form, name: event.target.value })
-                  }
+                  onChange={(event) => setForm({ ...form, name: event.target.value })}
                 />
               </div>
 
@@ -276,9 +384,7 @@ export default function AccountDeletionClient() {
                   rows={4}
                   className="input-field resize-none"
                   value={form.reason}
-                  onChange={(event) =>
-                    setForm({ ...form, reason: event.target.value })
-                  }
+                  onChange={(event) => setForm({ ...form, reason: event.target.value })}
                 />
               </div>
 
@@ -313,10 +419,7 @@ export default function AccountDeletionClient() {
               ) : null}
 
               {successMessage ? (
-                <p
-                  role="status"
-                  className="mb-4 text-sm font-medium text-green-700"
-                >
+                <p role="status" className="mb-4 text-sm font-medium text-green-700">
                   {successMessage}
                 </p>
               ) : null}
@@ -331,17 +434,41 @@ export default function AccountDeletionClient() {
             </form>
           </div>
 
-          <div className="mt-8 rounded-xs border border-stroke bg-[#fafbff] p-6">
-            <h2 className="mb-3 text-xl font-semibold text-black">{t.policyTitle}</h2>
-            <p className="text-base leading-relaxed text-body-color">{t.policyText}</p>
+          <div className="mt-8 space-y-6">
+            <div className="rounded-xs border border-stroke bg-[#fafbff] p-6">
+              <h2 className="mb-3 text-xl font-semibold text-black">
+                {t.whatDeletedTitle}
+              </h2>
+              <p className="text-base leading-relaxed text-body-color">
+                {whatDeletedText}
+              </p>
+            </div>
+
+            <div className="rounded-xs border border-stroke bg-[#fafbff] p-6">
+              <h2 className="mb-3 text-xl font-semibold text-black">
+                {t.retainedDataTitle}
+              </h2>
+              <p className="text-base leading-relaxed text-body-color">
+                {t.retainedDataText}
+              </p>
+            </div>
+
+            <div className="rounded-xs border border-stroke bg-[#fafbff] p-6">
+              <h2 className="mb-3 text-xl font-semibold text-black">
+                {t.processingTimeTitle}
+              </h2>
+              <p className="text-base leading-relaxed text-body-color">
+                {t.processingTimeText}
+              </p>
+            </div>
           </div>
 
           <div className="mt-6">
             <h2 className="mb-2 text-xl font-semibold text-black">
-              {t.altContactTitle}
+              {t.supportContactTitle}
             </h2>
             <p className="text-base text-body-color">
-              {t.altContactText}{" "}
+              {t.supportContactText}{" "}
               <a
                 href={`mailto:${supportEmail}`}
                 className="font-semibold text-primary underline-offset-2 hover:underline"
@@ -349,6 +476,25 @@ export default function AccountDeletionClient() {
                 {supportEmail}
               </a>
             </p>
+          </div>
+
+          <div className="mt-6 rounded-xs border border-stroke p-6">
+            <div className="mb-4">
+              <p className="text-sm font-semibold uppercase tracking-wide text-body-color">
+                {t.developerTitle}
+              </p>
+              <p className="text-lg font-semibold text-black">
+                {selectedAppConfig.developerName}
+              </p>
+            </div>
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-body-color">
+                {t.packageNameTitle}
+              </p>
+              <p className="text-lg font-semibold text-black">
+                {selectedAppConfig.packageName}
+              </p>
+            </div>
           </div>
         </div>
       </div>

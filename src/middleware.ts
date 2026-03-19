@@ -2,7 +2,11 @@ import nextAuthMiddleware from "next-auth/middleware";
 import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
 
 function isAccountDeletionPath(pathname: string) {
-  return pathname === "/account-deletion" || pathname === "/account-deletion/";
+  return (
+    pathname === "/account-deletion" ||
+    pathname === "/account-deletion/" ||
+    pathname.startsWith("/account-deletion/")
+  );
 }
 
 function isMobileLeadPath(pathname: string) {
@@ -49,7 +53,7 @@ export const config = {
     "/other/:path*",
     "/help/:path*",
     "/account-deletion",
-    "/account-deletion/",
+    "/account-deletion/:path*",
     "/leads/dezvoltare-aplicatii-mobile",
     "/leads/dezvoltare-aplicatii-mobile/",
     "/leads/creare-site-web",

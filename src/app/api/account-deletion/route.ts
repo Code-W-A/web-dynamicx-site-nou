@@ -4,7 +4,11 @@ import { sendEmail } from "@/app/libs/email";
 type Language = "ro" | "en";
 
 const ACCOUNT_DELETION_DESTINATION = "mobitoolsro@gmail.com";
-const ALLOWED_APPS = new Set(["my-butterfly", "do-it-now"]);
+const ALLOWED_APPS = new Set([
+  "my-butterfly",
+  "do-it-now",
+  "cristina-zurba-tarot-astrology",
+]);
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
