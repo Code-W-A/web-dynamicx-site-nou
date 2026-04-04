@@ -199,6 +199,10 @@ function PreviewCard({
   );
 }
 
+function normalizeSanityDocumentId(value: string | undefined) {
+  return (value ?? "").trim().replace(/^drafts\./, "");
+}
+
 export default function PostMainImageInput(props: ImageInputProps) {
   const fileInputId = useId();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -210,7 +214,7 @@ export default function PostMainImageInput(props: ImageInputProps) {
   const ogImage = (useFormValue(["ogImage"]) as ImageFieldValue | undefined) ?? undefined;
   const imageVariantMainAssetRef =
     ((useFormValue(["imageVariantMainAssetRef"]) as string | undefined) ?? "").trim();
-  const activeDocumentId = documentId || "__missing__";
+  const activeDocumentId = normalizeSanityDocumentId(documentId) || "__missing__";
   const documentOperations = useDocumentOperation(activeDocumentId, documentType);
   const currentValue = (props.value as ImageFieldValue | undefined) ?? undefined;
 
