@@ -1,6 +1,7 @@
 import { TOPIC_CLUSTER_ENTRIES } from "../../config/blog-topic-clusters";
 import PostEditorChecklist from "../components/post-editor-checklist";
 import PostMainImageInput from "../components/post-main-image-input";
+import { collectPostBlockingIssues, formatPostBlockingIssues } from "../post-validation";
 
 const CATEGORY_OPTIONS = Array.from(
   new Set(TOPIC_CLUSTER_ENTRIES.flatMap((entry) => entry.match.categories)),
@@ -12,14 +13,6 @@ const TOPIC_CLUSTER_OPTIONS = Array.from(
 
 function hasWhitespace(value?: string) {
   return typeof value === "string" && value.includes(" ");
-}
-
-function collectBodyImageAltIssues(body: unknown) {
-  if (!Array.isArray(body)) {
-    return false;
-  }
-
-  return body.some((block) => block && typeof block === "object" && (block as { _type?: string })._type === "image" && !((block as { alt?: string }).alt ?? "").trim());
 }
 
 function resolveCanonicalValidationIssue(value: string | undefined, document: any) {
@@ -43,39 +36,6 @@ function resolveCanonicalValidationIssue(value: string | undefined, document: an
   }
 }
 
-function collectPostBlockingIssues(document: any) {
-  const issues: string[] = [];
-  const currentMainImageRef = document?.mainImage?.asset?._ref?.trim();
-  const generatedMainImageRef = document?.imageVariantMainAssetRef?.trim();
-
-  if (!document?.title?.trim()) issues.push("Title");
-  if (!document?.metaDescription?.trim()) issues.push("Meta Description");
-  if (!document?.excerpt?.trim()) issues.push("Excerpt");
-  if (!document?.category?.trim()) issues.push("Category");
-  if (!document?.topicCluster?.trim()) issues.push("Topic cluster");
-  if (!document?.slug?.current?.trim()) issues.push("Slug");
-  if (!document?.author?._ref) issues.push("Author");
-  if (!document?.mainImage?.asset?._ref) issues.push("Main image");
-  if (!document?.mainImage?.alt?.trim()) issues.push("Main image alt");
-  if (!document?.ogImage?.asset?._ref) issues.push("Open Graph image");
-  if (!document?.ogImage?.alt?.trim()) issues.push("Open Graph image alt");
-  if (currentMainImageRef && generatedMainImageRef && currentMainImageRef !== generatedMainImageRef) {
-    issues.push("Regenerare imagini dupa schimbarea Main image");
-  }
-  if (!document?.publishedAt) issues.push("Published at");
-  if (!Array.isArray(document?.body) || document.body.length === 0) issues.push("Body");
-  if (collectBodyImageAltIssues(document?.body)) issues.push("Alt text pentru toate imaginile din Body");
-
-  if (document?.category && document?.topicCluster) {
-    const matchingEntry = TOPIC_CLUSTER_ENTRIES.find((entry) => entry.match.categories.includes(document.category));
-    if (matchingEntry && !matchingEntry.match.topicClusters.includes(document.topicCluster)) {
-      issues.push(`Topic cluster compatibil cu category "${document.category}"`);
-    }
-  }
-
-  return issues;
-}
-
 const post = {
   name: "post",
   title: "Post",
@@ -87,7 +47,7 @@ const post = {
         return true;
       }
 
-      return `Nu poti publica articolul pana nu completezi sau corectezi: ${issues.join(", ")}.`;
+      return `Nu poti publica articolul pana nu completezi sau corectezi: ${formatPostBlockingIssues(issues)}.`;
     }),
   fields: [
     {
