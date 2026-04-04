@@ -14,7 +14,7 @@ export default function Service() {
           <div className="w-full px-4 lg:w-8/12">
             <SectionTitle
               mainTitle="CE FACEM"
-              title="Creare site de prezentare, creare magazin online, SEO & mentenanță de site"
+              title="Servicii digitale pentru website-uri, comerț online și creștere organică"
               color="white"
               className="max-w-[625px] mb-[50px]"
             />

@@ -10,14 +10,14 @@ const siteName = process.env.SITE_NAME || "Web Dynamicx";
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
 
 const portfolioMetaDescription =
-  "Proiecte web: creare site, magazin online si web design. Studii de caz separate pentru aplicații mobile publicate în Google Play. Exemple reale si tehnologii folosite.";
+  "Studii de caz web pentru creare site, magazin online, web design si SEO. Proiecte reale cu pagini interne dedicate pentru servicii si portofoliu.";
 
 export const metadata: Metadata = {
-  title: `Portofoliu web design si creare site | ${siteName}`,
+  title: `Portofoliu web - studii de caz pentru site-uri si magazine online | ${siteName}`,
   description: portfolioMetaDescription,
   alternates: { canonical: `${siteURL}/portofoliu` },
   openGraph: {
-    title: `Portofoliu web design si creare site | ${siteName}`,
+    title: `Portofoliu web - studii de caz pentru site-uri si magazine online | ${siteName}`,
     description: portfolioMetaDescription,
     url: `${siteURL}/portofoliu`,
     siteName: siteName,
@@ -26,17 +26,70 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: `Portofoliu web design si creare site | ${siteName}`,
+    title: `Portofoliu web - studii de caz pentru site-uri si magazine online | ${siteName}`,
     description: portfolioMetaDescription,
   },
 };
 
 export default function PortfolioPage() {
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Acasă",
+        item: `${siteURL}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Portofoliu",
+        item: `${siteURL}/portofoliu`,
+      },
+    ],
+  };
+
+  const portfolioItemListLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: portfolioData.length,
+    itemListElement: portfolioData.map((portfolio, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${siteURL}/portofoliu/${portfolio.slug}`,
+      name: portfolio.title,
+      item: {
+        "@type": "CreativeWork",
+        name: portfolio.title,
+        url: `${siteURL}/portofoliu/${portfolio.slug}`,
+        description: portfolio.metaDescription,
+        image: portfolio.image ? `${siteURL}${portfolio.image}` : undefined,
+      },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        // @ts-ignore
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // @ts-ignore
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioItemListLd) }}
+      />
       <PageTitle
         pageTitle="Portofoliu Web Dynamicx"
-        pageDescription="Vezi proiecte de creare site web, magazine online si aplicatii mobile. Web design modern, viteza si SEO."
+        pageDescription="Studii de caz web pentru site-uri de prezentare, magazine online si proiecte orientate pe SEO, plus o zonă separată pentru aplicațiile mobile."
+        breadcrumbs={[
+          { name: "Acasă", href: "/" },
+          { name: "Portofoliu", current: true },
+        ]}
       />
 
       <section className="border-b border-slate-200/80 bg-white py-12 sm:py-14">
@@ -63,7 +116,10 @@ export default function PortfolioPage() {
         <div className="container">
           <div className="portfolio-container flex justify-center">
             <div className="w-full px-4 xl:w-10/12">
-              <h2 className="mb-10 text-center text-2xl font-bold text-black">Site-uri și magazine online</h2>
+              <h2 className="mb-4 text-center text-2xl font-bold text-black">Studii de caz web</h2>
+              <p className="mx-auto mb-10 max-w-3xl text-center text-base leading-8 text-slate-600">
+                Fiecare proiect are acum pagină internă proprie, ca să poți vedea contextul, tipul de business și serviciile pe care le susține în ecosistemul SEO al site-ului.
+              </p>
               <div className="grid gap-8 md:grid-cols-2">
                 {portfolioData.map((portfolio) => (
                   <SinglePortfolio key={portfolio?.id} portfolio={portfolio} />

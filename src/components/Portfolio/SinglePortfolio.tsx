@@ -1,9 +1,12 @@
 "use client";
 import { Portfolio } from "@/types/portfolio";
+import {
+  getPortfolioCaseStudyHref,
+  getPrimaryPortfolioService,
+} from "@/static-data/portfolio";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useMemo } from "react";
-import WebsitePreview from "./WebsitePreview";
 
 import dynamic from "next/dynamic";
 
@@ -18,23 +21,17 @@ export default function SinglePortfolio({
   );
   const [open, setOpen] = useState<boolean>(false);
 
-  const relatedService = useMemo(() => {
-    const tags = (portfolio.tags || []).map((t) => t.toLowerCase());
-    if (tags.includes("marketing")) return { href: "/servicii/optimizare-seo", label: "optimizare SEO site" };
-    if (tags.includes("hospitality") || tags.includes("ecommerce") || tags.includes("magazin")) return { href: "/servicii/creare-magazin-online", label: "creare magazin online" };
-    if (tags.includes("content")) return { href: "/servicii/web-design", label: "servicii webdesign" };
-    if (tags.includes("web design") || tags.includes("premium") || tags.includes("b2b")) return { href: "/servicii/creare-site-prezentare", label: "creare site de prezentare" };
-    return { href: "/servicii/creare-site-web", label: "creare site web" };
-  }, [portfolio.tags]);
+  const relatedService = useMemo(() => getPrimaryPortfolioService(portfolio), [portfolio]);
+  const caseStudyHref = useMemo(() => getPortfolioCaseStudyHref(portfolio.slug), [portfolio.slug]);
 
   return (
     <>
-      <div className="mb-4">
+      <article id={portfolio.slug} className="mb-4 scroll-mt-28">
         {/* Show website preview if liveUrl exists, otherwise show image */}
         <div className="group shadow-service relative mb-8 overflow-hidden rounded-md bg-[#F8F9FF] aspect-[2940/1414]">
           <Image
             src={portfolio?.image}
-            alt={portfolio?.title ? `Proiect portofoliu: ${portfolio.title}` : "Proiect portofoliu"}
+            alt={portfolio?.imageAlt || (portfolio?.title ? `Proiect portofoliu: ${portfolio.title}` : "Proiect portofoliu")}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
             className="object-contain object-center bg-white"
@@ -77,7 +74,7 @@ export default function SinglePortfolio({
         </div>
         <h3 className="mt-6">
           <Link
-            href={`/portofoliu`}
+            href={caseStudyHref}
             className="hover:text-primary mb-3 inline-block text-xl font-semibold text-black"
           >
             {portfolio?.title}
@@ -87,36 +84,42 @@ export default function SinglePortfolio({
           {portfolio?.sortDescription}
         </p>
         
-        {/* Vezi proiect button */}
-        <div className="mt-4">
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <Link
+            href={caseStudyHref}
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-primary/90"
+          >
+            Vezi studiul de caz
+          </Link>
           {portfolio?.liveUrl ? (
             <a
               href={portfolio.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition-colors duration-200 hover:border-primary/30 hover:text-primary"
             >
-              Vezi proiect ↗
+              Vezi site-ul live ↗
             </a>
           ) : (
             <button
               onClick={() => setOpen(true)}
-              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition-colors duration-200 hover:border-primary/30 hover:text-primary"
             >
-              Vezi proiect
+              Vezi proiectul
             </button>
           )}
         </div>
         
-        <div className="mt-3 text-sm text-gray-600">
-          <span className="mr-1">Vezi serviciul relevant:</span>
-          <Link href={relatedService.href} className="text-primary underline">
-            {relatedService.label}
-          </Link>
-        </div>
-      </div>
+        {relatedService ? (
+          <div className="mt-3 text-sm text-gray-600">
+            <span className="mr-1">Serviciu relevant:</span>
+            <Link href={relatedService.href} className="text-primary underline">
+              {relatedService.label}
+            </Link>
+          </div>
+        ) : null}
+      </article>
 
-   
     </>
   );
 }

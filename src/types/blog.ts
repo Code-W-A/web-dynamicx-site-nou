@@ -1,8 +1,20 @@
 import { PortableTextBlock } from "sanity";
 
+export type SanityImageDimensions = {
+  width?: number;
+  height?: number;
+  aspectRatio?: number;
+};
+
 export type SanityImage = {
   alt?: string;
   caption?: string;
+  asset?: {
+    _ref?: string;
+    _type?: string;
+    [key: string]: unknown;
+  };
+  dimensions?: SanityImageDimensions;
   [key: string]: unknown;
 };
 
@@ -27,6 +39,7 @@ export type BlogRelatedPostCard = {
   metaDescription?: string;
   metadata?: string;
   mainImage?: SanityImage;
+  ogImage?: SanityImage;
   publishedAt?: string;
   category?: string;
   topicCluster?: string;
@@ -41,7 +54,11 @@ export type BlogArticleTeaser = {
   excerpt?: string;
   metaDescription?: string;
   metadata?: string;
+  canonicalUrl?: string;
+  mainImage?: SanityImage;
+  ogImage?: SanityImage;
   publishedAt?: string;
+  _updatedAt?: string;
   bodyPreview?: PortableTextBlock[];
 };
 
@@ -49,10 +66,24 @@ export type BlogSitemapEntry = {
   slug?: { current?: string };
   publishedAt?: string;
   _updatedAt?: string;
+  category?: string;
+  topicCluster?: string;
+  tags?: string[];
+};
+
+export type BlogTagDetail = {
+  _id?: string;
+  name: string;
+  slug?: { current?: string };
+  image?: SanityImage;
+  title?: string;
+  description?: string;
+  indexable?: boolean;
+  minimumPostCountToIndex?: number;
 };
 
 export type Blog = {
-  _id: number;
+  _id?: string | number;
   title: string;
   slug?: any;
   metadata?: string;
@@ -70,6 +101,7 @@ export type Blog = {
   body?: PortableTextBlock[];
   bodyPreview?: PortableTextBlock[];
   mainImage?: SanityImage;
+  ogImage?: SanityImage;
   author?: Author;
   tags?: string[];
   publishedAt?: string;

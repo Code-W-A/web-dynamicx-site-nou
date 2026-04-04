@@ -17,12 +17,12 @@ export default function Hero({
 }: HeroProps) {
   const defaultHeadline = (
     <>
-     <span style={{ color: '#496cf6' }}>Web Dynamicx</span> — Servicii web design și dezvoltare web — site-uri rapide, optimizate SEO
+      <span style={{ color: "#496cf6" }}>Web Dynamicx</span> — agenție web pentru website-uri clare, rapide și pregătite pentru creștere
     </>
   );
 
   const defaultDescription =
-    "Realizăm site-uri de prezentare și magazine online cu optimizare SEO, ca să fii ușor de găsit în Google și să convertești mai bine. Asigurăm mentenanță de site și promovare online.";
+    "Construim website-uri și ecosisteme digitale cu arhitectură clară, experiență bună și bază SEO solidă. De aici poți intra în portofoliu sau în paginile de servicii dedicate, în funcție de ce cauți.";
 
   return (
     <div
@@ -45,15 +45,15 @@ export default function Hero({
                     href={primaryCtaHref}
                     className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-lg px-10 py-4 text-center text-base font-normal text-white lg:px-8 xl:px-10"
                   >
-                    Vezi portofoliu
+                    {primaryCtaLabel}
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/servicii/creare-site-prezentare"
+                    href="/servicii"
                     className="text-primary hover:text-primary/80 inline-flex items-center justify-center rounded-lg px-2 py-1 text-center text-base font-medium underline"
                   >
-                    Creare site de prezentare
+                    Explorează serviciile
                   </Link>
                 </li>
                 {/* <li className="leading-none">

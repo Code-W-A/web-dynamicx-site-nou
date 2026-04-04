@@ -1,4 +1,6 @@
 import { TOPIC_CLUSTER_ENTRIES } from "../../config/blog-topic-clusters";
+import PostEditorChecklist from "../components/post-editor-checklist";
+import PostMainImageInput from "../components/post-main-image-input";
 
 const CATEGORY_OPTIONS = Array.from(
   new Set(TOPIC_CLUSTER_ENTRIES.flatMap((entry) => entry.match.categories)),
@@ -8,11 +10,95 @@ const TOPIC_CLUSTER_OPTIONS = Array.from(
   new Set(TOPIC_CLUSTER_ENTRIES.flatMap((entry) => entry.match.topicClusters)),
 ).sort();
 
+function hasWhitespace(value?: string) {
+  return typeof value === "string" && value.includes(" ");
+}
+
+function collectBodyImageAltIssues(body: unknown) {
+  if (!Array.isArray(body)) {
+    return false;
+  }
+
+  return body.some((block) => block && typeof block === "object" && (block as { _type?: string })._type === "image" && !((block as { alt?: string }).alt ?? "").trim());
+}
+
+function resolveCanonicalValidationIssue(value: string | undefined, document: any) {
+  if (!value?.trim()) {
+    return true;
+  }
+
+  const slug = document?.slug?.current?.trim();
+  if (!slug) {
+    return "Completează mai întâi slug-ul articolului.";
+  }
+
+  try {
+    const parsed = new URL(value.trim());
+    const hasExactCanonical = parsed.hostname === "www.webdynamicx.ro" && parsed.pathname === `/blog/${slug}` && !parsed.search && !parsed.hash;
+    return hasExactCanonical
+      ? true
+      : `Canonical URL trebuie să fie exact https://www.webdynamicx.ro/blog/${slug}`;
+  } catch {
+    return "Introduce un URL valid";
+  }
+}
+
+function collectPostBlockingIssues(document: any) {
+  const issues: string[] = [];
+  const currentMainImageRef = document?.mainImage?.asset?._ref?.trim();
+  const generatedMainImageRef = document?.imageVariantMainAssetRef?.trim();
+
+  if (!document?.title?.trim()) issues.push("Title");
+  if (!document?.metaDescription?.trim()) issues.push("Meta Description");
+  if (!document?.excerpt?.trim()) issues.push("Excerpt");
+  if (!document?.category?.trim()) issues.push("Category");
+  if (!document?.topicCluster?.trim()) issues.push("Topic cluster");
+  if (!document?.slug?.current?.trim()) issues.push("Slug");
+  if (!document?.author?._ref) issues.push("Author");
+  if (!document?.mainImage?.asset?._ref) issues.push("Main image");
+  if (!document?.mainImage?.alt?.trim()) issues.push("Main image alt");
+  if (!document?.ogImage?.asset?._ref) issues.push("Open Graph image");
+  if (!document?.ogImage?.alt?.trim()) issues.push("Open Graph image alt");
+  if (currentMainImageRef && generatedMainImageRef && currentMainImageRef !== generatedMainImageRef) {
+    issues.push("Regenerare imagini dupa schimbarea Main image");
+  }
+  if (!document?.publishedAt) issues.push("Published at");
+  if (!Array.isArray(document?.body) || document.body.length === 0) issues.push("Body");
+  if (collectBodyImageAltIssues(document?.body)) issues.push("Alt text pentru toate imaginile din Body");
+
+  if (document?.category && document?.topicCluster) {
+    const matchingEntry = TOPIC_CLUSTER_ENTRIES.find((entry) => entry.match.categories.includes(document.category));
+    if (matchingEntry && !matchingEntry.match.topicClusters.includes(document.topicCluster)) {
+      issues.push(`Topic cluster compatibil cu category "${document.category}"`);
+    }
+  }
+
+  return issues;
+}
+
 const post = {
   name: "post",
   title: "Post",
   type: "document",
+  validation: (Rule: any) =>
+    Rule.custom((document: any) => {
+      const issues = collectPostBlockingIssues(document);
+      if (issues.length === 0) {
+        return true;
+      }
+
+      return `Nu poti publica articolul pana nu completezi sau corectezi: ${issues.join(", ")}.`;
+    }),
   fields: [
+    {
+      name: "editorChecklist",
+      title: "Ghid publicare",
+      type: "string",
+      readOnly: true,
+      components: {
+        input: PostEditorChecklist,
+      },
+    },
     {
       name: "title",
       title: "Title",
@@ -63,19 +149,11 @@ const post = {
       name: "canonicalUrl",
       title: "Canonical URL",
       type: "url",
-      description: "Opțional. Trebuie să fie pe https://www.webdynamicx.ro (inclusiv calea)",
+      description: "Opțional. Lasă gol în majoritatea cazurilor. Dacă îl completezi, trebuie să fie exact URL-ul articolului curent.",
       validation: (Rule: any) =>
-        Rule.uri({ scheme: ["https"] }).custom((value: string) => {
-          if (!value) return true;
-          try {
-            const u = new URL(value);
-            return u.hostname === "www.webdynamicx.ro"
-              ? true
-              : "Folosește domeniul https://www.webdynamicx.ro";
-          } catch (e) {
-            return "Introduce un URL valid";
-          }
-        }),
+        Rule.uri({ scheme: ["https"] }).custom((value: string, context: { document?: any }) =>
+          resolveCanonicalValidationIssue(value, context?.document),
+        ),
     },
     // Added: Access level (e.g., free/premium)
     {
@@ -233,10 +311,11 @@ const post = {
       },
       validation: (Rule: any) =>
         Rule.required().custom((fields: any) => {
-          if (
-            fields?.current !== fields?.current?.toLowerCase() ||
-            fields?.current.split(" ").includes("")
-          ) {
+          const current = fields?.current;
+          if (!current) {
+            return true;
+          }
+          if (current !== current.toLowerCase() || hasWhitespace(current)) {
             return "Slug must be lowercase and not be included space";
           }
           return true;
@@ -251,10 +330,10 @@ const post = {
           type: "string",
           validation: (Rule: any) =>
             Rule.custom((fields: any) => {
-              if (
-                fields !== fields.toLowerCase() ||
-                fields.split(" ").includes("")
-              ) {
+              if (!fields) {
+                return true;
+              }
+              if (fields !== fields.toLowerCase() || hasWhitespace(fields)) {
                 return "Tags must be lowercase and not be included space";
               }
               return true;
@@ -273,6 +352,11 @@ const post = {
       name: "mainImage",
       title: "Main image",
       type: "image",
+      description:
+        "Incarcă o sursă landscape, ideal 1536x1024. Studio generează automat varianta principală WebP pentru site și varianta JPG pentru Open Graph.",
+      components: {
+        input: PostMainImageInput,
+      },
       options: {
         hotspot: true,
       },
@@ -289,6 +373,36 @@ const post = {
         },
       ],
       validation: (Rule: any) => Rule.required(),
+    },
+    {
+      name: "imageVariantMainAssetRef",
+      title: "Image variant main asset ref",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    },
+    {
+      name: "ogImage",
+      title: "Open Graph image",
+      type: "image",
+      description:
+        "Se generează automat din upload-ul principal și este folosită pentru share/social. O poți înlocui manual dacă vrei o compoziție diferită.",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "alt",
+          title: "Alt text",
+          type: "string",
+          description: "Descriere scurtă pentru preview-urile Open Graph și accessibility.",
+          validation: (Rule: any) => [
+            Rule.required().error("Completează alt text pentru imaginea Open Graph."),
+            Rule.min(5).max(140).warning("Țintește între 5 și 140 de caractere."),
+          ],
+        },
+      ],
+      validation: (Rule: any) => Rule.required().error("Generează sau încarcă imaginea Open Graph."),
     },
     {
       name: "publishedAt",

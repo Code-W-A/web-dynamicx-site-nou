@@ -1,5 +1,10 @@
 import { groq } from "next-sanity";
 
+const imageWithDimensionsField = `{
+  ...,
+  "dimensions": asset->metadata.dimensions
+}`;
+
 const postCardFields = `
   _id,
   title,
@@ -7,10 +12,24 @@ const postCardFields = `
   excerpt,
   canonicalUrl,
   slug,
-  mainImage,
+  mainImage${imageWithDimensionsField},
+  ogImage${imageWithDimensionsField},
   publishedAt,
   _updatedAt,
   "bodyPreview": body[0...3]
+`;
+
+const tagDetailFields = `
+  _id,
+  "name": coalesce(title, tagname),
+  "slug": {
+    "current": tagname
+  },
+  "image": ogImage${imageWithDimensionsField},
+  title,
+  description,
+  indexable,
+  minimumPostCountToIndex
 `;
 
 export const postListQuery = groq`*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc) {
@@ -35,7 +54,8 @@ export const postQueryBySlug = groq`*[_type == "post" && slug.current == $slug &
       metaDescription,
       slug,
       excerpt,
-      mainImage,
+      mainImage${imageWithDimensionsField},
+      ogImage${imageWithDimensionsField},
       publishedAt,
       "bodyPreview": body[0...3]
     },
@@ -45,10 +65,11 @@ export const postQueryBySlug = groq`*[_type == "post" && slug.current == $slug &
       _id,
       name,
       slug,
-      image,
+      image${imageWithDimensionsField},
       bio
     },
-    mainImage,
+    mainImage${imageWithDimensionsField},
+    ogImage${imageWithDimensionsField},
     publishedAt,
     _updatedAt,
     body
@@ -64,6 +85,8 @@ export const mobileClusterPostsQuery = groq`*[
     metaDescription,
     slug,
     excerpt,
+    mainImage${imageWithDimensionsField},
+    ogImage${imageWithDimensionsField},
     publishedAt,
     "bodyPreview": body[0...3]
   }`;
@@ -75,7 +98,8 @@ export const relatedPostsFallbackCandidatesQuery = groq`*[_type == "post" && slu
     metaDescription,
     slug,
     excerpt,
-    mainImage,
+    mainImage${imageWithDimensionsField},
+    ogImage${imageWithDimensionsField},
     publishedAt,
     category,
     topicCluster,
@@ -88,17 +112,22 @@ export const postQueryByCategory = groq`*[_type == "post" && category == $slug &
 }`;
 
 export const categoryQuery = groq`*[_type == "tagDetail"] | order(tagname asc) {
-  _id,
-  "name": coalesce(title, tagname),
-  "slug": {
-    "current": tagname
-  },
-  "image": ogImage,
-  title,
-  description
+  ${tagDetailFields}
+}`;
+
+export const tagDetailBySlugQuery = groq`*[_type == "tagDetail" && tagname == $tag][0] {
+  ${tagDetailFields}
 }`;
 
 export const postListQueryByTag = groq`*[_type == "post" && $tag in tags && !(_id in path("drafts.**"))] | order(publishedAt desc) {
+  ${postCardFields}
+}`;
+
+export const postListQueryByCluster = groq`*[
+  _type == "post" &&
+  !(_id in path("drafts.**")) &&
+  (category in $categories || topicCluster in $topicClusters)
+] | order(publishedAt desc) {
   ${postCardFields}
 }`;
 
@@ -113,5 +142,8 @@ export const postQueryCategory = groq`*[_type == "tagDetail"] | order(tagname as
 export const postSitemapQuery = groq`*[_type == "post" && !(_id in path("drafts.**"))] | order(coalesce(_updatedAt, publishedAt) desc) {
   slug,
   publishedAt,
-  _updatedAt
+  _updatedAt,
+  category,
+  topicCluster,
+  tags
 }`;

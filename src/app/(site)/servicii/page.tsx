@@ -9,12 +9,14 @@ const siteName = process.env.SITE_NAME || "Web Dynamicx";
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
 
 export const metadata: Metadata = {
-  title: `Servicii digitale: web design, creare site, SEO | ${siteName}`,
-  description: "Listă completă de servicii: web design, creare site de prezentare, creare magazin online, servicii SEO profesionale și mentenanță website.",
+  title: `Serviciile Web Dynamicx | Direcții de lucru și specializări`,
+  description:
+    "Pagină-umbrelă cu toate serviciile Web Dynamicx. Aici alegi direcția potrivită, iar fiecare serviciu are pagina lui dedicată pentru ofertă, proces și exemple relevante.",
   alternates: { canonical: `${siteURL}/servicii` },
   openGraph: {
-    title: `Servicii digitale: web design, creare site, SEO | ${siteName}`,
-    description: "Listă completă de servicii: web design, creare site de prezentare, creare magazin online, servicii SEO profesionale și mentenanță website.",
+    title: `Serviciile Web Dynamicx | Direcții de lucru și specializări`,
+    description:
+      "Pagină-umbrelă cu toate serviciile Web Dynamicx. Aici alegi direcția potrivită, iar fiecare serviciu are pagina lui dedicată pentru ofertă, proces și exemple relevante.",
     url: `${siteURL}/servicii`,
     siteName: siteName,
     locale: "ro_RO",
@@ -22,8 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: `Servicii digitale: web design, creare site, SEO | ${siteName}`,
-    description: "Listă completă de servicii: web design, creare site de prezentare, creare magazin online, servicii SEO profesionale și mentenanță website.",
+    title: `Serviciile Web Dynamicx | Direcții de lucru și specializări`,
+    description:
+      "Pagină-umbrelă cu toate serviciile Web Dynamicx. Aici alegi direcția potrivită, iar fiecare serviciu are pagina lui dedicată pentru ofertă, proces și exemple relevante.",
   },
 };
 
@@ -31,8 +34,8 @@ export default function page() {
   return (
     <>
       <PageTitle
-        pageTitle="Servicii digitale"
-        pageDescription="Listă completă de servicii: web design, creare site de prezentare, creare magazin online, servicii SEO profesionale și mentenanță website."
+        pageTitle="Serviciile Web Dynamicx"
+        pageDescription="Aceasta este pagina-umbrelă pentru toate specializările noastre. Dacă vrei ofertă, proces și exemple aplicate, intră pe pagina serviciului care se potrivește obiectivului tău."
       />
 
       <section className="bg-gray-50 pt-[90px] pb-20">
@@ -46,11 +49,9 @@ export default function page() {
       <section className="bg-white border-t border-gray-100 pt-14 pb-20">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-4 text-2xl font-bold text-black sm:text-3xl">Gata să creștem site-ul tău, fără bătăi de cap?</h2>
+            <h2 className="mb-4 text-2xl font-bold text-black sm:text-3xl">Nu ești sigur ce direcție ți se potrivește?</h2>
             <p className="mx-auto max-w-2xl text-base text-body-color">
-              Dacă vrei o implementare curată, <strong>UX/UI</strong> care explică rapid valoarea și <strong>SEO</strong> corect de la început,
-              îți propunem un plan simplu, cu pași clari și buget transparent. Ne ocupăm cap‑coadă de
-              <strong> servicii optimizare site</strong>, ca vizitatorii să devină clienți.
+              Dacă ai nevoie de claritate între website nou, magazin online, SEO sau mentenanță, te ajutăm să alegi pagina de serviciu potrivită și să construim un plan coerent, fără să amestecăm intențiile comerciale între URL-uri.
             </p>
             <div className="mt-6 flex items-center justify-center gap-4">
               <Link

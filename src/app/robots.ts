@@ -7,14 +7,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/admin",
-          "/api",
-          "/account-deletion",
-          "/apps/my-butterfly/legal",
-          "/apps/do-it-now/legal",
-          "/apps/cristina-zurba-tarot-astrology/legal",
-        ],
+        // Permitem crawl pentru rutele noindex, astfel încât motoarele de căutare
+        // să poată citi directiva și să nu le lase "blocked by robots.txt".
+        disallow: ["/api"],
       },
     ],
     sitemap: `${siteURL}/sitemap.xml`,

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -23,6 +24,8 @@ const comparisonIcons = [Settings2, ShieldCheck, LineChart, Megaphone] as const;
 type Props = {
   data: ServiceLandingData;
   breadcrumbs?: BreadcrumbItem[];
+  clusterArticlesSection?: ReactNode;
+  portfolioSection?: ReactNode;
 };
 
 function SectionHeader({
@@ -73,7 +76,7 @@ function OptionalImageCard({ item, badgeLabel }: { item: ServiceLandingCard; bad
   );
 }
 
-export default function ServiceLandingTemplate({ data, breadcrumbs }: Props) {
+export default function ServiceLandingTemplate({ data, breadcrumbs, clusterArticlesSection, portfolioSection }: Props) {
   return (
     <div className="bg-white">
       <section className="relative overflow-hidden border-b border-slate-100 bg-[radial-gradient(circle_at_top_left,_rgba(74,108,247,0.12),_transparent_28%),linear-gradient(180deg,_#f8fbff_0%,_#ffffff_72%)]">
@@ -514,6 +517,10 @@ export default function ServiceLandingTemplate({ data, breadcrumbs }: Props) {
           </div>
         </section>
       ) : null}
+
+      {portfolioSection}
+
+      {clusterArticlesSection}
 
       <section className="py-12 sm:py-14">
         <div className="container px-5">

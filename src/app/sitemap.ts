@@ -1,9 +1,12 @@
 import { MetadataRoute } from "next";
+import { getTopicClusterEntries, matchesTopicClusterEntry, shouldIndexClusterHub } from "@/config/blog-topic-clusters";
 import { serviceData } from "@/static-data/service";
 import { integrations } from "../../integrations.config";
-import { getPostsForSitemap } from "@/sanity/sanity-utils";
+import { getCategories, getPostsForSitemap, shouldIndexTagArchive } from "@/sanity/sanity-utils";
+import type { BlogSitemapEntry } from "@/types/blog";
 import { mobileAppCaseStudies } from "@/app/(site)/portofoliu-aplicatii-mobile/mobile-app-portfolio-data";
 import { serviceLandingPageSlugs } from "@/app/(site)/servicii/_landing/service-landing-data";
+import { portfolioData } from "@/static-data/portfolio";
 import { stat } from "node:fs/promises";
 import path from "node:path";
 
@@ -137,19 +140,40 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
+  const webPortfolioLastModified = await getLatestLastModified(
+    [
+      "src/app/(site)/portofoliu/page.tsx",
+      "src/app/(site)/portofoliu/[slug]/page.tsx",
+      "src/static-data/portfolio.tsx",
+      "src/components/Portfolio/SinglePortfolio.tsx",
+      "src/components/Portfolio/service-related-portfolio-section.tsx",
+    ],
+    fallbackDate,
+  );
+
+  const webPortfolioRoutes: MetadataRoute.Sitemap = portfolioData.map((item) => ({
+    url: `${siteURL}/portofoliu/${item.slug}`,
+    lastModified: webPortfolioLastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.64,
+  }));
+
   let blogRoutes: MetadataRoute.Sitemap = [];
   let blogIndexLastModified = blogPageFileLastModified;
+  let clusterTopicRoutes: MetadataRoute.Sitemap = [];
+  let tagRoutes: MetadataRoute.Sitemap = [];
+  let postsForSitemap: BlogSitemapEntry[] = [];
   if (integrations?.isSanityEnabled) {
     try {
-      const posts = await getPostsForSitemap();
-      const postModifiedDates = posts.map((post) => resolvePostLastModified(post, fallbackDate));
+      postsForSitemap = await getPostsForSitemap();
+      const postModifiedDates = postsForSitemap.map((post) => resolvePostLastModified(post, fallbackDate));
       if (postModifiedDates.length > 0) {
         blogIndexLastModified = postModifiedDates.reduce(
           (latest, current) => (current > latest ? current : latest),
           blogPageFileLastModified,
         );
       }
-      blogRoutes = (posts || [])
+      blogRoutes = (postsForSitemap || [])
         .filter((p: any) => p?.slug?.current)
         .map((p: any) => ({
           url: `${siteURL}/blog/${p.slug.current}`,
@@ -157,6 +181,65 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           changeFrequency: "weekly",
           priority: 0.5,
         }));
+
+      clusterTopicRoutes = getTopicClusterEntries().reduce<MetadataRoute.Sitemap>((routes, entry) => {
+        const matchingPosts = postsForSitemap.filter(
+          (post) => matchesTopicClusterEntry(entry, post),
+        );
+
+        if (!shouldIndexClusterHub(entry, matchingPosts.length)) {
+          return routes;
+        }
+
+        const latestModified = matchingPosts
+          .map((post) => resolvePostLastModified(post, fallbackDate))
+          .reduce((latest, current) => (current > latest ? current : latest), fallbackDate);
+
+        routes.push({
+          url: `${siteURL}/blog/topic/${entry.id}`,
+          lastModified: latestModified,
+          changeFrequency: "weekly" as const,
+          priority: 0.55,
+        });
+
+        return routes;
+      }, []);
+
+      const tagDetails = await getCategories();
+      const latestPostModifiedByTag = postsForSitemap.reduce<Map<string, Date>>((map, post) => {
+        const lastModified = resolvePostLastModified(post, fallbackDate);
+        const normalizedTags = Array.isArray(post.tags)
+          ? post.tags.map((tag) => tag?.trim().toLowerCase()).filter((tag): tag is string => Boolean(tag))
+          : [];
+
+        normalizedTags.forEach((tag) => {
+          const existing = map.get(tag);
+          if (!existing || lastModified > existing) {
+            map.set(tag, lastModified);
+          }
+        });
+
+        return map;
+      }, new Map<string, Date>());
+
+      tagRoutes = tagDetails.reduce<MetadataRoute.Sitemap>((routes, tagDetail) => {
+        const tagSlug = tagDetail.slug?.current?.trim().toLowerCase();
+        const lastModified = tagSlug ? latestPostModifiedByTag.get(tagSlug) : undefined;
+        const postCount = tagSlug ? postsForSitemap.filter((post) => Array.isArray(post.tags) && post.tags.some((tag) => tag?.trim().toLowerCase() === tagSlug)).length : 0;
+
+        if (!tagSlug || !lastModified || !shouldIndexTagArchive(tagDetail, postCount)) {
+          return routes;
+        }
+
+        routes.push({
+          url: `${siteURL}/blog/tag/${tagSlug}`,
+          lastModified,
+          changeFrequency: "weekly" as const,
+          priority: 0.45,
+        });
+
+        return routes;
+      }, []);
     } catch (e) {
       console.error("[sitemap] Failed to fetch blog posts for sitemap", e);
     }
@@ -171,5 +254,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  return [...staticRoutes, ...blogIndexRoute, ...servicesRoutes, ...mobilePortfolioRoutes, ...blogRoutes];
+  return [
+    ...staticRoutes,
+    ...blogIndexRoute,
+    ...clusterTopicRoutes,
+    ...tagRoutes,
+    ...servicesRoutes,
+    ...webPortfolioRoutes,
+    ...mobilePortfolioRoutes,
+    ...blogRoutes,
+  ];
 }

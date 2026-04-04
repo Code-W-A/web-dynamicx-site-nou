@@ -1,12 +1,21 @@
 import RenderBodyContent from "@/components/Blog/BlogDetails/RenderBodyContent";
 import PortfolioHubBlock from "@/components/Blog/internal-linking/portfolio-hub-block";
+import RelatedClusterHubBlock from "@/components/Blog/internal-linking/related-cluster-hub-block";
 import RelevantCaseStudiesBlock from "@/components/Blog/internal-linking/relevant-case-studies-block";
 import RelatedPostsSection from "@/components/Blog/internal-linking/related-posts-section";
 import RelatedServiceBlock from "@/components/Blog/internal-linking/related-service-block";
+import Breadcrumbs, { type BreadcrumbItem } from "@/components/Common/Breadcrumbs";
 import { getRelatedCaseStudies } from "@/app/(site)/portofoliu-aplicatii-mobile/mobile-app-portfolio-data";
 import { buildArticleInternalLinkingPlan } from "@/lib/blog-article-internal-links";
-import { resolvePostSeoDescription } from "@/lib/blog-post-text";
-import { getPostBySlug, getRelatedPostsFallback, imageBuilder } from "@/sanity/sanity-utils";
+import { resolveBlogCanonicalUrl, resolvePostSeoDescription } from "@/lib/blog-post-text";
+import {
+  buildAuthorAvatarUrl,
+  buildBlogArticleStructuredDataImageUrls,
+  buildBlogHeroImageUrl,
+  buildBlogOgImageUrl,
+  getBlogOgImageDimensions,
+} from "@/sanity/image-helpers";
+import { getIndexableTags, getPostBySlug, getRelatedPostsFallback } from "@/sanity/sanity-utils";
 import type { Blog, BlogRelatedPostCard } from "@/types/blog";
 import Image from "next/image";
 import Link from "next/link";
@@ -51,10 +60,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   const title = post.metaTitle || post.title || `Articol | ${siteName}`;
   const description = resolvePostSeoDescription(post, "Articol de pe blogul Web Dynamicx.");
-  const canonical = post.canonicalUrl || `${siteURL}/blog/${post?.slug?.current}`;
+  const canonical = resolveBlogCanonicalUrl(post, siteURL);
   const articleAuthorName = post.author?.name || authorName;
-  const ogImageAlt = resolveImageAlt(post.mainImage, post.title || siteName);
-  const ogImage = post.mainImage ? imageBuilder(post.mainImage).url() : undefined;
+  const metadataImage = post.ogImage || post.mainImage;
+  const ogImageAlt = resolveImageAlt(metadataImage, post.title || siteName);
+  const ogImage = metadataImage ? buildBlogOgImageUrl(metadataImage) : undefined;
+  const ogImageDimensions = metadataImage ? getBlogOgImageDimensions(metadataImage) : undefined;
 
   return {
     title,
@@ -82,8 +93,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         ? [
             {
               url: ogImage,
-              width: 1800,
-              height: 1600,
+              width: ogImageDimensions?.width,
+              height: ogImageDimensions?.height,
               alt: ogImageAlt,
             },
           ]
@@ -119,11 +130,25 @@ export default async function BlogSlugPage(props: Props) {
   const siteName = process.env.SITE_NAME || "Web Dynamicx";
   const organizationLogoUrl =
     process.env.NEXT_PUBLIC_ORGANIZATION_LOGO_URL?.trim() || `${siteURL}/images/logo/logo.svg`;
-  const canonical = post.canonicalUrl || `${siteURL}/blog/${post?.slug?.current}`;
+  const canonical = resolveBlogCanonicalUrl(post, siteURL);
   const mainImageAlt = resolveImageAlt(post.mainImage, post.title || siteName);
+  const heroImage = post.mainImage ? buildBlogHeroImageUrl(post.mainImage) : undefined;
+  const articleImage = post.ogImage ? buildBlogOgImageUrl(post.ogImage) : heroImage;
+  const structuredDataImageSource = post.mainImage || post.ogImage;
+  const structuredDataImages = buildBlogArticleStructuredDataImageUrls(structuredDataImageSource);
+  const authorAvatar = post.author?.image ? buildAuthorAvatarUrl(post.author.image) : undefined;
 
   const internalPlan = buildArticleInternalLinkingPlan(post, siteURL);
   const relatedCaseStudies = getRelatedCaseStudies(post.relatedCaseStudies ?? []).slice(0, 2);
+  const indexableTags = await getIndexableTags(post.tags);
+  const breadcrumbItems: BreadcrumbItem[] = [
+    { name: "Acasă", href: "/" },
+    { name: "Blog", href: "/blog" },
+    ...(internalPlan.cluster
+      ? [{ name: internalPlan.cluster.hub.title, href: `/blog/topic/${internalPlan.cluster.id}` }]
+      : []),
+    { name: post.title, current: true },
+  ];
 
   let relatedPostsForSection: BlogRelatedPostCard[] = Array.isArray(post.relatedPosts)
     ? post.relatedPosts.filter(
@@ -157,20 +182,21 @@ export default async function BlogSlugPage(props: Props) {
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Acasă", item: `${siteURL}` },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `${siteURL}/blog` },
-      { "@type": "ListItem", position: 3, name: post?.title, item: `${siteURL}/blog/${post?.slug?.current}` },
-    ],
+    itemListElement: breadcrumbItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.current ? canonical : `${siteURL}${item.href}`,
+    })),
   };
 
   const articleLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post?.title,
     alternativeHeadline: post?.metaTitle || undefined,
     description: resolvePostSeoDescription(post, "Articol de pe blogul Web Dynamicx."),
-    image: post?.mainImage ? imageBuilder(post?.mainImage).url() : undefined,
+    image: structuredDataImages.length > 0 ? structuredDataImages : articleImage ? [articleImage] : undefined,
     author: post?.author?.name ? { "@type": "Person", name: post?.author?.name } : undefined,
     publisher: {
       "@type": "Organization",
@@ -209,14 +235,19 @@ export default async function BlogSlugPage(props: Props) {
               <div className="w-full px-4 lg:w-8/12">
                 <div>
                   <div className="relative mb-10 aspect-848/384 w-full overflow-hidden rounded-sm">
-                    {post?.mainImage && (
+                    {heroImage ? (
                       <Image
-                        src={imageBuilder(post?.mainImage).url()}
+                        src={heroImage}
                         alt={mainImageAlt}
                         fill
+                        priority
+                        sizes="(max-width: 1024px) 100vw, 66vw"
                         className="h-full w-full object-cover object-center"
                       />
-                    )}
+                    ) : null}
+                  </div>
+                  <div className="mb-6">
+                    <Breadcrumbs items={breadcrumbItems} align="start" compact />
                   </div>
                   <h1 className="mb-8 text-3xl leading-tight font-bold text-black sm:text-4xl sm:leading-tight">
                     {post?.title}
@@ -224,16 +255,16 @@ export default async function BlogSlugPage(props: Props) {
                   <div className="mb-10 flex flex-wrap items-center justify-between border-b border-[#E9ECF8] pb-4">
                     <div className="flex flex-wrap items-center">
                       <div className="mr-10 mb-5 flex items-center">
-                        {post?.author?.image && (
+                        {authorAvatar ? (
                           <div className="mr-4 h-[40px] w-full max-w-[40px] overflow-hidden rounded-full">
                             <Image
-                              src={imageBuilder(post?.author?.image as any).url()}
+                              src={authorAvatar}
                               alt={post?.author?.name as any}
                               width={40}
                               height={40}
                             />
                           </div>
-                        )}
+                        ) : null}
                         <div className="w-full">
                           <h4 className="text-body-color mb-1 text-base font-medium">
                             {post?.author?.name ? `De ${post?.author?.name}` : "Blog Web Dynamicx"}
@@ -266,32 +297,47 @@ export default async function BlogSlugPage(props: Props) {
                         </p>
                       </div>
                     </div>
-                    {post?.tags?.length ? (
+                    {indexableTags.length > 0 ? (
                       <div className="mb-5">
                         <Link
-                          href={`/blog/tag/${post.tags[0]}`}
+                          href={`/blog/tag/${indexableTags[0]}`}
                           className="bg-primary inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white"
                         >
-                          {post.tags[0]}
+                          {indexableTags[0]}
                         </Link>
                       </div>
                     ) : null}
                   </div>
                   <div>
+                    {internalPlan.showAutoServiceBlock || internalPlan.showClusterHubBlock ? (
+                      <div className="not-prose mb-8 grid gap-4 lg:grid-cols-2">
+                        {internalPlan.showAutoServiceBlock && internalPlan.cluster ? (
+                          <RelatedServiceBlock
+                            title={internalPlan.cluster.serviceBlockTitle}
+                            description={internalPlan.cluster.serviceBlockDescription}
+                            href={internalPlan.cluster.serviceHref}
+                            ctaLabel={internalPlan.cluster.serviceCtaLabel}
+                            className="h-full"
+                          />
+                        ) : null}
+
+                        {internalPlan.showClusterHubBlock && internalPlan.clusterHub ? (
+                          <RelatedClusterHubBlock
+                            title={internalPlan.clusterHub.title}
+                            description={internalPlan.clusterHub.description}
+                            href={internalPlan.clusterHub.href}
+                            ctaLabel={internalPlan.clusterHub.ctaLabel}
+                            className="h-full"
+                          />
+                        ) : null}
+                      </div>
+                    ) : null}
+
                     <div className="prose prose-zinc prose-blockquote:rounded-xs prose-blockquote:border-l-0 prose-blockquote:bg-primary prose-blockquote:p-8 prose-blockquote:text-center prose-blockquote:italic prose-blockquote:text-white mb-8 max-w-none">
                       <RenderBodyContent post={post} />
                     </div>
 
                     <div className="not-prose mb-8 space-y-6">
-                      {internalPlan.showAutoServiceBlock && internalPlan.cluster ? (
-                        <RelatedServiceBlock
-                          title={internalPlan.cluster.serviceBlockTitle}
-                          description={internalPlan.cluster.serviceBlockDescription}
-                          href={internalPlan.cluster.serviceHref}
-                          ctaLabel={internalPlan.cluster.serviceCtaLabel}
-                        />
-                      ) : null}
-
                       {internalPlan.manualRelatedServices.length > 0 ? (
                         <aside
                           className="rounded-sm border border-[#E9ECF8] bg-white p-5 sm:p-6"
@@ -333,12 +379,13 @@ export default async function BlogSlugPage(props: Props) {
                     </div>
 
                     <div className="items-center justify-between sm:flex">
-                      <div className="mb-5">
+                      {indexableTags.length > 0 ? (
+                        <div className="mb-5">
                         <h5 className="text-body-color mb-3 text-sm font-medium">
                           Etichete:
                         </h5>
                         <div className="flex items-center">
-                          {post?.tags?.map((tag: string, i: number) => (
+                          {indexableTags.map((tag: string, i: number) => (
                             <Link
                               href={`/blog/tag/${tag}`}
                               key={i}
@@ -349,6 +396,7 @@ export default async function BlogSlugPage(props: Props) {
                           ))}
                         </div>
                       </div>
+                      ) : null}
 
                       <div className="mb-5">
                         <SharePost url={canonical} title={post?.title} />

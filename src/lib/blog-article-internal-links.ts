@@ -7,6 +7,13 @@ const MAX_SERVICE_LINKS_PER_PATH = 2;
 export type ArticleInternalLinkingPlan = {
   cluster: TopicClusterEntry | null;
   showAutoServiceBlock: boolean;
+  showClusterHubBlock: boolean;
+  clusterHub: {
+    href: string;
+    title: string;
+    description: string;
+    ctaLabel: string;
+  } | null;
   manualRelatedServices: BlogRelatedServiceItem[];
   showPortfolioHubBlock: boolean;
   portfolioHub: {
@@ -26,9 +33,13 @@ export function buildArticleInternalLinkingPlan(post: Blog, siteUrl?: string): A
   const body = post.body;
 
   const serviceHref = cluster?.serviceHref;
+  const clusterHubHref = cluster ? `/blog/topic/${cluster.id}` : null;
   const bodyHasService =
     serviceHref != null && bodyLinksToPath(body, serviceHref, siteUrl);
+  const bodyHasClusterHub =
+    clusterHubHref != null && bodyLinksToPath(body, clusterHubHref, siteUrl);
   const showAutoServiceBlock = Boolean(cluster && serviceHref && !bodyHasService);
+  const showClusterHubBlock = Boolean(cluster && clusterHubHref && !bodyHasClusterHub);
 
   const manualRaw = Array.isArray(post.relatedServices) ? post.relatedServices : [];
   /** Linkuri către fiecare path deja puse de noi (auto + manuale). */
@@ -74,6 +85,16 @@ export function buildArticleInternalLinkingPlan(post: Blog, siteUrl?: string): A
   return {
     cluster,
     showAutoServiceBlock,
+    showClusterHubBlock,
+    clusterHub:
+      cluster && clusterHubHref && showClusterHubBlock
+        ? {
+            href: clusterHubHref,
+            title: cluster.hub.title,
+            description: cluster.hub.intro,
+            ctaLabel: cluster.serviceSection.ctaLabel,
+          }
+        : null,
     manualRelatedServices,
     showPortfolioHubBlock: portfolioHub != null,
     portfolioHub,

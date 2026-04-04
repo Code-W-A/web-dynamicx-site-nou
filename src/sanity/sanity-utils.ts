@@ -1,20 +1,24 @@
-import ImageUrlBuilder from "@sanity/image-url";
 import { createClient, type QueryParams } from "next-sanity";
 import clientConfig from "./config/client-config";
+export { imageBuilder } from "./image-helpers";
 import {
   postListQuery,
   categoryQuery,
+  tagDetailBySlugQuery,
   postQueryBySlug,
   postListQueryByTag,
+  postListQueryByCluster,
   mobileClusterPostsQuery,
   relatedPostsFallbackCandidatesQuery,
   postSitemapQuery,
 } from "./sanity-query";
-import { Blog, BlogArticleTeaser, BlogRelatedPostCard, BlogSitemapEntry } from "@/types/blog";
+import { Blog, BlogArticleTeaser, BlogRelatedPostCard, BlogSitemapEntry, BlogTagDetail } from "@/types/blog";
 import { integrations } from "../../integrations.config";
 
 const POST_CACHE_TAG = "post";
+const TAG_DETAIL_CACHE_TAG = "tagDetail";
 const POST_CACHE_REVALIDATE_SECONDS = 60;
+export const DEFAULT_TAG_INDEXING_MIN_POSTS = 3;
 
 type RelatedPostsContext = {
   slug: string;
@@ -31,6 +35,26 @@ function normalizeTags(tags?: string[]) {
         .filter((tag): tag is string => Boolean(tag)),
     ),
   );
+}
+
+export function resolveTagMinimumPostCount(tagDetail?: Pick<BlogTagDetail, "minimumPostCountToIndex"> | null) {
+  const value = tagDetail?.minimumPostCountToIndex;
+  if (typeof value === "number" && Number.isFinite(value) && value >= 1) {
+    return Math.floor(value);
+  }
+
+  return DEFAULT_TAG_INDEXING_MIN_POSTS;
+}
+
+export function shouldIndexTagArchive(
+  tagDetail: Pick<BlogTagDetail, "indexable" | "minimumPostCountToIndex"> | null | undefined,
+  publishedPostCount: number,
+) {
+  if (!tagDetail?.indexable) {
+    return false;
+  }
+
+  return publishedPostCount >= resolveTagMinimumPostCount(tagDetail);
 }
 
 function buildRelatedPostScore(post: BlogRelatedPostCard, context: Omit<RelatedPostsContext, "slug">) {
@@ -103,10 +127,12 @@ export async function getPosts() {
 
 export async function getCategories() {
   try {
-    const categories = await sanityFetch({
+    const categories = await sanityFetch<BlogTagDetail[]>({
       query: categoryQuery,
       qParams: {},
-      tags: ["tag-detail"],
+      tags: [TAG_DETAIL_CACHE_TAG],
+      useCdnOverride: false,
+      revalidate: POST_CACHE_REVALIDATE_SECONDS,
     });
 
     return Array.isArray(categories) ? categories : [];
@@ -114,6 +140,61 @@ export async function getCategories() {
     console.error("[sanity] getCategories failed", error);
     return [];
   }
+}
+
+export async function getTagDetailBySlug(tag: string): Promise<BlogTagDetail | null> {
+  const normalizedTag = tag.trim().toLowerCase();
+
+  if (!normalizedTag) {
+    return null;
+  }
+
+  try {
+    const tagDetail = await sanityFetch<BlogTagDetail | null>({
+      query: tagDetailBySlugQuery,
+      qParams: { tag: normalizedTag as any },
+      tags: [TAG_DETAIL_CACHE_TAG],
+      useCdnOverride: false,
+      revalidate: POST_CACHE_REVALIDATE_SECONDS,
+    });
+
+    return tagDetail || null;
+  } catch (error) {
+    console.error("[sanity] getTagDetailBySlug failed", error);
+    return null;
+  }
+}
+
+export async function getIndexableTags(tags?: string[]) {
+  const normalizedTags = normalizeTags(tags);
+
+  if (normalizedTags.length === 0) {
+    return [];
+  }
+
+  const tagDetails = await getCategories();
+  const tagDetailMap = new Map(
+    tagDetails
+      .map((tagDetail) => {
+        const slug = tagDetail.slug?.current?.trim().toLowerCase();
+        return slug ? [slug, tagDetail] : null;
+      })
+      .filter((entry): entry is [string, BlogTagDetail] => Boolean(entry)),
+  );
+
+  const tagStatuses = await Promise.all(
+    normalizedTags.map(async (tag) => {
+      const tagDetail = tagDetailMap.get(tag);
+      if (!tagDetail) {
+        return null;
+      }
+
+      const posts = await getPostByTag(tag);
+      return shouldIndexTagArchive(tagDetail, posts.filter((post) => Boolean(post?.slug?.current)).length) ? tag : null;
+    }),
+  );
+
+  return tagStatuses.filter((tag): tag is string => Boolean(tag));
 }
 
 export async function getPostsForSitemap(): Promise<BlogSitemapEntry[]> {
@@ -240,6 +321,41 @@ export async function getPostByTag(tag: string) {
   }
 }
 
-export function imageBuilder(source: any) {
-  return ImageUrlBuilder(clientConfig as any).image(source);
+export async function getPostsByCluster(
+  cluster: {
+    categories?: string[];
+    topicClusters?: string[];
+  },
+  limit?: number,
+): Promise<BlogArticleTeaser[]> {
+  const categories = Array.isArray(cluster.categories)
+    ? cluster.categories.map((value) => value?.trim()).filter((value): value is string => Boolean(value))
+    : [];
+  const topicClusters = Array.isArray(cluster.topicClusters)
+    ? cluster.topicClusters.map((value) => value?.trim()).filter((value): value is string => Boolean(value))
+    : [];
+
+  if (categories.length === 0 && topicClusters.length === 0) {
+    return [];
+  }
+
+  try {
+    const posts = await sanityFetch<BlogArticleTeaser[]>({
+      query: postListQueryByCluster,
+      qParams: { categories, topicClusters },
+      tags: [POST_CACHE_TAG],
+      useCdnOverride: false,
+      revalidate: POST_CACHE_REVALIDATE_SECONDS,
+    });
+
+    const normalized = Array.isArray(posts) ? posts : [];
+    if (typeof limit === "number" && limit > 0) {
+      return normalized.slice(0, limit);
+    }
+
+    return normalized;
+  } catch (error) {
+    console.error("[sanity] getPostsByCluster failed", error);
+    return [];
+  }
 }

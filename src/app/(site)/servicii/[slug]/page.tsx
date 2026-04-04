@@ -1,5 +1,8 @@
 import PageTitle from "@/components/Common/PageTitle";
+import TopicClusterArticlesSection from "@/components/Blog/internal-linking/topic-cluster-articles-section";
 import ServiceLayout from "@/components/Service/ServiceLayout";
+import { resolveClusterConfigByServiceSlug } from "@/config/blog-topic-clusters";
+import { getPostsByCluster } from "@/sanity/sanity-utils";
 import { serviceData } from "@/static-data/service";
 import { Service } from "@/types/service";
 import { mobileAppsServicePageData, mobileAppsServiceSlug } from "../dezvoltare-aplicatii-mobile/mobile-app-service-data";
@@ -7,7 +10,7 @@ import MobileAppServicePageContent from "../dezvoltare-aplicatii-mobile/mobile-a
 import Link from "next/link";
 import JsonLd from "@/components/Common/JsonLd";
 import { Phone, MessageCircle, Mail } from "lucide-react";
-import LazyPortfolio from "../../../../components/Lazy/LazyPortfolio";
+import ServiceRelatedPortfolioSection from "@/components/Portfolio/service-related-portfolio-section";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServiceLandingTemplate from "../_landing/service-landing-template";
@@ -113,10 +116,25 @@ export default async function ServiceDetailPage(props: Props) {
   const isMobileAppsPage = params.slug === mobileAppsServiceSlug;
   const landingPage = isMobileAppsPage ? undefined : getServiceLandingPageData(params.slug);
   const isLandingPage = Boolean(landingPage);
+  const clusterConfig = isMobileAppsPage ? null : resolveClusterConfigByServiceSlug(params.slug);
 
   if (!service) {
     notFound();
   }
+  const clusterArticles = clusterConfig ? await getPostsByCluster(clusterConfig.match, 3) : [];
+  const clusterArticlesSection =
+    clusterConfig && clusterArticles.length > 0 ? (
+      <TopicClusterArticlesSection
+        eyebrow={clusterConfig.serviceSection.eyebrow}
+        title={clusterConfig.serviceSection.title}
+        intro={clusterConfig.serviceSection.intro}
+        articles={clusterArticles}
+        hubHref={`/blog/topic/${clusterConfig.id}`}
+        hubCtaLabel={clusterConfig.serviceSection.ctaLabel}
+      />
+    ) : null;
+  const portfolioSection = !isMobileAppsPage ? <ServiceRelatedPortfolioSection serviceSlug={params.slug} /> : null;
+
   const seoPage = isMobileAppsPage ? mobileAppsServicePageData : landingPage || service;
   const pageTitle = seoPage.title;
   const pageDescription = seoPage.description;
@@ -222,14 +240,22 @@ export default async function ServiceDetailPage(props: Props) {
       {isMobileAppsPage ? (
         <MobileAppServicePageContent breadcrumbs={breadcrumbs} />
       ) : isLandingPage && landingPage ? (
-        <ServiceLandingTemplate data={landingPage} breadcrumbs={breadcrumbs} />
+        <ServiceLandingTemplate
+          data={landingPage}
+          breadcrumbs={breadcrumbs}
+          clusterArticlesSection={clusterArticlesSection}
+          portfolioSection={portfolioSection}
+        />
       ) : (
-        <ServiceLayout service={service as Service} />
+        <>
+          <ServiceLayout service={service as Service} />
+          {clusterArticlesSection}
+        </>
       )}
 
       {!isMobileAppsPage && !isLandingPage ? (
         <>
-          <LazyPortfolio />
+          {portfolioSection}
           <section className="bg-gray-50 py-16">
             <div className="container">
               <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow-lg">

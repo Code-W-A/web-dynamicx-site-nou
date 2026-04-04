@@ -1,6 +1,7 @@
 "use client";
 
 import { portfolioData } from "@/static-data/portfolio";
+import Link from "next/link";
 import SectionTitle from "../Common/SectionTitle";
 import SinglePortfolio from "./SinglePortfolio";
 
@@ -19,8 +20,8 @@ export default function Portfolio() {
               center
             />
             <div className="text-center mt-8 mb-16">
-              <a 
-                href="/portofoliu" 
+              <Link
+                href="/portofoliu"
                 className="inline-flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-primary border-2 border-primary/20 hover:border-primary transition-all duration-300 rounded-xl px-8 py-4 text-base font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-1 group"
               >
                 <svg className="h-5 w-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -30,7 +31,7 @@ export default function Portfolio() {
                 <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
           

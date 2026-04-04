@@ -20,12 +20,14 @@ const siteName = process.env.SITE_NAME || "Web Dynamicx";
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
 
 export const metadata: Metadata = {
-  title: `Servicii web design, site & magazin online | ${siteName}`,
-  description: "Creăm site-uri de prezentare și magazine online rapide, optimizate SEO. Servicii web design, optimizare SEO și mentenanță de site. Vezi portofoliul și cere ofertă.",
+  title: `Web Dynamicx | Agenție web pentru website-uri, SEO și proiecte digitale`,
+  description:
+    "Pagina principală Web Dynamicx: agenție web cu focus pe website-uri rapide, structură clară, SEO și proiecte digitale care susțin creșterea business-ului.",
   alternates: { canonical: siteURL },
   openGraph: {
-    title: `Servicii web design, site & magazin online | ${siteName}`,
-    description: "Creăm site-uri de prezentare și magazine online rapide, optimizate SEO. Servicii web design, optimizare SEO și mentenanță de site. Vezi portofoliul și cere ofertă.",
+    title: `Web Dynamicx | Agenție web pentru website-uri, SEO și proiecte digitale`,
+    description:
+      "Pagina principală Web Dynamicx: agenție web cu focus pe website-uri rapide, structură clară, SEO și proiecte digitale care susțin creșterea business-ului.",
     url: siteURL,
     siteName: siteName,
     locale: "ro_RO",
@@ -41,8 +43,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: `Servicii web design, site & magazin online | ${siteName}`,
-    description: "Creăm site-uri de prezentare și magazine online rapide, optimizate SEO. Servicii web design, optimizare SEO și mentenanță de site. Vezi portofoliul și cere ofertă.",
+    title: `Web Dynamicx | Agenție web pentru website-uri, SEO și proiecte digitale`,
+    description:
+      "Pagina principală Web Dynamicx: agenție web cu focus pe website-uri rapide, structură clară, SEO și proiecte digitale care susțin creșterea business-ului.",
     images: [`${siteURL}/images/hero/hero-image.png`],
   },
 };

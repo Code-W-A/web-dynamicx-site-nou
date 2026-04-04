@@ -1,8 +1,7 @@
 import CodeWithCopy from "@/components/Common/CodeWithCopy";
-import config from "@/sanity/config/client-config";
+import { buildPortableTextImageUrl } from "@/sanity/image-helpers";
 import { PortableText } from "@portabletext/react";
 import { getImageDimensions } from "@sanity/asset-utils";
-import urlBuilder from "@sanity/image-url";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,11 +19,7 @@ const SampleImageComponent = (props: any) => {
 
   return (
     <Image
-      src={urlBuilder(config as any)
-        .image(value)
-        .fit("max")
-        .auto("format")
-        .url()}
+      src={buildPortableTextImageUrl(value)}
       width={width}
       height={height}
       alt={altText}
@@ -79,6 +74,10 @@ const TableComponent = (props: any) => {
 };
 
 const myPortableTextComponents = {
+  block: {
+    h1: ({ children }: any) => <h2>{children}</h2>,
+  },
+
   types: {
     image: SampleImageComponent,
 

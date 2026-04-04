@@ -8,6 +8,11 @@ type BlogTextSource = {
   bodyPreview?: PortableTextBlock[];
 };
 
+type BlogCanonicalSource = {
+  canonicalUrl?: string;
+  slug?: { current?: string } | string;
+};
+
 function normalizeWhitespace(value?: string) {
   return value?.replace(/\s+/g, " ").trim() ?? "";
 }
@@ -25,6 +30,26 @@ function truncateAtWordBoundary(value: string, maxLength: number) {
   }
 
   return `${value.slice(0, maxLength).trimEnd()}…`;
+}
+
+function normalizeSiteOrigin(siteUrl: string) {
+  try {
+    return new URL(siteUrl).origin;
+  } catch {
+    return "https://www.webdynamicx.ro";
+  }
+}
+
+function resolveSlugValue(slug?: { current?: string } | string) {
+  if (typeof slug === "string") {
+    return slug.trim();
+  }
+
+  if (slug && typeof slug === "object" && typeof slug.current === "string") {
+    return slug.current.trim();
+  }
+
+  return "";
 }
 
 export function portableTextToPlainText(blocks?: PortableTextBlock[]) {
@@ -87,4 +112,31 @@ export function resolvePostTeaser(source: BlogTextSource, fallback = "") {
   }
 
   return truncateAtWordBoundary(candidate, 220);
+}
+
+export function resolveBlogCanonicalUrl(source: BlogCanonicalSource, siteUrl: string) {
+  const siteOrigin = normalizeSiteOrigin(siteUrl);
+  const slug = resolveSlugValue(source.slug);
+  const fallback = slug ? `${siteOrigin}/blog/${slug}` : `${siteOrigin}/blog`;
+  const candidate = source.canonicalUrl?.trim();
+
+  if (!candidate) {
+    return fallback;
+  }
+
+  try {
+    const parsed = new URL(candidate);
+
+    if (parsed.origin !== siteOrigin || parsed.search || parsed.hash) {
+      return fallback;
+    }
+
+    if (slug && parsed.pathname !== `/blog/${slug}`) {
+      return fallback;
+    }
+
+    return parsed.toString();
+  } catch {
+    return fallback;
+  }
 }

@@ -1,5 +1,5 @@
 import { resolvePostTeaser } from "@/lib/blog-post-text";
-import { imageBuilder } from "@/sanity/sanity-utils";
+import { buildBlogListingImageUrl } from "@/sanity/image-helpers";
 import { Blog } from "@/types/blog";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,7 +16,7 @@ export default function SingleBlog({ blog }: { blog: Blog }) {
         <div className="relative block aspect-video">
           {mainImage ? (
             <Image
-              src={mainImage ? imageBuilder(mainImage).url() : ""}
+              src={buildBlogListingImageUrl(mainImage)}
               alt={mainImageAlt}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"

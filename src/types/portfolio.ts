@@ -1,17 +1,29 @@
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
-import type { ReactNode } from "react";
+export type PortfolioSupportedService = {
+  slug: string;
+  reason: string;
+};
 
 export type Portfolio = {
   id: string | number;
   title: string;
   slug: string;
   sortDescription: string;
-  image: string | StaticImport;
+  image: string;
+  imageAlt: string;
   tags: string[];
   categories?: string[];
+  clientLabel: string;
+  headline: string;
+  metaTitle: string;
+  metaDescription: string;
+  context: string;
+  challenge: string;
+  solution: string;
+  outcome: string[];
+  supportedServices: PortfolioSupportedService[];
+  relatedSlugs: string[];
   website?: string;
   liveUrl?: string;
   location?: string;
   completedDate?: string;
-  details?: ReactNode;
 };

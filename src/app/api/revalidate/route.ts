@@ -1,6 +1,7 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
+import { getTopicClusterEntries } from "@/config/blog-topic-clusters";
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,14 +27,30 @@ export async function POST(req: NextRequest) {
     revalidateTag(body._type);
 
     if (body._type === "post") {
+      const clusterEntries = getTopicClusterEntries();
+      const servicePaths = new Set(
+        clusterEntries.flatMap((entry) => entry.serviceSlugs.map((slug) => `/servicii/${slug}`)),
+      );
+
       revalidatePath("/");
       revalidatePath("/blog");
+      revalidatePath("/blog/tag/[tag]", "page");
       revalidatePath("/sitemap.xml");
-      revalidatePath("/servicii/dezvoltare-aplicatii-mobile");
+      clusterEntries.forEach((entry) => {
+        revalidatePath(`/blog/topic/${entry.id}`);
+      });
+      servicePaths.forEach((path) => {
+        revalidatePath(path);
+      });
 
       if (typeof body.slug === "string" && body.slug.trim()) {
         revalidatePath(`/blog/${body.slug.trim()}`);
       }
+    }
+
+    if (body._type === "tagDetail") {
+      revalidatePath("/blog/tag/[tag]", "page");
+      revalidatePath("/sitemap.xml");
     }
 
     return NextResponse.json({

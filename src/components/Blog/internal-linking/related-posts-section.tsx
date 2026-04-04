@@ -1,7 +1,7 @@
 import { resolvePostTeaser } from "@/lib/blog-post-text";
 import Image from "next/image";
 import Link from "next/link";
-import { imageBuilder } from "@/sanity/sanity-utils";
+import { buildBlogRelatedImageUrl } from "@/sanity/image-helpers";
 import type { BlogRelatedPostCard } from "@/types/blog";
 
 export type RelatedPostsSectionProps = {
@@ -37,7 +37,7 @@ export default function RelatedPostsSection({ posts, currentSlug }: RelatedPosts
           let imgUrl: string | null = null;
           if (p.mainImage && typeof p.mainImage === "object") {
             try {
-              imgUrl = imageBuilder(p.mainImage as unknown as Parameters<typeof imageBuilder>[0]).url();
+              imgUrl = buildBlogRelatedImageUrl(p.mainImage);
             } catch {
               imgUrl = null;
             }
