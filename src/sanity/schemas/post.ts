@@ -252,7 +252,9 @@ const post = {
       name: "relatedPosts",
       title: "Related posts",
       type: "array",
-      of: [{ type: "reference", to: [{ type: "post" }] }],
+      description:
+        "Articole înrudite selectate manual. Referințele sunt weak, astfel încât ștergerea unui articol vechi să nu fie blocată de această listă.",
+      of: [{ type: "reference", weak: true, to: [{ type: "post" }] }],
       validation: (Rule: any) => Rule.unique(),
     },
     {
