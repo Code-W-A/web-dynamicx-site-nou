@@ -20,7 +20,6 @@ export default function RelatedClusterHubBlock({
       className={`rounded-sm border border-[#E9ECF8] bg-white p-5 sm:p-6 ${className}`.trim()}
       aria-labelledby="related-cluster-hub-heading"
     >
-      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Cluster relevant</p>
       <h2 id="related-cluster-hub-heading" className="mt-2 text-lg font-semibold tracking-tight text-slate-950">
         {title}
       </h2>

@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import { getImageDimensions } from "@sanity/asset-utils";
 import Image from "next/image";
 import Link from "next/link";
+import type { PortableTextBlock } from "sanity";
 
 // Barebones lazy-loaded image component
 const SampleImageComponent = (props: any) => {
@@ -17,13 +18,14 @@ const SampleImageComponent = (props: any) => {
         ? value.caption.trim()
         : "Imagine din articol";
 
-  return (
+  const image = (
     <Image
       src={buildPortableTextImageUrl(value)}
       width={width}
       height={height}
       alt={altText}
       loading="lazy"
+      className={isInline ? "" : "h-auto w-full"}
       style={{
         // Display alongside text if image appears inside a block text span
         display: isInline ? "inline-block" : "block",
@@ -33,12 +35,22 @@ const SampleImageComponent = (props: any) => {
       }}
     />
   );
+
+  if (isInline) {
+    return image;
+  }
+
+  return (
+    <figure className="my-10 overflow-hidden rounded-[1.5rem] bg-slate-50 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
+      {image}
+    </figure>
+  );
 };
 
 const CodeComponent = (props: any) => {
   if (props?.value?.code) {
     return (
-      <div className="relative">
+      <div className="relative my-8 overflow-hidden rounded-[1.5rem] border border-slate-200 shadow-[0_12px_36px_rgba(15,23,42,0.06)]">
         <CodeWithCopy code={props?.value} />
       </div>
     );
@@ -47,7 +59,7 @@ const CodeComponent = (props: any) => {
 
 const TableComponent = (props: any) => {
   return (
-    <>
+    <div className="my-8 overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-[0_12px_32px_rgba(15,23,42,0.05)]">
       <div className="max-w-full overflow-x-auto">
         <table className="w-full table-auto">
           {props?.value?.rows?.map((row: any, i: any) => {
@@ -69,7 +81,7 @@ const TableComponent = (props: any) => {
           })}
         </table>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -119,10 +131,14 @@ const myPortableTextComponents = {
   },
 };
 
-const RenderBodyContent = ({ post }: any) => {
+type RenderBodyContentProps = {
+  value?: PortableTextBlock[];
+};
+
+const RenderBodyContent = ({ value }: RenderBodyContentProps) => {
   return (
     <>
-      <PortableText value={post?.body} components={myPortableTextComponents} />
+      <PortableText value={value ?? []} components={myPortableTextComponents} />
     </>
   );
 };

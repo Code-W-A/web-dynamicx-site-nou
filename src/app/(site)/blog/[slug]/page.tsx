@@ -1,13 +1,11 @@
 import RenderBodyContent from "@/components/Blog/BlogDetails/RenderBodyContent";
-import PortfolioHubBlock from "@/components/Blog/internal-linking/portfolio-hub-block";
-import RelatedClusterHubBlock from "@/components/Blog/internal-linking/related-cluster-hub-block";
-import RelevantCaseStudiesBlock from "@/components/Blog/internal-linking/relevant-case-studies-block";
-import RelatedPostsSection from "@/components/Blog/internal-linking/related-posts-section";
-import RelatedServiceBlock from "@/components/Blog/internal-linking/related-service-block";
+import ArticleInlineServiceCta from "@/components/Blog/internal-linking/article-inline-service-cta";
+import ArticleNextStepsSection from "@/components/Blog/internal-linking/article-next-steps-section";
 import Breadcrumbs, { type BreadcrumbItem } from "@/components/Common/Breadcrumbs";
 import { getRelatedCaseStudies } from "@/app/(site)/portofoliu-aplicatii-mobile/mobile-app-portfolio-data";
 import { buildArticleInternalLinkingPlan } from "@/lib/blog-article-internal-links";
 import { resolveBlogCanonicalUrl, resolvePostSeoDescription } from "@/lib/blog-post-text";
+import { shouldAutoShowPortfolioHub } from "@/config/blog-topic-clusters";
 import {
   buildAuthorAvatarUrl,
   buildBlogArticleStructuredDataImageUrls,
@@ -22,6 +20,7 @@ import Link from "next/link";
 import { SharePost } from "@/app/(site)/blog/[slug]/_components/share-post";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import type { PortableTextBlock } from "sanity";
 
 export const revalidate = 60;
 
@@ -36,6 +35,36 @@ function resolveImageAlt(image: Blog["mainImage"] | undefined, fallback: string)
 
   return fallback;
 }
+
+function splitArticleBody(blocks?: PortableTextBlock[]) {
+  const bodyBlocks = Array.isArray(blocks) ? blocks : [];
+
+  if (bodyBlocks.length <= 2) {
+    return {
+      leadBlocks: bodyBlocks,
+      remainingBlocks: [] as PortableTextBlock[],
+      canInsertInlineCta: false,
+    };
+  }
+
+  return {
+    leadBlocks: bodyBlocks.slice(0, 2),
+    remainingBlocks: bodyBlocks.slice(2),
+    canInsertInlineCta: true,
+  };
+}
+
+const articleProseClassName =
+  "prose prose-zinc max-w-none " +
+  "prose-headings:font-semibold prose-headings:tracking-tight " +
+  "prose-p:my-5 prose-p:text-[1.05rem] prose-p:leading-8 " +
+  "prose-a:font-semibold prose-a:text-primary prose-a:no-underline hover:prose-a:underline " +
+  "prose-strong:text-slate-950 " +
+  "prose-h2:mt-14 prose-h2:mb-5 prose-h2:text-[1.8rem] prose-h2:leading-tight " +
+  "prose-h3:mt-10 prose-h3:mb-4 prose-h3:text-[1.35rem] prose-h3:leading-tight " +
+  "prose-h4:mt-8 prose-h4:mb-3 prose-h4:text-[1.1rem] prose-h4:leading-tight " +
+  "prose-ul:my-6 prose-ul:space-y-3 prose-ol:my-6 prose-ol:space-y-3 prose-li:marker:text-primary " +
+  "prose-blockquote:my-10 prose-blockquote:rounded-[1.5rem] prose-blockquote:border-l-4 prose-blockquote:border-primary/20 prose-blockquote:bg-slate-50 prose-blockquote:px-6 prose-blockquote:py-5 prose-blockquote:text-left prose-blockquote:not-italic prose-blockquote:text-slate-800";
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
@@ -137,10 +166,12 @@ export default async function BlogSlugPage(props: Props) {
   const structuredDataImageSource = post.mainImage || post.ogImage;
   const structuredDataImages = buildBlogArticleStructuredDataImageUrls(structuredDataImageSource);
   const authorAvatar = post.author?.image ? buildAuthorAvatarUrl(post.author.image) : undefined;
+  const articleIntro = typeof post.excerpt === "string" ? post.excerpt.trim() : "";
 
   const internalPlan = buildArticleInternalLinkingPlan(post, siteURL);
   const relatedCaseStudies = getRelatedCaseStudies(post.relatedCaseStudies ?? []).slice(0, 2);
   const indexableTags = await getIndexableTags(post.tags);
+  const { leadBlocks, remainingBlocks, canInsertInlineCta } = splitArticleBody(post.body);
   const breadcrumbItems: BreadcrumbItem[] = [
     { name: "Acasă", href: "/" },
     { name: "Blog", href: "/blog" },
@@ -178,6 +209,49 @@ export default async function BlogSlugPage(props: Props) {
     seenRelated.add(cur);
     return true;
   });
+
+  const inlineService =
+    canInsertInlineCta && internalPlan.showAutoServiceBlock && internalPlan.cluster
+      ? {
+          title: internalPlan.cluster.serviceBlockTitle,
+          description: internalPlan.cluster.serviceBlockDescription,
+          href: internalPlan.cluster.serviceHref,
+          ctaLabel: internalPlan.cluster.serviceCtaLabel,
+        }
+      : null;
+
+  const finalService = internalPlan.cluster
+    ? {
+        title: internalPlan.cluster.serviceBlockTitle,
+        description: internalPlan.cluster.serviceBlockDescription,
+        href: internalPlan.cluster.serviceHref,
+        ctaLabel: internalPlan.cluster.serviceCtaLabel,
+      }
+    : null;
+
+  const wantsPortfolioHub =
+    Boolean(internalPlan.cluster?.portfolioHubHref) &&
+    (post.showPortfolioHub === true || shouldAutoShowPortfolioHub(post));
+
+  const finalPortfolio =
+    wantsPortfolioHub && internalPlan.cluster?.portfolioHubHref
+      ? {
+          href: internalPlan.cluster.portfolioHubHref,
+          title: internalPlan.cluster.portfolioHubTitle ?? "Vezi portofoliul relevant",
+          description:
+            internalPlan.cluster.portfolioHubDescription ?? "Explorează proiecte reale relevante pentru subiectul acestui articol.",
+          ctaLabel: internalPlan.cluster.portfolioHubCtaLabel ?? "Vezi portofoliul",
+        }
+      : null;
+
+  const finalClusterHub = internalPlan.cluster
+    ? {
+        href: `/blog/topic/${internalPlan.cluster.id}`,
+        title: internalPlan.cluster.hub.title,
+        description: internalPlan.cluster.hub.intro,
+        ctaLabel: internalPlan.cluster.serviceSection.ctaLabel,
+      }
+    : null;
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -234,8 +308,19 @@ export default async function BlogSlugPage(props: Props) {
             <div className="mx-[-16px] flex flex-wrap justify-center">
               <div className="w-full px-4 lg:w-8/12">
                 <div>
-                  <div className="relative mb-10 aspect-848/384 w-full overflow-hidden rounded-sm">
-                    {heroImage ? (
+                  <div className="mb-5">
+                    <Breadcrumbs items={breadcrumbItems} align="start" compact />
+                  </div>
+                  <h1 className="text-3xl leading-tight font-bold text-black sm:text-4xl sm:leading-tight">
+                    {post?.title}
+                  </h1>
+                  {articleIntro ? (
+                    <p className="text-body-color mt-5 max-w-3xl text-lg leading-relaxed sm:text-xl">
+                      {articleIntro}
+                    </p>
+                  ) : null}
+                  {heroImage ? (
+                    <div className="relative mt-8 mb-10 aspect-848/384 w-full overflow-hidden rounded-[1.75rem]">
                       <Image
                         src={heroImage}
                         alt={mainImageAlt}
@@ -244,14 +329,8 @@ export default async function BlogSlugPage(props: Props) {
                         sizes="(max-width: 1024px) 100vw, 66vw"
                         className="h-full w-full object-cover object-center"
                       />
-                    ) : null}
-                  </div>
-                  <div className="mb-6">
-                    <Breadcrumbs items={breadcrumbItems} align="start" compact />
-                  </div>
-                  <h1 className="mb-8 text-3xl leading-tight font-bold text-black sm:text-4xl sm:leading-tight">
-                    {post?.title}
-                  </h1>
+                    </div>
+                  ) : null}
                   <div className="mb-10 flex flex-wrap items-center justify-between border-b border-[#E9ECF8] pb-4">
                     <div className="flex flex-wrap items-center">
                       <div className="mr-10 mb-5 flex items-center">
@@ -297,105 +376,59 @@ export default async function BlogSlugPage(props: Props) {
                         </p>
                       </div>
                     </div>
-                    {indexableTags.length > 0 ? (
-                      <div className="mb-5">
-                        <Link
-                          href={`/blog/tag/${indexableTags[0]}`}
-                          className="bg-primary inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white"
-                        >
-                          {indexableTags[0]}
-                        </Link>
-                      </div>
-                    ) : null}
                   </div>
                   <div>
-                    {internalPlan.showAutoServiceBlock || internalPlan.showClusterHubBlock ? (
-                      <div className="not-prose mb-8 grid gap-4 lg:grid-cols-2">
-                        {internalPlan.showAutoServiceBlock && internalPlan.cluster ? (
-                          <RelatedServiceBlock
-                            title={internalPlan.cluster.serviceBlockTitle}
-                            description={internalPlan.cluster.serviceBlockDescription}
-                            href={internalPlan.cluster.serviceHref}
-                            ctaLabel={internalPlan.cluster.serviceCtaLabel}
-                            className="h-full"
-                          />
-                        ) : null}
+                    <div className={articleProseClassName}>
+                      <RenderBodyContent value={leadBlocks} />
+                    </div>
 
-                        {internalPlan.showClusterHubBlock && internalPlan.clusterHub ? (
-                          <RelatedClusterHubBlock
-                            title={internalPlan.clusterHub.title}
-                            description={internalPlan.clusterHub.description}
-                            href={internalPlan.clusterHub.href}
-                            ctaLabel={internalPlan.clusterHub.ctaLabel}
-                            className="h-full"
-                          />
-                        ) : null}
+                    {inlineService ? (
+                      <div className="my-10">
+                        <ArticleInlineServiceCta
+                          title={inlineService.title}
+                          description={inlineService.description}
+                          href={inlineService.href}
+                          ctaLabel={inlineService.ctaLabel}
+                        />
                       </div>
                     ) : null}
 
-                    <div className="prose prose-zinc prose-blockquote:rounded-xs prose-blockquote:border-l-0 prose-blockquote:bg-primary prose-blockquote:p-8 prose-blockquote:text-center prose-blockquote:italic prose-blockquote:text-white mb-8 max-w-none">
-                      <RenderBodyContent post={post} />
+                    {remainingBlocks.length > 0 ? (
+                      <div className={`${articleProseClassName} mb-8`}>
+                        <RenderBodyContent value={remainingBlocks} />
+                      </div>
+                    ) : null}
+
+                    <div className="not-prose mt-14">
+                      <ArticleNextStepsSection
+                        currentSlug={slug}
+                        service={finalService}
+                        portfolio={finalPortfolio}
+                        clusterHub={finalClusterHub}
+                        caseStudies={relatedCaseStudies}
+                        relatedPosts={relatedPostsForSection}
+                        manualLinks={internalPlan.manualRelatedServices}
+                      />
                     </div>
 
-                    <div className="not-prose mb-8 space-y-6">
-                      {internalPlan.manualRelatedServices.length > 0 ? (
-                        <aside
-                          className="rounded-sm border border-[#E9ECF8] bg-white p-5 sm:p-6"
-                          aria-labelledby="manual-service-links-heading"
-                        >
-                          <h2
-                            id="manual-service-links-heading"
-                            className="text-sm font-semibold tracking-tight text-slate-950"
-                          >
-                            {internalPlan.showAutoServiceBlock ? "Și alte pagini utile" : "Resurse utile"}
-                          </h2>
-                          <ul className="mt-3 space-y-2 text-sm">
-                            {internalPlan.manualRelatedServices.map((item) => (
-                              <li key={`${item.href}-${item.title}`}>
-                                <Link
-                                  href={item.href}
-                                  className="font-medium text-primary underline-offset-4 hover:underline"
-                                >
-                                  {item.title}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </aside>
-                      ) : null}
-
-                      {internalPlan.showPortfolioHubBlock && internalPlan.portfolioHub ? (
-                        <PortfolioHubBlock
-                          title={internalPlan.portfolioHub.title}
-                          description={internalPlan.portfolioHub.description}
-                          href={internalPlan.portfolioHub.href}
-                          ctaLabel={internalPlan.portfolioHub.ctaLabel}
-                        />
-                      ) : null}
-
-                      <RelevantCaseStudiesBlock studies={relatedCaseStudies} />
-
-                      <RelatedPostsSection posts={relatedPostsForSection} currentSlug={slug} />
-                    </div>
-
-                    <div className="items-center justify-between sm:flex">
+                    <div className="mt-10 border-t border-[#E9ECF8] pt-8 sm:flex sm:items-start sm:justify-between">
                       {indexableTags.length > 0 ? (
                         <div className="mb-5">
-                        <h5 className="text-body-color mb-3 text-sm font-medium">
-                          Etichete:
-                        </h5>
-                        <div className="flex items-center">
-                          {indexableTags.map((tag: string, i: number) => (
-                            <Link
-                              href={`/blog/tag/${tag}`}
-                              key={i}
-                              className="bg-primary/10 text-body-color hover:bg-primary mr-4 inline-flex items-center justify-center rounded-xs px-4 py-2 transition hover:text-white"
-                            >
-                              {tag}
-                            </Link>
-                          ))}
+                          <h5 className="text-body-color mb-3 text-sm font-medium">
+                            Etichete:
+                          </h5>
+                          <div className="flex flex-wrap items-center gap-3">
+                            {indexableTags.map((tag: string, i: number) => (
+                              <Link
+                                href={`/blog/tag/${tag}`}
+                                key={i}
+                                className="bg-primary/10 text-body-color hover:bg-primary inline-flex items-center justify-center rounded-xs px-4 py-2 transition hover:text-white"
+                              >
+                                {tag}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
-                      </div>
                       ) : null}
 
                       <div className="mb-5">
