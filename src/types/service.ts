@@ -7,7 +7,6 @@ export type Service = {
   slug: string;
   image?: string;
   ogImage?: string;
-  details: React.ReactNode; // sau JSX.Element
+  details: React.ReactNode | null;
   faqs?: { question: string; answer: string }[];
 };
-

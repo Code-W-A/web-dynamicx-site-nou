@@ -1,7 +1,9 @@
 import { MetadataRoute } from "next";
 import { serviceData } from "@/static-data/service";
 import { integrations } from "../../integrations.config";
-import { getPosts } from "@/sanity/sanity-utils";
+import { getPostsForSitemap } from "@/sanity/sanity-utils";
+import { mobileAppCaseStudies } from "@/app/(site)/portofoliu-aplicatii-mobile/mobile-app-portfolio-data";
+import { serviceLandingPageSlugs } from "@/app/(site)/servicii/_landing/service-landing-data";
 import { stat } from "node:fs/promises";
 import path from "node:path";
 
@@ -20,16 +22,34 @@ async function getLatestLastModified(relativePaths: string[], fallback: Date) {
   return dates.reduce((latest, current) => (current > latest ? current : latest), fallback);
 }
 
+function resolvePostLastModified(
+  post: {
+    _updatedAt?: string;
+    publishedAt?: string;
+  },
+  fallback: Date,
+) {
+  if (post._updatedAt) {
+    return new Date(post._updatedAt);
+  }
+
+  if (post.publishedAt) {
+    return new Date(post.publishedAt);
+  }
+
+  return fallback;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
   const fallbackDate = new Date("2025-01-01T00:00:00.000Z");
+  const blogPageFileLastModified = await getFileLastModified("src/app/(site)/blog/page.tsx", fallbackDate);
 
   const staticRouteSources = [
     { url: `${siteURL}/`, file: "src/app/(site)/page.tsx", changeFrequency: "weekly" as const, priority: 1 },
     { url: `${siteURL}/servicii`, file: "src/app/(site)/servicii/page.tsx", changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${siteURL}/portofoliu`, file: "src/app/(site)/portofoliu/page.tsx", changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${siteURL}/despre`, file: "src/app/(site)/despre/page.tsx", changeFrequency: "yearly" as const, priority: 0.6 },
-    { url: `${siteURL}/blog`, file: "src/app/(site)/blog/page.tsx", changeFrequency: "weekly" as const, priority: 0.6 },
     { url: `${siteURL}/contact`, file: "src/app/(site)/contact/page.tsx", changeFrequency: "yearly" as const, priority: 0.6 },
     {
       url: `${siteURL}/politica-de-confidentialitate`,
@@ -59,6 +79,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   const serviceDataLastModified = await getFileLastModified("src/static-data/service.tsx", fallbackDate);
+  const serviceLandingLastModified = await getLatestLastModified(
+    [
+      "src/static-data/service.tsx",
+      "src/app/(site)/servicii/[slug]/page.tsx",
+      "src/app/(site)/servicii/_landing/service-landing-types.ts",
+      "src/app/(site)/servicii/_landing/service-landing-template.tsx",
+      "src/app/(site)/servicii/_landing/service-landing-data.ts",
+    ],
+    fallbackDate,
+  );
   const mobileAppsServiceLastModified = await getLatestLastModified(
     [
       "src/static-data/service.tsx",
@@ -73,20 +103,57 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const servicesRoutes: MetadataRoute.Sitemap = serviceData.map((s) => ({
     url: `${siteURL}/servicii/${s.slug}`,
-    lastModified: s.slug === "dezvoltare-aplicatii-mobile" ? mobileAppsServiceLastModified : serviceDataLastModified,
+    lastModified:
+      s.slug === "dezvoltare-aplicatii-mobile"
+        ? mobileAppsServiceLastModified
+        : serviceLandingPageSlugs.includes(s.slug as (typeof serviceLandingPageSlugs)[number])
+          ? serviceLandingLastModified
+          : serviceDataLastModified,
     changeFrequency: "monthly",
     priority: 0.85,
   }));
 
+  const mobilePortfolioLastModified = await getLatestLastModified(
+    [
+      "src/app/(site)/portofoliu-aplicatii-mobile/page.tsx",
+      "src/app/(site)/portofoliu-aplicatii-mobile/mobile-app-portfolio-data.ts",
+      "src/app/(site)/portofoliu-aplicatii-mobile/[slug]/page.tsx",
+    ],
+    fallbackDate,
+  );
+
+  const mobilePortfolioRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${siteURL}/portofoliu-aplicatii-mobile`,
+      lastModified: mobilePortfolioLastModified,
+      changeFrequency: "monthly",
+      priority: 0.68,
+    },
+    ...mobileAppCaseStudies.map((c) => ({
+      url: `${siteURL}/portofoliu-aplicatii-mobile/${c.slug}`,
+      lastModified: mobilePortfolioLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    })),
+  ];
+
   let blogRoutes: MetadataRoute.Sitemap = [];
+  let blogIndexLastModified = blogPageFileLastModified;
   if (integrations?.isSanityEnabled) {
     try {
-      const posts = await getPosts();
+      const posts = await getPostsForSitemap();
+      const postModifiedDates = posts.map((post) => resolvePostLastModified(post, fallbackDate));
+      if (postModifiedDates.length > 0) {
+        blogIndexLastModified = postModifiedDates.reduce(
+          (latest, current) => (current > latest ? current : latest),
+          blogPageFileLastModified,
+        );
+      }
       blogRoutes = (posts || [])
         .filter((p: any) => p?.slug?.current)
         .map((p: any) => ({
           url: `${siteURL}/blog/${p.slug.current}`,
-          lastModified: p._updatedAt ? new Date(p._updatedAt) : p.publishedAt ? new Date(p.publishedAt) : fallbackDate,
+          lastModified: resolvePostLastModified(p, fallbackDate),
           changeFrequency: "weekly",
           priority: 0.5,
         }));
@@ -95,6 +162,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
+  const blogIndexRoute: MetadataRoute.Sitemap = [
+    {
+      url: `${siteURL}/blog`,
+      lastModified: blogIndexLastModified,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    },
+  ];
 
-  return [...staticRoutes, ...servicesRoutes, ...blogRoutes];
+  return [...staticRoutes, ...blogIndexRoute, ...servicesRoutes, ...mobilePortfolioRoutes, ...blogRoutes];
 }

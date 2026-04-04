@@ -1,11 +1,14 @@
+import { resolvePostTeaser } from "@/lib/blog-post-text";
 import { imageBuilder } from "@/sanity/sanity-utils";
 import { Blog } from "@/types/blog";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function SingleBlog({ blog }: { blog: Blog }) {
-  const { title, metadata, metaDescription, excerpt, slug, mainImage } = blog;
-  const teaser = excerpt || metaDescription || metadata || "";
+  const { title, slug, mainImage } = blog;
+  const teaser = resolvePostTeaser(blog);
+  const mainImageAlt =
+    mainImage && typeof mainImage.alt === "string" && mainImage.alt.trim() ? mainImage.alt.trim() : title;
 
   return (
     <article className="relative">
@@ -14,7 +17,7 @@ export default function SingleBlog({ blog }: { blog: Blog }) {
           {mainImage ? (
             <Image
               src={mainImage ? imageBuilder(mainImage).url() : ""}
-              alt={title}
+              alt={mainImageAlt}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="w-full duration-300 group-hover:scale-110"

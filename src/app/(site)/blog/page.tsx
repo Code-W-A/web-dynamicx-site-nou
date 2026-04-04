@@ -1,12 +1,15 @@
+import { resolvePostSeoDescription } from "@/lib/blog-post-text";
 import SingleBlog from "@/components/Blog/SingleBlog";
 import PageTitle from "@/components/Common/PageTitle";
-import { getPosts } from "@/sanity/sanity-utils";
+import { getPosts, imageBuilder } from "@/sanity/sanity-utils";
 import { Metadata } from "next";
 
-export const revalidate = 300;
+export const revalidate = 60;
 
 const siteName = process.env.SITE_NAME || "Web Dynamicx";
 const siteUrl = process.env.SITE_URL || "https://www.webdynamicx.ro";
+const organizationLogoUrl =
+  process.env.NEXT_PUBLIC_ORGANIZATION_LOGO_URL?.trim() || `${siteUrl}/images/logo/logo.svg`;
 
 export const metadata: Metadata = {
   title: `Blog – web design, creare site, SEO | ${siteName}`,
@@ -32,6 +35,7 @@ export const metadata: Metadata = {
 
 export default async function BlogPage() {
   const posts = await getPosts();
+  const listedPosts = posts.filter((post) => Boolean(post?.slug?.current));
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -63,7 +67,40 @@ export default async function BlogPage() {
       "@type": "Organization",
       name: siteName,
       url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: organizationLogoUrl,
+      },
     },
+  };
+
+  const blogItemListLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    numberOfItems: listedPosts.length,
+    itemListElement: listedPosts.map((post, index) => {
+      const slug = post.slug?.current;
+      const canonical = post.canonicalUrl || `${siteUrl}/blog/${slug}`;
+      const description = resolvePostSeoDescription(post, "Articol de pe blogul Web Dynamicx.");
+      const image = post.mainImage ? imageBuilder(post.mainImage).url() : undefined;
+
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        url: canonical,
+        name: post.title,
+        item: {
+          "@type": "BlogPosting",
+          headline: post.title,
+          url: canonical,
+          description,
+          image,
+          datePublished: post.publishedAt,
+          dateModified: post._updatedAt,
+        },
+      };
+    }),
   };
 
   return (
@@ -78,13 +115,18 @@ export default async function BlogPage() {
         // @ts-ignore
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }}
       />
+      <script
+        type="application/ld+json"
+        // @ts-ignore
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogItemListLd) }}
+      />
 
       <PageTitle
         pageTitle="Blog Web Dynamicx"
         pageDescription="Resurse practice despre creare site, magazine online, design, SEO și marketing digital."
       />
       <section className="container grid gap-8 bg-white pb-20 min-[400px]:grid-cols-[repeat(auto-fill,minmax(23rem,1fr))] sm:pt-[90px]">
-        {posts.map((blog) => (
+        {listedPosts.map((blog) => (
           <SingleBlog key={blog?.slug.current} blog={blog} />
         ))}
       </section>

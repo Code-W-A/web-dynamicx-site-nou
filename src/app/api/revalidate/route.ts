@@ -1,4 +1,4 @@
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
 
@@ -24,6 +24,18 @@ export async function POST(req: NextRequest) {
     }
 
     revalidateTag(body._type);
+
+    if (body._type === "post") {
+      revalidatePath("/");
+      revalidatePath("/blog");
+      revalidatePath("/sitemap.xml");
+      revalidatePath("/servicii/dezvoltare-aplicatii-mobile");
+
+      if (typeof body.slug === "string" && body.slug.trim()) {
+        revalidatePath(`/blog/${body.slug.trim()}`);
+      }
+    }
+
     return NextResponse.json({
       status: 200,
       revalidated: true,

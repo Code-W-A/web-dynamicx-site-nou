@@ -20,14 +20,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const logoUrl = `${siteUrl}/images/logo/logo.svg`;
+  const logoUrl =
+    process.env.NEXT_PUBLIC_ORGANIZATION_LOGO_URL?.trim() || `${siteUrl}/images/logo/logo.svg`;
 
   const organizationLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: siteName,
     url: siteUrl,
-    logo: logoUrl,
+    logo: {
+      "@type": "ImageObject",
+      url: logoUrl,
+    },
     contactPoint: [
       {
         "@type": "ContactPoint",

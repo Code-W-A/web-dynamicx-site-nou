@@ -7,14 +7,21 @@ import MobileAppServicePageContent from "../dezvoltare-aplicatii-mobile/mobile-a
 import Link from "next/link";
 import JsonLd from "@/components/Common/JsonLd";
 import { Phone, MessageCircle, Mail } from "lucide-react";
-import LazyTestimonial from "../../../../components/Lazy/LazyTestimonial";
 import LazyPortfolio from "../../../../components/Lazy/LazyPortfolio";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import ServiceLandingTemplate from "../_landing/service-landing-template";
+import { getServiceLandingPageData } from "../_landing/service-landing-data";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return serviceData.map((service) => ({ slug: service.slug }));
+}
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
@@ -30,27 +37,31 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   const service = serviceData.find((item) => item?.slug === params?.slug);
   const isMobileAppsPage = params.slug === mobileAppsServiceSlug;
+  const landingPage = isMobileAppsPage ? undefined : getServiceLandingPageData(params.slug);
 
   if (!service) {
     notFound();
   }
 
-  const pageTitle = isMobileAppsPage ? mobileAppsServicePageData.title : service.title;
-  const pageDescription = isMobileAppsPage ? mobileAppsServicePageData.description : service.description;
-  const pageMetaTitle = isMobileAppsPage ? mobileAppsServicePageData.metaTitle : service.metaTitle;
-  const pageMetaDescription = isMobileAppsPage ? mobileAppsServicePageData.metaDescription : service.metaDescription;
-  const pageOgImage = isMobileAppsPage ? mobileAppsServicePageData.ogImage : service.ogImage;
-  const pageImage = isMobileAppsPage ? mobileAppsServicePageData.image : service.image;
+  const seoPage = isMobileAppsPage ? mobileAppsServicePageData : landingPage || service;
+  const pageTitle = seoPage.title;
+  const pageDescription = seoPage.description;
+  const pageMetaTitle = seoPage.metaTitle;
+  const pageMetaDescription = seoPage.metaDescription;
+  const pageOgImage = "ogImage" in seoPage ? seoPage.ogImage : service.ogImage;
+  const pageImage = seoPage.image;
+  const pageOgAlt = isMobileAppsPage ? mobileAppsServicePageData.title : landingPage?.ogAlt || pageTitle;
   const baseImage = pageOgImage || pageImage;
   const ogImage = baseImage ? `${siteURL}${baseImage}` : undefined;
   const title = pageMetaTitle || `${pageTitle || "Serviciu Web Dynamicx"} | ${siteName}`;
   const description = pageMetaDescription || `${pageDescription?.slice(0, 136)}...`;
+  const canonicalUrl = `${siteURL}/servicii/${service.slug}`;
   return {
     title,
     description,
     authors: [{ name: authorName }],
     alternates: {
-      canonical: `${siteURL}/servicii/${service.slug}`,
+      canonical: canonicalUrl,
     },
 
     robots: {
@@ -69,17 +80,17 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      url: `${siteURL}/servicii/${service.slug}`,
+      url: canonicalUrl,
       siteName: siteName,
       locale: "ro_RO",
-      type: "article",
+      type: "website",
       images: ogImage
         ? [
             {
               url: ogImage,
               width: 1200,
               height: 630,
-              alt: pageTitle,
+              alt: pageOgAlt,
             },
           ]
         : undefined,
@@ -100,13 +111,26 @@ export default async function ServiceDetailPage(props: Props) {
   const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
   const service = serviceData.find((item) => item?.slug === params?.slug);
   const isMobileAppsPage = params.slug === mobileAppsServiceSlug;
+  const landingPage = isMobileAppsPage ? undefined : getServiceLandingPageData(params.slug);
+  const isLandingPage = Boolean(landingPage);
 
   if (!service) {
     notFound();
   }
-  const pageTitle = isMobileAppsPage ? mobileAppsServicePageData.title : service.title;
-  const pageDescription = isMobileAppsPage ? mobileAppsServicePageData.description : service.description;
-  const pageFaqs = isMobileAppsPage ? mobileAppsServicePageData.faqs : service.faqs;
+  const seoPage = isMobileAppsPage ? mobileAppsServicePageData : landingPage || service;
+  const pageTitle = seoPage.title;
+  const pageDescription = seoPage.description;
+  const pageFaqs = isMobileAppsPage ? mobileAppsServicePageData.faqs : landingPage?.faq.items || service.faqs;
+  const pageImage = seoPage.image;
+  const pageOgImage = "ogImage" in seoPage ? seoPage.ogImage : service.ogImage;
+  const howToSteps = isMobileAppsPage
+    ? mobileAppsServicePageData.howToSteps
+    : landingPage?.process.steps.map((step, index) => ({
+        name: step.title,
+        text: step.subtitle ? `${step.subtitle} ${step.description}` : step.description,
+        position: index + 1,
+      }));
+  const canonicalUrl = `${siteURL}/servicii/${service.slug}`;
 
   // Create breadcrumbs for service detail page
   const breadcrumbs = [
@@ -117,73 +141,55 @@ export default async function ServiceDetailPage(props: Props) {
 
   return (
     <>
-      <PageTitle
-        pageTitle={pageTitle}
-        pageDescription={pageDescription}
-        breadcrumbs={breadcrumbs}
-      />
+      {!isMobileAppsPage && !isLandingPage ? (
+        <PageTitle
+          pageTitle={pageTitle}
+          pageDescription={pageDescription}
+          breadcrumbs={breadcrumbs}
+        />
+      ) : null}
       {/* JSON-LD: Service for SEO */}
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "Service",
           name: pageTitle,
-          provider: { "@type": "Organization", name: "Web Dynamicx" },
+          provider: {
+            "@type": "Organization",
+            name: "Web Dynamicx",
+            url: siteURL,
+            contactPoint: [
+              {
+                "@type": "ContactPoint",
+                telephone: "+40774550758",
+                contactType: "customer support",
+                email: "webdynamicx@gmail.com",
+                availableLanguage: ["ro"],
+              },
+            ],
+          },
           areaServed: "România",
           serviceType: pageTitle,
           description: pageDescription,
-          url: `${siteURL}/servicii/${service.slug}`,
+          url: canonicalUrl,
+          image: pageOgImage ? `${siteURL}${pageOgImage}` : pageImage ? `${siteURL}${pageImage}` : undefined,
         }}
       />
       {/* JSON-LD: HowTo for timeline when applicable */}
-      {(service.slug === "creare-site-web" || service.slug === "creare-site-prezentare" || service.slug === "dezvoltare-aplicatii-mobile" || service.slug === "mentenanta-website") && (
+      {howToSteps && howToSteps.length > 0 && (
         <JsonLd
           data={{
             "@context": "https://schema.org",
             "@type": "HowTo",
-            name:
-              service.slug === "creare-site-web"
-                ? "Etape Creare Site Web"
-                : service.slug === "creare-site-prezentare"
-                  ? "Etape Creare Site Prezentare"
-                  : service.slug === "dezvoltare-aplicatii-mobile"
-                    ? "Etape Dezvoltare Aplicații Mobile"
-                    : "Etape Mentenanță Website",
+            name: `Proces ${pageTitle}`,
             description: pageDescription,
-            step:
-              service.slug === "creare-site-web"
-                ? [
-                    { "@type": "HowToStep", name: "Analiză", text: "Obiective, public, competiție, structură pagini și mesaje.", position: 1 },
-                    { "@type": "HowToStep", name: "Wireframe & conținut", text: "Secțiuni, ordinea informațiilor și CTA-uri.", position: 2 },
-                    { "@type": "HowToStep", name: "UI design", text: "Interfețe moderne, componente reutilizabile, sistem vizual coerent.", position: 3 },
-                    { "@type": "HowToStep", name: "Implementare", text: "Next.js, optimizări de viteză, testare pe dispozitive reale.", position: 4 },
-                    { "@type": "HowToStep", name: "SEO & lansare", text: "Meta-uri, schema, sitemap/robots, GSC/GA4, training.", position: 5 },
-                    { "@type": "HowToStep", name: "Mentenanță", text: "Actualizări periodice, optimizări și evoluții pe baza datelor.", position: 6 },
-                  ]
-                : service.slug === "creare-site-prezentare"
-                  ? [
-                      { "@type": "HowToStep", name: "Analiză", text: "Obiective, public, diferențiatori, sitemap.", position: 1 },
-                      { "@type": "HowToStep", name: "Wireframe & conținut", text: "Secțiuni, mesaje, CTA-uri.", position: 2 },
-                      { "@type": "HowToStep", name: "UI design", text: "Componente reutilizabile, ritm vizual.", position: 3 },
-                      { "@type": "HowToStep", name: "Implementare", text: "Next.js, optimizări viteză, testare.", position: 4 },
-                      { "@type": "HowToStep", name: "SEO & lansare", text: "Meta-uri, schema, sitemap/robots, GSC/GA4.", position: 5 },
-                      { "@type": "HowToStep", name: "Mentenanță", text: "Actualizări, optimizări, evoluții.", position: 6 },
-                    ]
-                  : service.slug === "dezvoltare-aplicatii-mobile"
-                  ? mobileAppsServicePageData.howToSteps.map((step) => ({
-                      "@type": "HowToStep",
-                      name: step.name,
-                      text: step.text,
-                      position: step.position,
-                    }))
-                  : [
-                      { "@type": "HowToStep", name: "Audit inițial", text: "Stare actuală, riscuri, priorități.", position: 1 },
-                      { "@type": "HowToStep", name: "Update-uri & compatibilitate", text: "Platformă, module, rollback controlat.", position: 2 },
-                      { "@type": "HowToStep", name: "Monitorizare & alerte", text: "Uptime, erori, securitate.", position: 3 },
-                      { "@type": "HowToStep", name: "Optimizări performanță", text: "Imagini, cache, Core Web Vitals.", position: 4 },
-                      { "@type": "HowToStep", name: "Raportare & recomandări", text: "Lunar: status, task-uri, evoluții.", position: 5 },
-                    ],
-            url: `${siteURL}/servicii/${service.slug}`,
+            step: howToSteps.map((step) => ({
+              "@type": "HowToStep",
+              name: step.name,
+              text: step.text,
+              position: step.position,
+            })),
+            url: canonicalUrl,
           }}
         />
       )}
@@ -195,7 +201,7 @@ export default async function ServiceDetailPage(props: Props) {
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Acasă", item: `${siteURL}` },
             { "@type": "ListItem", position: 2, name: "Servicii", item: `${siteURL}/servicii` },
-            { "@type": "ListItem", position: 3, name: pageTitle, item: `${siteURL}/servicii/${service.slug}` },
+            { "@type": "ListItem", position: 3, name: pageTitle, item: canonicalUrl },
           ],
         }}
       />
@@ -214,66 +220,57 @@ export default async function ServiceDetailPage(props: Props) {
         />
       )}
       {isMobileAppsPage ? (
-        <MobileAppServicePageContent />
+        <MobileAppServicePageContent breadcrumbs={breadcrumbs} />
+      ) : isLandingPage && landingPage ? (
+        <ServiceLandingTemplate data={landingPage} breadcrumbs={breadcrumbs} />
       ) : (
         <ServiceLayout service={service as Service} />
       )}
 
-      {/* Testimonials above CTA (lazy-loaded) */}
-      <LazyTestimonial />
-
-      {/* SSR crawl path link to portfolio */}
-      <section className="container py-8">
-        <div className="text-center">
-          <Link href="/portofoliu" className="hover:text-primary text-base font-medium underline">
-            Vezi portofoliul
-          </Link>
-        </div>
-      </section>
-
-      {/* Sectiunea portofoliu (lazy-loaded) */}
-      <LazyPortfolio />
-
-      {/* Contact CTA */}
-      <section className="bg-gray-50 py-16">
-        <div className="container">
-          <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow-lg">
-            <div className="text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                Hai să vorbim despre proiectul tău
-              </h3>
-              <p className="text-gray-600 mb-8">
-                Contactează-ne prin modalitatea preferată pentru o consultație gratuită și o ofertă personalizată.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="tel:+40774550758" 
-                  className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center gap-2"
-                >
-                  <Phone size={20} />
-                  Sună acum
-                </a>
-                <a 
-                  href="https://wa.me/40774550758" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center gap-2"
-                >
-                  <MessageCircle size={20} />
-                  WhatsApp
-                </a>
-                <Link 
-                  href="/contact" 
-                  className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center gap-2"
-                >
-                  <Mail size={20} />
-                  Formular contact
-                </Link>
+      {!isMobileAppsPage && !isLandingPage ? (
+        <>
+          <LazyPortfolio />
+          <section className="bg-gray-50 py-16">
+            <div className="container">
+              <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow-lg">
+                <div className="text-center">
+                  <h3 className="mb-3 text-2xl font-bold text-gray-900">
+                    Hai să vorbim despre proiectul tău
+                  </h3>
+                  <p className="mb-8 text-gray-600">
+                    Contactează-ne prin modalitatea preferată pentru o consultație gratuită și o ofertă personalizată.
+                  </p>
+                  <div className="flex flex-col justify-center gap-4 sm:flex-row">
+                    <a
+                      href="tel:+40774550758"
+                      className="flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-primary/90"
+                    >
+                      <Phone size={20} />
+                      Sună acum
+                    </a>
+                    <a
+                      href="https://wa.me/40774550758"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 rounded-lg bg-green-500 px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-green-600"
+                    >
+                      <MessageCircle size={20} />
+                      WhatsApp
+                    </a>
+                    <Link
+                      href="/contact"
+                      className="flex items-center justify-center gap-2 rounded-lg border-2 border-primary px-6 py-3 font-semibold text-primary transition-colors duration-200 hover:bg-primary hover:text-white"
+                    >
+                      <Mail size={20} />
+                      Formular contact
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        </>
+      ) : null}
     </>
   );
 }

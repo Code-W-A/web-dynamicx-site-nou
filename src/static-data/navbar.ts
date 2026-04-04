@@ -26,6 +26,16 @@ export const navbarData: NavbarItem[] = [
     title: "Portofoliu",
     href: "/portofoliu",
     external: false,
+    submenu: [
+      { id: uuid(), title: "Site-uri", href: "/portofoliu", external: false },
+      { id: uuid(), title: "Magazine online", href: "/portofoliu", external: false },
+      {
+        id: uuid(),
+        title: "Aplicații mobile",
+        href: "/portofoliu-aplicatii-mobile",
+        external: false,
+      },
+    ],
   },
   {
     id: uuid(),

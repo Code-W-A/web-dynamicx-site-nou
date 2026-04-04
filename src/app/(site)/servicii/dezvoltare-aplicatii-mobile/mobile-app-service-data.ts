@@ -10,90 +10,122 @@ export const mobileAppsServicePageData = {
   image: "/images/services/dezvoltare-aplicatii-mobile.webp",
   ogImage: "/images/services/dezvoltare-aplicatii-mobile.webp",
   hero: {
-    eyebrow: "iOS + Android + prima versiune",
-    title: "Servicii de dezvoltare aplicații mobile pentru firme și startup-uri",
-    intro:
-      "Construim aplicații mobile personalizate pentru companii, startup-uri și antreprenori care vor să lanseze un produs digital util, stabil și ușor de folosit.",
-    supporting:
-      "Dezvoltăm aplicații pentru iOS și Android, pornind de la obiectivele reale ale afacerii tale: validarea rapidă a unei idei, automatizarea unor procese, creșterea vânzărilor sau îmbunătățirea relației cu clienții.",
-    chips: ["Aplicații mobile iOS și Android", "MVP", "UX/UI", "Backend și API", "App Store", "Google Play"],
-    highlights: [
-      "Aplicație mobilă personalizată, gândită pentru utilizare reală",
-      "Lansare rapidă pentru prima versiune și produse validate în etape",
-      "Scalare sigură pentru firme care vor un produs digital solid",
+    eyebrow: "Dezvoltare aplicații mobile iOS și Android",
+    title: "Dezvoltare aplicații mobile pentru firme care vor un MVP clar și un produs pregătit să crească",
+    subtitle:
+      "Construim aplicații mobile iOS și Android pentru firme care vor să lanseze bine: aplicație mobilă personalizată, MVP bine definit, backend și publicare în App Store și Google Play.",
+    bullets: [
+      "Stabilim MVP-ul și prioritățile de lansare",
+      "Livrăm aplicația, backend-ul și integrările esențiale",
+      "Pregătim publicarea și baza pentru versiunile următoare",
     ],
-    ctaPrimary: { label: "Cere ofertă", href: "#contact-rapid" },
-    ctaSecondary: { label: "Sună acum", href: "tel:+40774550758" },
+    ctaPrimary: { label: "Cere estimare pentru aplicația ta", href: "#contact-rapid" },
+    ctaSecondary: { label: "Discută proiectul cu noi", href: "tel:+40774550758" },
+    ctaMicrocopy:
+      "Primești o estimare orientativă, stabilim ce intră în MVP și îți propunem direcția potrivită pentru prima versiune.",
+    trustLine:
+      "Exemple reale de aplicații mobile pentru booking, comenzi, recomandări și produse digitale.",
+    trustLinkLabel: "Vezi portofoliul mobil",
+    trustLinkHref: "/portofoliu-aplicatii-mobile",
+    contextTitle: "Ce primești și cum abordăm proiectul",
+    contextIntro:
+      "Serviciul acoperă strategia de produs, dezvoltarea aplicației mobile, backend-ul și publicarea în store-uri, într-un format ușor de parcurs încă din primele secțiuni ale paginii.",
+    contextCards: [
+      {
+        title: "Pentru firme și startup-uri",
+        description:
+          "Potrivit pentru companii care vor o aplicație nouă, digitalizare internă sau un produs mobil pentru clienți.",
+      },
+      {
+        title: "MVP și produs scalabil",
+        description:
+          "Definim prima versiune care merită lansată și lăsăm loc pentru extinderi fără să reconstruiești totul de la zero.",
+      },
+      {
+        title: "iOS, Android, backend și integrări",
+        description:
+          "Putem livra aplicații mobile iOS și Android, backend, API-uri, autentificare, plăți, notificări și alte integrări relevante.",
+      },
+      {
+        title: "Publicare în store-uri",
+        description:
+          "Pregătim aplicația pentru App Store și Google Play și te ghidăm prin pașii administrativi și tehnici ai lansării.",
+      },
+    ],
+    proofTitle: "Exemple de aplicații pe care le dezvoltăm",
+    proofItems: ["booking și programări", "food ordering și comenzi", "produse digitale și retenție"],
+    proofLinkLabel: "Vezi portofoliul de aplicații mobile",
+    proofLinkHref: "/portofoliu-aplicatii-mobile",
   },
   valueProps: [
     {
-      title: "Lansare rapidă pentru prima versiune",
+      title: "MVP clar, fără funcții inutile",
       description:
-        "Definim funcționalitățile esențiale și evităm supradezvoltarea din prima etapă, astfel încât investiția să fie eficientă.",
+        "Stabilim ce trebuie să intre în MVP și ce poate rămâne pentru mai târziu, astfel încât investiția inițială să fie controlabilă.",
     },
     {
-      title: "Aplicații mobile iOS și Android",
+      title: "iOS și Android, alese corect",
       description:
-        "Livrăm aplicații pentru iOS și Android, fie nativ, fie cross-platform, în funcție de obiectivele proiectului.",
+        "Livrăm aplicații mobile iOS și Android, nativ sau cross-platform, în funcție de produs, buget și viteza de lansare dorită.",
     },
     {
-      title: "Backend, administrare și integrări",
+      title: "Aplicație, backend și logică de business",
       description:
-        "Putem acoperi sistemul backend, autentificarea, panoul de administrare, plățile, notificările și serviciile externe necesare.",
+        "Acoperim backend-ul, autentificarea, panoul de administrare, plățile, notificările și integrările necesare pentru ca produsul să funcționeze complet, nu doar la nivel de interfață.",
     },
     {
-      title: "UX/UI orientat pe claritate",
+      title: "UX/UI clar pentru utilizare reală",
       description:
-        "Punem accent pe o experiență simplă, intuitivă și rapidă, astfel încât aplicația să fie ușor de folosit și de extins.",
+        "Punem accent pe ecrane clare, pași puțini și fluxuri ușor de parcurs, astfel încât aplicația să fie simplă de folosit și ușor de extins.",
     },
     {
-      title: "Scalare ulterioară",
+      title: "Structură pregătită pentru scalare",
       description:
-        "Gândim arhitectura și roadmap-ul astfel încât produsul să poată evolua în siguranță după lansare.",
+        "Gândim arhitectura și roadmap-ul astfel încât produsul să poată evolua după lansare fără să reconstruiești totul de la zero.",
     },
     {
-      title: "Publicare în App Store și Google Play",
+      title: "Publicare și lansare fără blocaje",
       description:
-        "Pregătim materialele și gestionăm procesul de publicare în App Store și Google Play.",
+        "Pregătim materialele și gestionăm publicarea în App Store și Google Play, astfel încât lansarea să nu se blocheze în pași administrativi.",
     },
   ],
   audience: {
     title: "Pentru cine este serviciul",
     intro:
-      "Oferim servicii complete de dezvoltare aplicații mobile, de la analiza produsului până la publicarea în App Store și Google Play. Ne adresăm companiilor care vor să lanseze o aplicație de la zero, dar și firmelor care au deja o idee, un prototip sau un sistem intern și vor să îl transforme într-un produs mobil performant.",
+      "Serviciul este potrivit pentru firme care vor să lanseze o aplicație nouă sau să transforme un flux existent într-un produs mobil ușor de folosit. Putem intra în proiect de la nivel de idee, prototip sau sistem intern care trebuie adus pe telefon.",
     items: [
-      "startup-uri care vor să valideze rapid o idee printr-o primă versiune (MVP)",
-      "companii care au nevoie de digitalizarea proceselor interne",
-      "afaceri care vor o aplicație pentru clienți, comenzi, rezervări sau plăți",
-      "branduri care vor să își extindă prezența digitală prin iOS și Android",
-      "firme care au nevoie de integrare între aplicație, sistem backend, panou de administrare și alte sisteme externe",
+      "startup-uri care vor să valideze un MVP fără să consume bugetul pe funcții secundare",
+      "companii care vor să digitalizeze procese interne, operațiuni recurente sau activitate din teren",
+      "business-uri care au nevoie de aplicații pentru clienți: comenzi, rezervări, plăți sau fidelizare",
+      "branduri care vor aplicații mobile iOS și Android integrate cu website-ul, magazinul online sau CRM-ul",
+      "firme care au nevoie de aplicație, backend și panou de administrare, nu doar de interfața mobilă",
     ],
     outro:
-      "Punem accent pe claritate, funcționalitate și rezultate concrete. Nu încărcăm produsul inutil din prima etapă, ci definim ce este cu adevărat necesar pentru lansare.",
+      "Ținta nu este să bifăm o aplicație în plus, ci să lansăm o primă versiune clară, utilă și sustenabilă pentru business-ul tău.",
   },
   appTypes: {
     title: "Ce tipuri de aplicații mobile dezvoltăm",
     intro:
-      "Putem construi aplicații mobile personalizate pentru o gamă largă de industrii și modele de business, adaptate modului în care produsul trebuie să funcționeze după lansare.",
+      "Putem construi aplicații mobile personalizate pentru mai multe modele de business, cu accent pe fluxurile care contează după lansare: rezervare, comandă, retenție, operare internă și administrare.",
     featured: [
       {
         title: "Aplicații de booking și programări",
         description:
-          "Pentru saloane, clinici, specialiști, servicii locale sau business-uri bazate pe rezervări. Pot include calendar, sloturi disponibile, cont client, notificări și plăți online.",
+          "Pentru saloane, clinici, specialiști sau servicii locale unde viteza de rezervare influențează direct conversia. Pot include calendar, sloturi, cont client, notificări și plăți.",
         image: "/images/services/aplicatie-mobila-booking.webp",
         alt: "Aplicație mobilă de booking și programări",
       },
       {
         title: "Aplicații de e-commerce",
         description:
-          "Pentru magazine online care vor o experiență mobilă mai rapidă și mai eficientă. Se pot integra cu produse, checkout, cont utilizator, promoții, notificări push și campanii de retenție.",
+          "Pentru magazine online care vor o experiență mobilă mai rapidă și o relație directă cu clientul. Pot include catalog, checkout, cont utilizator, promoții, notificări push și retenție.",
         image: "/images/services/aplicatie-mobila-ecommerce.webp",
         alt: "Aplicație mobilă de e-commerce",
       },
       {
         title: "Aplicații pentru food ordering",
         description:
-          "Pentru restaurante, cafenele sau business-uri de livrare. Pot include meniu digital, comandă rapidă, plată online, status comandă și sistem de fidelizare.",
+          "Pentru restaurante, cafenele și business-uri de livrare care vor comenzi mai fluide și mai puțină fricțiune la orele de vârf. Pot include meniu digital, comandă rapidă, plată online, status comandă și fidelizare.",
         image: "/images/services/aplicatie-food-ordering.webp",
         alt: "Aplicație pentru food ordering",
       },
@@ -102,90 +134,90 @@ export const mobileAppsServicePageData = {
       {
         title: "Aplicații interne pentru companii",
         description:
-        "Pentru gestionarea echipelor, sarcinilor, locațiilor, intervențiilor, rapoartelor sau altor procese operaționale.",
+          "Pentru echipe, operațiuni, teren, intervenții, rapoarte sau fluxuri care încă depind de Excel, telefon sau procese greu de urmărit.",
       },
       {
         title: "Aplicații de marketplace sau servicii",
         description:
-          "Pentru platforme în care utilizatorii interacționează între ei, rezervă servicii, comunică, plătesc sau primesc notificări automate.",
+          "Pentru platforme în care utilizatorii rezervă, plătesc, comunică sau interacționează între ei, cu logică bine definită de conturi, roluri și notificări.",
       },
     ],
   },
   technology: {
     title: "Dezvoltare nativă sau cross-platform?",
     intro:
-      "Alegerea tehnologiei este importantă, dar nu o tratăm ca pe o decizie standard. Înainte să începem dezvoltarea, analizăm cerințele aplicației, complexitatea funcționalităților, bugetul, termenul de lansare și modul în care produsul trebuie să evolueze.",
+      "Nu pornim de la tehnologie, ci de la ce ai nevoie să lansezi și cum trebuie să funcționeze produsul după lansare. Alegerea între nativ și cross-platform ține de complexitate, buget și viteza cu care vrei să ajungi în piață.",
     options: [
       {
         title: "Dezvoltare nativă",
         description:
-          "Aplicațiile native sunt construite separat pentru iOS și Android și sunt recomandate atunci când proiectul are nevoie de performanță foarte bună, integrare avansată cu funcții ale telefonului sau control tehnic mai detaliat.",
+          "Construim separat pentru iOS și Android atunci când proiectul cere control mai mare, performanță ridicată sau integrări sensibile cu funcțiile telefonului.",
       },
       {
         title: "Dezvoltare cross-platform",
         description:
-          "Pentru multe proiecte, dezvoltarea cross-platform este varianta optimă. Permite lansarea mai rapidă pe ambele platforme și reduce costurile de dezvoltare și mentenanță. Este o alegere foarte bună pentru prima versiune a produsului și pentru aplicații mobile comerciale care trebuie lansate eficient.",
+          "Pentru multe proiecte comerciale, cross-platform este alegerea potrivită: lansezi mai repede pe ambele platforme, păstrezi costurile sub control și validezi mai eficient MVP-ul.",
       },
     ],
     outro:
-      "Recomandarea noastră se bazează pe obiectivele proiectului tău, nu pe o preferință rigidă de tehnologie.",
+      "Îți recomandăm varianta potrivită după obiective, nu după modă tehnologică. Dacă MVP-ul cere viteză, spunem asta; dacă produsul cere nativ, îți explicăm de ce.",
   },
   process: {
     title: "Cum decurge procesul de dezvoltare a aplicației mobile",
     intro:
-      "Un proiect bun are nevoie de structură clară. De aceea, lucrăm etapizat, astfel încât să ai vizibilitate asupra fiecărei faze și să putem lua decizii bune fără risipă de timp sau buget.",
+      "Lucrăm etapizat, astfel încât să știi ce se întâmplă, ce urmează și ce primești în fiecare fază. Asta reduce ambiguitatea și ajută proiectul să avanseze predictibil, fără risipă de timp sau buget.",
     steps: [
       {
         id: "discovery",
         title: "Analiză și definirea primei versiuni",
-        subtitle: "Business, public țintă, fluxuri, funcționalități esențiale.",
+        subtitle: "Clarificăm obiectivele, fluxurile și ce intră în MVP.",
         description:
-          "Începem prin înțelegerea afacerii, a publicului țintă și a scopului aplicației. Definim fluxurile principale, funcționalitățile esențiale și ceea ce trebuie să existe în prima versiune pentru a livra valoare reală.",
+          "Stabilim pentru cine construim, ce problemă rezolvă produsul și ce funcționalități merită incluse în prima lansare. Rezultatul este o direcție clară, nu o listă vagă de idei.",
         duration: "Etapa 1",
         tags: ["Analiză", "Prima versiune", "Prioritizare"],
       },
       {
         id: "ux-ui",
         title: "Design UX/UI",
-        subtitle: "Structură ecrane, navigare, interfață intuitivă.",
+        subtitle: "Wireframe, ecrane și experiență ușor de folosit.",
         description:
-          "Construim structura ecranelor, logica de navigare și interfața aplicației. Punem accent pe claritate, viteză de utilizare și o experiență intuitivă pentru utilizator.",
+          "Transformăm cerințele într-un parcurs clar pentru utilizator, cu ecrane și interacțiuni care au sens pe mobil și susțin obiectivul produsului.",
         duration: "Etapa 2",
         tags: ["UX", "UI", "Prototip"],
       },
       {
         id: "development",
         title: "Dezvoltare aplicație + sistem backend",
-        subtitle: "Aplicație mobilă, sistem backend, bază de date, integrări.",
+        subtitle: "Aplicație, backend, conturi și integrări.",
         description:
-          "Implementăm aplicația mobilă și, dacă este nevoie, sistemul backend, baza de date, autentificarea, panoul de administrare și integrările externe.",
+          "Implementăm partea mobilă și, unde este necesar, backend-ul, baza de date, autentificarea, panoul de administrare și serviciile externe de care depinde produsul.",
         duration: "Etapa 3",
         tags: ["Aplicație mobilă", "Sistem backend", "Integrări"],
       },
       {
         id: "testing",
         title: "Testare și optimizare",
-        subtitle: "Compatibilitate, stabilitate, performanță.",
+        subtitle: "Verificăm fluxurile importante înainte de lansare.",
         description:
-          "Verificăm fluxurile critice, compatibilitatea pe dispozitive, stabilitatea și performanța. Corectăm problemele înainte de lansare și pregătim versiunea finală.",
+          "Testăm scenariile critice, comportamentul pe dispozitive relevante și stabilitatea generală, astfel încât lansarea să fie predictibilă, nu improvizată.",
         duration: "Etapa 4",
         tags: ["QA", "Optimizare", "Stabilitate"],
       },
       {
         id: "publishing",
         title: "Publicare în App Store și Google Play",
-        subtitle: "Pregătire App Store și Google Play.",
+        subtitle: "Listare, materiale și pași de aprobare.",
         description:
-          "Pregătim toate materialele necesare pentru App Store și Google Play și gestionăm procesul de listare.",
+          "Pregătim aplicația pentru App Store și Google Play și gestionăm procesul de publicare, astfel încât să nu rămâi blocat în detalii administrative.",
         duration: "Etapa 5",
         tags: ["App Store", "Google Play", "Publicare"],
       },
       {
         id: "growth",
         title: "Mentenanță și dezvoltare ulterioară",
-        subtitle: "Monitorizare, îmbunătățiri, extinderi.",
+        subtitle: "Optimizări după feedback și următoarele versiuni.",
         description:
-          "După lansare, aplicația poate fi monitorizată, îmbunătățită și extinsă cu funcționalități noi, în funcție de feedback și rezultate.",
+          "După lansare, putem continua cu mentenanță, îmbunătățiri și dezvoltări noi, pe baza utilizării reale și a priorităților de business.",
         duration: "Etapa 6",
         tags: ["Mentenanță", "Iterații", "Scalare"],
       },
@@ -193,163 +225,164 @@ export const mobileAppsServicePageData = {
   },
   deliverables: {
     title: "Ce include un proiect complet de dezvoltare aplicații mobile",
-    intro: "În funcție de nevoile proiectului, o colaborare poate include:",
+    intro:
+      "În funcție de complexitatea proiectului, poți primi un pachet complet de produs, nu doar execuția ecranelor.",
     groups: [
       {
         title: "Strategie & design",
         items: [
-          "analiză de produs și definire a primei versiuni",
+          "analiză de business și definire MVP",
           "structură funcțională și user flows",
-          "design UX/UI pentru mobil",
+          "wireframe și design UX/UI pentru mobil",
         ],
       },
       {
         title: "Dezvoltare",
         items: [
-          "dezvoltare aplicație iOS și Android",
-          "autentificare și conturi de utilizator",
-          "plăți online și abonamente",
-          "notificări push",
+          "dezvoltare aplicații mobile iOS și Android",
+          "autentificare, conturi și roluri",
+          "plăți online, abonamente sau checkout",
+          "notificări push și fluxuri-cheie din produs",
         ],
       },
       {
         title: "Backend și integrări",
         items: [
-          "sistem backend și API",
-          "integrare cu servicii externe",
-          "panou de administrare",
-          "analytics și crash reporting",
+          "backend și API pentru aplicație",
+          "panou de administrare și management de date",
+          "integrări cu servicii externe, CRM, ERP sau plăți",
+          "analytics, event tracking și crash reporting",
         ],
       },
       {
         title: "Lansare & mentenanță",
         items: [
-          "testare și optimizare",
-          "publicare în App Store și Google Play",
-          "suport și mentenanță după lansare",
+          "testare funcțională și optimizare înainte de publicare",
+          "pregătire și publicare în App Store și Google Play",
+          "suport după lansare și plan pentru iterațiile următoare",
         ],
       },
     ],
     outro:
-      "Astfel, nu primești doar o aplicație, ci un produs digital complet, pregătit pentru utilizare reală.",
+      "Pe scurt: primești un produs digital complet, gândit pentru lansare, operare și evoluție, nu doar o aplicație pusă în store.",
   },
   pricing: {
     title: "Buget și durată estimativă",
-    budgetTitle: "Cât costă dezvoltarea unei aplicații mobile?",
+    budgetTitle: "Ce buget are sens pentru o aplicație mobilă?",
     budgetText:
-      "Costul diferă în funcție de complexitate, funcționalități, numărul de platforme și nivelul de integrare necesar. O aplicație simplă, de tip primă versiune (MVP), are un cost diferit față de o aplicație cu plăți, notificări, roluri multiple, administrare și logică complexă în sistemul backend.",
-    budgetHighlight: "Proiectele de tip primă versiune (MVP) pot porni de la aproximativ 4.000 EUR.",
+      "Costul depinde de complexitatea produsului, numărul de platforme, integrări și logica necesară în backend. Un MVP cu fluxuri bine definite și funcționalități esențiale are alt buget decât o aplicație cu roluri multiple, plăți, administrare și procese mai complexe.",
+    budgetHighlight: "MVP-urile bine definite pot porni de la aproximativ 2.000 EUR.",
     budgetFactors: [
-      "ce funcționalități sunt esențiale pentru lansare",
-      "dacă aplicația va fi nativă sau cross-platform",
-      "dacă este necesar un sistem backend personalizat",
-      "dacă există panou de administrare",
-      "ce integrări externe sunt necesare",
-      "ce nivel de mentenanță este dorit după lansare",
+      "ce funcționalități intră efectiv în prima lansare",
+      "dacă produsul se dezvoltă nativ sau cross-platform",
+      "cât de complex este backend-ul necesar",
+      "dacă este nevoie de panou de administrare",
+      "ce integrări externe trebuie conectate",
+      "ce nivel de suport și mentenanță vrei după lansare",
     ],
-    durationTitle: "Cât durează dezvoltarea unei aplicații mobile?",
+    durationTitle: "Cât durează, în mod realist, un MVP?",
     durationText:
-      "Pentru multe aplicații de tip primă versiune (MVP), un interval realist este de aproximativ 8-10 săptămâni pentru etapele importante: analiză, design, dezvoltare, testare și publicare.",
+      "Pentru multe proiecte de tip MVP, un interval realist este de aproximativ 8-10 săptămâni, incluzând analiza, designul, dezvoltarea, testarea și pregătirea pentru publicare.",
     durationNote:
-      "Un proiect mai complex, cu funcționalități avansate, roluri multiple, sistem backend extins sau integrări speciale, poate necesita mai mult timp. Important este că planificăm proiectul etapizat și prioritizăm funcționalitățile esențiale.",
+      "Dacă proiectul implică logică avansată, mai multe roluri, integrare puternică cu backend sau cerințe speciale pentru App Store și Google Play, durata crește. Preferăm o planificare realistă, nu promisiuni optimiste care se rup pe parcurs.",
     cta: {
-      title: "Vrei o estimare realistă pentru proiectul tău?",
+      title: "Vrei să vezi dacă proiectul tău are sens ca MVP sau ca build mai amplu?",
       text:
-        "După o discuție scurtă, îți putem propune o variantă de implementare adaptată obiectivelor și bugetului tău.",
-      primaryLabel: "Solicită ofertă",
+        "După o discuție scurtă, îți spunem ce merită lansat în prima etapă, ce poate rămâne pentru mai târziu și ce interval de buget are sens pentru proiectul tău.",
+      primaryLabel: "Cere estimare orientativă",
       primaryHref: "#contact-rapid",
-      secondaryLabel: "Contactează echipa",
+      secondaryLabel: "Vorbește cu echipa",
       secondaryHref: "tel:+40774550758",
+      microcopy:
+        "Următorul pas este simplu: ne trimiți contextul proiectului, iar noi îți răspundem cu o estimare orientativă și o direcție potrivită pentru lansare.",
     },
   },
   reasons: {
-    title: "De ce să alegi serviciile noastre de dezvoltare aplicații mobile",
+    title: "De ce aleg firmele să lucreze cu noi pentru dezvoltare aplicații mobile",
     intro:
-      "Lucrăm cu accent pe claritate, eficiență și scalare. Nu tratăm aplicația ca pe un simplu exercițiu de design sau programare, ci ca pe un produs digital care trebuie să susțină o nevoie reală de business.",
+      "Diferența reală nu stă doar în cod, ci în felul în care definim prima versiune, luăm deciziile tehnice și păstrăm produsul ușor de folosit pentru oamenii care îl vor folosi.",
     items: [
-      "comunicare clară pe parcursul proiectului",
-      "accent pe prima versiune și lansare eficientă",
-      "soluții tehnice alese în funcție de obiective, nu din rutină",
-      "atenție la experiența utilizatorului",
-      "structură gândită pentru creștere ulterioară",
-      "suport pentru publicare, optimizare și dezvoltări viitoare",
+      "Definim prima versiune astfel încât să poată fi lansată, nu doar prezentată",
+      "Gândim produsul ca sistem complet: aplicație, backend, administrare și publicare în store-uri",
+      "Luăm deciziile tehnice în funcție de obiectivele de business, buget și ritmul de lansare",
+      "Lăsăm loc pentru extindere fără să complicăm inutil prima etapă",
     ],
     outro:
-      "Ne concentrăm pe aplicații care trebuie să fie utile, stabile și pregătite pentru utilizare reală.",
+      "Pentru noi, o aplicație reușită este una care se lansează bine, funcționează stabil și poate evolua fără haos tehnic.",
   },
   finalCta: {
-    title: "Hai să discutăm despre aplicația ta",
+    title: "Spune-ne ce vrei să lansezi și îți propunem o direcție clară pentru prima versiune",
     text:
-      "Dacă vrei să lansezi o primă versiune (MVP), să digitalizezi un proces intern sau să construiești un produs mobil complet pentru clienții tăi, te putem ajuta cu o soluție clară și realistă.",
+      "Fie că vrei un MVP, o aplicație pentru clienți sau o soluție internă pentru echipă, putem transforma cerințele într-o direcție clară de produs.",
     supporting:
-      "Spune-ne ce vrei să obții, care este publicul țintă și ce funcționalități ai în minte, iar noi îți propunem direcția potrivită pentru proiect: tehnologia recomandată, structura de lansare, etapele de lucru și o estimare orientativă de cost.",
-    primaryLabel: "Cere ofertă pentru dezvoltare aplicații mobile",
-    primaryHref: "mailto:webdynamicx@gmail.com",
-    secondaryLabel: "Sună echipa",
+      "Ne poți scrie chiar și dacă ai doar ideea, fluxurile principale sau o listă scurtă de funcționalități. Îți răspundem cu o abordare realistă pentru dezvoltare aplicații mobile: tehnologie recomandată, structură pentru lansare și interval orientativ de buget.",
+    primaryLabel: "Trimite brief-ul și cere estimarea",
+    primaryHref: "/contact",
+    secondaryLabel: "Discută cu echipa",
     secondaryHref: "tel:+40774550758",
   },
   sidebarSection: {
     eyebrow: "Servicii conexe",
-    title: "Explorează și celelalte servicii Web Dynamicx",
+    title: "Servicii care pot susține lansarea aplicației",
     description:
-      "Dacă vrei să compari servicii sau să vezi alte direcții de lucru, poți naviga rapid către celelalte pagini și canale de contact.",
+      "Dacă proiectul mobil are nevoie și de UX, website de lansare sau suport e-commerce, poți continua natural cu serviciile relevante de mai jos.",
   },
   faqs: [
     {
-      question: "Dezvoltați aplicații mobile pentru iOS și Android?",
+      question: "Dezvoltați aplicații mobile pentru iOS și Android sau doar pentru una dintre platforme?",
       answer:
-        "Da. Putem dezvolta aplicații pentru iOS și Android, fie prin abordare cross-platform, fie nativ, în funcție de cerințele proiectului.",
+        "Da. Putem livra aplicații mobile iOS și Android, fie cross-platform, fie nativ, în funcție de produs, buget și modul în care vrei să lansezi prima versiune.",
     },
     {
-      question: "Puteți realiza și sistemul backend al aplicației?",
+      question: "Puteți livra și backend-ul aplicației?",
       answer:
-        "Da. Putem livra atât aplicația mobilă, cât și sistemul backend, baza de date, API-urile, autentificarea și panoul de administrare.",
+        "Da. Putem construi aplicația împreună cu backend-ul, baza de date, autentificarea, API-urile și panoul de administrare, astfel încât produsul să nu depindă de furnizori separați pentru zonele critice.",
     },
     {
-      question: "Oferiți și design pentru aplicația mobilă?",
+      question: "Puteți ajuta și cu UX/UI, nu doar cu dezvoltarea?",
       answer:
-        "Da. Putem acoperi partea de UX/UI, wireframe-uri, prototip și design final pentru ecranele aplicației.",
+        "Da. Putem acoperi analiza de produs, wireframe-urile, UX/UI și prototipul, astfel încât dezvoltarea să pornească dintr-o structură clară, nu direct din presupuneri.",
     },
     {
       question: "Vă ocupați și de publicarea în App Store și Google Play?",
       answer:
-        "Da. Putem pregăti materialele necesare și gestiona procesul de publicare pentru ambele platforme.",
+        "Da. Pregătim materialele necesare, configurăm pașii de lansare și te ghidăm sau gestionăm direct publicarea în App Store și Google Play, în funcție de proiect.",
     },
     {
-      question: "Oferiți mentenanță după lansare?",
+      question: "Oferiți suport după lansare?",
       answer:
-        "Da. Putem asigura suport tehnic, actualizări, optimizări și dezvoltări ulterioare după lansare.",
+        "Da. Putem continua cu mentenanță, actualizări, optimizări și dezvoltări noi după lansare, astfel încât produsul să poată evolua în ritmul business-ului.",
     },
   ],
   howToSteps: [
     {
       name: "Analiză și definirea primei versiuni",
-      text: "Înțelegem afacerea, publicul țintă, fluxurile principale și funcționalitățile esențiale pentru lansare.",
+      text: "Clarificăm obiectivele, publicul țintă, fluxurile principale și ce merită inclus în MVP pentru prima lansare.",
       position: 1,
     },
     {
       name: "Design UX/UI",
-      text: "Construim structura ecranelor, navigarea și interfața aplicației cu accent pe claritate și viteză de utilizare.",
+      text: "Construim wireframe-urile, navigarea și interfața aplicației cu accent pe claritate, viteză și utilizare reală.",
       position: 2,
     },
     {
       name: "Dezvoltare aplicație + sistem backend",
-      text: "Implementăm aplicația mobilă, sistemul backend, baza de date, autentificarea și integrările necesare.",
+      text: "Implementăm aplicația mobilă, backend-ul, baza de date, autentificarea și integrările necesare pentru produs.",
       position: 3,
     },
     {
       name: "Testare și optimizare",
-      text: "Verificăm fluxurile critice, compatibilitatea pe dispozitive, stabilitatea și performanța înainte de lansare.",
+      text: "Verificăm fluxurile critice, compatibilitatea pe dispozitive și stabilitatea generală înainte de lansare.",
       position: 4,
     },
     {
       name: "Publicare în App Store și Google Play",
-      text: "Pregătim materialele pentru App Store și Google Play și gestionăm procesul de listare.",
+      text: "Pregătim materialele pentru App Store și Google Play și gestionăm pașii de publicare.",
       position: 5,
     },
     {
       name: "Mentenanță și dezvoltare ulterioară",
-      text: "Monitorizăm aplicația și o extindem cu îmbunătățiri și funcționalități noi în funcție de feedback și rezultate.",
+      text: "Monitorizăm aplicația și continuăm cu îmbunătățiri și funcționalități noi în funcție de utilizarea reală.",
       position: 6,
     },
   ],

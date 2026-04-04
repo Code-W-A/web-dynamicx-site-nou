@@ -4,7 +4,7 @@ import { getPostByTag } from "@/sanity/sanity-utils";
 import { Blog } from "@/types/blog";
 import type { Metadata } from "next";
 
-export const revalidate = 300;
+export const revalidate = 60;
 
 type Props = {
   params: Promise<{ tag: string }>;

@@ -119,7 +119,12 @@ export default function Navbar() {
                                       : `/${item.href}`
                                   }
                                   onClick={navigationHandler}
-                                  className={`${pathUrl === `${item?.href}` ? "text-primary" : ""} group-hover:text-primary flex-1 ${item?.href?.startsWith("#") ? "menu-scroll" : ""}`}
+                                  className={`${
+                                    pathUrl === `${item?.href}` ||
+                                    (item?.href === "/portofoliu" && pathUrl.startsWith("/portofoliu-aplicatii-mobile"))
+                                      ? "text-primary"
+                                      : ""
+                                  } group-hover:text-primary flex-1 ${item?.href?.startsWith("#") ? "menu-scroll" : ""}`}
                                 >
                                   {item?.title}
                                 </Link>
@@ -166,17 +171,23 @@ export default function Navbar() {
                               <ul
                                 className={`${dropdownToggler ? "" : "hidden lg:block"} submenu relative top-full left-0 rounded-xs bg-white transition-[top] duration-300 group-hover:opacity-100 lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full`}
                               >
-                                {item?.submenu.map((subItem) => (
-                                  <li key={subItem?.id}>
-                                    <Link
-                                      href={subItem?.href}
-                                      onClick={navigationHandler}
-                                      className={`block rounded-sm px-4 py-[10px] text-sm ${pathUrl === subItem?.href ? "text-primary" : "hover:text-primary text-black"}`}
-                                    >
-                                      {subItem?.title}
-                                    </Link>
-                                  </li>
-                                ))}
+                                {item?.submenu.map((subItem) => {
+                                  const subActive =
+                                    pathUrl === subItem?.href ||
+                                    (subItem?.href === "/portofoliu-aplicatii-mobile" &&
+                                      pathUrl.startsWith("/portofoliu-aplicatii-mobile"));
+                                  return (
+                                    <li key={subItem?.id}>
+                                      <Link
+                                        href={subItem?.href}
+                                        onClick={navigationHandler}
+                                        className={`block rounded-sm px-4 py-[10px] text-sm ${subActive ? "text-primary" : "hover:text-primary text-black"}`}
+                                      >
+                                        {subItem?.title}
+                                      </Link>
+                                    </li>
+                                  );
+                                })}
                               </ul>
                             )}
                           </>

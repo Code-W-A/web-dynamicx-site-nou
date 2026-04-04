@@ -1,3 +1,24 @@
+function validatePortableTextHref(value: string) {
+  const href = value?.trim();
+
+  if (!href) {
+    return "Introduce un URL.";
+  }
+
+  if (href.startsWith("/") || /^(#|mailto:|tel:)/i.test(href)) {
+    return true;
+  }
+
+  try {
+    const parsed = new URL(href);
+    return /^https?:$/i.test(parsed.protocol)
+      ? true
+      : "Folosește /cale-internă, #anchor, mailto:, tel: sau URL complet cu http(s)://";
+  } catch {
+    return "Folosește /cale-internă, #anchor, mailto:, tel: sau URL complet cu http(s)://";
+  }
+}
+
 /**
  * This is the schema definition for the rich text fields used for
  * for this blog studio. When you import it in schemas.js it can be
@@ -48,6 +69,7 @@ const blockContent = {
                 title: "URL",
                 name: "href",
                 type: "string",
+                validation: (Rule: any) => Rule.required().custom(validatePortableTextHref),
               },
               {
                 title: "Open in new tab",
@@ -68,6 +90,23 @@ const blockContent = {
     {
       type: "image",
       options: { hotspot: true },
+      fields: [
+        {
+          name: "alt",
+          title: "Alt text",
+          type: "string",
+          description: "Descriere scurtă a imaginii pentru SEO și accessibility.",
+          validation: (Rule: any) => [
+            Rule.required().error("Completează alt text pentru imagine."),
+            Rule.min(5).max(140).warning("Țintește între 5 și 140 de caractere."),
+          ],
+        },
+        {
+          name: "caption",
+          title: "Caption",
+          type: "string",
+        },
+      ],
     },
   ],
 };

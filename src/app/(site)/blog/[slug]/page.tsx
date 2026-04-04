@@ -1,16 +1,32 @@
 import RenderBodyContent from "@/components/Blog/BlogDetails/RenderBodyContent";
-import { getPostBySlug, imageBuilder } from "@/sanity/sanity-utils";
+import PortfolioHubBlock from "@/components/Blog/internal-linking/portfolio-hub-block";
+import RelevantCaseStudiesBlock from "@/components/Blog/internal-linking/relevant-case-studies-block";
+import RelatedPostsSection from "@/components/Blog/internal-linking/related-posts-section";
+import RelatedServiceBlock from "@/components/Blog/internal-linking/related-service-block";
+import { getRelatedCaseStudies } from "@/app/(site)/portofoliu-aplicatii-mobile/mobile-app-portfolio-data";
+import { buildArticleInternalLinkingPlan } from "@/lib/blog-article-internal-links";
+import { resolvePostSeoDescription } from "@/lib/blog-post-text";
+import { getPostBySlug, getRelatedPostsFallback, imageBuilder } from "@/sanity/sanity-utils";
+import type { Blog, BlogRelatedPostCard } from "@/types/blog";
 import Image from "next/image";
 import Link from "next/link";
 import { SharePost } from "@/app/(site)/blog/[slug]/_components/share-post";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-export const revalidate = 300;
+export const revalidate = 60;
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+function resolveImageAlt(image: Blog["mainImage"] | undefined, fallback: string) {
+  if (image && typeof image.alt === "string" && image.alt.trim()) {
+    return image.alt.trim();
+  }
+
+  return fallback;
+}
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
@@ -20,6 +36,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
   const siteName = process.env.SITE_NAME || "Web Dynamicx";
   const authorName = process.env.AUTHOR_NAME || "Web Dynamicx";
+  const organizationLogoUrl =
+    process.env.NEXT_PUBLIC_ORGANIZATION_LOGO_URL?.trim() || `${siteURL}/images/logo/logo.svg`;
   const rawTwitterHandle = process.env.NEXT_PUBLIC_TWITTER_HANDLE?.trim();
   const twitterHandle = rawTwitterHandle
     ? rawTwitterHandle.startsWith("@")
@@ -32,16 +50,17 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 
   const title = post.metaTitle || post.title || `Articol | ${siteName}`;
-  const description =
-    post.metaDescription || post.excerpt || post.metadata || "Articol de pe blogul Web Dynamicx.";
+  const description = resolvePostSeoDescription(post, "Articol de pe blogul Web Dynamicx.");
   const canonical = post.canonicalUrl || `${siteURL}/blog/${post?.slug?.current}`;
+  const articleAuthorName = post.author?.name || authorName;
+  const ogImageAlt = resolveImageAlt(post.mainImage, post.title || siteName);
   const ogImage = post.mainImage ? imageBuilder(post.mainImage).url() : undefined;
 
   return {
     title,
     description,
     alternates: { canonical },
-    authors: [{ name: authorName }],
+    authors: [{ name: articleAuthorName }],
     robots: {
       index: true,
       follow: true,
@@ -65,12 +84,16 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
               url: ogImage,
               width: 1800,
               height: 1600,
-              alt: post.title,
+              alt: ogImageAlt,
             },
           ]
         : undefined,
       locale: "ro_RO",
       type: "article",
+      publishedTime: post.publishedAt,
+      modifiedTime: post._updatedAt,
+      authors: articleAuthorName ? [articleAuthorName] : undefined,
+      tags: Array.isArray(post.tags) ? post.tags : undefined,
     },
     twitter: {
       card: "summary_large_image",
@@ -86,7 +109,7 @@ export default async function BlogSlugPage(props: Props) {
   const params = await props.params;
   const { slug } = params;
 
-  const post: any = await getPostBySlug(slug);
+  const post = (await getPostBySlug(slug)) as Blog | null;
 
   if (!post) {
     notFound();
@@ -94,6 +117,42 @@ export default async function BlogSlugPage(props: Props) {
 
   const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
   const siteName = process.env.SITE_NAME || "Web Dynamicx";
+  const organizationLogoUrl =
+    process.env.NEXT_PUBLIC_ORGANIZATION_LOGO_URL?.trim() || `${siteURL}/images/logo/logo.svg`;
+  const canonical = post.canonicalUrl || `${siteURL}/blog/${post?.slug?.current}`;
+  const mainImageAlt = resolveImageAlt(post.mainImage, post.title || siteName);
+
+  const internalPlan = buildArticleInternalLinkingPlan(post, siteURL);
+  const relatedCaseStudies = getRelatedCaseStudies(post.relatedCaseStudies ?? []).slice(0, 2);
+
+  let relatedPostsForSection: BlogRelatedPostCard[] = Array.isArray(post.relatedPosts)
+    ? post.relatedPosts.filter(
+        (p) =>
+          p &&
+          typeof p === "object" &&
+          p.slug &&
+          typeof p.slug === "object" &&
+          typeof (p.slug as { current?: string }).current === "string" &&
+          !(typeof p._id === "string" && p._id.startsWith("drafts.")),
+      )
+    : [];
+
+  if (relatedPostsForSection.length === 0) {
+    relatedPostsForSection = await getRelatedPostsFallback({
+      slug,
+      category: post.category,
+      topicCluster: post.topicCluster,
+      tags: post.tags,
+    });
+  }
+
+  const seenRelated = new Set<string>();
+  relatedPostsForSection = relatedPostsForSection.filter((p) => {
+    const cur = p.slug && typeof p.slug === "object" ? (p.slug as { current?: string }).current : undefined;
+    if (!cur || seenRelated.has(cur)) return false;
+    seenRelated.add(cur);
+    return true;
+  });
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -108,13 +167,26 @@ export default async function BlogSlugPage(props: Props) {
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: post?.metaTitle || post?.title,
-    description: post?.metaDescription || post?.excerpt || post?.metadata,
+    headline: post?.title,
+    alternativeHeadline: post?.metaTitle || undefined,
+    description: resolvePostSeoDescription(post, "Articol de pe blogul Web Dynamicx."),
     image: post?.mainImage ? imageBuilder(post?.mainImage).url() : undefined,
     author: post?.author?.name ? { "@type": "Person", name: post?.author?.name } : undefined,
-    publisher: { "@type": "Organization", name: siteName },
+    publisher: {
+      "@type": "Organization",
+      name: siteName,
+      url: siteURL,
+      logo: {
+        "@type": "ImageObject",
+        url: organizationLogoUrl,
+      },
+    },
     datePublished: post?.publishedAt,
-    mainEntityOfPage: `${siteURL}/blog/${post?.slug?.current}`,
+    dateModified: post?._updatedAt,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonical,
+    },
   };
 
   return (
@@ -140,7 +212,7 @@ export default async function BlogSlugPage(props: Props) {
                     {post?.mainImage && (
                       <Image
                         src={imageBuilder(post?.mainImage).url()}
-                        alt={post?.title}
+                        alt={mainImageAlt}
                         fill
                         className="h-full w-full object-cover object-center"
                       />
@@ -194,18 +266,70 @@ export default async function BlogSlugPage(props: Props) {
                         </p>
                       </div>
                     </div>
-                    <div className="mb-5">
-                      <Link
-                        href={`/blog/tag/${post?.tags ? post?.tags[0] : "not-found"}`}
-                        className="bg-primary inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white"
-                      >
-                        {post?.tags ? post?.tags[0] : "fără-tag"}
-                      </Link>
-                    </div>
+                    {post?.tags?.length ? (
+                      <div className="mb-5">
+                        <Link
+                          href={`/blog/tag/${post.tags[0]}`}
+                          className="bg-primary inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white"
+                        >
+                          {post.tags[0]}
+                        </Link>
+                      </div>
+                    ) : null}
                   </div>
                   <div>
                     <div className="prose prose-zinc prose-blockquote:rounded-xs prose-blockquote:border-l-0 prose-blockquote:bg-primary prose-blockquote:p-8 prose-blockquote:text-center prose-blockquote:italic prose-blockquote:text-white mb-8 max-w-none">
                       <RenderBodyContent post={post} />
+                    </div>
+
+                    <div className="not-prose mb-8 space-y-6">
+                      {internalPlan.showAutoServiceBlock && internalPlan.cluster ? (
+                        <RelatedServiceBlock
+                          title={internalPlan.cluster.serviceBlockTitle}
+                          description={internalPlan.cluster.serviceBlockDescription}
+                          href={internalPlan.cluster.serviceHref}
+                          ctaLabel={internalPlan.cluster.serviceCtaLabel}
+                        />
+                      ) : null}
+
+                      {internalPlan.manualRelatedServices.length > 0 ? (
+                        <aside
+                          className="rounded-sm border border-[#E9ECF8] bg-white p-5 sm:p-6"
+                          aria-labelledby="manual-service-links-heading"
+                        >
+                          <h2
+                            id="manual-service-links-heading"
+                            className="text-sm font-semibold tracking-tight text-slate-950"
+                          >
+                            {internalPlan.showAutoServiceBlock ? "Și alte pagini utile" : "Resurse utile"}
+                          </h2>
+                          <ul className="mt-3 space-y-2 text-sm">
+                            {internalPlan.manualRelatedServices.map((item) => (
+                              <li key={`${item.href}-${item.title}`}>
+                                <Link
+                                  href={item.href}
+                                  className="font-medium text-primary underline-offset-4 hover:underline"
+                                >
+                                  {item.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </aside>
+                      ) : null}
+
+                      {internalPlan.showPortfolioHubBlock && internalPlan.portfolioHub ? (
+                        <PortfolioHubBlock
+                          title={internalPlan.portfolioHub.title}
+                          description={internalPlan.portfolioHub.description}
+                          href={internalPlan.portfolioHub.href}
+                          ctaLabel={internalPlan.portfolioHub.ctaLabel}
+                        />
+                      ) : null}
+
+                      <RelevantCaseStudiesBlock studies={relatedCaseStudies} />
+
+                      <RelatedPostsSection posts={relatedPostsForSection} currentSlug={slug} />
                     </div>
 
                     <div className="items-center justify-between sm:flex">
@@ -227,7 +351,7 @@ export default async function BlogSlugPage(props: Props) {
                       </div>
 
                       <div className="mb-5">
-                        <SharePost url={`${siteURL}/blog/${post?.slug?.current}`} title={post?.title} />
+                        <SharePost url={canonical} title={post?.title} />
                       </div>
                     </div>
                   </div>

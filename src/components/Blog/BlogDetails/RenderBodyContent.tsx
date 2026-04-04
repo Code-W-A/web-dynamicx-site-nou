@@ -11,6 +11,12 @@ const SampleImageComponent = (props: any) => {
   const { value, isInline } = props;
 
   const { width, height } = getImageDimensions(value);
+  const altText =
+    typeof value?.alt === "string" && value.alt.trim()
+      ? value.alt.trim()
+      : typeof value?.caption === "string" && value.caption.trim()
+        ? value.caption.trim()
+        : "Imagine din articol";
 
   return (
     <Image
@@ -21,7 +27,7 @@ const SampleImageComponent = (props: any) => {
         .url()}
       width={width}
       height={height}
-      alt={value?.attribution || "blog image"}
+      alt={altText}
       loading="lazy"
       style={{
         // Display alongside text if image appears inside a block text span
