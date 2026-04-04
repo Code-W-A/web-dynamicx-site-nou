@@ -29,8 +29,8 @@ const BLOG_LISTING_IMAGE_PRESET = {
 } as const;
 
 const BLOG_RELATED_IMAGE_PRESET = {
-  width: 320,
-  height: 256,
+  width: 640,
+  height: 400,
   quality: 80,
   format: "webp",
 } as const;

@@ -65,6 +65,12 @@ export const servicePageFeaturedMobilePortfolioSlugs = [
   "doitnow-provocari-zilnice-ai",
 ] as const;
 
+export const homepageMobilePortfolioSlugs = [
+  "my-butterfly-recomandari-palete-tenis",
+  "doitnow-provocari-zilnice-ai",
+  "styleconnect-rezervari-saloane",
+] as const;
+
 export const mobilePortfolioHub = {
   pageTitle: "Aplicații mobile dezvoltate pentru business-uri reale",
   pageDescription:
@@ -662,6 +668,15 @@ export function getFeaturedPortfolioStudies(): MobileCaseStudy[] {
 export function getServicePageFeaturedPortfolioStudies(): MobileCaseStudy[] {
   const out: MobileCaseStudy[] = [];
   for (const slug of servicePageFeaturedMobilePortfolioSlugs) {
+    const c = getCaseStudyBySlug(slug);
+    if (c) out.push(c);
+  }
+  return out;
+}
+
+export function getHomepageMobilePortfolioStudies(): MobileCaseStudy[] {
+  const out: MobileCaseStudy[] = [];
+  for (const slug of homepageMobilePortfolioSlugs) {
     const c = getCaseStudyBySlug(slug);
     if (c) out.push(c);
   }

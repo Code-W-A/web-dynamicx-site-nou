@@ -1,12 +1,12 @@
 "use client";
 
-import { portfolioData } from "@/static-data/portfolio";
+import { getHomepagePortfolioItems } from "@/static-data/portfolio";
 import Link from "next/link";
 import SectionTitle from "../Common/SectionTitle";
 import SinglePortfolio from "./SinglePortfolio";
 
 export default function Portfolio() {
-  const items = portfolioData;
+  const items = getHomepagePortfolioItems();
 
   return (
     <section id="portfolio" className="bg-[#f8f9ff] pb-[70px] pt-[90px]">

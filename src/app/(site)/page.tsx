@@ -9,6 +9,7 @@ import Service from "@/components/Home/Service";
 import Team from "@/components/Home/Team";
 import Testimonial from "@/components/Home/Testimonial";
 import Portfolio from "@/components/Portfolio";
+import HomeMobilePortfolio from "@/components/Portfolio/HomeMobilePortfolio";
 import Link from "next/link";
 import MiniLeadClient from "@/components/Common/MiniLeadClient";
 import { Metadata } from "next";
@@ -73,6 +74,7 @@ export default function Home() {
       <About />
       <Service />
       <Portfolio />
+      <HomeMobilePortfolio />
       <Brands />
       <PhoneLeadCTA />
       {/* FAQ Section */}

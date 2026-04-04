@@ -1,6 +1,12 @@
 import type { Portfolio, PortfolioSupportedService } from "@/types/portfolio";
 
 export const portfolioHubPath = "/portofoliu" as const;
+export const homepagePortfolioSlugs = [
+  "studio-by-cristian-design",
+  "auto-detailing-parts",
+  "d-toate-magazin-online",
+  "juridic-broker-asigurari",
+] as const;
 
 const portfolioServiceCatalog = {
   "creare-site-web": { href: "/servicii/creare-site-web", label: "creare site web" },
@@ -376,6 +382,12 @@ export function getPortfolioCaseStudyHref(slug: string) {
 
 export function getPortfolioBySlug(slug: string) {
   return portfolioData.find((portfolio) => portfolio.slug === slug);
+}
+
+export function getHomepagePortfolioItems() {
+  return homepagePortfolioSlugs
+    .map((slug) => getPortfolioBySlug(slug))
+    .filter((portfolio): portfolio is Portfolio => Boolean(portfolio));
 }
 
 export function getRelatedPortfolioItems(slugs: string[]) {
