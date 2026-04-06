@@ -4,19 +4,22 @@ import SectionHeading from "./section-heading";
 
 export default function WhyUsSection() {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-white py-14 sm:py-16">
       <div className="container">
         <SectionHeading
           eyebrow="De ce noi"
-          title="Partener tehnic orientat pe claritate, performanta si rezultate"
-          description="WebDynamicx livreaza aplicatii mobile cu focus pe impact operational si experienta moderna pentru clienti."
+          title="Ce diferențiază colaborarea cu noi pe un proiect de aplicație mobilă"
+          description="Punem accent pe structură, claritate și livrare realistă. Nu construim doar ecrane care arată bine, ci aplicații gândite să poată fi lansate, folosite și extinse în timp."
           center
         />
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {differentiators.map((item) => (
-            <div key={item} className="flex gap-3 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-              <BadgeCheck size={18} className="mt-0.5 shrink-0 text-primary" />
-              <p className="text-sm leading-relaxed text-gray-700">{item}</p>
+            <div
+              key={item}
+              className="flex gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm"
+            >
+              <BadgeCheck size={18} className="text-primary mt-0.5 shrink-0" />
+              <p className="text-sm leading-7 text-slate-700">{item}</p>
             </div>
           ))}
         </div>

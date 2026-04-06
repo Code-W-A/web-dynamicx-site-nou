@@ -14,6 +14,8 @@ export default function Navbar() {
   const [stickyMenu, setStickyMenu] = useState(false);
 
   const pathUrl = usePathname();
+  const isMobileAppsAdsLeadPage =
+    pathUrl === "/leads/dezvoltare-aplicatii-mobile";
 
   const navigationHandler = () => {
     setNavigationOpen(!navigationOpen);
@@ -30,7 +32,8 @@ export default function Navbar() {
 
   useEffect(() => {
     window.addEventListener("scroll", handleStickyMenu);
-  });
+    return () => window.removeEventListener("scroll", handleStickyMenu);
+  }, []);
 
   // ==== onePage nav active ====
   useEffect(() => {
@@ -43,6 +46,50 @@ export default function Navbar() {
     };
   }, []);
 
+  if (isMobileAppsAdsLeadPage) {
+    return (
+      <header className="fixed top-0 left-0 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur">
+        <div className="mx-auto flex w-full items-center justify-between gap-3 px-4 py-3 xl:container">
+          <Link href="/" className="flex items-center gap-3">
+            <span className="relative block h-11 w-11 shrink-0">
+              <Image
+                src="/images/logo/logo.svg"
+                alt="Logo Web Dynamicx"
+                fill
+                sizes="44px"
+                className="object-contain"
+                priority
+              />
+            </span>
+            <span className="hidden text-sm font-semibold tracking-[0.08em] text-slate-900 uppercase sm:inline-flex">
+              Web Dynamicx
+            </span>
+          </Link>
+
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a
+              href="tel:+40774550758"
+              className="hover:border-primary/30 hover:text-primary hidden rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition sm:inline-flex"
+            >
+              0774 550 758
+            </a>
+            <a
+              href="#formular-lead"
+              className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold whitespace-nowrap text-white transition sm:px-5"
+              onClick={() => {
+                try {
+                  trackCTA("Navbar Ads Lead - Cere ofertă");
+                } catch {}
+              }}
+            >
+              Cere ofertă
+            </a>
+          </div>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <>
       <header
@@ -51,7 +98,10 @@ export default function Navbar() {
         <div className="mx-auto w-full px-4 xl:container">
           <div className="relative mx-[-16px] flex items-center justify-between">
             <div className="w-52 max-w-full px-4 xl:w-60">
-              <Link href="/" className="header-logo flex w-full items-center justify-center py-5 lg:py-6">
+              <Link
+                href="/"
+                className="header-logo flex w-full items-center justify-center py-5 lg:py-6"
+              >
                 <span className="relative block h-14 w-14">
                   <Image
                     src="/images/logo/logo.svg"
@@ -97,9 +147,10 @@ export default function Navbar() {
                             href={
                               item?.external
                                 ? item.href
-                                : item?.href?.startsWith("/") || item?.href?.startsWith("#")
-                                ? item.href
-                                : `/${item.href}`
+                                : item?.href?.startsWith("/") ||
+                                    item?.href?.startsWith("#")
+                                  ? item.href
+                                  : `/${item.href}`
                             }
                             onClick={navigationHandler}
                             className={`${pathUrl === `${item?.href}` ? "text-primary" : ""} group-hover:text-primary flex py-2 text-base text-black lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${item?.href?.startsWith("#") ? "menu-scroll" : ""}`}
@@ -114,14 +165,18 @@ export default function Navbar() {
                                   href={
                                     item?.external
                                       ? item.href
-                                      : item?.href?.startsWith("/") || item?.href?.startsWith("#")
-                                      ? item.href
-                                      : `/${item.href}`
+                                      : item?.href?.startsWith("/") ||
+                                          item?.href?.startsWith("#")
+                                        ? item.href
+                                        : `/${item.href}`
                                   }
                                   onClick={navigationHandler}
                                   className={`${
                                     pathUrl === `${item?.href}` ||
-                                    (item?.href === "/portofoliu" && pathUrl.startsWith("/portofoliu-aplicatii-mobile"))
+                                    (item?.href === "/portofoliu" &&
+                                      pathUrl.startsWith(
+                                        "/portofoliu-aplicatii-mobile",
+                                      ))
                                       ? "text-primary"
                                       : ""
                                   } group-hover:text-primary flex-1 ${item?.href?.startsWith("#") ? "menu-scroll" : ""}`}
@@ -174,8 +229,11 @@ export default function Navbar() {
                                 {item?.submenu.map((subItem) => {
                                   const subActive =
                                     pathUrl === subItem?.href ||
-                                    (subItem?.href === "/portofoliu-aplicatii-mobile" &&
-                                      pathUrl.startsWith("/portofoliu-aplicatii-mobile"));
+                                    (subItem?.href ===
+                                      "/portofoliu-aplicatii-mobile" &&
+                                      pathUrl.startsWith(
+                                        "/portofoliu-aplicatii-mobile",
+                                      ));
                                   return (
                                     <li key={subItem?.id}>
                                       <Link
@@ -202,7 +260,11 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   className="bg-primary hover:bg-primary/90 hover:shadow-signUp rounded-full px-8 py-3 text-base font-bold whitespace-nowrap text-white transition duration-300 ease-in-out md:px-9 lg:px-8 xl:px-9"
-                  onClick={() => { try { trackCTA("Navbar - Cere oferta"); } catch {} }}
+                  onClick={() => {
+                    try {
+                      trackCTA("Navbar - Cere oferta");
+                    } catch {}
+                  }}
                 >
                   Cere ofertă
                 </Link>

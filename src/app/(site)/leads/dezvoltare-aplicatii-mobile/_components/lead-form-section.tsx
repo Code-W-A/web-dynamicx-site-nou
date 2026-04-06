@@ -3,19 +3,19 @@
 import { type FormEvent, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Mail, MessageCircle, PhoneCall } from "lucide-react";
+import { MessageCircle, PhoneCall } from "lucide-react";
 import validateEmail from "@/app/libs/validate";
-import { trackLead, trackCustomLeadEvent } from "@/components/Analytics/GTMLeadEvents";
-import { contactData } from "./content";
-import SectionHeading from "./section-heading";
+import {
+  trackCustomLeadEvent,
+  trackLead,
+} from "@/components/Analytics/GTMLeadEvents";
+import { contactData, leadNextSteps, leadPromptItems } from "./content";
 
 type FormState = {
   name: string;
   contact: string;
   projectType: string;
   message: string;
-  company: string;
-  budget: string;
   consent: boolean;
 };
 
@@ -24,8 +24,6 @@ const initialState: FormState = {
   contact: "",
   projectType: "",
   message: "",
-  company: "",
-  budget: "",
   consent: false,
 };
 
@@ -34,14 +32,34 @@ export default function LeadFormSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormState, string>>>({});
-  const [showOptional, setShowOptional] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<
+    Partial<Record<keyof FormState, string>>
+  >({});
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const project = new URLSearchParams(window.location.search).get("selectedProject");
+    const project = new URLSearchParams(window.location.search).get(
+      "selectedProject",
+    );
     setSelectedProject(project);
+
+    const handleSelectedProject = (event: Event) => {
+      const customEvent = event as CustomEvent<string>;
+      setSelectedProject(customEvent.detail || null);
+    };
+
+    window.addEventListener(
+      "lead:selected-project",
+      handleSelectedProject as EventListener,
+    );
+
+    return () => {
+      window.removeEventListener(
+        "lead:selected-project",
+        handleSelectedProject as EventListener,
+      );
+    };
   }, []);
 
   const validatePhone = (phone: string) => {
@@ -49,51 +67,76 @@ export default function LeadFormSection() {
     return numeric.length >= 9 && numeric.length <= 15;
   };
 
-  const isEmailContact = useMemo(() => Boolean(validateEmail(form.contact.trim())), [form.contact]);
-  const isPhoneContact = useMemo(() => validatePhone(form.contact), [form.contact]);
+  const isEmailContact = useMemo(
+    () => Boolean(validateEmail(form.contact.trim())),
+    [form.contact],
+  );
+  const isPhoneContact = useMemo(
+    () => validatePhone(form.contact),
+    [form.contact],
+  );
   const hasValidContact = isEmailContact || isPhoneContact;
 
   const canSubmit = useMemo(() => {
-    return Boolean(form.name.trim() && hasValidContact && form.message.trim().length >= 10 && form.consent);
+    return Boolean(
+      form.name.trim() &&
+      hasValidContact &&
+      form.message.trim().length >= 10 &&
+      form.consent,
+    );
   }, [form, hasValidContact]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitted(false);
     setError(null);
+
     const nextErrors: Partial<Record<keyof FormState, string>> = {};
 
-    if (!form.name.trim() || form.name.trim().length < 2) nextErrors.name = "Introdu un nume valid (minim 2 caractere).";
-    if (!hasValidContact) nextErrors.contact = "Introdu un email valid sau un numar de telefon valid.";
-    if (!form.message.trim() || form.message.trim().length < 10) nextErrors.message = "Mesajul trebuie sa aiba cel putin 10 caractere.";
-    if (!form.consent) nextErrors.consent = "Ai nevoie de acord GDPR pentru a trimite formularul.";
+    if (!form.name.trim() || form.name.trim().length < 2) {
+      nextErrors.name = "Introdu un nume valid.";
+    }
+    if (!hasValidContact) {
+      nextErrors.contact =
+        "Introdu un email valid sau un număr de telefon valid.";
+    }
+    if (!form.message.trim() || form.message.trim().length < 10) {
+      nextErrors.message = "Spune-ne pe scurt ce vrei să construiești.";
+    }
+    if (!form.consent) {
+      nextErrors.consent = "Este necesar acordul pentru a te putea contacta.";
+    }
 
     setFieldErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) {
-      setError("Verifica campurile marcate si incearca din nou.");
+      setError("Verifică câmpurile marcate și încearcă din nou.");
       return;
     }
 
     try {
       setLoading(true);
+
       await axios.post(
         "/api/contact",
         {
           name: form.name.trim(),
-          company: form.company.trim(),
+          company: "",
           email: isEmailContact ? form.contact.trim() : "",
           phone: isPhoneContact ? form.contact.trim() : "",
           projectType: form.projectType,
-          budget: form.budget,
+          budget: "",
           source: "lead-mobile-apps",
           page: "/leads/dezvoltare-aplicatii-mobile",
           message: [
-            "Sursa lead: Lead Page Dezvoltare Aplicatii Mobile",
-            selectedProject ? `Proiect selectat: ${selectedProject}` : "Proiect selectat: Nespecificat",
-            form.projectType ? `Tip proiect: ${form.projectType}` : "Tip proiect: Nespecificat",
-            form.budget ? `Buget estimativ: ${form.budget}` : "Buget estimativ: Nespecificat",
+            "Sursă lead: Landing Page Google Ads - Dezvoltare Aplicații Mobile",
+            selectedProject
+              ? `Proiect selectat: ${selectedProject}`
+              : "Proiect selectat: Nespecificat",
+            form.projectType
+              ? `Tip proiect: ${form.projectType}`
+              : "Tip proiect: Nespecificat",
             "",
-            "Mesaj client:",
+            "Brief client:",
             form.message.trim(),
           ].join("\n"),
         },
@@ -103,22 +146,25 @@ export default function LeadFormSection() {
       setSubmitted(true);
       setForm(initialState);
       setFieldErrors({});
+
       try {
         trackLead("contact_form", {
           form_name: "lead_mobile_apps_form",
           source: "lead-mobile-apps",
           project_type: form.projectType || "unspecified",
-          budget: form.budget || "unspecified",
         });
         trackCustomLeadEvent("lead_mobile_apps_form_submit", {
           source: "lead-mobile-apps",
           project_type: form.projectType || "unspecified",
-          budget: form.budget || "unspecified",
         });
       } catch {}
-      toast.success("Mesaj trimis cu succes. Revenim in cel mai scurt timp.");
+
+      toast.success(
+        "Cererea a fost trimisă. Revenim rapid cu o estimare orientativă.",
+      );
     } catch (err: any) {
-      const apiError = err?.response?.data?.error || "A aparut o eroare. Incearca din nou.";
+      const apiError =
+        err?.response?.data?.error || "A apărut o eroare. Încearcă din nou.";
       setError(apiError);
       toast.error(apiError);
     } finally {
@@ -127,185 +173,233 @@ export default function LeadFormSection() {
   };
 
   return (
-    <section id="formular-lead" className="scroll-mt-28 bg-white py-18 sm:py-20">
+    <section
+      id="formular-lead"
+      className="scroll-mt-24 bg-white py-14 sm:py-16"
+    >
       <div className="container">
-        <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr]">
-          <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6 sm:p-8">
-            <SectionHeading
-              eyebrow="Contact"
-              title="Solicita oferta pentru aplicatia ta mobila"
-              description="Completeaza formularul scurt si revenim rapid cu directie tehnica si estimare initiala."
-            />
-            <div className="space-y-3">
-              <a
-                href={contactData.whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-primary/30 hover:text-primary"
-              >
-                <MessageCircle size={16} />
-                WhatsApp rapid
-              </a>
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-8">
+          <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 sm:p-8">
+            <p className="text-primary/80 text-sm font-semibold tracking-[0.22em] uppercase">
+              Cerere de ofertă
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+              Trimite proiectul și revenim cu o direcție clară
+            </h2>
+            <p className="mt-4 text-base leading-8 text-slate-600">
+              Completează pe scurt cererea, iar noi revenim cu o variantă
+              realistă de pornire pentru proiectul tău.
+            </p>
+
+            <div className="mt-6 space-y-3">
+              {leadNextSteps.map((item) => (
+                <article
+                  key={item.title}
+                  className="rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-[0_10px_28px_rgba(15,23,42,0.04)]"
+                >
+                  <h3 className="text-base font-semibold text-slate-950">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
+                    {item.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5">
+              <p className="text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase">
+                Ne ajută să știm pe scurt:
+              </p>
+              <ul className="mt-3 space-y-2">
+                {leadPromptItems.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-sm leading-7 text-slate-700"
+                  >
+                    <span className="bg-primary mt-2 inline-block h-2 w-2 shrink-0 rounded-full" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <a
                 href={contactData.phoneHref}
-                className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-primary/30 hover:text-primary"
+                className="hover:border-primary/30 hover:text-primary flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 transition"
               >
                 <PhoneCall size={16} />
                 {contactData.phoneDisplay}
               </a>
               <a
-                href={contactData.emailHref}
-                className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-primary/30 hover:text-primary"
+                href={contactData.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:border-primary/30 hover:text-primary flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 transition"
               >
-                <Mail size={16} />
-                {contactData.email}
+                <MessageCircle size={16} />
+                WhatsApp rapid
               </a>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="rounded-3xl border border-gray-200 bg-white p-6 shadow-service sm:p-8">
+          <form
+            onSubmit={handleSubmit}
+            className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] sm:p-8"
+          >
+            <div className="rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
+              Îți răspundem în cel mai scurt timp posibil, cu o direcție clară
+              și pași concreți.
+            </div>
+
             {selectedProject ? (
-              <div className="mb-3 rounded-2xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm text-primary">
-                Proiect selectat: <span className="font-semibold">{selectedProject}</span>
+              <div className="border-primary/20 bg-primary/5 text-primary mt-4 rounded-2xl border px-4 py-3 text-sm">
+                Ai ales un proiect similar cu:{" "}
+                <span className="font-semibold">{selectedProject}</span>
               </div>
             ) : null}
-            <div className="mb-4 rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
-              Raspundem in maxim 2 ore in timpul programului si iti trimitem pasii recomandati pentru proiect.
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="text-sm font-medium text-gray-700">
+
+            <div className="mt-6 grid gap-5 sm:grid-cols-2">
+              <label className="text-sm font-medium text-slate-700">
                 Nume *
                 <input
                   type="text"
                   value={form.name}
                   onChange={(e) => {
                     setForm((prev) => ({ ...prev, name: e.target.value }));
-                    if (fieldErrors.name) setFieldErrors((prev) => ({ ...prev, name: undefined }));
+                    if (fieldErrors.name)
+                      setFieldErrors((prev) => ({ ...prev, name: undefined }));
                   }}
-                  className={`mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition focus:border-primary ${
-                    fieldErrors.name ? "border-red-400" : "border-gray-200"
+                  className={`focus:border-primary mt-2 w-full rounded-xl border px-4 py-3 text-sm transition outline-none ${
+                    fieldErrors.name ? "border-red-400" : "border-slate-200"
                   }`}
-                  placeholder="Numele tau"
+                  placeholder="Numele tău"
                 />
-                {fieldErrors.name ? <span className="mt-1 block text-xs text-red-600">{fieldErrors.name}</span> : null}
+                {fieldErrors.name ? (
+                  <span className="mt-1 block text-xs text-red-600">
+                    {fieldErrors.name}
+                  </span>
+                ) : null}
               </label>
 
-              <label className="text-sm font-medium text-gray-700">
-                Tip proiect (optional)
+              <label className="text-sm font-medium text-slate-700">
+                Tip proiect
                 <select
                   value={form.projectType}
-                  onChange={(e) => {
-                    setForm((prev) => ({ ...prev, projectType: e.target.value }));
-                  }}
-                  className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-primary"
+                  onChange={(e) =>
+                    setForm((prev) => ({
+                      ...prev,
+                      projectType: e.target.value,
+                    }))
+                  }
+                  className="focus:border-primary mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm transition outline-none"
                 >
-                  <option value="">Selecteaza</option>
-                  <option value="mvp">MVP / validare idee</option>
-                  <option value="business-app">Aplicatie business</option>
-                  <option value="advanced-platform">Platforma avansata</option>
+                  <option value="">Selectează</option>
+                  <option value="client-app">Aplicație pentru clienți</option>
+                  <option value="internal-app">
+                    Aplicație internă pentru companie
+                  </option>
+                  <option value="orders-bookings">
+                    Aplicație pentru comenzi sau programări
+                  </option>
+                  <option value="other-app">Alt tip de aplicație</option>
+                  <option value="not-sure">Încă nu sunt sigur</option>
                 </select>
               </label>
 
-              <label className="text-sm font-medium text-gray-700 sm:col-span-2">
-                Telefon sau Email *
+              <label className="text-sm font-medium text-slate-700 sm:col-span-2">
+                Telefon sau email *
                 <input
                   type="text"
                   value={form.contact}
                   onChange={(e) => {
                     setForm((prev) => ({ ...prev, contact: e.target.value }));
-                    if (fieldErrors.contact) setFieldErrors((prev) => ({ ...prev, contact: undefined }));
+                    if (fieldErrors.contact)
+                      setFieldErrors((prev) => ({
+                        ...prev,
+                        contact: undefined,
+                      }));
                   }}
-                  className={`mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition focus:border-primary ${
-                    fieldErrors.contact ? "border-red-400" : "border-gray-200"
+                  className={`focus:border-primary mt-2 w-full rounded-xl border px-4 py-3 text-sm transition outline-none ${
+                    fieldErrors.contact ? "border-red-400" : "border-slate-200"
                   }`}
                   placeholder="07xx xxx xxx sau nume@companie.ro"
                 />
                 {fieldErrors.contact ? (
-                  <span className="mt-1 block text-xs text-red-600">{fieldErrors.contact}</span>
+                  <span className="mt-1 block text-xs text-red-600">
+                    {fieldErrors.contact}
+                  </span>
                 ) : null}
               </label>
             </div>
 
-            <label className="mt-4 block text-sm font-medium text-gray-700">
-              Mesaj scurt *
+            <label className="mt-5 block text-sm font-medium text-slate-700">
+              Ce vrei să construiești? *
               <textarea
-                rows={4}
+                rows={5}
                 value={form.message}
                 onChange={(e) => {
                   setForm((prev) => ({ ...prev, message: e.target.value }));
-                  if (fieldErrors.message) setFieldErrors((prev) => ({ ...prev, message: undefined }));
+                  if (fieldErrors.message)
+                    setFieldErrors((prev) => ({ ...prev, message: undefined }));
                 }}
-                className={`mt-2 w-full resize-none rounded-xl border px-4 py-3 text-sm outline-none transition focus:border-primary ${
-                  fieldErrors.message ? "border-red-400" : "border-gray-200"
+                className={`focus:border-primary mt-2 w-full resize-none rounded-xl border px-4 py-3 text-sm transition outline-none ${
+                  fieldErrors.message ? "border-red-400" : "border-slate-200"
                 }`}
-                placeholder="Ce vrei sa construiesti si care este obiectivul principal?"
+                placeholder="Pe scurt: ce vrei să facă aplicația și pentru cine va fi folosită?"
               />
-              {fieldErrors.message ? <span className="mt-1 block text-xs text-red-600">{fieldErrors.message}</span> : null}
+              {fieldErrors.message ? (
+                <span className="mt-1 block text-xs text-red-600">
+                  {fieldErrors.message}
+                </span>
+              ) : null}
             </label>
 
-            <button
-              type="button"
-              onClick={() => setShowOptional((prev) => !prev)}
-              className="mt-3 text-sm font-semibold text-primary hover:text-primary/80"
-            >
-              {showOptional ? "Ascunde detalii optionale" : "Adauga detalii optionale"}
-            </button>
-
-            {showOptional ? (
-              <div className="mt-3 grid gap-4 sm:grid-cols-2">
-                <label className="text-sm font-medium text-gray-700">
-                  Companie (optional)
-                  <input
-                    type="text"
-                    value={form.company}
-                    onChange={(e) => setForm((prev) => ({ ...prev, company: e.target.value }))}
-                    className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-primary"
-                  />
-                </label>
-                <label className="text-sm font-medium text-gray-700">
-                  Buget estimativ (optional)
-                  <select
-                    value={form.budget}
-                    onChange={(e) => setForm((prev) => ({ ...prev, budget: e.target.value }))}
-                    className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-primary"
-                  >
-                    <option value="">Selecteaza intervalul</option>
-                    <option value="3500-7500">3.500 - 7.500 EUR</option>
-                    <option value="7500-15000">7.500 - 15.000 EUR</option>
-                    <option value="15000+">Peste 15.000 EUR</option>
-                  </select>
-                </label>
-              </div>
-            ) : null}
-
-            <label className="mt-4 flex items-start gap-3 text-sm text-gray-700">
+            <label className="mt-5 flex items-start gap-3 text-sm text-slate-700">
               <input
                 type="checkbox"
                 checked={form.consent}
                 onChange={(e) => {
                   setForm((prev) => ({ ...prev, consent: e.target.checked }));
-                  if (fieldErrors.consent) setFieldErrors((prev) => ({ ...prev, consent: undefined }));
+                  if (fieldErrors.consent)
+                    setFieldErrors((prev) => ({ ...prev, consent: undefined }));
                 }}
-                className="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                className="text-primary focus:ring-primary mt-0.5 h-4 w-4 rounded border-slate-300"
               />
-              Sunt de acord cu prelucrarea datelor conform politicii GDPR.
+              Sunt de acord să fiu contactat pentru a primi o estimare și
+              informații despre proiectul meu.
             </label>
-            {fieldErrors.consent ? <p className="mt-1 text-xs text-red-600">{fieldErrors.consent}</p> : null}
+            {fieldErrors.consent ? (
+              <p className="mt-1 text-xs text-red-600">{fieldErrors.consent}</p>
+            ) : null}
 
-            {error ? <p className="mt-3 text-sm font-medium text-red-600">{error}</p> : null}
+            {error ? (
+              <p className="mt-3 text-sm font-medium text-red-600">{error}</p>
+            ) : null}
             {submitted ? (
               <p className="mt-3 text-sm font-medium text-green-700">
-                Multumim! Cererea ta a fost trimisa. Revenim cu o estimare initiala in cel mai scurt timp.
+                Îți răspundem în cel mai scurt timp posibil, cu o direcție clară
+                și pași concreți.
               </p>
             ) : null}
 
             <button
               type="submit"
-              className="mt-6 w-full rounded-2xl bg-primary px-6 py-4 text-base font-semibold text-white transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
+              className="bg-primary hover:bg-primary/90 mt-6 w-full rounded-2xl px-6 py-4 text-base font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-60"
               disabled={!canSubmit || loading}
             >
-              {loading ? "Se trimite..." : "Solicita oferta"}
+              {loading ? "Se trimite..." : "Cere estimare pentru proiect"}
             </button>
+
+            <p className="mt-3 text-center text-xs leading-6 text-slate-500">
+              Nu trebuie să ai toate detaliile stabilite. Este suficient să ne
+              spui ce vrei să construiești și ce obiectiv ai.
+            </p>
+            <p className="mt-2 text-center text-xs leading-6 text-slate-500">
+              Îți răspundem în cel mai scurt timp posibil, cu o direcție clară
+              și pași concreți.
+            </p>
           </form>
         </div>
       </div>

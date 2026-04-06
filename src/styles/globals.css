@@ -140,3 +140,7 @@
 .contact-fab-pulse:not(.opacity-50) {
   animation: contact-fab-pulse 2.8s ease-in-out infinite;
 }
+
+body:has([data-mobile-apps-ads-page]) .global-site-footer {
+  display: none;
+}

@@ -1,39 +1,37 @@
 import type { Metadata } from "next";
 import HeroSection from "./_components/hero-section";
 import TrustBar from "./_components/trust-bar";
-import BenefitsSection from "./_components/benefits-section";
-import ServicesGridSection from "./_components/services-grid-section";
 import ProcessSection from "./_components/process-section";
 import PortfolioSection from "./_components/portfolio-section";
-import FeatureHighlightsSection from "./_components/feature-highlights-section";
 import WhyUsSection from "./_components/why-us-section";
 import TestimonialsSection from "./_components/testimonials-section";
 import PricingEstimateSection from "./_components/pricing-estimate-section";
 import FaqSection from "./_components/faq-section";
 import FinalCtaSection from "./_components/final-cta-section";
 import LeadFormSection from "./_components/lead-form-section";
-import LeadDesktopContactFab from "../_components/lead-desktop-contact-fab";
+import StickyMobileCtaBar from "./_components/sticky-mobile-cta-bar";
+import AdsSimpleFooter from "./_components/ads-simple-footer";
 
 const siteName = process.env.SITE_NAME || "Web Dynamicx";
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
-const pagePath = "/leads/dezvoltare-aplicatii-mobile";
+const canonicalServicePath = "/servicii/dezvoltare-aplicatii-mobile";
 
 export const metadata: Metadata = {
-  title: `Solicita oferta dezvoltare aplicatii mobile | ${siteName}`,
+  title: `Dezvoltare aplicații mobile iOS și Android pentru firme | ${siteName}`,
   description:
-    "Landing page pentru campanii platite: dezvoltare aplicatii mobile iOS, Android si cross-platform pentru companii. Cere estimare personalizata.",
+    "Landing page pentru Google Ads: dezvoltare aplicații mobile iOS și Android pentru firme. Cere estimare orientativă și direcție clară pentru MVP sau produsul tău.",
   alternates: {
-    canonical: `${siteURL}${pagePath}`,
+    canonical: `${siteURL}${canonicalServicePath}`,
   },
   robots: {
     index: false,
-    follow: true,
+    follow: false,
   },
   openGraph: {
-    title: `Dezvoltare aplicatii mobile - oferta rapida | ${siteName}`,
+    title: `Dezvoltare aplicații mobile pentru firme | ${siteName}`,
     description:
-      "Pagina de conversie pentru solicitari de oferta: aplicatii mobile personalizate, scalabile, cu focus pe rezultate de business.",
-    url: `${siteURL}${pagePath}`,
+      "Pagini dedicate Ads pentru companii care caută dezvoltare aplicații mobile iOS și Android, cu estimare orientativă și focus pe lansare.",
+    url: `${siteURL}${canonicalServicePath}`,
     siteName,
     locale: "ro_RO",
     type: "website",
@@ -43,20 +41,19 @@ export const metadata: Metadata = {
 export default function MobileAppsLeadPage() {
   return (
     <>
+      <div data-mobile-apps-ads-page className="hidden" />
       <HeroSection />
       <TrustBar />
-      <BenefitsSection />
       <LeadFormSection />
       <PortfolioSection />
+      <WhyUsSection />
       <ProcessSection />
       <PricingEstimateSection />
-      <FaqSection />
       <TestimonialsSection />
-      <WhyUsSection />
-      <ServicesGridSection />
-      <FeatureHighlightsSection />
+      <FaqSection />
       <FinalCtaSection />
-      <LeadDesktopContactFab />
+      <AdsSimpleFooter />
+      <StickyMobileCtaBar />
     </>
   );
 }

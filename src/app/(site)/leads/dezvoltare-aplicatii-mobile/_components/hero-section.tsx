@@ -1,106 +1,114 @@
+import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle2, MessageCircle, Smartphone, Sparkles } from "lucide-react";
-import { contactData, trustPoints } from "./content";
+import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { mobileAppsServicePageData } from "@/app/(site)/servicii/dezvoltare-aplicatii-mobile/mobile-app-service-data";
+import { trustPoints } from "./content";
+
+const heroProofItems = [
+  "iOS și Android",
+  "Prima versiune a aplicației",
+  "Publicare în App Store și Google Play",
+];
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/70 via-white to-white pt-28 pb-16 sm:pt-32">
-      <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary/15 blur-3xl" />
-      <div className="pointer-events-none absolute -right-24 top-24 h-72 w-72 rounded-full bg-blue-200/30 blur-3xl" />
-      <div className="container relative">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-          <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white px-4 py-2 text-sm font-medium text-primary">
-              <Sparkles size={16} />
-              Dezvoltare aplicații mobile pentru companii din România
+    <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(74,108,247,0.12),_transparent_28%),linear-gradient(180deg,_#f8fbff_0%,_#ffffff_72%)] pt-[120px] pb-12 sm:pt-[136px] sm:pb-16">
+      <div className="bg-primary/15 pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl" />
+      <div className="pointer-events-none absolute top-18 -right-24 h-72 w-72 rounded-full bg-sky-200/35 blur-3xl" />
+
+      <div className="relative container">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(340px,0.92fr)] lg:items-center lg:gap-10">
+          <div className="max-w-2xl">
+            <div className="border-primary/20 text-primary inline-flex items-center gap-2 rounded-full border bg-white px-4 py-2 text-xs font-semibold tracking-[0.18em] uppercase shadow-sm">
+              <Sparkles size={14} />
+              Firmă dezvoltare aplicații mobile
             </div>
-            <h1 className="text-4xl leading-tight font-bold text-black sm:text-5xl">
-              Dezvoltare aplicatii mobile pentru companii care vor rezultate rapide si scalabile
+
+            <h1 className="mt-5 text-4xl leading-tight font-bold tracking-tight text-slate-950 sm:text-5xl">
+              Dezvoltare aplicații mobile iOS și Android pentru firme care vor
+              să lanseze clar și rapid
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-body-color">
-              Construim aplicatii iOS, Android si cross-platform pentru business-uri care vor procese mai eficiente,
-              experienta moderna pentru clienti si crestere sustinuta.
+
+            <p className="mt-4 max-w-[44rem] text-base leading-8 text-slate-600 sm:text-lg">
+              Construim aplicații mobile pentru companii care vor să lanseze o
+              primă versiune bine gândită, să testeze o idee nouă sau să
+              transforme un proces important într-un produs digital ușor de
+              folosit. Te ajutăm cu structură, design, dezvoltare și publicare,
+              astfel încât aplicația să fie pregătită pentru utilizare reală, nu
+              doar pentru prezentare.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link
-                href="#formular-lead"
-                className="inline-flex items-center justify-center rounded-2xl bg-primary px-7 py-4 text-base font-semibold text-white shadow-lg shadow-primary/20 transition hover:bg-primary/90"
-              >
-                Solicita oferta
-              </Link>
-              <div className="flex items-center gap-4 text-sm font-medium">
-                <a
-                  href={contactData.whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-gray-700 transition hover:text-primary"
-                >
-                  <MessageCircle size={16} />
-                  WhatsApp
-                </a>
-                <a href={contactData.phoneHref} className="text-gray-700 transition hover:text-primary">
-                  Suna acum
-                </a>
-              </div>
-            </div>
-
-            <ul className="mt-8 grid gap-3 text-sm">
+            <ul className="mt-6 space-y-3">
               {trustPoints.map((point) => (
-                <li key={point} className="flex items-start gap-2 rounded-xl bg-white/80 p-3 text-gray-700 shadow-sm">
-                  <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-primary" />
+                <li
+                  key={point}
+                  className="flex items-start gap-3 text-sm leading-7 text-slate-700 sm:text-base"
+                >
+                  <span className="bg-primary/10 text-primary mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full">
+                    <CheckCircle2 size={14} />
+                  </span>
                   <span>{point}</span>
                 </li>
               ))}
             </ul>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Link
+                href="#formular-lead"
+                className="bg-primary hover:bg-primary/90 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-base font-semibold text-white shadow-[0_16px_40px_rgba(74,108,247,0.24)] transition sm:w-auto"
+              >
+                Cere o estimare pentru aplicația ta
+                <ArrowRight size={18} />
+              </Link>
+              <Link
+                href="#proiecte-reale"
+                className="hover:border-primary/30 hover:text-primary inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-4 text-base font-semibold text-slate-900 transition sm:w-auto"
+              >
+                Vezi proiecte reale
+              </Link>
+            </div>
+            <div className="mt-3">
+              <p className="mt-3 max-w-xl text-sm leading-7 text-slate-500">
+                Primești o direcție clară pentru proiect, o estimare orientativă
+                și recomandări potrivite pentru prima versiune a aplicației sau
+                pentru o dezvoltare mai amplă.
+              </p>
+            </div>
           </div>
 
-          <div className="space-y-5">
-            <div className="rounded-3xl border border-blue-100 bg-white p-5 shadow-[0_20px_50px_rgba(9,14,52,0.08)]">
-              <div className="mb-4 flex items-center justify-between">
-                <p className="text-sm font-semibold text-gray-700">Preview produs mobil</p>
-                <span className="rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700">
-                  Livrare structurata
-                </span>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl bg-gradient-to-b from-slate-900 to-slate-700 p-4 text-white">
-                  <div className="mb-4 h-2 w-16 rounded-full bg-white/30" />
-                  <div className="mb-2 h-16 rounded-xl bg-white/15" />
-                  <div className="mb-2 h-16 rounded-xl bg-white/10" />
-                  <p className="mt-4 text-xs text-white/80">Home + Dashboard utilizator</p>
-                </div>
-                <div className="rounded-2xl bg-gradient-to-b from-primary to-blue-700 p-4 text-white">
-                  <div className="mb-3 flex items-center gap-2 text-xs">
-                    <Smartphone size={14} />
-                    App Flow
-                  </div>
-                  <div className="space-y-2">
-                    <div className="h-8 rounded-lg bg-white/20" />
-                    <div className="h-8 rounded-lg bg-white/20" />
-                    <div className="h-8 rounded-lg bg-white/20" />
-                  </div>
-                  <p className="mt-4 text-xs text-white/80">Rezervari, plati, notificari</p>
+          <div className="lg:justify-self-end">
+            <div className="overflow-hidden rounded-[1.9rem] border border-slate-200/80 bg-slate-950 p-2 shadow-[0_28px_80px_rgba(15,23,42,0.18)]">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.45rem]">
+                <Image
+                  src={mobileAppsServicePageData.image}
+                  alt={mobileAppsServicePageData.title}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="object-cover object-center"
+                />
+                <div className="to-primary/20 absolute inset-0 bg-gradient-to-tr from-slate-950/60 via-transparent" />
+                <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/10 bg-slate-950/72 px-4 py-3 text-white backdrop-blur-sm">
+                  <p className="text-xs font-semibold tracking-[0.18em] text-white/60 uppercase">
+                    Focus comercial
+                  </p>
+                  <p className="mt-2 text-sm font-semibold sm:text-base">
+                    Aplicații gândite pentru lansare, utilizare reală și o
+                    evoluție clară în timp
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-service">
-              <p className="text-sm font-semibold text-black">Ce primesti la prima discutie</p>
-              <p className="mt-2 text-sm text-body-color">
-                Clarificam obiectivele, estimam efortul si iti recomandam arhitectura potrivita pentru lansare.
-              </p>
-              <div className="mt-4 space-y-2 text-sm text-gray-700">
-                <p>- raspuns initial rapid</p>
-                <p>- recomandari tehnice concrete</p>
-                <p>- urmatorii pasi clari pentru proiect</p>
-              </div>
-              <a
-                href="#formular-lead"
-                className="mt-5 inline-flex rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary/90"
-              >
-                Solicita oferta
-              </a>
+            <div className="mt-4 grid gap-3 sm:grid-cols-3">
+              {heroProofItems.map((item) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-center text-sm font-semibold text-slate-800 shadow-sm"
+                >
+                  {item}
+                </div>
+              ))}
             </div>
           </div>
         </div>

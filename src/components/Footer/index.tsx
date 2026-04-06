@@ -7,7 +7,7 @@ import Graphic from "./Graphic";
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 bg-black pb-12 pt-[100px]">
+    <footer className="global-site-footer relative z-10 bg-black pt-[100px] pb-12">
       <div className="container">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4 md:w-1/2 lg:w-4/12">
@@ -15,26 +15,51 @@ export default function Footer() {
           </div>
           <div className="w-full px-4 md:w-1/2 lg:w-3/12">
             <div className="mb-10">
-              <h3 className="mb-9 text-xl font-semibold text-white">Servicii</h3>
+              <h3 className="mb-9 text-xl font-semibold text-white">
+                Servicii
+              </h3>
               <ul className="space-y-3">
-                {/* Servicii principale */}
                 <FooterLinkItem
-                  linkItem={{ id: "creare-site-prezentare", title: "Creare site de prezentare", href: "/servicii/creare-site-prezentare", external: false }}
+                  linkItem={{
+                    id: "creare-site-prezentare",
+                    title: "Creare site de prezentare",
+                    href: "/servicii/creare-site-prezentare",
+                    external: false,
+                  }}
                 />
                 <FooterLinkItem
-                  linkItem={{ id: "creare-magazin-online", title: "Creare magazin online", href: "/servicii/creare-magazin-online", external: false }}
+                  linkItem={{
+                    id: "creare-magazin-online",
+                    title: "Creare magazin online",
+                    href: "/servicii/creare-magazin-online",
+                    external: false,
+                  }}
                 />
                 <FooterLinkItem
-                  linkItem={{ id: "optimizare-seo", title: "Servicii SEO profesionale", href: "/servicii/optimizare-seo", external: false }}
+                  linkItem={{
+                    id: "optimizare-seo",
+                    title: "Servicii SEO profesionale",
+                    href: "/servicii/optimizare-seo",
+                    external: false,
+                  }}
                 />
                 <FooterLinkItem
-                  linkItem={{ id: "mentenanta-website", title: "Mentenanță website", href: "/servicii/mentenanta-website", external: false }}
+                  linkItem={{
+                    id: "mentenanta-website",
+                    title: "Mentenanță website",
+                    href: "/servicii/mentenanta-website",
+                    external: false,
+                  }}
                 />
-                {/* Toate serviciile */}
                 {serviceData.map((svc) => (
                   <FooterLinkItem
                     key={svc?.slug}
-                    linkItem={{ id: svc.slug, title: svc.title, href: `/servicii/${svc.slug}`, external: false }}
+                    linkItem={{
+                      id: svc.slug,
+                      title: svc.title,
+                      href: `/servicii/${svc.slug}`,
+                      external: false,
+                    }}
                   />
                 ))}
               </ul>

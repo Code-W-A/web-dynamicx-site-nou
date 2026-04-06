@@ -8,18 +8,41 @@ export const contactData = {
 };
 
 export const trustPoints = [
-  "Pentru IMM-uri, startup-uri și business-uri care vor digitalizare reală",
-  "Răspuns inițial rapid și pași clari de implementare",
-  "iOS, Android sau cross-platform, cu suport post-lansare inclus",
+  "Primă versiune lansabilă, cu funcțiile care contează",
+  "Aplicații pentru iOS și Android, gândite pentru utilizatori reali",
+  "Estimare clară, structură bună și pași ușor de urmărit",
 ];
 
 export const trustBarItems = [
-  "Soluții personalizate",
-  "Dezvoltare scalabilă",
-  "UX modern",
-  "Integrare API",
-  "Suport post-lansare",
-  "Proces clar și colaborare transparentă",
+  "Proiecte reale, nu simple prezentări",
+  "iOS și Android",
+  "Publicare în App Store și Google Play",
+  "Pași clari, ușor de urmărit",
+];
+
+export const leadNextSteps = [
+  {
+    title: "Răspuns clar și orientativ",
+    description:
+      "Îți spunem cum poate începe proiectul, ce variantă are sens pentru lansare și la ce buget orientativ te poți raporta.",
+  },
+  {
+    title: "Fără obligații",
+    description:
+      "Poți cere o estimare chiar dacă încă nu ai toate detaliile stabilite sau ești la început cu ideea.",
+  },
+  {
+    title: "Potrivit pentru proiecte diferite",
+    description:
+      "Fie că vrei o primă versiune a aplicației, o soluție pentru clienți sau un produs mai complex, te ajutăm să alegi varianta potrivită.",
+  },
+];
+
+export const leadPromptItems = [
+  "ce vrei să lansezi",
+  "cui se adresează aplicația",
+  "ce funcții sunt importante pentru început",
+  "ce ritm de lansare ai în minte",
 ];
 
 export const benefits = [
@@ -68,32 +91,29 @@ export const appTypes = [
 
 export const processSteps = [
   {
-    title: "Analiza si clarificare cerinte",
-    description: "Definim obiectivele, utilizatorii si criteriile de succes ale proiectului.",
+    title: "Discuție și obiective",
+    description:
+      "Înțelegem ce vrei să lansezi, cui se adresează și ce ar trebui să facă aplicația în prima etapă.",
   },
   {
-    title: "Wireframing si structura",
-    description: "Schitam fluxurile principale si ordinea logica a ecranelor importante.",
+    title: "Structură și estimare",
+    description:
+      "Stabilim o variantă realistă de pornire, funcțiile importante și un buget orientativ.",
   },
   {
-    title: "Design UI/UX",
-    description: "Proiectam o interfata moderna, clara si usor de folosit pe mobil.",
+    title: "Design și dezvoltare",
+    description:
+      "Construim interfața aplicației și partea tehnică necesară pentru funcționare.",
   },
   {
-    title: "Dezvoltare",
-    description: "Implementam aplicatia si integrarile necesare intr-un ritm predictibil.",
+    title: "Testare și lansare",
+    description:
+      "Verificăm fluxurile importante, corectăm detaliile necesare și pregătim aplicația pentru publicare.",
   },
   {
-    title: "Testare",
-    description: "Verificam functional, vizual si pe dispozitive reale inainte de lansare.",
-  },
-  {
-    title: "Lansare",
-    description: "Publicam controlat si monitorizam atent primele zile dupa release.",
-  },
-  {
-    title: "Suport",
-    description: "Optimizam continuu pe baza feedback-ului si a datelor de utilizare.",
+    title: "Mentenanță și extinderi",
+    description:
+      "După lansare, putem îmbunătăți aplicația și adăuga funcții noi în funcție de feedback și rezultate.",
   },
 ];
 
@@ -108,20 +128,33 @@ export const portfolioProjects = [
       "Clientul gestiona rezervările manual, iar rata de no-show afecta programul echipei.",
     solution:
       "Am livrat o aplicație mobilă cu calendar inteligent, confirmări automate și reminder push.",
-    features: ["Rezervări", "Notificări push", "Plăți online", "Dashboard administrare"],
-    impact: "Reducere no-show și proces mai rapid de confirmare a programărilor.",
+    features: [
+      "Rezervări",
+      "Notificări push",
+      "Plăți online",
+      "Dashboard administrare",
+    ],
+    impact:
+      "Reducere no-show și proces mai rapid de confirmare a programărilor.",
     idealFor: [
       "Clinici și centre de servicii",
       "Business-uri locale cu programări recurente",
       "Companii care vor automatizare operațională",
     ],
-    techNote: "Implementare cross-platform, API custom și notificări push segmentate pe tip client.",
-    previewBlocks: ["Ecran programari", "Calendar inteligent", "Reminder push", "Plata rapida"],
+    techNote:
+      "Implementare cross-platform, API custom și notificări push segmentate pe tip client.",
+    previewBlocks: [
+      "Ecran programari",
+      "Calendar inteligent",
+      "Reminder push",
+      "Plata rapida",
+    ],
   },
   {
     title: "QuickRoute",
     category: "Comenzi & livrări",
-    summary: "Platformă mobilă pentru comenzi, tracking și flux logistic centralizat.",
+    summary:
+      "Platformă mobilă pentru comenzi, tracking și flux logistic centralizat.",
     intro:
       "QuickRoute a fost creat pentru o companie care avea nevoie de vizibilitate în timp real pe întregul traseu al comenzilor.",
     challenge:
@@ -129,19 +162,27 @@ export const portfolioProjects = [
     solution:
       "Am creat o aplicație cu management de comenzi, tracking în timp real și integrare ERP.",
     features: ["Tracking GPS", "Status comenzi", "Integrare ERP", "Rapoarte"],
-    impact: "Vizibilitate operațională mai bună și timp redus de procesare comenzi.",
+    impact:
+      "Vizibilitate operațională mai bună și timp redus de procesare comenzi.",
     idealFor: [
       "Companii de distribuție și livrare",
       "Business-uri cu echipe în teren",
       "Firme care folosesc ERP și au nevoie de sincronizare mobilă",
     ],
-    techNote: "Integrare API cu ERP existent, status-uri live și modul de raportare operațională.",
-    previewBlocks: ["Harta livrari", "Timeline comenzi", "Status in timp real", "Rapoarte zilnice"],
+    techNote:
+      "Integrare API cu ERP existent, status-uri live și modul de raportare operațională.",
+    previewBlocks: [
+      "Harta livrari",
+      "Timeline comenzi",
+      "Status in timp real",
+      "Rapoarte zilnice",
+    ],
   },
   {
     title: "ClubConnect",
     category: "Comunități & membership",
-    summary: "Aplicație membership cu abonamente, comunicare internă și engagement continuu.",
+    summary:
+      "Aplicație membership cu abonamente, comunicare internă și engagement continuu.",
     intro:
       "ClubConnect a fost proiectat pentru un model de business bazat pe comunitate, conținut premium și retenție pe termen lung.",
     challenge:
@@ -149,14 +190,21 @@ export const portfolioProjects = [
     solution:
       "Am dezvoltat aplicația cu autentificare pe roluri, abonamente recurente și chat intern.",
     features: ["Abonamente", "Autentificare roluri", "Chat", "Analytics"],
-    impact: "Creștere a engagement-ului și retenție mai bună a membrilor activi.",
+    impact:
+      "Creștere a engagement-ului și retenție mai bună a membrilor activi.",
     idealFor: [
       "Comunități premium și programe membership",
       "Platforme educaționale cu abonament",
       "Branduri care monetizează conținut digital",
     ],
-    techNote: "Plăți recurente, roluri de acces și evenimente tracking pentru retenție și analiză.",
-    previewBlocks: ["Zona membri", "Chat comunitate", "Abonamente active", "Dashboard engagement"],
+    techNote:
+      "Plăți recurente, roluri de acces și evenimente tracking pentru retenție și analiză.",
+    previewBlocks: [
+      "Zona membri",
+      "Chat comunitate",
+      "Abonamente active",
+      "Dashboard engagement",
+    ],
   },
 ];
 
@@ -174,93 +222,95 @@ export const featureHighlights = [
 ];
 
 export const differentiators = [
-  "Colaborare clară și structurată pe etape",
-  "Focus pe obiective de business, nu doar pe implementare",
-  "Soluții moderne, stabile și scalabile",
-  "Design orientat spre utilizator și conversie",
-  "Integrare cu infrastructura existentă a companiei",
-  "Livrare profesionistă cu suport post-lansare",
+  "Confirmăm rapid dacă prima versiune a aplicației are sens",
+  "Gândim proiectul înainte să intrăm în dezvoltare",
+  "Acoperim aplicația, sistemul din spate și publicarea",
+  "Punem accent pe utilizare simplă și clară",
+  "Lucrăm cu pași clari și ușor de urmărit",
+  "Lăsăm loc pentru extindere, fără complicații inutile de la început",
 ];
 
 export const testimonials = [
   {
-    name: "Andrei M.",
-    role: "Fondator, business servicii locale",
+    name: "My Butterfly",
+    role: "Aplicație de recomandări pentru tenis de masă",
     quote:
-      "Am avut claritate din prima săptămână. Echipa WebDynamicx ne-a ajutat să lansăm un MVP util și să reducem timpul de preluare a comenzilor.",
+      "Pentru aplicația My Butterfly, rezultatul final a fost unul bine structurat, ușor de folosit și foarte clar pentru utilizatori. Am apreciat atenția la experiența din aplicație și modul în care totul a fost organizat simplu și coerent.",
   },
   {
-    name: "Ioana R.",
-    role: "Manager operațional, companie distribuție",
+    name: "Cristina Zurba Tarot & Astrology",
+    role: "Aplicație mobilă pentru conținut și experiență personalizată",
     quote:
-      "Procesul a fost transparent, cu milestone-uri clare. Aplicația a adus mai mult control operațional și comunicare mai bună cu echipa din teren.",
-  },
-  {
-    name: "Vlad P.",
-    role: "Co-fondator startup tech",
-    quote:
-      "Am apreciat combinarea dintre strategie de produs și execuție tehnică. Nu am primit doar cod, ci o soluție scalabilă pe termen lung.",
+      "Aplicația Cristina Zurba a fost realizată într-o direcție foarte apropiată de ce ne-am dorit: un produs elegant, clar și ușor de parcurs. Colaborarea a fost bună, iar rezultatul final transmite bine identitatea brandului.",
   },
 ];
 
 export const pricingTiers = [
   {
-    title: "MVP / Validare idee",
-    range: "de la 1.500 EUR",
+    title: "Primă versiune a aplicației",
+    range: "de la 2.000 EUR",
     details:
-      "Potrivit pentru testare rapidă de piață, funcționalități esențiale și timp scurt de lansare.",
-    includes: ["Flow-uri principale", "Design UI de bază", "Publicare inițială", "Suport lansare"],
+      "Potrivită pentru proiecte care trebuie lansate rapid, cu funcțiile esențiale și o structură bună de pornire.",
+    includes: [
+      "Funcțiile importante pentru început",
+      "Structură clară pentru lansare",
+      "Bază bună pentru extindere",
+    ],
   },
   {
-    title: "Aplicație business",
-    range: "de la 8.000 EUR",
+    title: "Aplicație pentru business",
+    range: "de la 5.000 EUR",
     details:
-      "Pentru companii care au nevoie de fluxuri complete, design personalizat și integrări cheie.",
-    includes: ["Design personalizat", "Integrări API", "Panou administrare", "QA extins"],
+      "Potrivită pentru aplicații cu conturi de utilizator, zonă de administrare și mai multe fluxuri importante.",
+    includes: [
+      "Conturi și acces pentru utilizatori",
+      "Administrare și gestionare date",
+      "Mai multe acțiuni importante în aplicație",
+    ],
   },
   {
-    title: "Platformă avansată",
-    range: "de la 20.000 EUR",
+    title: "Platformă mai complexă",
+    range: "de la 10.000 EUR",
     details:
-      "Pentru produse complexe, mai multe roluri, scalare, integrări extinse și roadmap de creștere.",
-    includes: ["Arhitectură scalabilă", "Roluri complexe", "Automatizări avansate", "Roadmap post-lansare"],
+      "Potrivită pentru produse digitale cu funcții mai avansate, conectare la alte sisteme și nevoie mai mare de extindere.",
+    includes: [
+      "Mai multe tipuri de utilizatori",
+      "Conectare cu alte sisteme",
+      "Pregătită pentru creștere ulterioară",
+    ],
   },
 ];
 
+export const pricingSummary =
+  "Bugetul depinde de ce vrei să lansezi la început, de câte acțiuni și reguli trebuie să gestioneze aplicația și de cât de complex este produsul final.";
+
+export const pricingMicrocopy =
+  "Dacă ne trimiți pe scurt ideea și funcțiile importante, îți putem spune care este varianta realistă de pornire.";
+
 export const faqs = [
-  {
-    question: "Cât durează dezvoltarea unei aplicații mobile?",
-    answer:
-      "Durata depinde de complexitate. Un MVP poate fi livrat în aproximativ 6-10 săptămâni, iar proiectele mai complexe pot ajunge la 3-6 luni.",
-  },
   {
     question: "Cât costă dezvoltarea unei aplicații mobile?",
     answer:
-      "Costul este influențat de funcționalități, design, integrări, backend și calendar. Oferim estimare clară după o discuție de scop.",
+      "Costul depinde de complexitate, funcțiile dorite, partea tehnică necesară și numărul de platforme. Pentru multe proiecte, o primă versiune a aplicației poate porni de la aproximativ 4.000 EUR.",
   },
   {
-    question: "Se poate publica aplicația în App Store și Google Play?",
+    question: "Dezvoltați aplicații pentru iOS și Android?",
     answer:
-      "Da. Te asistăm în pregătirea build-urilor, configurarea conturilor și procesul de publicare pentru ambele platforme.",
+      "Da. Putem construi aplicații pentru iOS și Android, în funcție de obiectivele proiectului și de varianta potrivită pentru lansare.",
   },
   {
-    question: "Puteți dezvolta și backend-ul aplicației?",
+    question: "Includeți și partea tehnică din spatele aplicației?",
     answer:
-      "Da, putem livra atât partea mobilă, cât și backend-ul, panoul de administrare și integrările necesare.",
+      "Da. Putem acoperi și sistemul din spatele aplicației, inclusiv conturi de utilizator, date, administrare și alte funcții necesare pentru utilizare reală.",
   },
   {
-    question: "Se poate integra aplicația cu sistemele mele actuale?",
+    question: "Vă ocupați și de publicarea în App Store și Google Play?",
     answer:
-      "Da. Implementăm integrări cu CRM, ERP, soluții de plăți, API-uri interne sau alte platforme folosite în business.",
+      "Da. Putem pregăti aplicația pentru publicare și ne putem ocupa de pașii necesari pentru listarea în App Store și Google Play.",
   },
   {
-    question: "Oferiți mentenanță după lansare?",
+    question: "Cât durează realizarea unei prime versiuni?",
     answer:
-      "Da. Asigurăm pachete de suport pentru monitorizare, bug fixing, update-uri și optimizări continue.",
-  },
-  {
-    question: "Se poate începe cu un MVP?",
-    answer:
-      "Da, este una dintre cele mai eficiente abordări. Lansăm rapid versiunea esențială și evoluăm produsul pe baza datelor reale.",
+      "Depinde de complexitate, dar pentru multe proiecte de pornire, o primă versiune poate fi planificată într-un interval realist și clar stabilit de la început.",
   },
 ];

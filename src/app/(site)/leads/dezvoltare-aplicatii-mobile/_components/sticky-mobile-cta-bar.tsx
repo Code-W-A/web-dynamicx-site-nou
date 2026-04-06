@@ -13,19 +13,24 @@ export default function StickyMobileCtaBar() {
   }, [pathname]);
 
   return (
-    <div className="fixed right-0 bottom-24 left-0 z-[45] border-t border-gray-200 bg-white/95 p-2 backdrop-blur sm:hidden">
+    <div
+      className="fixed right-0 bottom-0 left-0 z-[45] border-t border-slate-200 bg-white/96 p-2 backdrop-blur sm:hidden"
+      style={{
+        paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 0.5rem)",
+      }}
+    >
       <div className="grid grid-cols-2 gap-2">
         <a
           href="#formular-lead"
-          className="inline-flex items-center justify-center rounded-xl bg-primary px-2 py-3 text-xs font-semibold text-white"
+          className="bg-primary inline-flex items-center justify-center rounded-xl px-2 py-3 text-xs font-semibold text-white"
         >
-          Solicita oferta
+          Cere ofertă
         </a>
         <a
           href={whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-1 rounded-xl border border-gray-200 bg-white px-2 py-3 text-xs font-semibold text-gray-800"
+          className="inline-flex items-center justify-center gap-1 rounded-xl border border-slate-200 bg-white px-2 py-3 text-xs font-semibold text-slate-800"
         >
           <MessageCircle size={14} />
           WhatsApp
