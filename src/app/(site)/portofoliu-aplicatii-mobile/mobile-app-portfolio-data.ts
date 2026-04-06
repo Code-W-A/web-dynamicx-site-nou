@@ -1,6 +1,7 @@
 /** Hub + studii de caz aplicații mobile — conținut SEO (suport pentru /servicii/dezvoltare-aplicatii-mobile). */
 
-export const mobileAppsServiceHref = "/servicii/dezvoltare-aplicatii-mobile" as const;
+export const mobileAppsServiceHref =
+  "/servicii/dezvoltare-aplicatii-mobile" as const;
 export const mobilePortfolioHubPath = "/portofoliu-aplicatii-mobile" as const;
 
 export type MobileCaseStudyGalleryItem = { src: string; alt: string };
@@ -53,22 +54,22 @@ export type MobileCaseStudy = {
 
 /** Proiecte evidențiate sus pe hub — editează ordinea/slug-urile după nevoie. */
 export const featuredMobilePortfolioSlugs = [
+  "ainevoie-market-servicii-curatenie",
   "styleconnect-rezervari-saloane",
   "coffee-buzz-cafenea-fidelizare-comenzi",
-  "ydestiny-social-astrology",
 ] as const;
 
 /** Preview scurt pe pagina de serviciu mobile. */
 export const servicePageFeaturedMobilePortfolioSlugs = [
+  "ainevoie-market-servicii-curatenie",
   "styleconnect-rezervari-saloane",
   "coffee-buzz-cafenea-fidelizare-comenzi",
-  "doitnow-provocari-zilnice-ai",
 ] as const;
 
 export const homepageMobilePortfolioSlugs = [
+  "ainevoie-market-servicii-curatenie",
   "my-butterfly-recomandari-palete-tenis",
   "doitnow-provocari-zilnice-ai",
-  "styleconnect-rezervari-saloane",
 ] as const;
 
 export const mobilePortfolioHub = {
@@ -83,7 +84,8 @@ export const mobilePortfolioHub = {
   heroImpactLine: "",
   /** Aceeași ilustrație ca secțiunea „Aplicații de e-commerce” pe pagina de serviciu mobile. */
   heroAsideImage: "/images/services/aplicatie-mobila-ecommerce.webp",
-  heroAsideImageAlt: "Capturi de ecran pe telefoane — exemple de interfețe aplicații mobile",
+  heroAsideImageAlt:
+    "Capturi de ecran pe telefoane — exemple de interfețe aplicații mobile",
   /** Tranziție între PageTitle și proiecte: fără CTA-uri duplicate. */
   portfolioTransitionTitle: "Exemple reale de aplicații mobile dezvoltate",
   portfolioTransitionBody:
@@ -95,7 +97,10 @@ export const mobilePortfolioHub = {
       { figure: "30+", label: "aplicații mobile dezvoltate" },
       { figure: "Google Play", label: "lansări oficiale pentru Android" },
       { figure: "App Store", label: "lansări oficiale pentru iOS" },
-      { figure: "De la idee la lansare", label: "inclusiv publicare în Play și App Store" },
+      {
+        figure: "De la idee la lansare",
+        label: "inclusiv publicare în Play și App Store",
+      },
     ],
     microLine: "",
   },
@@ -107,22 +112,28 @@ export const mobilePortfolioHub = {
   introConsultLinkText: "dezvoltare aplicații mobile",
   introConsultAfter: " (pagina de serviciu).",
   featuredHeading: "Proiecte reprezentative",
-  featuredIntroBefore: "Trei exemple reprezentative — programări, HoReCa și produs digital cu retenție. Vezi cum arată ",
+  featuredIntroBefore:
+    "Trei exemple reprezentative — marketplace de servicii, programări și comenzi rapide. Vezi cum arată ",
   featuredServiceLinkAnchor: "creare aplicație mobilă",
   featuredIntroAfter: " pentru utilizatori reali.",
   /** Listă completă pe pagina de servicii mobile (titlu + intro, fără „trei exemple”). */
   servicePagePortfolioHeading: "Câteva proiecte din portofoliul nostru mobil",
   servicePagePortfolioIntro:
-    "Un preview scurt cu exemple relevante pentru tipuri diferite de business: programări, comenzi și produse digitale orientate pe retenție. Fiecare card duce la studiul de caz complet, cu capturi și detalii despre obiective și livrare.",
+    "Un preview scurt cu exemple relevante pentru tipuri diferite de business: marketplace de servicii, programări și comenzi mobile. Fiecare card duce la studiul de caz complet, cu capturi și detalii despre obiective și livrare.",
   /** Micro-copy după grid-ul featured, înainte de „Alte proiecte”. */
   afterFeaturedMicroCopy:
     "Proiectele de mai sus sunt exemple reale. Dacă ai o idee similară sau vrei să construiești o aplicație pentru business-ul tău, putem discuta concret cerințele.",
-  otherProjectsIntro: "Alte aplicații din portofoliu, cu probleme și industrii diferite.",
-  finalCtaTitle: "Vrei să dezvoltăm o aplicație similară pentru business-ul tău?",
-  finalCtaText: "Spune-ne ce vrei să construiești și îți propunem o soluție adaptată.",
-  finalCtaTrustLine: "Poți începe de la o idee scurtă — o clarificăm împreună în discuție.",
+  otherProjectsIntro:
+    "Alte aplicații din portofoliu, cu probleme și industrii diferite.",
+  finalCtaTitle:
+    "Vrei să dezvoltăm o aplicație similară pentru business-ul tău?",
+  finalCtaText:
+    "Spune-ne ce vrei să construiești și îți propunem o soluție adaptată.",
+  finalCtaTrustLine:
+    "Poți începe de la o idee scurtă — o clarificăm împreună în discuție.",
   expertiseHeading: "Tipuri de aplicații pe care le dezvoltăm",
-  expertiseIntro: "Mai jos sunt cele mai comune tipuri de aplicații pe care le dezvoltăm.",
+  expertiseIntro:
+    "Mai jos sunt cele mai comune tipuri de aplicații pe care le dezvoltăm.",
   expertiseCategories: [
     "Aplicații de booking și programări",
     "Aplicații marketplace",
@@ -136,16 +147,145 @@ export const mobilePortfolioHub = {
 
 export const mobileAppCaseStudies: MobileCaseStudy[] = [
   {
+    slug: "ainevoie-market-servicii-curatenie",
+    cardTitle: "AInevoie — servicii de curățenie",
+    h1: "Aplicație mobilă pentru servicii de curățenie — cauți, compari, programezi și plătești din aplicație | studiu de caz",
+    shortDescription:
+      "Platformă mobilă care conectează rapid clienții cu firme de curățenie și oferă un flux clar de alegere, programare și confirmare.",
+    metaTitle:
+      "AInevoie — servicii de curățenie | Studiu de caz | Web Dynamicx",
+    metaDescription:
+      "AInevoie conectează rapid clienții cu firme de curățenie: cauți, compari, programezi și plătești simplu, direct din aplicație.",
+    tags: [
+      "Marketplace",
+      "Servicii locale",
+      "Curățenie",
+      "Clienți & prestatori",
+    ],
+    image:
+      "/images/portofoliu/aplicatiimobile/AINEVOIE/utilizator_ecran_home.jpg",
+    imageAlt:
+      "AInevoie — ecran principal pentru alegerea firmelor de curățenie",
+    gallery: [
+      {
+        src: "/images/portofoliu/aplicatiimobile/AINEVOIE/splash.jpg",
+        alt: "AInevoie — ecran de deschidere al aplicației",
+      },
+      {
+        src: "/images/portofoliu/aplicatiimobile/AINEVOIE/Onboarding_unu.jpg",
+        alt: "AInevoie — onboarding pentru utilizatorii care caută servicii de curățenie",
+      },
+      {
+        src: "/images/portofoliu/aplicatiimobile/AINEVOIE/Onboarding_doi.jpg",
+        alt: "AInevoie — onboarding cu pașii principali din aplicație",
+      },
+      {
+        src: "/images/portofoliu/aplicatiimobile/AINEVOIE/Onboarding_trei.jpg",
+        alt: "AInevoie — onboarding pentru fluxul de rezervare și confirmare",
+      },
+      {
+        src: "/images/portofoliu/aplicatiimobile/AINEVOIE/utilizator_ecran_home.jpg",
+        alt: "AInevoie — listă de firme de curățenie și alegere rapidă",
+      },
+      {
+        src: "/images/portofoliu/aplicatiimobile/AINEVOIE/utilizator_ecran_prestator.jpg",
+        alt: "AInevoie — profilul unui prestator cu informații și recenzii",
+      },
+      {
+        src: "/images/portofoliu/aplicatiimobile/AINEVOIE/utilizator_ecran_chat.jpg",
+        alt: "AInevoie — chat între client și prestator",
+      },
+      {
+        src: "/images/portofoliu/aplicatiimobile/AINEVOIE/utilizator_ecran_confirmare_rezervare.jpg",
+        alt: "AInevoie — confirmare rezervare pentru servicii de curățenie",
+      },
+      {
+        src: "/images/portofoliu/aplicatiimobile/AINEVOIE/Prestator_cereri.jpg",
+        alt: "AInevoie — cereri primite în zona prestatorului",
+      },
+      {
+        src: "/images/portofoliu/aplicatiimobile/AINEVOIE/Prestator_calendar.jpg",
+        alt: "AInevoie — calendarul prestatorului pentru gestionarea cererilor",
+      },
+      {
+        src: "/images/portofoliu/aplicatiimobile/AINEVOIE/Prestator_ecran_recenzii.jpg",
+        alt: "AInevoie — recenzii și profil pentru prestator",
+      },
+    ],
+    gallerySectionLead:
+      "Galeria acoperă ambele fluxuri importante din aplicație: experiența clientului care caută și programează, dar și experiența prestatorului care primește cereri și își organizează activitatea.",
+    context:
+      "AInevoie pornește dintr-o problemă de piață pe două sensuri. De o parte sunt utilizatorii care vor să găsească rapid o firmă de curățenie, să compare opțiuni și să programeze fără apeluri și mesaje pierdute. De cealaltă parte sunt prestatorii care au nevoie de un profil clar, de recenzii credibile și de cereri mai bine filtrate. Fără o structură bună, alegerea devine greoaie pentru client, iar prestatorul primește solicitări neclare sau greu de urmărit.",
+    objectives: [
+      "Alegere rapidă între firme de curățenie, fără fricțiune inutilă.",
+      "Comparație mai clară între prestatori, servicii și recenzii.",
+      "Programare simplă și confirmare ușor de urmărit.",
+      "Cereri mai bune și mai clare pentru prestatori.",
+      "O experiență mobilă unificată pentru ambele tipuri de utilizatori.",
+    ],
+    solution:
+      "Soluția a fost construită ca un marketplace mobil pentru clienți și prestatori. Utilizatorul poate căuta, compara și alege firma potrivită, apoi trimite cererea, discută în aplicație și ajunge la confirmarea rezervării într-un flux simplu.\n\nPentru prestatori, aplicația oferă o zonă clară de profil, recenzii, cereri și calendar, astfel încât relația cu clientul să fie mai bine organizată. În loc să împartă procesul între telefon, mesaje și tabele separate, totul este adus într-un singur parcurs ușor de urmărit.",
+    featuresSectionLead:
+      "Funcționalități gândite pentru un flux complet, de la descoperirea serviciului până la organizarea rezervării.",
+    features: [
+      "Onboarding clar pentru început rapid în aplicație",
+      "Listare de prestatori cu informații ușor de comparat",
+      "Profil prestator cu detalii relevante și recenzii",
+      "Cereri trimise și urmărite direct din aplicație",
+      "Calendar pentru organizarea rezervărilor",
+      "Chat între client și prestator",
+      "Confirmare de rezervare într-un flux clar",
+    ],
+    technologies: [
+      "Aplicație mobilă gândită pentru utilizare zilnică, atât de către clienți, cât și de către prestatori",
+      "Sistemul din spatele aplicației gestionează conturile, cererile, mesajele și programările",
+      "Structură pregătită pentru lansare reală și extindere ulterioară",
+      "Flux de publicare și actualizare adaptat pentru magazinele de aplicații",
+    ],
+    impact: [
+      "Mai puțin timp pierdut în alegerea unei firme de curățenie.",
+      "Cereri mai clare și mai relevante pentru prestatori.",
+      "Profil mai profesionist și mai credibil pentru firmele listate.",
+      "Experiență mai fluidă pentru programare și confirmare.",
+      "Bază bună pentru extinderea ulterioară a platformei.",
+    ],
+    cardBullets: [
+      "Clientul caută și programează rapid din aplicație",
+      "Prestatorul primește cereri clare și își vede calendarul",
+      "Comparare, chat și confirmare într-un singur flux",
+    ],
+    goodForLabel: "marketplace-uri de servicii și platforme locale",
+    problemSolved: "găsirea rapidă a unei firme de curățenie",
+    hubSpotlightParagraph:
+      "Clienții caută și programează mai ușor, iar prestatorii primesc cereri mai clare într-un flux mobil unificat.",
+    cardPrimaryCtaLabel: "Vezi proiectul",
+    relatedSlugs: [
+      "styleconnect-rezervari-saloane",
+      "coffee-buzz-cafenea-fidelizare-comenzi",
+      "my-butterfly-recomandari-palete-tenis",
+    ],
+    serviceLinkPhrase: "aplicații mobile pentru servicii și marketplace",
+    nextStepIntro:
+      "Dacă vrei să construiești o aplicație prin care utilizatorii găsesc mai ușor servicii locale, compară opțiuni și trimit cereri clare, putem porni de la un flux similar. Vezi cum abordăm ",
+    nextStepOutro:
+      " sau scrie-ne direct dacă vrei o estimare pentru un marketplace adaptat business-ului tău.",
+    primaryServiceCtaLabel: "Vezi cum dezvoltăm aplicații mobile",
+    relatedSectionIntro:
+      "Alte aplicații dezvoltate pentru business-uri care au nevoie de procese simple, rezervări clare sau interacțiuni repetate cu utilizatorii.",
+  },
+  {
     slug: "styleconnect-rezervari-saloane",
     cardTitle: "StyleConnect — programări saloane",
     h1: "Aplicație de programări pentru saloane — mai puține telefoane, mai multe rezervări | studiu de caz",
     shortDescription:
       "O aplicație care permite clienților să rezerve rapid, iar salonului să gestioneze programările mai clar și cu mai puține întreruperi.",
-    metaTitle: "StyleConnect — programări saloane | Studiu de caz | Web Dynamicx",
+    metaTitle:
+      "StyleConnect — programări saloane | Studiu de caz | Web Dynamicx",
     metaDescription:
       "Rezervări salon fără haos la telefon: clientul alege slotul, echipa vede programul clar. Studiu de caz StyleConnect — exemplu livrat, disponibil în Google Play.",
     tags: ["Programări", "Salon & beauty", "Servicii locale", "Clienți"],
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.style.connect.saloon&hl=ro",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.style.connect.saloon&hl=ro",
     image: "/images/portofoliu/aplicatiimobile/styleconnect4.jpeg",
     imageAlt: "StyleConnect salon: recenzii și confirmări programări",
     gallery: [
@@ -228,10 +368,16 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
     h1: "Aplicație mobilă pentru cafenele — comenzi rapide și clienți care revin",
     shortDescription:
       "Un produs construit pentru a reduce aglomerația, a simplifica comenzile și a crea un canal direct cu clientul.",
-    metaTitle: "Coffee Buzz — cafenea și comenzi mobile | Studiu de caz | Web Dynamicx",
+    metaTitle:
+      "Coffee Buzz — cafenea și comenzi mobile | Studiu de caz | Web Dynamicx",
     metaDescription:
       "Meniu pe telefon, comenzi în avans, reveniri — mai puțină coadă la vârf de oră. Studiu de caz Coffee Buzz (HoReCa): flux documentat, nu prezentare generică.",
-    tags: ["HoReCa & cafenea", "Meniu în app", "Comenzi anticipate", "Fidelizare"],
+    tags: [
+      "HoReCa & cafenea",
+      "Meniu în app",
+      "Comenzi anticipate",
+      "Fidelizare",
+    ],
     image: "/images/portofoliu/aplicatiimobile/coffeebuzz5.jpg",
     imageAlt: "Coffee Buzz — istoric comenzi și zona cont utilizator",
     gallery: [
@@ -298,8 +444,12 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
     hubSpotlightParagraph:
       "Mai puțină coadă, comenzi clare pe telefon și un canal prin care clienții pot reveni fără să o ia de la zero.",
     cardPrimaryCtaLabel: "Vezi proiectul",
-    relatedSlugs: ["styleconnect-rezervari-saloane", "my-butterfly-recomandari-palete-tenis"],
-    relatedSectionIntro: "Proiecte similare dezvoltate pentru business-uri reale, cu nevoi diferite.",
+    relatedSlugs: [
+      "styleconnect-rezervari-saloane",
+      "my-butterfly-recomandari-palete-tenis",
+    ],
+    relatedSectionIntro:
+      "Proiecte similare dezvoltate pentru business-uri reale, cu nevoi diferite.",
     nextStepIntro:
       "Dacă ai o cafenea sau un business similar și vrei un mod mai eficient de a prelua comenzi, de a reduce aglomerația și de a încuraja clienții să revină, o aplicație mobilă poate deveni un canal esențial. Poți continua cu ",
     nextStepOutro:
@@ -312,13 +462,16 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
     h1: "Aplicație de recomandări pentru echipament sportiv — alegi mai ușor, fără să pierzi timp | studiu de caz",
     shortDescription:
       "O aplicație care ghidează utilizatorul către echipamentul potrivit, simplificând procesul de alegere și reducând incertitudinea.",
-    metaTitle: "My Butterfly — ghid echipament sport | Studiu de caz | Web Dynamicx",
+    metaTitle:
+      "My Butterfly — ghid echipament sport | Studiu de caz | Web Dynamicx",
     metaDescription:
       "Întrebări scurte, apoi recomandare de echipament pe profil: mai puțin timp pierdut în catalog. Studiu de caz My Butterfly — tenis de masă, în Google Play.",
     tags: ["Recomandări", "Sport", "Tenis de masă", "Decizie"],
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.prosoft.mybutterfly&hl=ro",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.prosoft.mybutterfly&hl=ro",
     image: "/images/portofoliu/aplicatiimobile/Butterfly2.webp",
-    imageAlt: "Aplicația My Butterfly — pas intermediar în fluxul de recomandare",
+    imageAlt:
+      "Aplicația My Butterfly — pas intermediar în fluxul de recomandare",
     gallery: [
       {
         src: "/images/portofoliu/aplicatiimobile/Butterfly.webp",
@@ -397,11 +550,13 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
     h1: "Aplicație de obiceiuri zilnice — pași mici, progres vizibil, fără presiune | studiu de caz",
     shortDescription:
       "Produs digital pentru obiceiuri: o provocare pe zi, bifată repede, cu direcție clară — ușor de început și de ținut, fără senzația că o zi ratată „ruinează” tot planul.",
-    metaTitle: "DO IT NOW — provocări și obiceiuri zilnice | Studiu de caz | Web Dynamicx",
+    metaTitle:
+      "DO IT NOW — provocări și obiceiuri zilnice | Studiu de caz | Web Dynamicx",
     metaDescription:
       "O provocare pe zi, bifată repede, progres vizibil: retenție fără ecrane încărcate. Studiu de caz DO IT NOW — produs digital, exemplu publicat în Google Play.",
     tags: ["Obiceiuri", "Progres zilnic", "Produse digitale", "Retenție"],
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.doitnow.zurba&hl=ro",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.doitnow.zurba&hl=ro",
     image: "/images/portofoliu/aplicatiimobile/doitnow4.webp",
     imageAlt: "DO IT NOW: activitate scurtă de bifat în aceeași zi",
     gallery: [
@@ -481,13 +636,16 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
     h1: "YDestiny — social pentru adulți: intenții, valori și spațiu sigur | studiu de caz",
     shortDescription:
       "Aplicație socială (17+): profil pe ce cauți cu adevărat, potriviri explicate, comunitate și mesagerie — departe de swipe-ul superficial, cu reguli clare și control pentru utilizator.",
-    metaTitle: "YDestiny — social și comunitate (17+) | Studiu de caz | Web Dynamicx",
+    metaTitle:
+      "YDestiny — social și comunitate (17+) | Studiu de caz | Web Dynamicx",
     metaDescription:
       "Profil pe intenții, potriviri explicate, mesagerie și siguranță — fără swipe superficial. Studiu de caz YDestiny; aplicație live în Google Play.",
     tags: ["Social", "Comunitate", "Intenții", "Siguranță"],
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.mobitools.ydestiny&hl=ro",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.mobitools.ydestiny&hl=ro",
     image: "/images/portofoliu/aplicatiimobile/Destiny.webp",
-    imageAlt: "YDestiny — ecran explorare profiluri și potriviri în aplicația socială",
+    imageAlt:
+      "YDestiny — ecran explorare profiluri și potriviri în aplicația socială",
     gallery: [
       {
         src: "/images/portofoliu/aplicatiimobile/Destiny2.webp",
@@ -571,9 +729,11 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
     metaDescription:
       "Lecturi pe zone de viață, istoric, partajare: brand într-un flux calm, fără copleșire la prima deschidere. Studiu de caz Cristina Zurba — în Google Play.",
     tags: ["Conținut", "Brand personal", "Lecturi", "Comunitate"],
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.cristina.zurba.tarot&hl=ro",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.cristina.zurba.tarot&hl=ro",
     image: "/images/portofoliu/aplicatiimobile/Cristina%20Zurba2.webp",
-    imageAlt: "Aplicația Cristina Zurba: flux de lectură tarot pe categorii de viață",
+    imageAlt:
+      "Aplicația Cristina Zurba: flux de lectură tarot pe categorii de viață",
     gallery: [
       {
         src: "/images/portofoliu/aplicatiimobile/Cristina%20Zurba1.webp",

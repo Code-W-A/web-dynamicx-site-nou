@@ -9,6 +9,8 @@ import {
 
 const studies = getServicePageFeaturedPortfolioStudies();
 const studyDescriptions: Record<string, string> = {
+  "ainevoie-market-servicii-curatenie":
+    "Aplicație care conectează rapid clienții cu firme de curățenie, cu comparație, programare și confirmare într-un singur flux.",
   "styleconnect-rezervari-saloane":
     "Aplicație gândită pentru programări și interacțiune rapidă, cu o experiență simplă și ușor de urmărit pentru utilizatori.",
   "coffee-buzz-cafenea-fidelizare-comenzi":
@@ -17,6 +19,7 @@ const studyDescriptions: Record<string, string> = {
     "Aplicație mobilă gândită pentru utilizare frecventă, cu fluxuri clare și structură simplă pentru acțiuni rapide.",
 };
 const studyLabels: Record<string, string> = {
+  "ainevoie-market-servicii-curatenie": "Marketplace de servicii",
   "styleconnect-rezervari-saloane": "Programări și servicii",
   "coffee-buzz-cafenea-fidelizare-comenzi": "HoReCa și comenzi",
   "doitnow-provocari-zilnice-ai": "Utilizare zilnică",
@@ -58,8 +61,8 @@ export default function PortfolioSection() {
           </h2>
           <p className="mt-4 text-base leading-8 text-slate-600">
             Mai jos sunt câteva exemple relevante de aplicații construite pentru
-            programări, produse digitale și utilizare zilnică. Fiecare proiect
-            este gândit în funcție de public, scop și experiența de utilizare.
+            servicii locale, programări și comenzi rapide. Fiecare proiect este
+            gândit în funcție de public, scop și experiența de utilizare.
           </p>
         </div>
 
