@@ -6,8 +6,9 @@ import BottomCTA from "./BottomCTA";
 export default function SiteFloatingCtas() {
   const pathname = usePathname();
   const isLeadPage = pathname?.startsWith("/leads");
+  const isMobileAppsThankYou = pathname === "/multumim-aplicatie-mobile";
 
-  if (isLeadPage) {
+  if (isLeadPage || isMobileAppsThankYou) {
     return null;
   }
 

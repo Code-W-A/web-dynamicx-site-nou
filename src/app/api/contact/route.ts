@@ -68,7 +68,17 @@ export async function POST(request: Request) {
       fromName: name,
     });
 
-    return NextResponse.json({ ok: true });
+    const res = NextResponse.json({ ok: true });
+    if (source === "lead-mobile-apps") {
+      res.cookies.set("wd_mobile_apps_ty", "1", {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        maxAge: 900,
+        secure: process.env.NODE_ENV === "production",
+      });
+    }
+    return res;
   } catch (error) {
     return NextResponse.json(
       { error: "A apărut o eroare. Încearcă din nou." },

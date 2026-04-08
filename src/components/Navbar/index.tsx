@@ -16,6 +16,7 @@ export default function Navbar() {
   const pathUrl = usePathname();
   const isMobileAppsAdsLeadPage =
     pathUrl === "/leads/dezvoltare-aplicatii-mobile";
+  const isMobileAppsThankYouPage = pathUrl === "/multumim-aplicatie-mobile";
 
   const navigationHandler = () => {
     setNavigationOpen(!navigationOpen);
@@ -46,7 +47,7 @@ export default function Navbar() {
     };
   }, []);
 
-  if (isMobileAppsAdsLeadPage) {
+  if (isMobileAppsAdsLeadPage || isMobileAppsThankYouPage) {
     return (
       <header className="fixed top-0 left-0 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex w-full items-center justify-between gap-3 px-4 py-3 xl:container">
@@ -73,17 +74,31 @@ export default function Navbar() {
             >
               0774 550 758
             </a>
-            <a
-              href="#formular-lead"
-              className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold whitespace-nowrap text-white transition sm:px-5"
-              onClick={() => {
-                try {
-                  trackCTA("Navbar Ads Lead - Cere ofertă");
-                } catch {}
-              }}
-            >
-              Cere ofertă
-            </a>
+            {isMobileAppsThankYouPage ? (
+              <Link
+                href="/portofoliu-aplicatii-mobile/ainevoie-market-servicii-curatenie"
+                className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold whitespace-nowrap text-white transition sm:px-5"
+                onClick={() => {
+                  try {
+                    trackCTA("Navbar Thank You - Vezi AInevoie");
+                  } catch {}
+                }}
+              >
+                Vezi AInevoie
+              </Link>
+            ) : (
+              <a
+                href="#formular-lead"
+                className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold whitespace-nowrap text-white transition sm:px-5"
+                onClick={() => {
+                  try {
+                    trackCTA("Navbar Ads Lead - Cere ofertă");
+                  } catch {}
+                }}
+              >
+                Cere ofertă
+              </a>
+            )}
           </div>
         </div>
       </header>

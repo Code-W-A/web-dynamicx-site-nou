@@ -1,6 +1,7 @@
 "use client";
 
 import { type FormEvent, useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { MessageCircle, PhoneCall } from "lucide-react";
@@ -10,6 +11,8 @@ import {
   trackLead,
 } from "@/components/Analytics/GTMLeadEvents";
 import { contactData, leadNextSteps, leadPromptItems } from "./content";
+
+const MESSAGE_MIN_LEN = 10;
 
 type FormState = {
   name: string;
@@ -30,6 +33,7 @@ const initialState: FormState = {
 };
 
 export default function LeadFormSection() {
+  const router = useRouter();
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -38,6 +42,7 @@ export default function LeadFormSection() {
     Partial<Record<keyof FormState, string>>
   >({});
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
+  const [messageFocused, setMessageFocused] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -82,24 +87,12 @@ export default function LeadFormSection() {
   );
   const hasValidContact = hasValidEmail || hasValidPhone;
 
-  const emailInvalidIfFilled = Boolean(emailTrim && !validateEmail(emailTrim));
-  const phoneInvalidIfFilled = Boolean(phoneTrim && !validatePhone(form.phone));
+  const messageTrim = form.message.trim();
+  const messageLen = messageTrim.length;
+  const messageSufficient = messageLen >= MESSAGE_MIN_LEN;
 
-  const canSubmit = useMemo(() => {
-    return Boolean(
-      form.name.trim() &&
-      hasValidContact &&
-      !emailInvalidIfFilled &&
-      !phoneInvalidIfFilled &&
-      form.message.trim().length >= 10 &&
-      form.consent,
-    );
-  }, [
-    form,
-    hasValidContact,
-    emailInvalidIfFilled,
-    phoneInvalidIfFilled,
-  ]);
+  const showMessageHint =
+    messageFocused || messageLen > 0 || Boolean(fieldErrors.message);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -114,7 +107,7 @@ export default function LeadFormSection() {
     if (!emailTrim && !phoneTrim) {
       nextErrors.email = "Completează email sau telefon (minim unul).";
       nextErrors.phone = "Completează telefon sau email (minim unul).";
-    } else {
+    } else if (!hasValidContact) {
       if (emailTrim && !validateEmail(emailTrim)) {
         nextErrors.email = "Introdu o adresă de email validă.";
       }
@@ -122,8 +115,8 @@ export default function LeadFormSection() {
         nextErrors.phone = "Introdu un număr de telefon valid.";
       }
     }
-    if (!form.message.trim() || form.message.trim().length < 10) {
-      nextErrors.message = "Spune-ne pe scurt ce vrei să construiești.";
+    if (!messageTrim || messageLen < MESSAGE_MIN_LEN) {
+      nextErrors.message = `Descrierea trebuie să aibă cel puțin ${MESSAGE_MIN_LEN} caractere (fără spații la început/sfârșit).`;
     }
     if (!form.consent) {
       nextErrors.consent = "Este necesar acordul pentru a te putea contacta.";
@@ -181,9 +174,7 @@ export default function LeadFormSection() {
         });
       } catch {}
 
-      toast.success(
-        "Cererea a fost trimisă. Revenim rapid cu o estimare orientativă.",
-      );
+      router.replace("/multumim-aplicatie-mobile");
     } catch (err: any) {
       const apiError =
         err?.response?.data?.error || "A apărut o eroare. Încearcă din nou.";
@@ -387,20 +378,59 @@ export default function LeadFormSection() {
               <textarea
                 rows={5}
                 value={form.message}
+                onFocus={() => setMessageFocused(true)}
+                onBlur={() => setMessageFocused(false)}
                 onChange={(e) => {
                   setForm((prev) => ({ ...prev, message: e.target.value }));
                   if (fieldErrors.message)
                     setFieldErrors((prev) => ({ ...prev, message: undefined }));
                 }}
+                aria-invalid={!messageSufficient && messageLen > 0}
                 className={`focus:border-primary mt-2 w-full resize-none rounded-xl border px-4 py-3 text-sm transition outline-none ${
-                  fieldErrors.message ? "border-red-400" : "border-slate-200"
+                  fieldErrors.message || (!messageSufficient && messageLen > 0)
+                    ? "border-red-400"
+                    : messageSufficient && messageLen > 0
+                      ? "border-emerald-500/70"
+                      : "border-slate-200"
                 }`}
                 placeholder="Pe scurt: ce vrei să facă aplicația și pentru cine va fi folosită?"
               />
-              {fieldErrors.message ? (
-                <span className="mt-1 block text-xs text-red-600">
-                  {fieldErrors.message}
-                </span>
+              {showMessageHint ? (
+                <div className="mt-2 space-y-1">
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+                    <span
+                      className={
+                        messageSufficient
+                          ? "font-medium text-emerald-700"
+                          : "text-slate-600"
+                      }
+                    >
+                      Minim {MESSAGE_MIN_LEN} caractere (textul trimis, fără
+                      spații la capete)
+                    </span>
+                    <span
+                      className={
+                        messageSufficient
+                          ? "font-semibold text-emerald-700"
+                          : "tabular-nums text-slate-500"
+                      }
+                    >
+                      {messageLen}/{MESSAGE_MIN_LEN}
+                      {messageSufficient ? " ✓" : ""}
+                    </span>
+                  </div>
+                  {!messageSufficient && messageLen > 0 ? (
+                    <p className="text-xs font-medium text-red-600">
+                      Mai ai {MESSAGE_MIN_LEN - messageLen} caractere până la
+                      minim — altfel nu putem trimite cererea.
+                    </p>
+                  ) : null}
+                  {fieldErrors.message ? (
+                    <span className="block text-xs text-red-600">
+                      {fieldErrors.message}
+                    </span>
+                  ) : null}
+                </div>
               ) : null}
             </label>
 
@@ -435,7 +465,7 @@ export default function LeadFormSection() {
             <button
               type="submit"
               className="bg-primary hover:bg-primary/90 mt-6 w-full rounded-2xl px-6 py-4 text-base font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-60"
-              disabled={!canSubmit || loading}
+              disabled={loading}
             >
               {loading ? "Se trimite..." : "Cere estimare pentru proiect"}
             </button>

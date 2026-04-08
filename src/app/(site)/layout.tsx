@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+import ConditionalSiteFooter from "@/components/Common/ConditionalSiteFooter";
 import Navbar from "@/components/Navbar";
 import SiteFloatingCtas from "@/components/Common/SiteFloatingCtas";
 import "@/styles/globals.css";
@@ -71,7 +71,7 @@ export default function RootLayout({
             {/* GTM/GA injected via Next official components */}
             <Navbar />
             {children}
-            <Footer />
+            <ConditionalSiteFooter />
             <SiteFloatingCtas />
         </ClientProviders>
       </body>

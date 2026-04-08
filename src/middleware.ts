@@ -25,6 +25,15 @@ function isWebCommerceNoFollowLeadPath(pathname: string) {
   );
 }
 
+const MOBILE_APPS_THANK_YOU_COOKIE = "wd_mobile_apps_ty";
+
+function isMobileThankYouPath(pathname: string) {
+  return (
+    pathname === "/multumim-aplicatie-mobile" ||
+    pathname === "/multumim-aplicatie-mobile/"
+  );
+}
+
 export default function middleware(request: NextRequest, event: NextFetchEvent) {
   if (isAccountDeletionPath(request.nextUrl.pathname)) {
     const response = NextResponse.next();
@@ -37,6 +46,18 @@ export default function middleware(request: NextRequest, event: NextFetchEvent) 
     return response;
   }
   if (isWebCommerceNoFollowLeadPath(request.nextUrl.pathname)) {
+    const response = NextResponse.next();
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+  if (isMobileThankYouPath(request.nextUrl.pathname)) {
+    const hasCookie =
+      request.cookies.get(MOBILE_APPS_THANK_YOU_COOKIE)?.value === "1";
+    if (!hasCookie) {
+      return NextResponse.redirect(
+        new URL("/leads/dezvoltare-aplicatii-mobile", request.url),
+      );
+    }
     const response = NextResponse.next();
     response.headers.set("X-Robots-Tag", "noindex, nofollow");
     return response;
@@ -60,5 +81,7 @@ export const config = {
     "/leads/creare-site-web/",
     "/leads/creare-magazin-online",
     "/leads/creare-magazin-online/",
+    "/multumim-aplicatie-mobile",
+    "/multumim-aplicatie-mobile/",
   ],
 };
