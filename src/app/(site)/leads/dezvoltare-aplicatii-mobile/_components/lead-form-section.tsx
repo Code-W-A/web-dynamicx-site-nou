@@ -13,7 +13,8 @@ import { contactData, leadNextSteps, leadPromptItems } from "./content";
 
 type FormState = {
   name: string;
-  contact: string;
+  email: string;
+  phone: string;
   projectType: string;
   message: string;
   consent: boolean;
@@ -21,7 +22,8 @@ type FormState = {
 
 const initialState: FormState = {
   name: "",
-  contact: "",
+  email: "",
+  phone: "",
   projectType: "",
   message: "",
   consent: false,
@@ -67,24 +69,37 @@ export default function LeadFormSection() {
     return numeric.length >= 9 && numeric.length <= 15;
   };
 
-  const isEmailContact = useMemo(
-    () => Boolean(validateEmail(form.contact.trim())),
-    [form.contact],
+  const emailTrim = form.email.trim();
+  const phoneTrim = form.phone.trim();
+
+  const hasValidEmail = useMemo(
+    () => Boolean(emailTrim && validateEmail(emailTrim)),
+    [emailTrim],
   );
-  const isPhoneContact = useMemo(
-    () => validatePhone(form.contact),
-    [form.contact],
+  const hasValidPhone = useMemo(
+    () => Boolean(phoneTrim && validatePhone(form.phone)),
+    [phoneTrim, form.phone],
   );
-  const hasValidContact = isEmailContact || isPhoneContact;
+  const hasValidContact = hasValidEmail || hasValidPhone;
+
+  const emailInvalidIfFilled = Boolean(emailTrim && !validateEmail(emailTrim));
+  const phoneInvalidIfFilled = Boolean(phoneTrim && !validatePhone(form.phone));
 
   const canSubmit = useMemo(() => {
     return Boolean(
       form.name.trim() &&
       hasValidContact &&
+      !emailInvalidIfFilled &&
+      !phoneInvalidIfFilled &&
       form.message.trim().length >= 10 &&
       form.consent,
     );
-  }, [form, hasValidContact]);
+  }, [
+    form,
+    hasValidContact,
+    emailInvalidIfFilled,
+    phoneInvalidIfFilled,
+  ]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -96,9 +111,16 @@ export default function LeadFormSection() {
     if (!form.name.trim() || form.name.trim().length < 2) {
       nextErrors.name = "Introdu un nume valid.";
     }
-    if (!hasValidContact) {
-      nextErrors.contact =
-        "Introdu un email valid sau un număr de telefon valid.";
+    if (!emailTrim && !phoneTrim) {
+      nextErrors.email = "Completează email sau telefon (minim unul).";
+      nextErrors.phone = "Completează telefon sau email (minim unul).";
+    } else {
+      if (emailTrim && !validateEmail(emailTrim)) {
+        nextErrors.email = "Introdu o adresă de email validă.";
+      }
+      if (phoneTrim && !validatePhone(form.phone)) {
+        nextErrors.phone = "Introdu un număr de telefon valid.";
+      }
     }
     if (!form.message.trim() || form.message.trim().length < 10) {
       nextErrors.message = "Spune-ne pe scurt ce vrei să construiești.";
@@ -121,8 +143,8 @@ export default function LeadFormSection() {
         {
           name: form.name.trim(),
           company: "",
-          email: isEmailContact ? form.contact.trim() : "",
-          phone: isPhoneContact ? form.contact.trim() : "",
+          email: hasValidEmail ? emailTrim : "",
+          phone: hasValidPhone ? phoneTrim : "",
           projectType: form.projectType,
           budget: "",
           source: "lead-mobile-apps",
@@ -308,27 +330,53 @@ export default function LeadFormSection() {
                 </select>
               </label>
 
-              <label className="text-sm font-medium text-slate-700 sm:col-span-2">
-                Telefon sau email *
+              <p className="text-xs leading-5 text-slate-500 sm:col-span-2">
+                Contact obligatoriu: completează corect cel puțin email sau
+                telefon.
+              </p>
+
+              <label className="text-sm font-medium text-slate-700">
+                Email
                 <input
-                  type="text"
-                  value={form.contact}
+                  type="email"
+                  autoComplete="email"
+                  value={form.email}
                   onChange={(e) => {
-                    setForm((prev) => ({ ...prev, contact: e.target.value }));
-                    if (fieldErrors.contact)
-                      setFieldErrors((prev) => ({
-                        ...prev,
-                        contact: undefined,
-                      }));
+                    setForm((prev) => ({ ...prev, email: e.target.value }));
+                    if (fieldErrors.email)
+                      setFieldErrors((prev) => ({ ...prev, email: undefined }));
                   }}
                   className={`focus:border-primary mt-2 w-full rounded-xl border px-4 py-3 text-sm transition outline-none ${
-                    fieldErrors.contact ? "border-red-400" : "border-slate-200"
+                    fieldErrors.email ? "border-red-400" : "border-slate-200"
                   }`}
-                  placeholder="07xx xxx xxx sau nume@companie.ro"
+                  placeholder="nume@companie.ro"
                 />
-                {fieldErrors.contact ? (
+                {fieldErrors.email ? (
                   <span className="mt-1 block text-xs text-red-600">
-                    {fieldErrors.contact}
+                    {fieldErrors.email}
+                  </span>
+                ) : null}
+              </label>
+
+              <label className="text-sm font-medium text-slate-700">
+                Telefon
+                <input
+                  type="tel"
+                  autoComplete="tel"
+                  value={form.phone}
+                  onChange={(e) => {
+                    setForm((prev) => ({ ...prev, phone: e.target.value }));
+                    if (fieldErrors.phone)
+                      setFieldErrors((prev) => ({ ...prev, phone: undefined }));
+                  }}
+                  className={`focus:border-primary mt-2 w-full rounded-xl border px-4 py-3 text-sm transition outline-none ${
+                    fieldErrors.phone ? "border-red-400" : "border-slate-200"
+                  }`}
+                  placeholder="07xx xxx xxx"
+                />
+                {fieldErrors.phone ? (
+                  <span className="mt-1 block text-xs text-red-600">
+                    {fieldErrors.phone}
                   </span>
                 ) : null}
               </label>
