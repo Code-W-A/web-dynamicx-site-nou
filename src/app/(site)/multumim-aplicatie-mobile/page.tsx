@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, MessageCircle, PhoneCall, Sparkles } from "lucide-react";
-import DeviceScreenshotFrame from "@/app/(site)/portofoliu-aplicatii-mobile/_components/device-screenshot-frame";
+import { MessageCircle, PhoneCall, Sparkles } from "lucide-react";
 import AdsSimpleFooter from "@/app/(site)/leads/dezvoltare-aplicatii-mobile/_components/ads-simple-footer";
+import PortfolioSection, {
+  mobileLeadFormPortfolioEstimateHref,
+} from "@/app/(site)/leads/dezvoltare-aplicatii-mobile/_components/portfolio-section";
 import SectionHeading from "@/app/(site)/leads/dezvoltare-aplicatii-mobile/_components/section-heading";
 import { contactData } from "@/app/(site)/leads/dezvoltare-aplicatii-mobile/_components/content";
-import {
-  getCaseStudyBySlug,
-  mobilePortfolioHubPath,
-} from "@/app/(site)/portofoliu-aplicatii-mobile/mobile-app-portfolio-data";
+import { mobilePortfolioHubPath } from "@/app/(site)/portofoliu-aplicatii-mobile/mobile-app-portfolio-data";
 import ThankYouPageView from "./_components/thank-you-page-view";
 
 const siteName = process.env.SITE_NAME || "Web Dynamicx";
-
-const AINEVOIE_SLUG = "ainevoie-market-servicii-curatenie" as const;
 
 const whatsappThankYouHref = `https://wa.me/40774550758?text=${encodeURIComponent(
   "Salut! Tocmai am trimis cererea de ofertă pentru o aplicație mobilă. Aștept să discutăm următorii pași.",
@@ -48,11 +45,6 @@ export const metadata: Metadata = {
 };
 
 export default function MobileAppsThankYouPage() {
-  const study = getCaseStudyBySlug(AINEVOIE_SLUG);
-  const caseHref = study
-    ? `${mobilePortfolioHubPath}/${study.slug}`
-    : mobilePortfolioHubPath;
-
   return (
     <>
       <div
@@ -67,15 +59,15 @@ export default function MobileAppsThankYouPage() {
           <div className="bg-primary/15 pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl" />
           <div className="pointer-events-none absolute top-24 -right-24 h-72 w-72 rounded-full bg-sky-200/35 blur-3xl" />
 
-          <div className="relative container">
+          <div className="relative container text-center">
             <div className="border-primary/20 text-primary inline-flex items-center gap-2 rounded-full border bg-white px-4 py-2 text-xs font-semibold tracking-[0.18em] uppercase shadow-sm">
               <Sparkles size={14} />
               Confirmare cerere
             </div>
-            <h1 className="mt-6 max-w-3xl text-4xl leading-tight font-bold tracking-tight text-slate-950 sm:text-5xl">
+            <h1 className="mx-auto mt-6 max-w-3xl text-center text-4xl leading-tight font-bold tracking-tight text-slate-950 sm:text-5xl">
               Cererea a fost trimisă
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-8 text-slate-600 sm:text-lg">
               Îți mulțumim. Am înregistrat solicitarea și o analizăm cu atenție.
               Revenim în cel mai scurt timp posibil cu un răspuns structurat.
             </p>
@@ -149,51 +141,8 @@ export default function MobileAppsThankYouPage() {
           </div>
         </section>
 
-        {/* Exemplu / încredere — AInevoie */}
-        {study ? (
-          <section className="border-t border-slate-100 bg-slate-50 py-14 sm:py-16">
-            <div className="container">
-              <p className="text-center text-xs font-semibold tracking-[0.2em] text-slate-500 uppercase">
-                Încredere și exemple
-              </p>
-              <h2 className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
-                Un exemplu de aplicație livrată în producție
-              </h2>
-              <article className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.06)]">
-                <div className="grid gap-0 md:grid-cols-[minmax(0,auto)_minmax(0,1fr)] md:items-stretch">
-                  <div className="flex justify-center bg-gradient-to-b from-slate-100 to-white px-4 pt-8 pb-6 md:items-center md:py-10 md:pl-8 md:pr-6">
-                    <DeviceScreenshotFrame
-                      src={study.image}
-                      alt={study.imageAlt}
-                      variant="hero"
-                      sizes="(max-width: 768px) 85vw, 300px"
-                      priority
-                    />
-                  </div>
-                  <div className="flex flex-col justify-center p-7 sm:p-9">
-                    <h3 className="text-xl font-bold tracking-tight text-slate-950 sm:text-2xl">
-                      {study.cardTitle}
-                    </h3>
-                    <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                      {study.shortDescription}
-                    </p>
-                    <Link
-                      href={caseHref}
-                      className="bg-primary hover:bg-primary/90 group mt-8 inline-flex w-fit items-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-semibold text-white transition sm:text-base"
-                    >
-                      Vezi aplicația
-                      <ArrowRight
-                        size={18}
-                        className="transition group-hover:translate-x-0.5"
-                        aria-hidden
-                      />
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </section>
-        ) : null}
+        {/* Aceleași 3 carduri portofoliu ca pe /leads/dezvoltare-aplicatii-mobile */}
+        <PortfolioSection estimateCtaHref={mobileLeadFormPortfolioEstimateHref} />
 
         {/* Linkuri discrete */}
         <section className="pb-10 pt-4 sm:pb-12">

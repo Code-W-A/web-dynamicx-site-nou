@@ -25,7 +25,21 @@ const studyLabels: Record<string, string> = {
   "doitnow-provocari-zilnice-ai": "Utilizare zilnică",
 };
 
-export default function PortfolioSection() {
+export const portfolioContextSelectedProject = "Portofoliu aplicații mobile";
+
+export const mobileLeadFormPortfolioEstimateHref =
+  `/leads/dezvoltare-aplicatii-mobile?selectedProject=${encodeURIComponent(
+    portfolioContextSelectedProject,
+  )}#formular-lead`;
+
+type PortfolioSectionProps = {
+  /** Pe alte pagini (ex. mulțumire): deschide formularul de leads în loc de scroll local. */
+  estimateCtaHref?: string;
+};
+
+export default function PortfolioSection({
+  estimateCtaHref,
+}: PortfolioSectionProps = {}) {
   const getStudyHref = (slug: string) => `${mobilePortfolioHubPath}/${slug}`;
 
   const scrollToLeadForm = (projectName: string) => {
@@ -120,13 +134,22 @@ export default function PortfolioSection() {
           </div>
 
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <button
-              type="button"
-              onClick={() => scrollToLeadForm("Portofoliu aplicații mobile")}
-              className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-2xl px-6 py-3 text-sm font-semibold text-white transition"
-            >
-              Cere o estimare pentru aplicația ta
-            </button>
+            {estimateCtaHref ? (
+              <Link
+                href={estimateCtaHref}
+                className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-2xl px-6 py-3 text-sm font-semibold text-white transition"
+              >
+                Cere o estimare pentru aplicația ta
+              </Link>
+            ) : (
+              <button
+                type="button"
+                onClick={() => scrollToLeadForm(portfolioContextSelectedProject)}
+                className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-2xl px-6 py-3 text-sm font-semibold text-white transition"
+              >
+                Cere o estimare pentru aplicația ta
+              </button>
+            )}
           </div>
         </div>
       </div>
