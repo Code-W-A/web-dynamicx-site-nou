@@ -25,17 +25,11 @@ export default function HeroSection() {
             </div>
 
             <h1 className="mt-5 text-4xl leading-tight font-bold tracking-tight text-slate-950 sm:text-5xl">
-              Dezvoltare aplicații mobile iOS și Android pentru firme care vor
-              să lanseze clar și rapid
+              Dezvoltare aplicații mobile iOS și Android pentru firme
             </h1>
 
             <p className="mt-4 max-w-[44rem] text-base leading-8 text-slate-600 sm:text-lg">
-              Construim aplicații mobile pentru companii care vor să lanseze o
-              primă versiune bine gândită, să testeze o idee nouă sau să
-              transforme un proces important într-un produs digital ușor de
-              folosit. Te ajutăm cu structură, design, dezvoltare și publicare,
-              astfel încât aplicația să fie pregătită pentru utilizare reală, nu
-              doar pentru prezentare.
+            Dezvoltăm aplicații mobile native și cross-platform pentru iOS și Android, cu preț fix agreat la început. MVP funcțional în săptămâni, nu luni.
             </p>
 
             <ul className="mt-6 space-y-3">
