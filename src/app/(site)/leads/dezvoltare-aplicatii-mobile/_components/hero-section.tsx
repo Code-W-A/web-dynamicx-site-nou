@@ -25,7 +25,7 @@ export default function HeroSection() {
             </div>
 
             <h1 className="mt-5 text-4xl leading-tight font-bold tracking-tight text-slate-950 sm:text-5xl">
-              Dezvoltare aplicații mobile iOS și Android pentru firme
+            Dezvoltare aplicații mobile pentru firme, cu preț clar și lansare rapidă
             </h1>
 
             <p className="mt-4 max-w-[44rem] text-base leading-8 text-slate-600 sm:text-lg">
