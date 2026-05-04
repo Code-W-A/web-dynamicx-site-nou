@@ -223,6 +223,64 @@ export const mobileAppsServicePageData = {
       },
     ],
   },
+  mobileDevForBusiness: {
+    badge: "CONTEXT BUSINESS",
+    title: "Ce înseamnă dezvoltarea unei aplicații mobile pentru un business",
+    subtitle:
+      "O aplicație mobilă bună pornește de la o nevoie reală, nu de la o listă lungă de funcționalități.",
+    introParagraphs: [
+      "Dezvoltarea unei aplicații mobile pentru un business nu înseamnă doar crearea unor ecrane sau implementarea unor funcționalități de bază. În practică, este un proces prin care o idee sau un flux existent este transformat într-un produs digital care poate fi folosit zilnic de utilizatori sau de echipa internă.",
+      "Pentru unele firme, aplicația mobilă devine un canal direct de interacțiune cu clienții. Pentru altele, este un instrument de organizare și eficientizare a activităților interne. În ambele cazuri, scopul este același: simplificarea proceselor și crearea unei experiențe mai clare și mai rapide.",
+    ],
+    featureCards: [
+      {
+        title: "MVP clar",
+        description:
+          "Prima versiune trebuie să includă funcționalitățile esențiale, astfel încât aplicația să poată fi lansată rapid și testată în condiții reale.",
+      },
+      {
+        title: "UX și structură",
+        description:
+          "O aplicație eficientă are ecrane clare, pași puțini și fluxuri ușor de parcurs pentru utilizatorii reali.",
+      },
+      {
+        title: "Backend și evoluție",
+        description:
+          "În spatele aplicației pot exista autentificare, baze de date, plăți, notificări și integrări care susțin creșterea produsului.",
+      },
+    ],
+    bodyParagraphs: [
+      "Un proiect de dezvoltare aplicații mobile pornește, de obicei, de la o nevoie concretă. Poate fi vorba despre rezervări, comenzi, gestionarea datelor sau automatizarea unor activități care, până în acel moment, erau realizate manual sau prin mai multe sisteme separate.",
+      "Procesul începe cu definirea primei versiuni a produsului, cunoscută și ca MVP. Aceasta include funcționalitățile esențiale care trebuie lansate pentru ca aplicația să fie utilă din prima zi. Alegerea corectă a acestor funcționalități influențează direct atât costul, cât și timpul de dezvoltare.",
+      "După această etapă, urmează partea de design și structurare a aplicației, astfel încât utilizatorul să poată parcurge ușor fiecare pas. O aplicație mobilă bine construită nu trebuie să fie complicată, ci clară și intuitivă.",
+      "Dezvoltarea propriu-zisă include atât partea vizibilă pentru utilizator, cât și sistemul din spate care gestionează datele și logica aplicației. În funcție de proiect, acest lucru poate include autentificare, plăți, notificări sau integrarea cu alte platforme.",
+      "După lansare, aplicația nu rămâne fixă. Ea evoluează în funcție de feedback-ul utilizatorilor și de obiectivele business-ului. De aceea, dezvoltarea unei aplicații mobile trebuie privită ca un proces continuu, nu ca un proiect cu un final rigid.",
+    ],
+    closingParagraph:
+      "Pentru firmele care vor să lanseze corect, este important ca fiecare etapă să fie bine definită, iar deciziile să fie luate în funcție de obiectivele reale ale produsului. O aplicație mobilă construită cu o structură clară poate deveni un instrument esențial pentru creștere și diferențiere în piață.",
+  },
+  mobileSolutionChoice: {
+    badge: "DECIZIE CORECTĂ",
+    title: "Cum alegi o soluție de dezvoltare aplicații mobile potrivită pentru business-ul tău",
+    paragraphs: [
+      "Alegerea unei soluții de dezvoltare aplicații mobile nu ține doar de tehnologie, ci de modul în care aplicația va fi folosită în realitate.",
+      "Pentru unele firme, este suficientă o aplicație simplă, care rezolvă un singur flux, cum ar fi rezervările sau comenzile. Pentru altele, aplicația devine un produs digital complex, cu mai multe tipuri de utilizatori, integrare cu alte sisteme și funcționalități care evoluează în timp.",
+      "De aceea, este important să alegi o abordare care se potrivește obiectivelor tale de business, nu doar să implementezi o listă de funcționalități.",
+      "O soluție bună de dezvoltare aplicații mobile pornește de la definirea clară a MVP-ului, continuă cu o structură simplă și ușor de extins și se construiește astfel încât aplicația să poată fi îmbunătățită după lansare fără blocaje tehnice.",
+      "În practică, diferența nu este făcută doar de cod, ci de felul în care este gândit produsul: ce intră în prima versiune, ce rămâne pentru mai târziu și cum se leagă toate componentele aplicației într-un sistem coerent.",
+      "Pentru firmele care vor rezultate reale, o aplicație mobilă trebuie să fie ușor de folosit, stabilă și pregătită pentru creștere, nu doar lansată rapid.",
+    ],
+    synthesisCard: {
+      title: "Ce trebuie stabilit înainte de dezvoltare",
+      items: [
+        "ce problemă rezolvă aplicația",
+        "ce intră în MVP",
+        "ce rămâne pentru etapa următoare",
+        "ce integrări sunt necesare",
+        "cum va evolua produsul după lansare",
+      ],
+    },
+  },
   deliverables: {
     title: "Ce include un proiect complet de dezvoltare aplicații mobile",
     intro:

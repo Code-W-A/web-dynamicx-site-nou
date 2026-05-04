@@ -51,7 +51,7 @@ export default function PricingEstimateSection() {
             href="#formular-lead"
             className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-2xl px-7 py-4 font-semibold text-white transition"
           >
-            Cere estimare orientativă
+            Solicită estimare proiect
           </Link>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-500">
             {pricingMicrocopy}

@@ -35,6 +35,8 @@ export default function MobileAppServicePageContent({ breadcrumbs }: Props) {
     appTypes,
     technology,
     process,
+    mobileDevForBusiness,
+    mobileSolutionChoice,
     deliverables,
     pricing,
     reasons,
@@ -488,6 +490,112 @@ export default function MobileAppServicePageContent({ breadcrumbs }: Props) {
             })}
           </div>
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-8 text-slate-600 sm:text-lg">{reasons.outro}</p>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="ce-inseamna-dezvoltare-app-business"
+        className="border-y border-slate-100 bg-[#F8FAFF] py-14 sm:py-16"
+      >
+        <div className="container px-5">
+          <div className="mx-auto w-full max-w-[1200px]">
+            <div className="grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,380px)]">
+              <div className="min-w-0 space-y-5 lg:col-start-1 lg:row-start-1 sm:space-y-6">
+                <span className="inline-flex text-sm font-semibold uppercase tracking-[0.24em] text-primary/80">
+                  {mobileDevForBusiness.badge}
+                </span>
+                <h2
+                  id="ce-inseamna-dezvoltare-app-business"
+                  className="text-balance text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl"
+                >
+                  {mobileDevForBusiness.title}
+                </h2>
+                <p className="max-w-2xl text-base font-medium leading-relaxed text-slate-700 sm:text-lg sm:leading-8">
+                  {mobileDevForBusiness.subtitle}
+                </p>
+                <div className="space-y-5 text-base leading-relaxed text-slate-600 sm:text-[1.0625rem] sm:leading-[1.75]">
+                  {mobileDevForBusiness.introParagraphs.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+
+              <aside
+                aria-label="Puncte esențiale"
+                className="min-w-0 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-start lg:sticky lg:top-28"
+              >
+                <div className="flex flex-col gap-4">
+                  {mobileDevForBusiness.featureCards.map((card) => (
+                    <article
+                      key={card.title}
+                      className="rounded-[1.35rem] border border-slate-200 bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,0.06)] sm:p-6"
+                    >
+                      <h3 className="text-lg font-semibold tracking-tight text-slate-950">{card.title}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base sm:leading-7">
+                        {card.description}
+                      </p>
+                    </article>
+                  ))}
+                </div>
+              </aside>
+
+              <div className="min-w-0 space-y-5 lg:col-start-1 lg:row-start-2 sm:space-y-6">
+                <div className="space-y-5 text-base leading-relaxed text-slate-600 sm:text-[1.0625rem] sm:leading-[1.75]">
+                  {mobileDevForBusiness.bodyParagraphs.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-10 border-t border-slate-200/80 pt-8 text-base leading-relaxed text-slate-600 sm:mt-12 sm:pt-10 sm:text-[1.0625rem] sm:leading-[1.75]">
+              {mobileDevForBusiness.closingParagraph}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="cum-alegi-solutie-dezvoltare-mobile"
+        className="border-y border-slate-100 bg-white py-14 sm:py-16"
+      >
+        <div className="container px-5">
+          <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-10 lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-12">
+            <div className="min-w-0 space-y-5 sm:space-y-6">
+              <span className="inline-flex text-sm font-semibold uppercase tracking-[0.24em] text-primary/80">
+                {mobileSolutionChoice.badge}
+              </span>
+              <h2
+                id="cum-alegi-solutie-dezvoltare-mobile"
+                className="text-balance text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl"
+              >
+                {mobileSolutionChoice.title}
+              </h2>
+              <div className="space-y-5 text-base leading-relaxed text-slate-600 sm:space-y-6 sm:text-[1.0625rem] sm:leading-[1.8]">
+                {mobileSolutionChoice.paragraphs.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+
+            <aside className="min-w-0 lg:sticky lg:top-28 lg:self-start" aria-label={mobileSolutionChoice.synthesisCard.title}>
+              <div className="rounded-[1.35rem] border border-slate-200 bg-[#F8FAFF] p-6 shadow-[0_8px_32px_rgba(15,23,42,0.06)] sm:p-7">
+                <h3 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
+                  {mobileSolutionChoice.synthesisCard.title}
+                </h3>
+                <ul className="mt-5 space-y-3.5">
+                  {mobileSolutionChoice.synthesisCard.items.map((item) => (
+                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-slate-700 sm:text-base sm:leading-7">
+                      <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/12 text-primary">
+                        <Check size={14} />
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
+          </div>
         </div>
       </section>
 
