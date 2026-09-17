@@ -17,14 +17,14 @@ export default function FooterBottom() {
                 aria-label="social-link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mx-2 flex h-8 w-8 items-center justify-center rounded-full bg-body-color text-dark duration-200 hover:bg-primary hover:text-white"
+                className="mx-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#b4bdd0] text-dark duration-200 hover:bg-[#8fa2ff] hover:text-black"
               >
                 {link?.icon}
               </a>
             ))}
           </div>
         )}
-        <p className="text-center text-base font-medium text-body-color">
+        <p className="text-center text-base font-medium text-[#b4bdd0]">
           Web Dynamicx — Agenție web design, SEO și aplicații mobile - &copy; {new Date().getFullYear()}
         </p>
       </div>

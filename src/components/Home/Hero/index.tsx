@@ -17,7 +17,7 @@ export default function Hero({
 }: HeroProps) {
   const defaultHeadline = (
     <>
-      <span style={{ color: "#496cf6" }}>Web Dynamicx</span> — agenție web pentru website-uri clare, rapide și pregătite pentru creștere
+      <span className="text-primary">Web Dynamicx</span> — agenție web pentru website-uri clare, rapide și pregătite pentru creștere
     </>
   );
 

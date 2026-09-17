@@ -3,6 +3,17 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "webdynamicx.ro",
+          },
+        ],
+        destination: "https://www.webdynamicx.ro/:path*",
+        permanent: true,
+      },
+      {
         source: "/servicii/optimizare-seo-site",
         destination: "/servicii/optimizare-seo",
         statusCode: 301,

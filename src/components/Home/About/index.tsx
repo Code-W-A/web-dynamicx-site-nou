@@ -48,7 +48,7 @@ export default function About() {
                 </Link>
                 
                 <Link
-                  href="tel:+40720123456"
+                  href="tel:+40774550758"
                   className="bg-white hover:bg-gray-50 text-primary border-2 border-primary transition-all duration-300 inline-flex items-center justify-center rounded-xl px-8 py-4 text-base font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-1 group"
                 >
                   <svg className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">

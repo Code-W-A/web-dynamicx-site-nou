@@ -19,7 +19,9 @@ export default function SectionTitle({
           : { maxWidth: width, marginBottom: marginBottom }
       }
     >
-      <span className="mb-2 block text-lg font-semibold text-primary">
+      <span
+        className={`mb-2 block text-lg font-semibold ${color === "white" ? "text-[#8fa2ff]" : "text-primary"}`}
+      >
         {mainTitle}
       </span>
       <h3
@@ -30,7 +32,7 @@ export default function SectionTitle({
       </h3>
       {paragraph && (
         <p
-          className={`text-lg font-medium text-body-color ${paragraphWidth && center && "mx-auto"}`}
+          className={`text-lg font-medium ${color === "white" ? "text-[#b4bdd0]" : "text-body-color"} ${paragraphWidth && center && "mx-auto"}`}
           style={{ maxWidth: paragraphWidth }}
         >
           {paragraph}

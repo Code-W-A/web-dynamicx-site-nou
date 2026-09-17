@@ -1,8 +1,7 @@
 export default function Graphic() {
   return (
     <>
-      <div className="-z-1 absolute bottom-0 left-0" aria-label="shape">
-        <span className="hidden">shape</span>
+      <div className="-z-1 absolute bottom-0 left-0" aria-hidden="true">
         <svg
           width="143"
           height="138"
@@ -32,8 +31,7 @@ export default function Graphic() {
           </defs>
         </svg>
       </div>
-      <div className="-z-1 absolute right-3 top-3" aria-label="shape">
-        <span className="hidden">shape</span>
+      <div className="-z-1 absolute right-3 top-3" aria-hidden="true">
         <svg
           width="61"
           height="77"

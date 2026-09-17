@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 const aboutHeadline = (
   <>
-    Despre <span style={{ color: '#496cf6' }}>Web Dynamicx</span> — agenție de web design, dezvoltare web și SEO
+    Despre <span style={{ color: '#3f5fd7' }}>Web Dynamicx</span> — agenție de web design, dezvoltare web și SEO
   </>
 );
 
@@ -97,7 +97,7 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4">
                     <div className="mx-auto max-w-4xl text-center">
                         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                            O agenție construită pe <span style={{ color: '#496cf6' }}>pasiune</span> și <span style={{ color: '#496cf6' }}>expertiză</span>.
+                            O agenție construită pe <span style={{ color: '#3f5fd7' }}>pasiune</span> și <span style={{ color: '#3f5fd7' }}>expertiză</span>.
                         </h2>
                         <p className="mt-6 text-lg leading-8 text-gray-600">
                             La Web Dynamicx, combinăm creativitatea cu tehnologia pentru a oferi <strong>servicii webdesign</strong> și marketing de excepție. Fie că ai nevoie de un site de prezentare sau de o strategie de <strong>promovare site</strong>, suntem aici să te ajutăm.
@@ -106,7 +106,7 @@ export default function AboutPage() {
                     <div className="mt-12">
                         <div
                             className="mx-auto max-w-3xl rounded-2xl p-8 shadow-md"
-                            style={{ backgroundColor: '#496cf6', color: '#ffffff' }}
+                            style={{ backgroundColor: '#3f5fd7', color: '#ffffff' }}
                         >
                             <p className="text-center text-xl font-medium leading-9">
                                 „Misiunea noastră este să transformăm viziunile clienților noștri în realități digitale performante. Credem într-un parteneriat transparent, bazat pe rezultate și comunicare constantă.”
@@ -134,7 +134,7 @@ export default function AboutPage() {
                             <Link key={service.title} href={service.href || "#"} className="rounded-2xl bg-white p-8 shadow-md transition-all hover:shadow-xl hover:-translate-y-1 block">
                                 <div
                                     className="flex h-12 w-12 items-center justify-center rounded-lg"
-                                    style={{ backgroundColor: '#496cf6' }}
+                                    style={{ backgroundColor: '#3f5fd7' }}
                                 >
                                     {service.icon}
                                 </div>
@@ -163,19 +163,19 @@ export default function AboutPage() {
                             </p>
                             <ul className="mt-8 space-y-4 text-base text-gray-600">
                                 <li className="flex items-center gap-3">
-                                    <HeartHandshake className="h-6 w-6" style={{ color: '#496cf6' }} />
+                                    <HeartHandshake className="h-6 w-6" style={{ color: '#3f5fd7' }} />
                                     <span>Parteneriat pe termen lung și suport dedicat.</span>
                                 </li>
                                 <li className="flex items-center gap-3">
-                                    <Target className="h-6 w-6" style={{ color: '#496cf6' }} />
+                                    <Target className="h-6 w-6" style={{ color: '#3f5fd7' }} />
                                     <span>Strategii personalizate, aliniate obiectivelor tale.</span>
                                 </li>
                                 <li className="flex items-center gap-3">
-                                    <Milestone className="h-6 w-6" style={{ color: '#496cf6' }} />
+                                    <Milestone className="h-6 w-6" style={{ color: '#3f5fd7' }} />
                                     <span>Transparență în proces și raportare periodică.</span>
                                 </li>
                                 <li className="flex items-center gap-3">
-                                    <BarChart3 className="h-6 w-6" style={{ color: '#496cf6' }} />
+                                    <BarChart3 className="h-6 w-6" style={{ color: '#3f5fd7' }} />
                                     <span>Focus pe viteză, UX și Core Web Vitals.</span>
                                 </li>
                             </ul>
@@ -219,27 +219,27 @@ export default function AboutPage() {
                             </p>
                             <ul className="mt-8 space-y-4 text-base text-gray-600">
                                 <li className="flex items-start gap-3">
-                                    <CheckCircle2 className="h-6 w-6" style={{ color: '#496cf6' }} />
+                                    <CheckCircle2 className="h-6 w-6" style={{ color: '#3f5fd7' }} />
                                     <span><strong>Potrivire cu intenția de căutare</strong>: conținutul răspunde clar la întrebări
                                     informaționale, comerciale sau tranzacționale.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <CheckCircle2 className="h-6 w-6" style={{ color: '#496cf6' }} />
+                                    <CheckCircle2 className="h-6 w-6" style={{ color: '#3f5fd7' }} />
                                     <span><strong>Cuvinte-cheie secundare (LSI)</strong>: folosim termeni înrudiți pentru a clarifica
                                     contextul și a crește relevanța.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <CheckCircle2 className="h-6 w-6" style={{ color: '#496cf6' }} />
+                                    <CheckCircle2 className="h-6 w-6" style={{ color: '#3f5fd7' }} />
                                     <span><strong>Structură de headings</strong> și interlinking inteligent pentru o navigare ușoară
                                     și distribuție corectă a semnalelor SEO.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <CheckCircle2 className="h-6 w-6" style={{ color: '#496cf6' }} />
+                                    <CheckCircle2 className="h-6 w-6" style={{ color: '#3f5fd7' }} />
                                     <span><strong>Viteză și Core Web Vitals</strong>: prioritizăm performanța pe mobil și claritatea vizuală
                                     pentru engagement mai bun.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <CheckCircle2 className="h-6 w-6" style={{ color: '#496cf6' }} />
+                                    <CheckCircle2 className="h-6 w-6" style={{ color: '#3f5fd7' }} />
                                     <span><strong>Măsurare și iterație</strong>: urmărim KPI‑uri și optimizăm continuu pe baza datelor reale.</span>
                                 </li>
                             </ul>
@@ -268,11 +268,11 @@ export default function AboutPage() {
                         <div className="flex items-center mb-6">
                           <div 
                             className="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-lg mr-4"
-                            style={{ backgroundColor: '#496cf6' }}
+                            style={{ backgroundColor: '#3f5fd7' }}
                           >
                             1
                           </div>
-                          <Search className="h-8 w-8" style={{ color: '#496cf6' }} />
+                          <Search className="h-8 w-8" style={{ color: '#3f5fd7' }} />
                         </div>
                         <h3 className="text-xl font-semibold text-gray-900 mb-3">
                           Analiză & obiective
@@ -289,11 +289,11 @@ export default function AboutPage() {
                         <div className="flex items-center mb-6">
                           <div 
                             className="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-lg mr-4"
-                            style={{ backgroundColor: '#496cf6' }}
+                            style={{ backgroundColor: '#3f5fd7' }}
                           >
                             2
                           </div>
-                          <Layers className="h-8 w-8" style={{ color: '#496cf6' }} />
+                          <Layers className="h-8 w-8" style={{ color: '#3f5fd7' }} />
                         </div>
                         <h3 className="text-xl font-semibold text-gray-900 mb-3">
                           Arhitectură & conținut
@@ -310,11 +310,11 @@ export default function AboutPage() {
                         <div className="flex items-center mb-6">
                           <div 
                             className="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-lg mr-4"
-                            style={{ backgroundColor: '#496cf6' }}
+                            style={{ backgroundColor: '#3f5fd7' }}
                           >
                             3
                           </div>
-                          <Palette className="h-8 w-8" style={{ color: '#496cf6' }} />
+                          <Palette className="h-8 w-8" style={{ color: '#3f5fd7' }} />
                         </div>
                         <h3 className="text-xl font-semibold text-gray-900 mb-3">
                           Design & prototip
@@ -331,11 +331,11 @@ export default function AboutPage() {
                         <div className="flex items-center mb-6">
                           <div 
                             className="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-lg mr-4"
-                            style={{ backgroundColor: '#496cf6' }}
+                            style={{ backgroundColor: '#3f5fd7' }}
                           >
                             4
                           </div>
-                          <Code2 className="h-8 w-8" style={{ color: '#496cf6' }} />
+                          <Code2 className="h-8 w-8" style={{ color: '#3f5fd7' }} />
                         </div>
                         <h3 className="text-xl font-semibold text-gray-900 mb-3">
                           Dezvoltare & integrare
@@ -352,11 +352,11 @@ export default function AboutPage() {
                         <div className="flex items-center mb-6">
                           <div 
                             className="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-lg mr-4"
-                            style={{ backgroundColor: '#496cf6' }}
+                            style={{ backgroundColor: '#3f5fd7' }}
                           >
                             5
                           </div>
-                          <Zap className="h-8 w-8" style={{ color: '#496cf6' }} />
+                          <Zap className="h-8 w-8" style={{ color: '#3f5fd7' }} />
                         </div>
                         <h3 className="text-xl font-semibold text-gray-900 mb-3">
                           SEO & performanță
@@ -373,11 +373,11 @@ export default function AboutPage() {
                         <div className="flex items-center mb-6">
                           <div 
                             className="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-lg mr-4"
-                            style={{ backgroundColor: '#496cf6' }}
+                            style={{ backgroundColor: '#3f5fd7' }}
                           >
                             6
                           </div>
-                          <CheckCircle2 className="h-8 w-8" style={{ color: '#496cf6' }} />
+                          <CheckCircle2 className="h-8 w-8" style={{ color: '#3f5fd7' }} />
                         </div>
                         <h3 className="text-xl font-semibold text-gray-900 mb-3">
                           Lansare & mentenanță
@@ -395,7 +395,7 @@ export default function AboutPage() {
                     <div className="text-center">
                       <div 
                         className="inline-flex items-center px-6 py-3 rounded-full text-white font-medium"
-                        style={{ backgroundColor: '#496cf6' }}
+                        style={{ backgroundColor: '#3f5fd7' }}
                       >
                         <Rocket className="h-5 w-5 mr-2" />
                         Proiectul tău este gata să înceapă!

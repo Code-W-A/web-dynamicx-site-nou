@@ -10,7 +10,7 @@ export default function Brands() {
               <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
                 Clienții noștri
               </h2>
-              <p className="text-lg font-medium text-body-color">
+              <p className="text-lg font-medium text-[#b4bdd0]">
                 Branduri și proiecte realizate de Web Dynamicx în România.
               </p>
             </div>

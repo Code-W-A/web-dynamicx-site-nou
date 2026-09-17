@@ -2,7 +2,7 @@ import ConditionalSiteFooter from "@/components/Common/ConditionalSiteFooter";
 import Navbar from "@/components/Navbar";
 import SiteFloatingCtas from "@/components/Common/SiteFloatingCtas";
 import "@/styles/globals.css";
-import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalytics } from "@next/third-parties/google";
 import ClientProviders from "./ClientProviders";
 import type { Metadata } from "next";
 
@@ -21,7 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const logoUrl =
-    process.env.NEXT_PUBLIC_ORGANIZATION_LOGO_URL?.trim() || `${siteUrl}/images/logo/logo.svg`;
+    process.env.NEXT_PUBLIC_ORGANIZATION_LOGO_URL?.trim() ||
+    `${siteUrl}/images/logo/logo.svg`;
 
   const organizationLd = {
     "@context": "https://schema.org",
@@ -52,30 +53,36 @@ export default function RootLayout({
 
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+  const gtmLoaderScript = gtmId
+    ? `(function(w,d,id){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});var loaded=false;function load(){if(loaded)return;loaded=true;var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtm.js?id='+encodeURIComponent(id);d.head.appendChild(s);}['pointerdown','touchstart','keydown'].forEach(function(eventName){w.addEventListener(eventName,load,{once:true,passive:true});});w.addEventListener('load',function(){w.setTimeout(load,3500);},{once:true});})(window,document,${JSON.stringify(gtmId)});`
+    : null;
 
   return (
     <html lang="ro" suppressHydrationWarning>
-      {gtmId && <GoogleTagManager gtmId={gtmId as string} />}
       <body className="antialiased">
-        <ClientProviders>
-          {/* JSON-LD: Organization */}
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
-            />
-            {/* JSON-LD: WebSite + SearchAction */}
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteLd) }}
-            />
-            {/* GTM/GA injected via Next official components */}
-            <Navbar />
-            {children}
-            <ConditionalSiteFooter />
-            <SiteFloatingCtas />
-        </ClientProviders>
+        {gtmLoaderScript ? (
+          <script
+            id="gtm-loader"
+            dangerouslySetInnerHTML={{ __html: gtmLoaderScript }}
+          />
+        ) : null}
+        <ClientProviders />
+        {/* JSON-LD: Organization */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
+        />
+        {/* JSON-LD: WebSite */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteLd) }}
+        />
+        <Navbar />
+        <main id="main-content">{children}</main>
+        <ConditionalSiteFooter />
+        <SiteFloatingCtas />
       </body>
-      {gaId && <GoogleAnalytics gaId={gaId as string} />}
+      {!gtmId && gaId && <GoogleAnalytics gaId={gaId as string} />}
     </html>
   );
 }

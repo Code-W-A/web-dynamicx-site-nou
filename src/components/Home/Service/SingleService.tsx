@@ -10,6 +10,7 @@ export default function SingleService({ service }: { service: Service }) {
           src={service.image || "/images/services/creare-site-prezentare.webp"}
           alt={service.title || "Serviciu Web Dynamicx"}
           fill
+          sizes="(max-width: 539px) calc(100vw - 64px), (max-width: 959px) calc(100vw - 64px), (max-width: 1319px) 50vw, 560px"
           className="w-full object-cover object-center"
         />
       </div>

@@ -33,8 +33,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const title = study.metaTitle;
   const description = study.metaDescription;
   const canonical = `${siteURL}${mobilePortfolioHubPath}/${study.slug}`;
-  const baseUrl = siteURL.replace(/\/$/, "");
-  const ogImageUrl = `${baseUrl}${study.image}`;
+  const ogImageUrl = `${canonical}/opengraph-image`;
   return {
     title,
     description,

@@ -53,7 +53,7 @@ export default function MobileAppsThankYouPage() {
         className="hidden"
       />
       <ThankYouPageView />
-      <main className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white">
         {/* Hero — același limbaj vizual ca hero landing leads */}
         <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(74,108,247,0.12),_transparent_28%),linear-gradient(180deg,_#f8fbff_0%,_#ffffff_72%)] pt-[120px] pb-14 sm:pt-[136px] sm:pb-16">
           <div className="bg-primary/15 pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl" />
@@ -171,7 +171,7 @@ export default function MobileAppsThankYouPage() {
         </section>
 
         <AdsSimpleFooter />
-      </main>
+      </div>
     </>
   );
 }

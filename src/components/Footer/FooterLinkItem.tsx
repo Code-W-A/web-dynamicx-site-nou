@@ -7,7 +7,7 @@ export default function FooterLinkItem({ linkItem }: { linkItem: FooterLink }) {
       <Link
         href={linkItem?.href}
         target={linkItem?.external ? "_blank" : "_self"}
-        className="inline-block text-base text-body-color hover:text-primary"
+        className="inline-block text-base text-[#b4bdd0] hover:text-[#8fa2ff]"
       >
         {linkItem?.title}
       </Link>

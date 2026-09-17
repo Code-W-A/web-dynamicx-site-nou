@@ -1,4 +1,4 @@
-import { createClient, type QueryParams } from "next-sanity";
+import { createClient, type QueryParams } from "@sanity/client";
 import clientConfig from "./config/client-config";
 export { imageBuilder } from "./image-helpers";
 import {

@@ -123,9 +123,7 @@ export default function PortfolioSection({
         <div className="mt-8 rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_16px_42px_rgba(15,23,42,0.05)] sm:p-8">
           <div className="max-w-3xl">
             <h3 className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
-              Dacă proiectul tău seamănă cu unul dintre aceste exemple,
-              următorul pas util este o estimare orientativă și o discuție
-              despre structura aplicației
+            Ai o idee de aplicație? Următorul pas este să o transformăm într-un plan concret, cu funcționalități, structură și o estimare orientativă de dezvoltare
             </h3>
             <p className="mt-3 text-base leading-8 text-slate-600">
               Ne trimiți pe scurt ce vrei să construiești, iar noi revenim cu o

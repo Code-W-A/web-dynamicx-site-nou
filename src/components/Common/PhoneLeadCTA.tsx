@@ -39,7 +39,7 @@ export default function PhoneLeadCTA() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="Introdu numărul tău de telefon"
-                className="mb-5 w-full rounded-full border border-white/[13%] bg-white/[15%] px-8 py-4 text-center text-white placeholder-white/70 outline-hidden transition focus:border-white focus-visible:shadow-none sm:mb-0 sm:text-left"
+                className="mb-5 w-full rounded-full border border-white/[13%] bg-white/[15%] px-8 py-4 text-center text-white placeholder-white/90 outline-hidden transition focus:border-white focus-visible:shadow-none sm:mb-0 sm:text-left"
               />
               <button className="text-primary top-2 right-2 w-full rounded-full bg-white px-5 py-4 text-base font-semibold sm:absolute sm:w-auto sm:py-[10px]">
                 Trimite
@@ -68,5 +68,4 @@ export default function PhoneLeadCTA() {
     </section>
   );
 }
-
 

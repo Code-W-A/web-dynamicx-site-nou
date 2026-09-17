@@ -23,7 +23,7 @@ export default function Service() {
             <div className="mb-[50px] flex lg:justify-end">
               <Link
                 href="/servicii"
-                className="hover:text-primary text-lg font-medium text-white underline"
+                className="text-lg font-medium text-white underline hover:text-[#8fa2ff]"
               >
                 VEZI SERVICIILE
               </Link>

@@ -19,6 +19,7 @@ import WebsiteSubscriptionAlternative from "@/components/Sections/WebsiteSubscri
 
 const siteName = process.env.SITE_NAME || "Web Dynamicx";
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
+const homeOgImageUrl = `${siteURL}/opengraph-image`;
 
 export const metadata: Metadata = {
   title: `Web Dynamicx | Agenție web pentru website-uri, SEO și proiecte digitale`,
@@ -35,19 +36,19 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${siteURL}/images/hero/hero-image.png`,
+        url: homeOgImageUrl,
         width: 1200,
         height: 630,
-        alt: `${siteName} homepage`
+        alt: `${siteName} — agenție web, SEO și proiecte digitale`,
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `Web Dynamicx | Agenție web pentru website-uri, SEO și proiecte digitale`,
     description:
       "Pagina principală Web Dynamicx: agenție web cu focus pe website-uri rapide, structură clară, SEO și proiecte digitale care susțin creșterea business-ului.",
-    images: [`${siteURL}/images/hero/hero-image.png`],
+    images: [homeOgImageUrl],
   },
 };
 

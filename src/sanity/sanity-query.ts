@@ -1,4 +1,10 @@
-import { groq } from "next-sanity";
+function groq(strings: TemplateStringsArray, ...values: unknown[]) {
+  return strings.reduce(
+    (query, part, index) =>
+      query + part + (index < values.length ? String(values[index]) : ""),
+    "",
+  );
+}
 
 const imageWithDimensionsField = `{
   ...,

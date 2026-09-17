@@ -51,14 +51,11 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const pageDescription = seoPage.description;
   const pageMetaTitle = seoPage.metaTitle;
   const pageMetaDescription = seoPage.metaDescription;
-  const pageOgImage = "ogImage" in seoPage ? seoPage.ogImage : service.ogImage;
-  const pageImage = seoPage.image;
   const pageOgAlt = isMobileAppsPage ? mobileAppsServicePageData.title : landingPage?.ogAlt || pageTitle;
-  const baseImage = pageOgImage || pageImage;
-  const ogImage = baseImage ? `${siteURL}${baseImage}` : undefined;
   const title = pageMetaTitle || `${pageTitle || "Serviciu Web Dynamicx"} | ${siteName}`;
   const description = pageMetaDescription || `${pageDescription?.slice(0, 136)}...`;
   const canonicalUrl = `${siteURL}/servicii/${service.slug}`;
+  const ogImage = `${canonicalUrl}/opengraph-image`;
   return {
     title,
     description,
@@ -87,24 +84,22 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       siteName: siteName,
       locale: "ro_RO",
       type: "website",
-      images: ogImage
-        ? [
-            {
-              url: ogImage,
-              width: 1200,
-              height: 630,
-              alt: pageOgAlt,
-            },
-          ]
-        : undefined,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: pageOgAlt,
+        },
+      ],
     },
 
     twitter: {
-      card: ogImage ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title,
       description,
       ...(twitterHandle ? { creator: twitterHandle, site: twitterHandle } : {}),
-      images: ogImage ? [ogImage] : undefined,
+      images: [ogImage],
     },
   };
 }

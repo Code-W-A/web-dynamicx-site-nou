@@ -7,10 +7,10 @@ export default function FooterContact() {
       <h3 className="mb-2 text-2xl font-bold text-white opacity-70">
         Date de contact
       </h3>
-      <p className="mb-1 text-base font-medium text-body-color">
+      <p className="mb-1 text-base font-medium text-[#b4bdd0]">
         webdynamicx@gmail.com
       </p>
-      <p className="mb-1 text-base font-medium text-body-color">
+      <p className="mb-1 text-base font-medium text-[#b4bdd0]">
         0774 550 758
       </p>
     </div>

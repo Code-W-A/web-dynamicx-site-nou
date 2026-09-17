@@ -36,12 +36,13 @@ export default function SinglePortfolio({
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
             className="object-contain object-center bg-white"
           />
-          <div className="bg-primary/[17%] pointer-events-none absolute top-0 left-0 flex h-full w-full items-center justify-center opacity-0 transition group-hover:pointer-events-auto group-hover:opacity-100">
+          <div className="bg-primary/[17%] pointer-events-none absolute top-0 left-0 flex h-full w-full items-center justify-center opacity-0 transition group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
             {portfolio?.liveUrl ? (
               <a
                 href={portfolio.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Deschide site-ul ${portfolio.title}`}
                 className="glightbox bg-primary flex h-10 w-10 items-center justify-center rounded-full text-white hover:bg-primary/90 transition-colors"
               >
                 <svg
@@ -57,6 +58,7 @@ export default function SinglePortfolio({
             ) : (
               <button
                 onClick={() => setOpen(true)}
+                aria-label={`Vezi proiectul ${portfolio.title}`}
                 className="glightbox bg-primary flex h-10 w-10 items-center justify-center rounded-full text-white hover:bg-primary/90 transition-colors"
               >
                 <svg

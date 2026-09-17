@@ -42,7 +42,7 @@ export default function middleware(request: NextRequest, event: NextFetchEvent) 
   }
   if (isMobileLeadPath(request.nextUrl.pathname)) {
     const response = NextResponse.next();
-    response.headers.set("X-Robots-Tag", "noindex, follow");
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
     return response;
   }
   if (isWebCommerceNoFollowLeadPath(request.nextUrl.pathname)) {
