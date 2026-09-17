@@ -222,12 +222,36 @@ export const featureHighlights = [
 ];
 
 export const differentiators = [
-  "Confirmăm rapid dacă prima versiune a aplicației are sens",
-  "Gândim proiectul înainte să intrăm în dezvoltare",
-  "Acoperim aplicația, sistemul din spate și publicarea",
-  "Punem accent pe utilizare simplă și clară",
-  "Lucrăm cu pași clari și ușor de urmărit",
-  "Lăsăm loc pentru extindere, fără complicații inutile de la început",
+  {
+    title: "Preț stabilit înainte de dezvoltare",
+    description:
+      "Agreăm costul și ce este inclus înainte să începem lucrul, ca să nu apară surprize pe parcurs.",
+  },
+  {
+    title: "Etape clare, ușor de urmărit",
+    description:
+      "Știi ce urmează, ce primești la fiecare pas și când trece proiectul mai departe.",
+  },
+  {
+    title: "Codul și conturile rămân pe numele tău",
+    description:
+      "Aplicația, codul și conturile (App Store, Google Play, backend) sunt ale tale, nu rămân blocate la noi.",
+  },
+  {
+    title: "Publicare în App Store și Google Play",
+    description:
+      "Ne ocupăm de pașii de listare, astfel încât aplicația să poată fi lansată, nu doar livrată ca fișier.",
+  },
+  {
+    title: "Suport după lansare",
+    description:
+      "Rămânem disponibili după publicare pentru corecții, mentenanță și funcții noi, când ai nevoie.",
+  },
+  {
+    title: "Comunicare directă cu dezvoltatorul",
+    description:
+      "Vorbești direct cu cine construiește aplicația, fără straturi de intermediari și fără mesaje diluate.",
+  },
 ];
 
 export const testimonials = [
