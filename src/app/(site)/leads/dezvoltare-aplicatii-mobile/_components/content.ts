@@ -283,7 +283,7 @@ export const pricingTiers = [
   },
   {
     title: "Aplicație pentru business",
-    range: "de la 5.000 EUR",
+    range: "de la 3.500 EUR",
     details:
       "Potrivită pentru aplicații cu conturi de utilizator, zonă de administrare și mai multe fluxuri importante.",
     includes: [
@@ -294,7 +294,7 @@ export const pricingTiers = [
   },
   {
     title: "Platformă mai complexă",
-    range: "de la 10.000 EUR",
+    range: "de la 8.000 EUR",
     details:
       "Potrivită pentru produse digitale cu funcții mai avansate, conectare la alte sisteme și nevoie mai mare de extindere.",
     includes: [
