@@ -187,10 +187,7 @@ export default function LeadFormSection() {
   };
 
   return (
-    <section
-      id="formular-lead"
-      className="scroll-mt-24 bg-white py-14 sm:py-16"
-    >
+    <section className="bg-white py-14 sm:py-16">
       <div className="container">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-8">
           <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 sm:p-8">
@@ -202,7 +199,7 @@ export default function LeadFormSection() {
             </h2>
             <p className="mt-4 text-base leading-8 text-slate-600">
               Completează pe scurt cererea, iar noi revenim cu o variantă
-              realistă de pornire pentru proiectul tău.
+              realistă de pornire și un preț clar pentru proiectul tău.
             </p>
 
             <div className="mt-6 space-y-3">
@@ -259,8 +256,9 @@ export default function LeadFormSection() {
           </div>
 
           <form
+            id="formular-lead"
             onSubmit={handleSubmit}
-            className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] sm:p-8"
+            className="scroll-mt-24 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] sm:p-8"
           >
             <div className="rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
               Îți răspundem în cel mai scurt timp posibil, cu o direcție clară
@@ -426,8 +424,8 @@ export default function LeadFormSection() {
                 }}
                 className="text-primary focus:ring-primary mt-0.5 h-4 w-4 rounded border-slate-300"
               />
-              Sunt de acord să fiu contactat pentru a primi o estimare și
-              informații despre proiectul meu.
+              Sunt de acord să fiu contactat pentru a primi o ofertă cu preț
+              clar și informații despre proiectul meu.
             </label>
             {fieldErrors.consent ? (
               <p className="mt-1 text-xs text-red-600">{fieldErrors.consent}</p>
@@ -448,7 +446,7 @@ export default function LeadFormSection() {
               className="bg-primary hover:bg-primary/90 mt-6 w-full rounded-2xl px-6 py-4 text-base font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-60"
               disabled={loading || !canSubmit}
             >
-              {loading ? "Se trimite..." : "Cere estimare pentru proiect"}
+              {loading ? "Se trimite..." : "Cere ofertă pentru proiect"}
             </button>
 
             <p className="mt-3 text-center text-xs leading-6 text-slate-500">

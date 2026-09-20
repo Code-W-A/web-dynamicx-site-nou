@@ -10,7 +10,7 @@ export const contactData = {
 export const trustPoints = [
   "Primă versiune lansabilă, cu funcțiile care contează",
   "Aplicații pentru iOS și Android, gândite pentru utilizatori reali",
-  "Estimare clară, structură bună și pași ușor de urmărit",
+  "Preț clar, agreat înainte de dezvoltare, și pași ușor de urmărit",
 ];
 
 export const trustBarItems = [
@@ -22,14 +22,14 @@ export const trustBarItems = [
 
 export const leadNextSteps = [
   {
-    title: "Răspuns clar și orientativ",
+    title: "Preț clar pentru proiect",
     description:
-      "Îți spunem cum poate începe proiectul, ce variantă are sens pentru lansare și la ce buget orientativ te poți raporta.",
+      "Îți spunem cum poate începe proiectul, ce variantă are sens pentru lansare și prețul fix agreat înainte de dezvoltare.",
   },
   {
     title: "Fără obligații",
     description:
-      "Poți cere o estimare chiar dacă încă nu ai toate detaliile stabilite sau ești la început cu ideea.",
+      "Poți cere o ofertă chiar dacă încă nu ai toate detaliile stabilite sau ești la început cu ideea.",
   },
   {
     title: "Potrivit pentru proiecte diferite",
@@ -96,9 +96,9 @@ export const processSteps = [
       "Înțelegem ce vrei să lansezi, cui se adresează și ce ar trebui să facă aplicația în prima etapă.",
   },
   {
-    title: "Structură și estimare",
+    title: "Structură și preț clar",
     description:
-      "Stabilim o variantă realistă de pornire, funcțiile importante și un buget orientativ.",
+      "Stabilim o variantă realistă de pornire, funcțiile importante și prețul clar înainte de dezvoltare.",
   },
   {
     title: "Design și dezvoltare",
@@ -272,7 +272,7 @@ export const testimonials = [
 export const pricingTiers = [
   {
     title: "Primă versiune a aplicației",
-    range: "de la 2.000 EUR",
+    range: "de la 1.500 EUR",
     details:
       "Potrivită pentru proiecte care trebuie lansate rapid, cu funcțiile esențiale și o structură bună de pornire.",
     includes: [
@@ -309,13 +309,13 @@ export const pricingSummary =
   "Bugetul depinde de ce vrei să lansezi la început, de câte acțiuni și reguli trebuie să gestioneze aplicația și de cât de complex este produsul final.";
 
 export const pricingMicrocopy =
-  "Dacă ne trimiți pe scurt ideea și funcțiile importante, îți putem spune care este varianta realistă de pornire.";
+  "Dacă ne trimiți pe scurt ideea și funcțiile importante, îți spunem varianta realistă de pornire și prețul clar, agreat înainte de dezvoltare.";
 
 export const faqs = [
   {
     question: "Cât costă dezvoltarea unei aplicații mobile?",
     answer:
-      "Costul depinde de complexitate, funcțiile dorite, partea tehnică necesară și numărul de platforme. Pentru multe proiecte, o primă versiune a aplicației poate porni de la aproximativ 4.000 EUR.",
+      "Costul depinde de complexitate, funcțiile dorite, partea tehnică necesară și numărul de platforme. O primă versiune a aplicației poate porni de la 1.500 EUR. Prețul final se agrează înainte de dezvoltare.",
   },
   {
     question: "Dezvoltați aplicații pentru iOS și Android?",

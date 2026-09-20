@@ -51,7 +51,7 @@ export default function HeroSection() {
                 href="#formular-lead"
                 className="bg-primary hover:bg-primary/90 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-base font-semibold text-white shadow-[0_16px_40px_rgba(74,108,247,0.24)] transition sm:w-auto"
               >
-                Cere o estimare pentru aplicația ta
+                Cere ofertă
                 <ArrowRight size={18} />
               </Link>
               <Link
@@ -63,9 +63,9 @@ export default function HeroSection() {
             </div>
             <div className="mt-3">
               <p className="mt-3 max-w-xl text-sm leading-7 text-slate-500">
-                Primești o direcție clară pentru proiect, o estimare orientativă
-                și recomandări potrivite pentru prima versiune a aplicației sau
-                pentru o dezvoltare mai amplă.
+                Primești o direcție clară pentru proiect, un preț clar agreat
+                înainte de dezvoltare și recomandări potrivite pentru prima
+                versiune a aplicației sau pentru o dezvoltare mai amplă.
               </p>
             </div>
           </div>

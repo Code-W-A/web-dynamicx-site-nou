@@ -7,9 +7,9 @@ export default function PricingEstimateSection() {
     <section className="bg-white py-14 sm:py-16">
       <div className="container">
         <SectionHeading
-          eyebrow="Buget orientativ"
-          title="Buget orientativ pentru dezvoltare aplicații mobile"
-          description="Costul final depinde de funcții, complexitate, integrarea cu alte sisteme și cât de mult trebuie construit de la zero. Totuși, pentru prima discuție, este util să ai câteva repere orientative."
+          eyebrow="Prețuri de pornire"
+          title="Prețuri de pornire pentru dezvoltare aplicații mobile"
+          description="Prima versiune pornește de la 1.500 EUR. Prețul final se agrează înainte de dezvoltare, în funcție de funcții, complexitate și ce trebuie construit de la zero."
           center
         />
 
@@ -51,7 +51,7 @@ export default function PricingEstimateSection() {
             href="#formular-lead"
             className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-2xl px-7 py-4 font-semibold text-white transition"
           >
-            Solicită estimare proiect
+            Cere ofertă
           </Link>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-500">
             {pricingMicrocopy}

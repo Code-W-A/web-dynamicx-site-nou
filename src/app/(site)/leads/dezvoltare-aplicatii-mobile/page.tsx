@@ -19,7 +19,7 @@ const canonicalServicePath = "/servicii/dezvoltare-aplicatii-mobile";
 export const metadata: Metadata = {
   title: `Dezvoltare aplicații mobile iOS și Android pentru firme | ${siteName}`,
   description:
-    "Landing page pentru Google Ads: dezvoltare aplicații mobile iOS și Android pentru firme. Cere estimare orientativă și direcție clară pentru MVP sau produsul tău.",
+    "Landing page pentru Google Ads: dezvoltare aplicații mobile iOS și Android pentru firme. Cere ofertă cu preț clar pentru MVP sau produsul tău.",
   alternates: {
     canonical: `${siteURL}${canonicalServicePath}`,
   },
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Dezvoltare aplicații mobile pentru firme | ${siteName}`,
     description:
-      "Pagini dedicate Ads pentru companii care caută dezvoltare aplicații mobile iOS și Android, cu estimare orientativă și focus pe lansare.",
+      "Pagini dedicate Ads pentru companii care caută dezvoltare aplicații mobile iOS și Android, cu preț clar și focus pe lansare.",
     url: `${siteURL}${canonicalServicePath}`,
     siteName,
     locale: "ro_RO",

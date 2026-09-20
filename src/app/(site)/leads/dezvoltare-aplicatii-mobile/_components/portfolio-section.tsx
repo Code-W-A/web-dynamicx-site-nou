@@ -123,7 +123,7 @@ export default function PortfolioSection({
         <div className="mt-8 rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_16px_42px_rgba(15,23,42,0.05)] sm:p-8">
           <div className="max-w-3xl">
             <h3 className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
-            Ai o idee de aplicație? Următorul pas este să o transformăm într-un plan concret, cu funcționalități, structură și o estimare orientativă de dezvoltare
+            Ai o idee de aplicație? Următorul pas este să o transformăm într-un plan concret, cu funcționalități, structură și preț clar
             </h3>
             <p className="mt-3 text-base leading-8 text-slate-600">
               Ne trimiți pe scurt ce vrei să construiești, iar noi revenim cu o
@@ -137,7 +137,7 @@ export default function PortfolioSection({
                 href={estimateCtaHref}
                 className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-2xl px-6 py-3 text-sm font-semibold text-white transition"
               >
-                Cere o estimare pentru aplicația ta
+                Cere ofertă
               </Link>
             ) : (
               <button
@@ -145,7 +145,7 @@ export default function PortfolioSection({
                 onClick={() => scrollToLeadForm(portfolioContextSelectedProject)}
                 className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center rounded-2xl px-6 py-3 text-sm font-semibold text-white transition"
               >
-                Cere o estimare pentru aplicația ta
+                Cere ofertă
               </button>
             )}
           </div>
