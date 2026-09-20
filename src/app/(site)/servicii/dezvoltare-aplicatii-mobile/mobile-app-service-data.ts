@@ -329,7 +329,7 @@ export const mobileAppsServicePageData = {
     budgetTitle: "Ce buget are sens pentru o aplicație mobilă?",
     budgetText:
       "Costul depinde de complexitatea produsului, numărul de platforme, integrări și logica necesară în backend. Un MVP cu fluxuri bine definite și funcționalități esențiale are alt buget decât o aplicație cu roluri multiple, plăți, administrare și procese mai complexe.",
-    budgetHighlight: "MVP-urile bine definite pot porni de la aproximativ 2.000 EUR.",
+    budgetHighlight: "MVP-urile bine definite pot porni de la aproximativ 1.500 EUR.",
     budgetFactors: [
       "ce funcționalități intră efectiv în prima lansare",
       "dacă produsul se dezvoltă nativ sau cross-platform",
