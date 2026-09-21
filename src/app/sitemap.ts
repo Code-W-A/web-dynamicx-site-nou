@@ -14,6 +14,10 @@ import {
 import type { BlogSitemapEntry } from "@/types/blog";
 import { mobileAppCaseStudies } from "@/app/(site)/portofoliu-aplicatii-mobile/mobile-app-portfolio-data";
 import { portfolioData } from "@/static-data/portfolio";
+import {
+  softwarePortfolio,
+  softwarePortfolioHubPath,
+} from "@/static-data/portfolio-additions";
 
 function resolvePostLastModified(post: {
   _updatedAt?: string;
@@ -201,6 +205,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...servicesRoutes,
     ...webPortfolioRoutes,
     ...mobilePortfolioRoutes,
+    { url: `${siteURL}${softwarePortfolioHubPath}` },
+    ...softwarePortfolio.map(({ slug }) => ({
+      url: `${siteURL}${softwarePortfolioHubPath}/${slug}`,
+    })),
     ...blogRoutes,
   ];
 }

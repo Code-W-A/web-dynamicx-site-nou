@@ -1,4 +1,5 @@
 /** Hub + studii de caz aplicații mobile — conținut SEO (suport pentru /servicii/dezvoltare-aplicatii-mobile). */
+import { additionalMobileStudies } from "@/static-data/mobile-portfolio-additions";
 
 export const mobileAppsServiceHref =
   "/servicii/dezvoltare-aplicatii-mobile" as const;
@@ -7,6 +8,9 @@ export const mobilePortfolioHubPath = "/portofoliu-aplicatii-mobile" as const;
 export type MobileCaseStudyGalleryItem = { src: string; alt: string };
 
 export type MobileCaseStudy = {
+  status?: string;
+  ctaLabel?: string;
+  relatedProjects?: { href: string; label: string }[];
   slug: string;
   cardTitle: string;
   h1: string;
@@ -78,7 +82,7 @@ export const mobilePortfolioHub = {
     "Mai jos găsești exemple de aplicații mobile dezvoltate pentru diferite tipuri de business — de la rezervări și marketplace-uri până la aplicații interne sau platforme de conținut.",
   metaTitle: "Portofoliu aplicații mobile — studii de caz | Web Dynamicx",
   metaDescription:
-    "Aplicații livrate în producție: programări, HoReCa, comunități, conținut. Studii de caz concrete — exemple reale, nu mockup-uri, înainte să discuți proiectul.",
+    "Studii de caz mobile: programări, servicii în teren, rezervări și conținut. Capturi, funcții și stadiul fiecărui produs.",
   /** Hero sub PageTitle: lăsat gol — conținutul principal e în H1 + descriere PageTitle. */
   heroLead: "",
   heroImpactLine: "",
@@ -106,7 +110,7 @@ export const mobilePortfolioHub = {
   },
   introHeading: "Ce construim",
   introParagraph1:
-    "Aici vezi aplicații livrate în producție, nu prezentări generice. Obiectivul fiecărui proiect: un flux clar pentru utilizator și pentru echipa ta.",
+    "Explorează aplicații publicate și experiențe demonstrative, cu stadiul explicat în fiecare studiu. Vezi fluxul utilizatorului și funcțiile realizate.",
   introParagraph2: "",
   introConsultBefore: "Pentru pași, livrabile și ofertă, vezi ",
   introConsultLinkText: "dezvoltare aplicații mobile",
@@ -146,26 +150,35 @@ export const mobilePortfolioHub = {
 };
 
 export const mobileAppCaseStudies: MobileCaseStudy[] = [
+  ...additionalMobileStudies,
   {
     slug: "ainevoie-market-servicii-curatenie",
-    cardTitle: "AInevoie — servicii de curățenie",
-    h1: "Aplicație mobilă pentru servicii de curățenie — cauți, compari, programezi și plătești din aplicație | studiu de caz",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.ainevoie.nrb",
+    status: "Publicată în Google Play",
+    ctaLabel: "Vreau o aplicație marketplace",
+    relatedProjects: [
+      {
+        href: "/portofoliu/ainevoie-website",
+        label: "AInevoie — website-ul de prezentare",
+      },
+    ],
+    cardTitle: "AInevoie — servicii locale",
+    h1: "Aplicație mobilă pentru servicii locale — cauți, compari și programezi din aplicație | studiu de caz",
     shortDescription:
-      "Platformă mobilă care conectează rapid clienții cu firme de curățenie și oferă un flux clar de alegere, programare și confirmare.",
-    metaTitle:
-      "AInevoie — servicii de curățenie | Studiu de caz | Web Dynamicx",
+      "Platformă mobilă care conectează rapid clienții cu prestatori locali și oferă un flux clar de alegere, programare și confirmare.",
+    metaTitle: "AInevoie — servicii locale | Studiu de caz | Web Dynamicx",
     metaDescription:
-      "AInevoie conectează rapid clienții cu firme de curățenie: cauți, compari, programezi și plătești simplu, direct din aplicație.",
+      "AInevoie conectează rapid clienții cu prestatori locali: cauți, compari și programezi direct din aplicație.",
     tags: [
       "Marketplace",
       "Servicii locale",
-      "Curățenie",
+      "Programări",
       "Clienți & prestatori",
     ],
     image:
       "/images/portofoliu/aplicatiimobile/AINEVOIE/utilizator_ecran_home.jpg",
-    imageAlt:
-      "AInevoie — ecran principal pentru alegerea firmelor de curățenie",
+    imageAlt: "AInevoie — ecran principal pentru alegerea prestatorilor locali",
     gallery: [
       {
         src: "/images/portofoliu/aplicatiimobile/AINEVOIE/splash.jpg",
@@ -173,7 +186,7 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
       },
       {
         src: "/images/portofoliu/aplicatiimobile/AINEVOIE/Onboarding_unu.jpg",
-        alt: "AInevoie — onboarding pentru utilizatorii care caută servicii de curățenie",
+        alt: "AInevoie — onboarding pentru utilizatorii care caută servicii locale",
       },
       {
         src: "/images/portofoliu/aplicatiimobile/AINEVOIE/Onboarding_doi.jpg",
@@ -185,7 +198,7 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
       },
       {
         src: "/images/portofoliu/aplicatiimobile/AINEVOIE/utilizator_ecran_home.jpg",
-        alt: "AInevoie — listă de firme de curățenie și alegere rapidă",
+        alt: "AInevoie — listă de prestatori locali și alegere rapidă",
       },
       {
         src: "/images/portofoliu/aplicatiimobile/AINEVOIE/utilizator_ecran_prestator.jpg",
@@ -197,7 +210,7 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
       },
       {
         src: "/images/portofoliu/aplicatiimobile/AINEVOIE/utilizator_ecran_confirmare_rezervare.jpg",
-        alt: "AInevoie — confirmare rezervare pentru servicii de curățenie",
+        alt: "AInevoie — confirmare rezervare pentru servicii locale",
       },
       {
         src: "/images/portofoliu/aplicatiimobile/AINEVOIE/Prestator_cereri.jpg",
@@ -215,9 +228,9 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
     gallerySectionLead:
       "Galeria acoperă ambele fluxuri importante din aplicație: experiența clientului care caută și programează, dar și experiența prestatorului care primește cereri și își organizează activitatea.",
     context:
-      "AInevoie pornește dintr-o problemă de piață pe două sensuri. De o parte sunt utilizatorii care vor să găsească rapid o firmă de curățenie, să compare opțiuni și să programeze fără apeluri și mesaje pierdute. De cealaltă parte sunt prestatorii care au nevoie de un profil clar, de recenzii credibile și de cereri mai bine filtrate. Fără o structură bună, alegerea devine greoaie pentru client, iar prestatorul primește solicitări neclare sau greu de urmărit.",
+      "AInevoie pornește dintr-o problemă de piață pe două sensuri. De o parte sunt utilizatorii care vor să găsească un prestator local, să compare opțiuni și să programeze un serviciu. De cealaltă parte sunt prestatorii care au nevoie de un profil clar, de recenzii și de cereri ușor de urmărit. Aplicația organizează aceste interacțiuni într-un marketplace comun.",
     objectives: [
-      "Alegere rapidă între firme de curățenie, fără fricțiune inutilă.",
+      "Alegere rapidă între prestatori locali, fără fricțiune inutilă.",
       "Comparație mai clară între prestatori, servicii și recenzii.",
       "Programare simplă și confirmare ușor de urmărit.",
       "Cereri mai bune și mai clare pentru prestatori.",
@@ -239,15 +252,14 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
     technologies: [
       "Aplicație mobilă gândită pentru utilizare zilnică, atât de către clienți, cât și de către prestatori",
       "Sistemul din spatele aplicației gestionează conturile, cererile, mesajele și programările",
-      "Structură pregătită pentru lansare reală și extindere ulterioară",
+      "Aplicație Android publicată în Google Play",
       "Flux de publicare și actualizare adaptat pentru magazinele de aplicații",
     ],
     impact: [
-      "Mai puțin timp pierdut în alegerea unei firme de curățenie.",
-      "Cereri mai clare și mai relevante pentru prestatori.",
-      "Profil mai profesionist și mai credibil pentru firmele listate.",
-      "Experiență mai fluidă pentru programare și confirmare.",
-      "Bază bună pentru extinderea ulterioară a platformei.",
+      "Catalog mobil cu profiluri de prestatori și servicii locale.",
+      "Cereri, calendar și confirmări în același produs.",
+      "Interfețe dedicate pentru client și prestator.",
+      "Aplicație Android disponibilă în Google Play.",
     ],
     cardBullets: [
       "Clientul caută și programează rapid din aplicație",
@@ -255,7 +267,7 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
       "Comparare, chat și confirmare într-un singur flux",
     ],
     goodForLabel: "marketplace-uri de servicii și platforme locale",
-    problemSolved: "găsirea rapidă a unei firme de curățenie",
+    problemSolved: "găsirea și contactarea prestatorilor locali",
     hubSpotlightParagraph:
       "Clienții caută și programează mai ușor, iar prestatorii primesc cereri mai clare într-un flux mobil unificat.",
     cardPrimaryCtaLabel: "Vezi proiectul",
@@ -364,97 +376,84 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
   },
   {
     slug: "coffee-buzz-cafenea-fidelizare-comenzi",
-    cardTitle: "Coffee Buzz — cafenea",
-    h1: "Aplicație mobilă pentru cafenele — comenzi rapide și clienți care revin",
+    cardTitle: "CoffeeBuzz — aplicație HoReCa",
+    h1: "CoffeeBuzz — explorarea meniului și un flux mobil de comandă",
     shortDescription:
-      "Un produs construit pentru a reduce aglomerația, a simplifica comenzile și a crea un canal direct cu clientul.",
-    metaTitle:
-      "Coffee Buzz — cafenea și comenzi mobile | Studiu de caz | Web Dynamicx",
+      "Aplicație Android publicată, cu meniu de cafea și gustări, personalizarea produselor și un parcurs demonstrativ de comandă.",
+    metaTitle: "CoffeeBuzz — aplicație HoReCa Android | Web Dynamicx",
     metaDescription:
-      "Meniu pe telefon, comenzi în avans, reveniri — mai puțină coadă la vârf de oră. Studiu de caz Coffee Buzz (HoReCa): flux documentat, nu prezentare generică.",
-    tags: [
-      "HoReCa & cafenea",
-      "Meniu în app",
-      "Comenzi anticipate",
-      "Fidelizare",
-    ],
+      "Studiu de caz CoffeeBuzz: meniu, personalizare și coș într-o aplicație Android publicată. Fluxuri demonstrative de comandă și plată.",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.mobitools.coffeebuzz",
+    status: "Publicată în Google Play · comandă și plată demonstrative",
+    ctaLabel: "Vreau o aplicație pentru locația mea",
+    tags: ["HoReCa", "Meniu mobil", "Demo de comandă"],
     image: "/images/portofoliu/aplicatiimobile/coffeebuzz5.jpg",
-    imageAlt: "Coffee Buzz — istoric comenzi și zona cont utilizator",
+    imageAlt: "CoffeeBuzz — interfața aplicației mobile",
     gallery: [
       {
         src: "/images/portofoliu/aplicatiimobile/coffeebuzz1.jpg",
-        alt: "Coffee Buzz — catalog băuturi și produse în aplicația cafenelei",
+        alt: "CoffeeBuzz: catalogul de produse",
       },
       {
         src: "/images/portofoliu/aplicatiimobile/coffeebuzz2.jpg",
-        alt: "Coffee Buzz: detaliu produs și opțiuni în meniul mobil",
+        alt: "CoffeeBuzz: detaliile unui produs",
       },
       {
         src: "/images/portofoliu/aplicatiimobile/coffeebuzz3.jpg",
-        alt: "Aplicația Coffee Buzz — coș și sumar comandă",
+        alt: "CoffeeBuzz: coșul de cumpărături",
       },
       {
         src: "/images/portofoliu/aplicatiimobile/coffeebuzz4.jpg",
-        alt: "Coffee Buzz: fereastră ridicare comandă (pickup)",
+        alt: "CoffeeBuzz: ecran din fluxul demonstrativ de comandă",
       },
     ],
     gallerySectionLead:
-      "Ecrane din aplicație care ilustrează fluxul complet: de la descoperirea produselor până la finalizarea comenzii.",
+      "Capturi ale interfeței: produse, opțiuni și coș. Comenzile și plățile sunt prezentate ca fluxuri demonstrative.",
     context:
-      "Cafenelele funcționează în jurul momentelor de vârf — dimineața, pauza de prânz sau weekendul. În aceste intervale apar cozi, comenzi ratate și presiune pe personal, iar experiența clientului devine greu de controlat. În același timp, majoritatea interacțiunii cu clientul se oprește după achiziție. Fără un canal direct, este dificil să încurajezi revenirea, să comunici oferte sau să construiești loialitate. Aplicația mobilă a fost gândită ca un punct de contact constant cu clientul: un loc în care poate vedea meniul, comanda din timp și reveni ușor, fără fricțiune. Pentru client, asta înseamnă timp pierdut. Pentru business, înseamnă oportunități ratate.",
+      "CoffeeBuzz explorează cum poate arăta o aplicație dedicată unei cafenele: utilizatorul descoperă meniul, personalizează produsele și parcurge pașii unei comenzi. Produsul publicat în Google Play demonstrează această experiență mobilă.",
     objectives: [
-      "Canal direct de comandă, fără dependență exclusivă de trafic la tejghea.",
-      "Mai puțină aglomerație în orele de vârf prin comenzi plasate în avans.",
-      "Alegere și comandă mai simple pentru client, pe telefon.",
-      "Revenire ușoară: flux rapid și familiar la a doua vizită.",
-      "Bază pentru comunicare și fidelizare pe termen lung.",
+      "Organizarea meniului pe categorii.",
+      "Selectarea mărimii și a opțiunilor produsului.",
+      "Prezentarea unui parcurs de la produs la coș și finalizare.",
     ],
     solution:
-      "Aplicația a fost construită în jurul unui flux simplu: descoperire rapidă a produselor, comandă în câțiva pași și posibilitatea de ridicare fără timp de așteptare.\n\nCatalogul este organizat astfel încât utilizatorul să ajungă rapid la ce caută, fără să parcurgă meniuri complicate. Produsele sunt prezentate clar, iar procesul de comandă este optimizat pentru mobil.\n\nÎn același timp, aplicația funcționează ca un canal de retenție. Clienții care au comandat o dată pot reveni ușor, fără să reia procesul, ceea ce contribuie la formarea unui obicei.",
-    featuresSectionLead:
-      "Funcționalități construite pentru a reduce pașii și a face procesul de comandă cât mai rapid.",
+      "Aplicația folosește un meniu în limba română și prețuri în lei. Utilizatorul își configurează profilul local, explorează produsele și parcurge ecranele de comandă. Datele profilului sunt păstrate pe dispozitiv. Opțiunile de plată și livrare fac parte din demonstrația interfeței; studiul nu prezintă încasări sau comenzi comerciale procesate de un backend verificat.",
     features: [
-      "Catalog pe categorii (băuturi, food, sezonier), parcurs rapid",
-      "Fișă produs clară; opțiuni simple doar unde e nevoie",
-      "Coș cu sumar și confirmare înainte de trimitere",
-      "Interval ales pentru ridicare la locație",
-      "Istoric și revenire rapidă la comenzi recente sau favorite",
-      "Pregătită pentru oferte și noutăți în meniu",
+      "Meniu cu băuturi și gustări",
+      "Opțiuni pentru mărime și extra-uri",
+      "Coș și sumar de comandă",
+      "Profil stocat local pe dispozitiv",
+      "Ecrane demonstrative pentru plată și livrare",
     ],
     technologies: [
-      "Aplicație pentru clienți, pentru uz zilnic pe telefon",
-      "Backend: meniu, comenzi, stări (în lucru / gata de ridicat)",
-      "Cont utilizator, date sincronizate între sesiuni",
-      "Pregătită pentru publicare în magazin la lansare",
+      "React Native și Expo",
+      "Stocare locală pentru profil",
+      "Interfață în română și prețuri în lei",
+      "Aplicație Android publicată în Google Play",
     ],
     impact: [
-      "Reducerea timpului petrecut la coadă și o experiență mai rapidă pentru clienți.",
-      "Posibilitatea de a plasa comenzi în avans și de a evita aglomerația.",
-      "Un canal direct prin care clienții pot reveni fără să depindă de trafic spontan.",
-      "O bază pentru fidelizare și comunicare constantă.",
-      "Control mai bun asupra modului în care este prezentată oferta cafenelei.",
+      "Experiență mobilă publicată și accesibilă pentru evaluare.",
+      "Flux vizual de la descoperirea meniului la finalizare.",
+      "Bază de discuție pentru un produs HoReCa cu integrări operaționale.",
     ],
     cardBullets: [
-      "Comenzi pe telefon, nu doar la tejghea",
-      "În avans în orele aglomerate",
-      "Clienți care revin — bază pentru mesaje țintite",
+      "Meniu și personalizarea produselor",
+      "Coș și parcurs demonstrativ de comandă",
+      "Aplicație publicată în Google Play",
     ],
-    goodForLabel: "cafenele și locații HoReCa",
-    problemSolved: "vârfurile de trafic și revenirea clienților",
+    goodForLabel: "cafenele și produse HoReCa",
+    problemSolved: "prezentarea meniului și a unui flux de comandă pe telefon",
     hubSpotlightParagraph:
-      "Mai puțină coadă, comenzi clare pe telefon și un canal prin care clienții pot reveni fără să o ia de la zero.",
-    cardPrimaryCtaLabel: "Vezi proiectul",
-    relatedSlugs: [
-      "styleconnect-rezervari-saloane",
-      "my-butterfly-recomandari-palete-tenis",
+      "Meniu, opțiuni de produs și coș într-o aplicație Android publicată, cu fluxuri demonstrative de comandă și plată.",
+    relatedSlugs: ["otp-parking-rezervari", "styleconnect-rezervari-saloane"],
+    relatedProjects: [
+      {
+        href: "/portofoliu/coffeebuzz-website",
+        label: "CoffeeBuzz — website-ul de prezentare",
+      },
     ],
-    relatedSectionIntro:
-      "Proiecte similare dezvoltate pentru business-uri reale, cu nevoi diferite.",
-    nextStepIntro:
-      "Dacă ai o cafenea sau un business similar și vrei un mod mai eficient de a prelua comenzi, de a reduce aglomerația și de a încuraja clienții să revină, o aplicație mobilă poate deveni un canal esențial. Poți continua cu ",
-    nextStepOutro:
-      " și să vezi cum abordăm astfel de produse, sau ne poți scrie direct pentru a discuta o variantă adaptată business-ului tău.",
-    serviceLinkPhrase: "aplicații mobile pentru retail, cafenele și HoReCa",
+    serviceLinkPhrase: "aplicații mobile pentru cafenele și HoReCa",
   },
   {
     slug: "my-butterfly-recomandari-palete-tenis",

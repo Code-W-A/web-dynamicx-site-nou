@@ -1,4 +1,5 @@
 import type { Portfolio, PortfolioSupportedService } from "@/types/portfolio";
+import { additionalWebPortfolio } from "./portfolio-additions";
 
 export const portfolioHubPath = "/portofoliu" as const;
 export const homepagePortfolioSlugs = [
@@ -9,17 +10,32 @@ export const homepagePortfolioSlugs = [
 ] as const;
 
 const portfolioServiceCatalog = {
-  "creare-site-web": { href: "/servicii/creare-site-web", label: "creare site web" },
-  "creare-site-prezentare": { href: "/servicii/creare-site-prezentare", label: "creare site de prezentare" },
-  "creare-magazin-online": { href: "/servicii/creare-magazin-online", label: "creare magazin online" },
+  "creare-site-web": {
+    href: "/servicii/creare-site-web",
+    label: "creare site web",
+  },
+  "creare-site-prezentare": {
+    href: "/servicii/creare-site-prezentare",
+    label: "creare site de prezentare",
+  },
+  "creare-magazin-online": {
+    href: "/servicii/creare-magazin-online",
+    label: "creare magazin online",
+  },
   "creare-magazin-online-shopify": {
     href: "/servicii/creare-magazin-online-shopify",
     label: "magazin online Shopify",
   },
   "web-design": { href: "/servicii/web-design", label: "web design" },
   "optimizare-seo": { href: "/servicii/optimizare-seo", label: "servicii SEO" },
-  "promovare-site": { href: "/servicii/promovare-site", label: "promovare site" },
-  "mentenanta-website": { href: "/servicii/mentenanta-website", label: "mentenanta website" },
+  "promovare-site": {
+    href: "/servicii/promovare-site",
+    label: "promovare site",
+  },
+  "mentenanta-website": {
+    href: "/servicii/mentenanta-website",
+    label: "mentenanta website",
+  },
 } as const;
 
 export type PortfolioServiceSlug = keyof typeof portfolioServiceCatalog;
@@ -30,6 +46,7 @@ export type PortfolioServiceMatch = {
 };
 
 export const portfolioData: Portfolio[] = [
+  ...additionalWebPortfolio,
   {
     id: "auto-detailing-parts",
     title: "Auto Detailing Parts - Magazin Online Piese Auto",
@@ -37,13 +54,16 @@ export const portfolioData: Portfolio[] = [
     sortDescription:
       "Magazin online complet pentru piese și accesorii auto, cu structură clară pe categorii și bază bună pentru conversii și SEO e-commerce.",
     image: "/images/portofoliu/auto-datiling-parts.webp",
-    imageAlt: "Magazin online Auto Detailing Parts cu pagini de categorii pentru piese auto",
+    imageAlt:
+      "Magazin online Auto Detailing Parts cu pagini de categorii pentru piese auto",
     liveUrl: "https://auto-detailing-parts.ro/",
     tags: ["web design", "e-commerce", "automotive"],
     categories: ["magazin online"],
     clientLabel: "E-commerce auto",
-    headline: "Magazin online pentru piese auto, gândit pentru catalog mare și decizii rapide de cumpărare",
-    metaTitle: "Auto Detailing Parts - magazin online piese auto | Portofoliu Web Dynamicx",
+    headline:
+      "Magazin online pentru piese auto, gândit pentru catalog mare și decizii rapide de cumpărare",
+    metaTitle:
+      "Auto Detailing Parts - magazin online piese auto | Portofoliu Web Dynamicx",
     metaDescription:
       "Studiu de caz web pentru un magazin online de piese auto: structură de categorii, experiență de cumpărare și bază SEO pentru un catalog extins.",
     context:
@@ -60,18 +80,25 @@ export const portfolioData: Portfolio[] = [
     supportedServices: [
       {
         slug: "creare-magazin-online",
-        reason: "arată cum structurăm un magazin online cu multe categorii și cu focus pe conversie",
+        reason:
+          "arată cum structurăm un magazin online cu multe categorii și cu focus pe conversie",
       },
       {
         slug: "creare-site-web",
-        reason: "demonstrează livrare custom pentru un proiect web complex, nu doar un template simplu",
+        reason:
+          "demonstrează livrare custom pentru un proiect web complex, nu doar un template simplu",
       },
       {
         slug: "mentenanta-website",
-        reason: "un catalog mare are nevoie de evoluție, optimizare și administrare constantă după lansare",
+        reason:
+          "un catalog mare are nevoie de evoluție, optimizare și administrare constantă după lansare",
       },
     ],
-    relatedSlugs: ["d-toate-magazin-online", "firsttech-echipamente-industriale", "promovare-digitala"],
+    relatedSlugs: [
+      "d-toate-magazin-online",
+      "firsttech-echipamente-industriale",
+      "promovare-digitala",
+    ],
   },
   {
     id: "studio-by-cristian-design",
@@ -79,14 +106,18 @@ export const portfolioData: Portfolio[] = [
     slug: "studio-by-cristian-design",
     sortDescription:
       "Site premium pentru studio de design interior și mobilier personalizat, construit pentru poziționare vizuală și prezentare elegantă a serviciilor.",
-    image: "/images/portofoliu/Studio-by-Cristian-Design&Furniture-portofoliu.webp",
-    imageAlt: "Website Studio by Cristian cu prezentare premium pentru design interior si mobilier",
+    image:
+      "/images/portofoliu/Studio-by-Cristian-Design&Furniture-portofoliu.webp",
+    imageAlt:
+      "Website Studio by Cristian cu prezentare premium pentru design interior si mobilier",
     liveUrl: "https://www.studiobycristian.com/",
     tags: ["web design", "premium"],
     categories: ["design studio"],
     clientLabel: "Studio de design interior",
-    headline: "Website premium pentru design interior și mobilier personalizat, cu accent pe imagine și încredere",
-    metaTitle: "Studio by Cristian - site premium design interior | Portofoliu Web Dynamicx",
+    headline:
+      "Website premium pentru design interior și mobilier personalizat, cu accent pe imagine și încredere",
+    metaTitle:
+      "Studio by Cristian - site premium design interior | Portofoliu Web Dynamicx",
     metaDescription:
       "Studiu de caz web pentru un studio de design interior: prezentare premium, structură clară a serviciilor și experiență vizuală coerentă.",
     context:
@@ -103,18 +134,25 @@ export const portfolioData: Portfolio[] = [
     supportedServices: [
       {
         slug: "web-design",
-        reason: "este un exemplu clar de proiect în care designul și direcția vizuală susțin direct poziționarea brandului",
+        reason:
+          "este un exemplu clar de proiect în care designul și direcția vizuală susțin direct poziționarea brandului",
       },
       {
         slug: "creare-site-prezentare",
-        reason: "arată cum poate arăta un site de prezentare care vinde prin imagine și claritate, nu doar prin text",
+        reason:
+          "arată cum poate arăta un site de prezentare care vinde prin imagine și claritate, nu doar prin text",
       },
       {
         slug: "creare-site-web",
-        reason: "demonstrează implementare custom pentru un website de business cu standard vizual ridicat",
+        reason:
+          "demonstrează implementare custom pentru un website de business cu standard vizual ridicat",
       },
     ],
-    relatedSlugs: ["firsttech-echipamente-industriale", "cristina-zurba", "juridic-broker-asigurari"],
+    relatedSlugs: [
+      "firsttech-echipamente-industriale",
+      "cristina-zurba",
+      "juridic-broker-asigurari",
+    ],
   },
   {
     id: "firsttech-echipamente-industriale",
@@ -122,14 +160,17 @@ export const portfolioData: Portfolio[] = [
     slug: "firsttech-echipamente-industriale",
     sortDescription:
       "Platformă B2B pentru echipamente industriale, gândită pentru prezentare clară de soluții tehnice și cereri comerciale mai bine structurate.",
-    image: "/images/portofoliu/FirstTech-Echipamente-Industriale-portofoliu.webp",
+    image:
+      "/images/portofoliu/FirstTech-Echipamente-Industriale-portofoliu.webp",
     imageAlt: "Website FirstTech pentru echipamente industriale si solutii B2B",
     liveUrl: "https://www.firsttech.ro/",
     tags: ["web design", "B2B", "industrial"],
     categories: ["corporate"],
     clientLabel: "Business B2B industrial",
-    headline: "Platformă web B2B pentru echipamente industriale, cu structură orientată pe soluții și lead-uri",
-    metaTitle: "FirstTech - platforma web B2B industriala | Portofoliu Web Dynamicx",
+    headline:
+      "Platformă web B2B pentru echipamente industriale, cu structură orientată pe soluții și lead-uri",
+    metaTitle:
+      "FirstTech - platforma web B2B industriala | Portofoliu Web Dynamicx",
     metaDescription:
       "Studiu de caz pentru un website B2B industrial: structură pe soluții, prezentare tehnică clară și suport pentru lead-uri comerciale.",
     context:
@@ -146,18 +187,25 @@ export const portfolioData: Portfolio[] = [
     supportedServices: [
       {
         slug: "creare-site-web",
-        reason: "arată cum construim proiecte web mai complexe, cu structură clară pentru conținut B2B",
+        reason:
+          "arată cum construim proiecte web mai complexe, cu structură clară pentru conținut B2B",
       },
       {
         slug: "web-design",
-        reason: "este un exemplu de interfață curată într-un context tehnic și corporativ",
+        reason:
+          "este un exemplu de interfață curată într-un context tehnic și corporativ",
       },
       {
         slug: "mentenanta-website",
-        reason: "site-urile cu multe pagini și informații tehnice au nevoie de actualizări și optimizare continuă",
+        reason:
+          "site-urile cu multe pagini și informații tehnice au nevoie de actualizări și optimizare continuă",
       },
     ],
-    relatedSlugs: ["studio-by-cristian-design", "juridic-broker-asigurari", "promovare-digitala"],
+    relatedSlugs: [
+      "studio-by-cristian-design",
+      "juridic-broker-asigurari",
+      "promovare-digitala",
+    ],
   },
   {
     id: "alex-relax-hotel",
@@ -168,11 +216,15 @@ export const portfolioData: Portfolio[] = [
     image: "/images/portofoliu/Alex-Relax-Hotel-portofoliu.webp",
     imageAlt: "Website Alex Relax Hotel cu prezentare camere si facilitati",
     liveUrl: "https://alex-relax-hotel.vercel.app/",
+    liveLabel: "Vezi prezentarea hotelului",
+    status: "Website de prezentare · camere și facilități",
     tags: ["web design", "hospitality"],
     categories: ["hotel"],
     clientLabel: "Hotel și HoReCa",
-    headline: "Site de prezentare pentru hotel, orientat pe claritate, încredere și cereri de rezervare",
-    metaTitle: "Alex Relax Hotel - site hotel si rezervari | Portofoliu Web Dynamicx",
+    headline:
+      "Alex Relax Hotel — prezentarea camerelor, facilităților și contactului",
+    metaTitle:
+      "Alex Relax Hotel - site hotel si rezervari | Portofoliu Web Dynamicx",
     metaDescription:
       "Studiu de caz pentru un website hotelier: structură de prezentare, conținut clar pentru camere și facilități și bază bună pentru trafic local.",
     context:
@@ -180,7 +232,7 @@ export const portfolioData: Portfolio[] = [
     challenge:
       "Principala provocare a fost să păstrăm prezentarea suficient de atractivă vizual, dar fără a sacrifica accesul rapid la informații concrete. În HoReCa, site-ul trebuie să susțină atât brandingul, cât și acțiunea imediată.",
     solution:
-      "Am construit o pagină de prezentare orientată pe camere, beneficii și pași simpli de contact. Proiectul a fost gândit pentru mobil, cu accent pe lizibilitate, imagini bine integrate și secțiuni care răspund rapid la întrebările frecvente ale unui potențial client.",
+      "Prezentarea organizează camerele, facilitățile, galeria și contactul în secțiuni distincte. Paginile publice afișează tipuri de camere și tarife, împreună cu acțiuni de rezervare. Studiul acoperă experiența de prezentare; nu documentează un sistem de disponibilitate sau de plată online.",
     outcome: [
       "Experiență mai clară pentru utilizatorii care caută rapid informații despre locație.",
       "Structură potrivită pentru un site de prezentare local, cu obiectiv comercial clar.",
@@ -189,18 +241,25 @@ export const portfolioData: Portfolio[] = [
     supportedServices: [
       {
         slug: "creare-site-prezentare",
-        reason: "arată cum poate arăta un site de prezentare orientat pe informație clară și contact rapid",
+        reason:
+          "arată cum poate arăta un site de prezentare orientat pe informație clară și contact rapid",
       },
       {
         slug: "web-design",
-        reason: "demonstrează cum poate fi folosit designul pentru a susține încrederea într-un business din HoReCa",
+        reason:
+          "demonstrează cum poate fi folosit designul pentru a susține încrederea într-un business din HoReCa",
       },
       {
         slug: "optimizare-seo",
-        reason: "site-urile locale din hospitality au nevoie de o structură bună pentru căutări informaționale și comerciale",
+        reason:
+          "site-urile locale din hospitality au nevoie de o structură bună pentru căutări informaționale și comerciale",
       },
     ],
-    relatedSlugs: ["juridic-broker-asigurari", "studio-by-cristian-design", "promovare-digitala"],
+    relatedSlugs: [
+      "juridic-broker-asigurari",
+      "studio-by-cristian-design",
+      "promovare-digitala",
+    ],
   },
   {
     id: "juridic-broker-asigurari",
@@ -209,13 +268,16 @@ export const portfolioData: Portfolio[] = [
     sortDescription:
       "Site de servicii pentru agenție de asigurări, construit pentru prezentare clară, lead generation și conținut de încredere.",
     image: "/images/portofoliu/Juridic-Broker-Asigurari-portofoliu.webp",
-    imageAlt: "Website Juridic Broker pentru servicii de asigurari si lead generation",
+    imageAlt:
+      "Website Juridic Broker pentru servicii de asigurari si lead generation",
     liveUrl: "https://juridic-broker.vercel.app/",
     tags: ["web design", "asigurari"],
     categories: ["servicii"],
     clientLabel: "Servicii financiare și asigurări",
-    headline: "Site de servicii pentru asigurări, gândit pentru claritate, încredere și lead-uri",
-    metaTitle: "Juridic Broker - site servicii asigurari | Portofoliu Web Dynamicx",
+    headline:
+      "Site de servicii pentru asigurări, gândit pentru claritate, încredere și lead-uri",
+    metaTitle:
+      "Juridic Broker - site servicii asigurari | Portofoliu Web Dynamicx",
     metaDescription:
       "Studiu de caz pentru un website de servicii în zona asigurărilor: structură clară a ofertei, lead generation și bază bună pentru SEO.",
     context:
@@ -232,18 +294,25 @@ export const portfolioData: Portfolio[] = [
     supportedServices: [
       {
         slug: "creare-site-prezentare",
-        reason: "demonstrează cum poate fi construit un site de servicii orientat pe lead generation și claritate",
+        reason:
+          "demonstrează cum poate fi construit un site de servicii orientat pe lead generation și claritate",
       },
       {
         slug: "promovare-site",
-        reason: "arată un tip de business unde traficul și promovarea au sens doar dacă site-ul convertește clar",
+        reason:
+          "arată un tip de business unde traficul și promovarea au sens doar dacă site-ul convertește clar",
       },
       {
         slug: "optimizare-seo",
-        reason: "site-urile de servicii au nevoie de pagini bine structurate pentru intenții comerciale și informaționale",
+        reason:
+          "site-urile de servicii au nevoie de pagini bine structurate pentru intenții comerciale și informaționale",
       },
     ],
-    relatedSlugs: ["alex-relax-hotel", "firsttech-echipamente-industriale", "promovare-digitala"],
+    relatedSlugs: [
+      "alex-relax-hotel",
+      "firsttech-echipamente-industriale",
+      "promovare-digitala",
+    ],
   },
   {
     id: "promovare-digitala",
@@ -252,13 +321,16 @@ export const portfolioData: Portfolio[] = [
     sortDescription:
       "Site de agenție de marketing, cu structură de servicii, studii de caz și blog, gândit pentru vizibilitate și conversii.",
     image: "/images/portofoliu/Promovare-Digitala-Marketing-Portofoliu.webp",
-    imageAlt: "Website agentie marketing Promovare Digitala cu servicii si studii de caz",
-    liveUrl: "https://www.promovare-digitala.ro/",
+    imageAlt:
+      "Website agentie marketing Promovare Digitala cu servicii si studii de caz",
+    status: "Studiu de caz arhivat · website extern indisponibil",
     tags: ["web design", "marketing"],
     categories: ["agenție"],
     clientLabel: "Agenție marketing",
-    headline: "Website de agenție marketing, construit pentru servicii, conținut și dovadă de expertiză",
-    metaTitle: "Promovare Digitala - site agentie marketing | Portofoliu Web Dynamicx",
+    headline:
+      "Website de agenție marketing, construit pentru servicii, conținut și dovadă de expertiză",
+    metaTitle:
+      "Promovare Digitala - site agentie marketing | Portofoliu Web Dynamicx",
     metaDescription:
       "Studiu de caz pentru un site de agenție marketing: structură de servicii, resurse și studii de caz care susțin vizibilitatea și conversia.",
     context:
@@ -275,18 +347,25 @@ export const portfolioData: Portfolio[] = [
     supportedServices: [
       {
         slug: "optimizare-seo",
-        reason: "este un exemplu clar de site în care structura și conținutul susțin strategia SEO pe termen lung",
+        reason:
+          "este un exemplu clar de site în care structura și conținutul susțin strategia SEO pe termen lung",
       },
       {
         slug: "promovare-site",
-        reason: "arată cum trebuie să arate baza tehnică și de mesaj înainte să investești în promovare",
+        reason:
+          "arată cum trebuie să arate baza tehnică și de mesaj înainte să investești în promovare",
       },
       {
         slug: "creare-site-web",
-        reason: "demonstrează cum construim un site complex, cu servicii, resurse și secțiuni de dovadă",
+        reason:
+          "demonstrează cum construim un site complex, cu servicii, resurse și secțiuni de dovadă",
       },
     ],
-    relatedSlugs: ["juridic-broker-asigurari", "cristina-zurba", "firsttech-echipamente-industriale"],
+    relatedSlugs: [
+      "juridic-broker-asigurari",
+      "cristina-zurba",
+      "firsttech-echipamente-industriale",
+    ],
   },
   {
     id: "cristina-zurba",
@@ -300,8 +379,10 @@ export const portfolioData: Portfolio[] = [
     tags: ["web design", "content"],
     categories: ["personal"],
     clientLabel: "Brand personal și conținut",
-    headline: "Platformă de conținut și servicii pentru un brand personal, cu structură pregătită pentru creștere",
-    metaTitle: "Cristina Zurba - platforma de continut si servicii | Portofoliu Web Dynamicx",
+    headline:
+      "Platformă de conținut și servicii pentru un brand personal, cu structură pregătită pentru creștere",
+    metaTitle:
+      "Cristina Zurba - platforma de continut si servicii | Portofoliu Web Dynamicx",
     metaDescription:
       "Studiu de caz pentru un website de brand personal: conținut, servicii și experiență web coerentă într-un singur ecosistem digital.",
     context:
@@ -318,18 +399,25 @@ export const portfolioData: Portfolio[] = [
     supportedServices: [
       {
         slug: "creare-site-web",
-        reason: "arată cum construim platforme web mai mari, cu roluri diferite pentru servicii, blog și conținut",
+        reason:
+          "arată cum construim platforme web mai mari, cu roluri diferite pentru servicii, blog și conținut",
       },
       {
         slug: "web-design",
-        reason: "demonstrează un proiect în care identitatea vizuală trebuie să rămână coerentă pe mai multe tipuri de pagini",
+        reason:
+          "demonstrează un proiect în care identitatea vizuală trebuie să rămână coerentă pe mai multe tipuri de pagini",
       },
       {
         slug: "optimizare-seo",
-        reason: "site-urile de conținut au nevoie de o arhitectură bună pentru a susține articolele și paginile comerciale în același timp",
+        reason:
+          "site-urile de conținut au nevoie de o arhitectură bună pentru a susține articolele și paginile comerciale în același timp",
       },
     ],
-    relatedSlugs: ["studio-by-cristian-design", "promovare-digitala", "juridic-broker-asigurari"],
+    relatedSlugs: [
+      "studio-by-cristian-design",
+      "promovare-digitala",
+      "juridic-broker-asigurari",
+    ],
   },
   {
     id: "d-toate-magazin-online",
@@ -338,13 +426,16 @@ export const portfolioData: Portfolio[] = [
     sortDescription:
       "Magazin online cu structură clară și UX orientat pe conversie, construit pentru parcurs rapid de la categorie la comandă.",
     image: "/images/portofoliu/d-toate.webp",
-    imageAlt: "Magazin online D-Toate cu categorii si pagini de produs orientate pe conversie",
+    imageAlt:
+      "Magazin online D-Toate cu categorii si pagini de produs orientate pe conversie",
     liveUrl: "https://d-toate.ro/",
     tags: ["web design", "e-commerce"],
     categories: ["magazin online"],
     clientLabel: "E-commerce generalist",
-    headline: "Magazin online pentru produse diverse, cu accent pe claritate și experiență de cumpărare",
-    metaTitle: "D-Toate - magazin online cu focus pe conversie | Portofoliu Web Dynamicx",
+    headline:
+      "Magazin online pentru produse diverse, cu accent pe claritate și experiență de cumpărare",
+    metaTitle:
+      "D-Toate - magazin online cu focus pe conversie | Portofoliu Web Dynamicx",
     metaDescription:
       "Studiu de caz pentru un magazin online generalist: structură de categorii, UX pentru conversie și bază bună pentru optimizare continuă.",
     context:
@@ -361,18 +452,25 @@ export const portfolioData: Portfolio[] = [
     supportedServices: [
       {
         slug: "creare-magazin-online",
-        reason: "arată cum abordăm magazine online unde structura și fluxul de cumpărare sunt esențiale",
+        reason:
+          "arată cum abordăm magazine online unde structura și fluxul de cumpărare sunt esențiale",
       },
       {
         slug: "optimizare-seo",
-        reason: "magazinele online au nevoie de categorii și pagini comerciale pregătite pentru creștere organică",
+        reason:
+          "magazinele online au nevoie de categorii și pagini comerciale pregătite pentru creștere organică",
       },
       {
         slug: "mentenanta-website",
-        reason: "un e-commerce real are nevoie de ajustări, actualizări și optimizări după lansare",
+        reason:
+          "un e-commerce real are nevoie de ajustări, actualizări și optimizări după lansare",
       },
     ],
-    relatedSlugs: ["auto-detailing-parts", "firsttech-echipamente-industriale", "promovare-digitala"],
+    relatedSlugs: [
+      "auto-detailing-parts",
+      "firsttech-echipamente-industriale",
+      "promovare-digitala",
+    ],
   },
 ];
 
@@ -417,10 +515,15 @@ export function getPrimaryPortfolioService(portfolio: Portfolio) {
   };
 }
 
-export function getPortfolioItemsForService(serviceSlug: string, limit = 3): PortfolioServiceMatch[] {
+export function getPortfolioItemsForService(
+  serviceSlug: string,
+  limit = 3,
+): PortfolioServiceMatch[] {
   return portfolioData
     .flatMap((portfolio, originalIndex) => {
-      const matchIndex = portfolio.supportedServices.findIndex((item) => item.slug === serviceSlug);
+      const matchIndex = portfolio.supportedServices.findIndex(
+        (item) => item.slug === serviceSlug,
+      );
       if (matchIndex === -1) {
         return [];
       }
@@ -434,7 +537,11 @@ export function getPortfolioItemsForService(serviceSlug: string, limit = 3): Por
         },
       ];
     })
-    .sort((left, right) => left.matchIndex - right.matchIndex || left.originalIndex - right.originalIndex)
+    .sort(
+      (left, right) =>
+        left.matchIndex - right.matchIndex ||
+        left.originalIndex - right.originalIndex,
+    )
     .slice(0, limit)
     .map(({ portfolio, support }) => ({ portfolio, support }));
 }

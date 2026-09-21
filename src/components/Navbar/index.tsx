@@ -189,9 +189,7 @@ export default function Navbar() {
                                   className={`${
                                     pathUrl === `${item?.href}` ||
                                     (item?.href === "/portofoliu" &&
-                                      pathUrl.startsWith(
-                                        "/portofoliu-aplicatii-mobile",
-                                      ))
+                                      pathUrl.startsWith("/portofoliu"))
                                       ? "text-primary"
                                       : ""
                                   } group-hover:text-primary flex-1 ${item?.href?.startsWith("#") ? "menu-scroll" : ""}`}
@@ -244,11 +242,11 @@ export default function Navbar() {
                                 {item?.submenu.map((subItem) => {
                                   const subActive =
                                     pathUrl === subItem?.href ||
-                                    (subItem?.href ===
-                                      "/portofoliu-aplicatii-mobile" &&
-                                      pathUrl.startsWith(
-                                        "/portofoliu-aplicatii-mobile",
-                                      ));
+                                    ((subItem?.href ===
+                                      "/portofoliu-aplicatii-mobile" ||
+                                      subItem?.href ===
+                                        "/portofoliu-software") &&
+                                      pathUrl.startsWith(`${subItem.href}/`));
                                   return (
                                     <li key={subItem?.id}>
                                       <Link
