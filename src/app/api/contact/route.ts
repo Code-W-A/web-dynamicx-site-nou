@@ -78,6 +78,24 @@ export async function POST(request: Request) {
         secure: process.env.NODE_ENV === "production",
       });
     }
+    if (source === "lead-web-site") {
+      res.cookies.set("wd_web_sites_ty", "1", {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        maxAge: 900,
+        secure: process.env.NODE_ENV === "production",
+      });
+    }
+    if (source === "lead-magazin-online") {
+      res.cookies.set("wd_online_store_ty", "1", {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        maxAge: 900,
+        secure: process.env.NODE_ENV === "production",
+      });
+    }
     return res;
   } catch (error) {
     return NextResponse.json(
@@ -86,5 +104,3 @@ export async function POST(request: Request) {
     );
   }
 }
-
-

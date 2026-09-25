@@ -1,6 +1,7 @@
 "use client";
 
 import { type FormEvent, useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Mail, MessageCircle, PhoneCall } from "lucide-react";
@@ -30,6 +31,7 @@ const initialState: FormState = {
 };
 
 export default function LeadFormSection() {
+  const router = useRouter();
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -103,6 +105,7 @@ export default function LeadFormSection() {
       setForm(initialState);
       setFieldErrors({});
       toast.success("Mesaj trimis cu succes. Revenim in cel mai scurt timp.");
+      router.replace("/multumim-site-web");
     } catch (err: any) {
       const apiError = err?.response?.data?.error || "A aparut o eroare. Incearca din nou.";
       setError(apiError);
