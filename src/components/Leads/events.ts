@@ -5,6 +5,9 @@ import type { LeadSource } from "./types";
 
 // Only predefined UI metadata belongs here. Never pass form values or the URL query.
 type EventDetails = {
+  project_slug?: "studio-by-cristian-design";
+  page_path?: "/multumim-site-web";
+  flow?: "lead-web-site";
   placement?: string;
   package_name?: string;
   lead_type?: "contact_form" | "phone" | "whatsapp" | "email";

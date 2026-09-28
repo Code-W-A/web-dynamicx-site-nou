@@ -25,7 +25,7 @@ export function LeadHeader({ source }: { source: LeadSource }) {
           className="flex items-center gap-3 text-xs font-semibold text-slate-700 sm:gap-7 sm:text-sm"
         >
           <a href="#proiecte" className="hover:text-primary py-3">
-            Proiecte
+            {source === "lead-web-site" ? "Exemplu de site" : "Proiecte"}
           </a>
           <a href="#preturi" className="hover:text-primary py-3">
             Prețuri

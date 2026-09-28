@@ -27,6 +27,23 @@ export function LeadSelectionProvider({ children }: { children: ReactNode }) {
 
 export const useLeadSelection = () => useContext(SelectionContext);
 
+export function ProjectLink({ children }: { children: ReactNode }) {
+  return (
+    <a
+      href="https://www.studiobycristian.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() =>
+        emitLeadEvent("lead-web-site", "project_click", {
+          project_slug: "studio-by-cristian-design",
+        })
+      }
+    >
+      {children}
+    </a>
+  );
+}
+
 export function LeadCta({
   source,
   placement,

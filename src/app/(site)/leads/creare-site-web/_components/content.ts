@@ -17,14 +17,14 @@ export const leadConfig: LeadPageConfig = {
   formName: "lead_web_site_form",
   submitEvent: "lead_web_site_form_submit",
   label: "Creare site web",
-  title: "Creare site web pentru o afacere care inspiră încredere",
+  title: "Creare site web pentru firme, de la 1.800 lei",
   description:
-    "Arată ce oferi, pune proiectele în valoare și fă primul contact mai simplu. Construim un site care îți reprezintă afacerea, pe mobil și desktop.",
+    "Prezintă-ți serviciile profesionist și fă-le clienților mai ușor să te contacteze. Realizăm site-uri adaptate afacerii tale, pe mobil și desktop.",
   cta: "Cere ofertă pentru site",
   startingPrice: "1.800 lei",
   heroProject: "studio-by-cristian-design",
   heroImage: "/images/leads/studio-by-cristian.webp",
-  heroCaption: "Studio by Cristian · Design interior & mobilier",
+  heroCaption: "Studio by Cristian — website realizat de WebDynamicX",
   projects: [
     {
       slug: "studio-by-cristian-design",
@@ -38,16 +38,15 @@ export const leadConfig: LeadPageConfig = {
     },
   ],
   included: [
-    "Design adaptat afacerii tale",
-    "Experiență pe mobil și desktop",
-    "Conținut și SEO on-page",
-    "Formular de contact și administrare",
+    "Găzduire inclusă 12 luni.",
+    "Formular de contact.",
+    "Administrarea conținutului.",
   ],
   packages: [
     {
       name: "Start Up Pro",
       price: "1.800 lei",
-      audience: "Pentru o prezentare clară a unei afaceri mici.",
+      audience: "Site de prezentare esențial",
       delivery: "1–2 săptămâni",
       items: [
         "Maximum 4 pagini",
@@ -60,7 +59,7 @@ export const leadConfig: LeadPageConfig = {
     {
       name: "Business Pro",
       price: "3.300 lei",
-      audience: "Pentru mai multe servicii și o prezență în creștere.",
+      audience: "Mai multe servicii și pagini",
       delivery: "2–4 săptămâni",
       items: [
         "Maximum 8 pagini",
@@ -73,7 +72,7 @@ export const leadConfig: LeadPageConfig = {
     {
       name: "Enterprise Pro",
       price: "5.500 lei",
-      audience: "Pentru o structură extinsă și funcții suplimentare.",
+      audience: "Funcționalități avansate",
       delivery: "4–8 săptămâni",
       items: [
         "Maximum 16 pagini",
@@ -92,7 +91,7 @@ export const leadConfig: LeadPageConfig = {
     "Site la abonament",
   ],
   messageHint:
-    "Cu ce se ocupă afacerea ta și ce ai vrea să găsească vizitatorii pe site?",
+    "Cu ce se ocupă afacerea ta și ce ai nevoie să prezinte site-ul?",
   faqs: [
     {
       question: "Cât durează realizarea site-ului?",

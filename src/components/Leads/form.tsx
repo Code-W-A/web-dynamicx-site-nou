@@ -5,6 +5,10 @@ import { useRouter } from "next/navigation";
 import type { LeadPageConfig } from "./types";
 import { emitLeadEvent } from "./events";
 import { useLeadSelection } from "./interactions";
+import {
+  markWebSiteSubmission,
+  webSiteSuccessMessage,
+} from "./web-site-confirmation";
 
 const initialForm = {
   name: "",
@@ -38,6 +42,7 @@ type FormConfig = Pick<
 
 export default function LeadForm({ config }: { config: FormConfig }) {
   const router = useRouter();
+  const isWebSite = config.source === "lead-web-site";
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState<Errors>({});
   const [requestError, setRequestError] = useState("");
@@ -110,6 +115,7 @@ export default function LeadForm({ config }: { config: FormConfig }) {
           company: form.company.trim(),
           projectType: form.projectType,
           budget: form.budget.trim(),
+          ...(isWebSite ? { description: form.message.trim() } : {}),
           source: config.source,
           page: config.path,
           message: [
@@ -127,13 +133,17 @@ export default function LeadForm({ config }: { config: FormConfig }) {
       });
       const result = await response.json();
       if (!response.ok || result.ok !== true) throw new Error("request_failed");
-      emitLeadEvent(config.source, "generate_lead", {
-        lead_type: "contact_form",
-        form_name: config.formName,
-      });
-      emitLeadEvent(config.source, config.submitEvent, {
-        form_name: config.formName,
-      });
+      if (isWebSite) {
+        markWebSiteSubmission();
+      } else {
+        emitLeadEvent(config.source, "generate_lead", {
+          lead_type: "contact_form",
+          form_name: config.formName,
+        });
+        emitLeadEvent(config.source, config.submitEvent, {
+          form_name: config.formName,
+        });
+      }
       setSent(true);
       router.replace(config.thankYouPath);
     } catch {
@@ -178,10 +188,15 @@ export default function LeadForm({ config }: { config: FormConfig }) {
       aria-label="Cerere de ofertă"
       aria-busy={loading}
     >
-      <h3>Hai să vorbim despre proiect.</h3>
+      <h3>
+        {isWebSite
+          ? "Spune-ne despre afacerea ta."
+          : "Hai să vorbim despre proiect."}
+      </h3>
       <p className="lead-form-intro">
-        Completează câteva detalii. Revenim pentru a clarifica cerințele și a
-        pregăti oferta.
+        {isWebSite
+          ? "Descrie pe scurt ce ai nevoie. Revenim pentru a clarifica proiectul și a pregăti oferta."
+          : "Completează câteva detalii. Revenim pentru a clarifica cerințele și a pregăti oferta."}
       </p>
       {selectedProject ? (
         <p className="lead-selection">
@@ -230,20 +245,37 @@ export default function LeadForm({ config }: { config: FormConfig }) {
         </label>
       </div>
       <label htmlFor="lead-message">
-        Ce ai vrea să construim? <span aria-hidden="true">*</span>
+        {isWebSite ? config.messageHint : "Ce ai vrea să construim?"}{" "}
+        <span aria-hidden="true">*</span>
         <textarea
           id="lead-message"
           name="message"
           rows={3}
           required
           maxLength={5000}
-          placeholder={config.messageHint}
+          placeholder={isWebSite ? undefined : config.messageHint}
           value={form.message}
           onChange={(e) => update("message", e.target.value)}
           {...accessibility("message")}
         />
         {fieldError("message")}
       </label>
+      {isWebSite ? (
+        <label htmlFor="lead-package">
+          Pachet
+          <select
+            id="lead-package"
+            name="package"
+            value={selectedPackage}
+            onChange={(e) => selectPackage(e.target.value)}
+          >
+            <option value="">Vreau o recomandare</option>
+            {config.packages.map((item) => (
+              <option key={item.name}>{item.name}</option>
+            ))}
+          </select>
+        </label>
+      ) : null}
       <details className="lead-optional">
         <summary>Adaugă detalii opționale</summary>
         <div className="lead-form-row">
@@ -261,20 +293,22 @@ export default function LeadForm({ config }: { config: FormConfig }) {
               ))}
             </select>
           </label>
-          <label htmlFor="lead-package">
-            Pachet
-            <select
-              id="lead-package"
-              name="package"
-              value={selectedPackage}
-              onChange={(e) => selectPackage(e.target.value)}
-            >
-              <option value="">Vreau o recomandare</option>
-              {config.packages.map((item) => (
-                <option key={item.name}>{item.name}</option>
-              ))}
-            </select>
-          </label>
+          {!isWebSite ? (
+            <label htmlFor="lead-package">
+              Pachet
+              <select
+                id="lead-package"
+                name="package"
+                value={selectedPackage}
+                onChange={(e) => selectPackage(e.target.value)}
+              >
+                <option value="">Vreau o recomandare</option>
+                {config.packages.map((item) => (
+                  <option key={item.name}>{item.name}</option>
+                ))}
+              </select>
+            </label>
+          ) : null}
           <label htmlFor="lead-company">
             Firmă
             <input
@@ -333,7 +367,11 @@ export default function LeadForm({ config }: { config: FormConfig }) {
         </p>
       ) : null}
       {sent ? (
-        <p role="status">Cererea a fost trimisă. Deschidem confirmarea…</p>
+        <p role="status">
+          {isWebSite
+            ? webSiteSuccessMessage
+            : "Cererea a fost trimisă. Deschidem confirmarea…"}
+        </p>
       ) : null}
       <button
         type="submit"

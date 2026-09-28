@@ -2,6 +2,8 @@
 
 Implemented 2026-09-25. Routes: `/leads/creare-site-web` and `/leads/creare-magazin-online`.
 
+> Website-flow update (2026-09-28): see [website-lead-update.md](./website-lead-update.md). Its website copy, screenshots and single-conversion contract supersede the corresponding notes below. Commerce notes remain applicable.
+
 ## Editorial and implementation decisions
 
 - Site: Studio by Cristian is the featured project. Store: D-Toate and Auto Detailing Parts only.

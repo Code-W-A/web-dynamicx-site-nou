@@ -8,6 +8,7 @@ import {
   LeadSelectionProvider,
   StickyLeadCta,
 } from "@/components/Leads/interactions";
+import StudioSiteExample from "../creare-site-web/_components/studio-site-example";
 import LeadForm from "@/components/Leads/form";
 import "@/components/Leads/lead-pages.css";
 
@@ -31,18 +32,27 @@ export default function WebCommerceLeadFlow({
               </p>
               <h1>{config.title}</h1>
               <p className="lead-hero-description">{config.description}</p>
-              <div className="lead-hero-price">
-                De la <strong>{config.startingPrice}</strong>
-                <span>Ofertă adaptată proiectului tău</span>
-              </div>
+              {isShop ? (
+                <div className="lead-hero-price">
+                  De la <strong>{config.startingPrice}</strong>
+                  <span>Ofertă adaptată proiectului tău</span>
+                </div>
+              ) : null}
               <div className="lead-hero-actions">
                 <LeadCta source={config.source} placement="hero">
                   {config.cta}
                 </LeadCta>
                 <a href="#proiecte" className="lead-text-link">
-                  Vezi proiectele <ArrowDown size={16} aria-hidden="true" />
+                  {isShop ? "Vezi proiectele" : "Vezi un site realizat"}{" "}
+                  <ArrowDown size={16} aria-hidden="true" />
                 </a>
               </div>
+              {!isShop ? (
+                <p className="lead-hero-microcopy">
+                  Primești o propunere cu preț și termen de realizare. Fără
+                  obligația de a cumpăra.
+                </p>
+              ) : null}
             </div>
             <div className="lead-hero-showcase">
               <div className="lead-browser-bar">
@@ -61,8 +71,8 @@ export default function WebCommerceLeadFlow({
                 <Image
                   src={config.heroImage || hero.image}
                   alt={hero.imageAlt || hero.title}
-                  width={1040}
-                  height={780}
+                  width={isShop ? 1040 : 1440}
+                  height={isShop ? 780 : 1000}
                   priority
                   sizes="(max-width: 959px) 100vw, 50vw"
                   className="lead-hero-image"
@@ -70,16 +80,18 @@ export default function WebCommerceLeadFlow({
               </a>
               <div className="lead-hero-caption">
                 <strong>{config.heroCaption}</strong>
-                <span>Proiect realizat de Web Dynamicx</span>
+                {isShop ? <span>Proiect realizat de Web Dynamicx</span> : null}
               </div>
-              <div className="lead-showcase-foot">
-                <span>01 / {isShop ? "02" : "01"}</span>
-                <span>
-                  {isShop
-                    ? "De la produse la experiența de cumpărare."
-                    : "O afacere cu personalitate. Un site pe măsură."}
-                </span>
-              </div>
+              {isShop ? (
+                <div className="lead-showcase-foot">
+                  <span>01 / {isShop ? "02" : "01"}</span>
+                  <span>
+                    {isShop
+                      ? "De la produse la experiența de cumpărare."
+                      : "O afacere cu personalitate. Un site pe măsură."}
+                  </span>
+                </div>
+              ) : null}
             </div>
           </div>
           <div className="lead-wrap">
@@ -94,101 +106,105 @@ export default function WebCommerceLeadFlow({
           </div>
         </section>
 
-        <section id="proiecte" className="lead-section lead-projects">
-          <div className="lead-wrap">
-            <div className="lead-section-heading">
-              <div>
-                <p className="lead-eyebrow">01 / Proiecte reale</p>
-                <h2>
+        {isShop ? (
+          <section id="proiecte" className="lead-section lead-projects">
+            <div className="lead-wrap">
+              <div className="lead-section-heading">
+                <div>
+                  <p className="lead-eyebrow">01 / Proiecte reale</p>
+                  <h2>
+                    {isShop
+                      ? "Două magazine. Produse diferite. Aceeași atenție la detalii."
+                      : "Așa arată o afacere pusă în valoare."}
+                  </h2>
+                </div>
+                <p>
                   {isShop
-                    ? "Două magazine. Produse diferite. Aceeași atenție la detalii."
-                    : "Așa arată o afacere pusă în valoare."}
-                </h2>
+                    ? "Vezi cum am abordat un catalog generalist și unul dedicat pieselor auto."
+                    : "Studio by Cristian — un exemplu de site în care serviciile și proiectele vorbesc pentru brand."}
+                </p>
               </div>
-              <p>
-                {isShop
-                  ? "Vezi cum am abordat un catalog generalist și unul dedicat pieselor auto."
-                  : "Studio by Cristian — un exemplu de site în care serviciile și proiectele vorbesc pentru brand."}
-              </p>
-            </div>
-            <div className={isShop ? "lead-project-grid" : ""}>
-              {config.projects.map((entry, index) => {
-                const project = getPortfolioBySlug(entry.slug)!;
-                return (
-                  <article
-                    className={`lead-project ${!isShop ? "lead-project-featured" : ""}`}
-                    key={entry.slug}
-                  >
-                    <div className="lead-project-image">
-                      <Image
-                        src={
-                          entry.slug === config.heroProject
-                            ? config.heroImage || project.image
-                            : project.image
-                        }
-                        alt={project.imageAlt || project.title}
-                        width={1040}
-                        height={780}
-                        sizes={
-                          isShop
-                            ? "(max-width: 719px) 100vw, 50vw"
-                            : "(max-width: 959px) 100vw, 60vw"
-                        }
-                      />
-                    </div>
-                    <div className="lead-project-copy">
-                      <p className="lead-eyebrow">
-                        0{index + 1} / {project.clientLabel}
-                      </p>
-                      <h3>
-                        {isShop
-                          ? index === 0
-                            ? "D-Toate"
-                            : "Auto Detailing Parts"
-                          : "Studio by Cristian"}
-                      </h3>
-                      <p>{entry.description}</p>
-                      <ul>
-                        {entry.features.map((feature) => (
-                          <li key={feature}>
-                            <Check size={16} aria-hidden="true" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="lead-project-links">
-                        <a
-                          href={`/portofoliu/${entry.slug}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Vezi studiul de caz{" "}
-                          <ArrowUpRight size={16} aria-hidden="true" />
-                        </a>
-                        {project.liveUrl ? (
+              <div className={isShop ? "lead-project-grid" : ""}>
+                {config.projects.map((entry, index) => {
+                  const project = getPortfolioBySlug(entry.slug)!;
+                  return (
+                    <article
+                      className={`lead-project ${!isShop ? "lead-project-featured" : ""}`}
+                      key={entry.slug}
+                    >
+                      <div className="lead-project-image">
+                        <Image
+                          src={
+                            entry.slug === config.heroProject
+                              ? config.heroImage || project.image
+                              : project.image
+                          }
+                          alt={project.imageAlt || project.title}
+                          width={1040}
+                          height={780}
+                          sizes={
+                            isShop
+                              ? "(max-width: 719px) 100vw, 50vw"
+                              : "(max-width: 959px) 100vw, 60vw"
+                          }
+                        />
+                      </div>
+                      <div className="lead-project-copy">
+                        <p className="lead-eyebrow">
+                          0{index + 1} / {project.clientLabel}
+                        </p>
+                        <h3>
+                          {isShop
+                            ? index === 0
+                              ? "D-Toate"
+                              : "Auto Detailing Parts"
+                            : "Studio by Cristian"}
+                        </h3>
+                        <p>{entry.description}</p>
+                        <ul>
+                          {entry.features.map((feature) => (
+                            <li key={feature}>
+                              <Check size={16} aria-hidden="true" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="lead-project-links">
                           <a
-                            href={project.liveUrl}
+                            href={`/portofoliu/${entry.slug}`}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            Deschide site-ul{" "}
+                            Vezi studiul de caz{" "}
                             <ArrowUpRight size={16} aria-hidden="true" />
                           </a>
-                        ) : null}
+                          {project.liveUrl ? (
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Deschide site-ul{" "}
+                              <ArrowUpRight size={16} aria-hidden="true" />
+                            </a>
+                          ) : null}
+                        </div>
                       </div>
-                    </div>
-                  </article>
-                );
-              })}
+                    </article>
+                  );
+                })}
+              </div>
+              <div className="lead-project-cta">
+                <p>Ai un proiect în minte? Spune-ne ce vrei să construim.</p>
+                <LeadCta source={config.source} placement="portfolio" secondary>
+                  Discutăm despre proiectul tău
+                </LeadCta>
+              </div>
             </div>
-            <div className="lead-project-cta">
-              <p>Ai un proiect în minte? Spune-ne ce vrei să construim.</p>
-              <LeadCta source={config.source} placement="portfolio" secondary>
-                Discutăm despre proiectul tău
-              </LeadCta>
-            </div>
-          </div>
-        </section>
+          </section>
+        ) : (
+          <StudioSiteExample />
+        )}
 
         <section id="preturi" className="lead-section lead-pricing">
           <div className="lead-wrap">
@@ -200,10 +216,12 @@ export default function WebCommerceLeadFlow({
                   <br />O ofertă pentru ce ai nevoie.
                 </h2>
               </div>
-              <p>
-                Prețurile sunt de pornire. Stabilim costul final după ce
-                clarificăm paginile, funcționalitățile și integrările.
-              </p>
+              {isShop ? (
+                <p>
+                  Prețurile sunt de pornire. Stabilim costul final după ce
+                  clarificăm paginile, funcționalitățile și integrările.
+                </p>
+              ) : null}
             </div>
             <div className="lead-price-grid">
               {config.packages.map((item, index) => (
@@ -239,6 +257,19 @@ export default function WebCommerceLeadFlow({
                 </article>
               ))}
             </div>
+            {!isShop ? (
+              <>
+                <p className="lead-pricing-note">
+                  Prețurile sunt de pornire. Oferta finală se stabilește în
+                  funcție de pagini, conținut și funcționalități, înainte de
+                  începerea proiectului.
+                </p>
+                <p className="lead-pricing-note">
+                  Nu știi ce variantă ți se potrivește? Spune-ne ce face
+                  afacerea ta și îți propunem structura potrivită.
+                </p>
+              </>
+            ) : null}
             <p className="lead-pricing-note">
               {isShop
                 ? "Livrare orientativă: 5–10 săptămâni, în funcție de catalog și integrări. Serviciile externe, comisioanele, găzduirea și mentenanța se clarifică în ofertă."
@@ -366,9 +397,11 @@ export default function WebCommerceLeadFlow({
             </div>
           </div>
         </section>
-        <StickyLeadCta source={config.source} price={config.startingPrice}>
-          Cere ofertă
-        </StickyLeadCta>
+        {isShop ? (
+          <StickyLeadCta source={config.source} price={config.startingPrice}>
+            Cere ofertă
+          </StickyLeadCta>
+        ) : null}
       </div>
     </LeadSelectionProvider>
   );

@@ -1,5 +1,37 @@
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/app/libs/email";
+import { z } from "zod";
+
+// Only the website landing uses this stricter contract; other callers are unchanged.
+const webSiteRequest = z
+  .object({
+    name: z
+      .string()
+      .trim()
+      .min(2)
+      .max(100)
+      .regex(/^[^\r\n]+$/),
+    email: z.string().trim().max(200).default(""),
+    phone: z.string().trim().max(200).default(""),
+    description: z.string().trim().min(10).max(5000),
+    message: z.string().trim().min(10).max(6000),
+    company: z.string().trim().max(200).default(""),
+    projectType: z.string().max(200).default(""),
+    budget: z.string().trim().max(100).default(""),
+    source: z.literal("lead-web-site"),
+    page: z.literal("/leads/creare-site-web"),
+  })
+  .refine(({ email, phone }) => {
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const digits = phone.replace(/\D/g, "").length;
+    const validPhone =
+      /^\+?[\d\s().-]+$/.test(phone) && digits >= 9 && digits <= 15;
+    return (
+      (validEmail || validPhone) &&
+      (!email || validEmail) &&
+      (!phone || validPhone)
+    );
+  }, "Introdu un telefon sau un e-mail valid.");
 
 function escapeHtml(value: string) {
   return value
@@ -12,7 +44,20 @@ function escapeHtml(value: string) {
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    let body = await request.json();
+    if (body?.source === "lead-web-site") {
+      const parsed = webSiteRequest.safeParse(body);
+      if (!parsed.success) {
+        return NextResponse.json(
+          {
+            error:
+              "Verifică numele, datele de contact și descrierea solicitării.",
+          },
+          { status: 400 },
+        );
+      }
+      body = parsed.data;
+    }
     const name = (body?.name || "").toString();
     const email = (body?.email || "").toString();
     const phone = (body?.phone || "").toString();
@@ -25,7 +70,10 @@ export async function POST(request: Request) {
 
     if (!name || (!email && !phone) || !message) {
       return NextResponse.json(
-        { error: "Nume, mesaj și cel puțin un contact (email sau telefon) sunt obligatorii." },
+        {
+          error:
+            "Nume, mesaj și cel puțin un contact (email sau telefon) sunt obligatorii.",
+        },
         { status: 400 },
       );
     }
@@ -57,11 +105,16 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    const subjectSource = (source || "contact-generic").replace(/\s+/g, " ").trim();
+    const subjectSource = (source || "contact-generic")
+      .replace(/\s+/g, " ")
+      .trim();
     const subjectName = (name || "Lead").replace(/\s+/g, " ").trim();
 
     await sendEmail({
-      to: process.env.EMAIL_TO || process.env.EMAIL_FROM || "webdynamicx@gmail.com",
+      to:
+        process.env.EMAIL_TO ||
+        process.env.EMAIL_FROM ||
+        "webdynamicx@gmail.com",
       subject: `[${subjectSource}] Formular contact Web Dynamicx — ${subjectName}`,
       html,
       replyTo: email || undefined,
