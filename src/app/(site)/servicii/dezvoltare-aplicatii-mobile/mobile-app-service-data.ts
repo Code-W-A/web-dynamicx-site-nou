@@ -103,46 +103,6 @@ export const mobileAppsServicePageData = {
     outro:
       "Ținta nu este să bifăm o aplicație în plus, ci să lansăm o primă versiune clară, utilă și sustenabilă pentru business-ul tău.",
   },
-  appTypes: {
-    title: "Ce tipuri de aplicații mobile dezvoltăm",
-    intro:
-      "Putem construi aplicații mobile personalizate pentru mai multe modele de business, cu accent pe fluxurile care contează după lansare: rezervare, comandă, retenție, operare internă și administrare.",
-    featured: [
-      {
-        title: "Aplicații de booking și programări",
-        description:
-          "Pentru saloane, clinici, specialiști sau servicii locale unde viteza de rezervare influențează direct conversia. Pot include calendar, sloturi, cont client, notificări și plăți.",
-        image: "/images/services/aplicatie-mobila-booking.webp",
-        alt: "Aplicație mobilă de booking și programări",
-      },
-      {
-        title: "Aplicații de e-commerce",
-        description:
-          "Pentru magazine online care vor o experiență mobilă mai rapidă și o relație directă cu clientul. Pot include catalog, checkout, cont utilizator, promoții, notificări push și retenție.",
-        image: "/images/services/aplicatie-mobila-ecommerce.webp",
-        alt: "Aplicație mobilă de e-commerce",
-      },
-      {
-        title: "Aplicații pentru food ordering",
-        description:
-          "Pentru restaurante, cafenele și business-uri de livrare care vor comenzi mai fluide și mai puțină fricțiune la orele de vârf. Pot include meniu digital, comandă rapidă, plată online, status comandă și fidelizare.",
-        image: "/images/services/aplicatie-food-ordering.webp",
-        alt: "Aplicație pentru food ordering",
-      },
-    ],
-    additional: [
-      {
-        title: "Aplicații interne pentru companii",
-        description:
-          "Pentru echipe, operațiuni, teren, intervenții, rapoarte sau fluxuri care încă depind de Excel, telefon sau procese greu de urmărit.",
-      },
-      {
-        title: "Aplicații de marketplace sau servicii",
-        description:
-          "Pentru platforme în care utilizatorii rezervă, plătesc, comunică sau interacționează între ei, cu logică bine definită de conturi, roluri și notificări.",
-      },
-    ],
-  },
   technology: {
     title: "Dezvoltare nativă sau cross-platform?",
     intro:

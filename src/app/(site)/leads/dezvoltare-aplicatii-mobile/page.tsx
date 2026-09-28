@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import MobileAppTypesSection from "@/components/MobileApps/app-types-section";
 import HeroSection from "./_components/hero-section";
 import TrustBar from "./_components/trust-bar";
 import ProcessSection from "./_components/process-section";
@@ -46,6 +47,7 @@ export default function MobileAppsLeadPage() {
       <TrustBar />
       <LeadFormSection />
       <PortfolioSection />
+      <MobileAppTypesSection ctaHref="#formular-lead" />
       <WhyUsSection />
       <ProcessSection />
       <PricingEstimateSection />

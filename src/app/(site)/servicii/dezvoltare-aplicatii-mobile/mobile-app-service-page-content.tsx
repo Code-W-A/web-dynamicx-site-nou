@@ -1,4 +1,5 @@
 import Image from "next/image";
+import MobileAppTypesSection from "@/components/MobileApps/app-types-section";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -32,7 +33,6 @@ export default function MobileAppServicePageContent({ breadcrumbs }: Props) {
     hero,
     valueProps,
     audience,
-    appTypes,
     technology,
     process,
     mobileDevForBusiness,
@@ -252,61 +252,7 @@ export default function MobileAppServicePageContent({ breadcrumbs }: Props) {
         </div>
       </section>
 
-      <section className="py-14 sm:py-16">
-        <div className="container px-5">
-          <div className="max-w-3xl">
-            <span className="text-sm font-semibold uppercase tracking-[0.24em] text-primary/80">Tipuri de aplicații</span>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{appTypes.title}</h2>
-            <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">{appTypes.intro}</p>
-            <p className="mt-4 text-base leading-8 text-slate-600 sm:text-lg">
-              Pentru exemple publicate și fluxuri deja livrate, poți vedea și{" "}
-              <Link href="/portofoliu-aplicatii-mobile" className="font-semibold text-primary underline-offset-4 hover:underline">
-                portofoliul de aplicații mobile
-              </Link>
-              .
-            </p>
-          </div>
-
-          <div className="mt-8 grid gap-6 xl:grid-cols-3">
-            {appTypes.featured.map((item) => (
-              <article
-                key={item.title}
-                className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_14px_40px_rgba(15,23,42,0.06)]"
-              >
-                <div className="flex items-center justify-center bg-slate-100/80 p-5">
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    width={2400}
-                    height={1400}
-                    sizes="(max-width: 1280px) 100vw, 31vw"
-                    className="h-auto max-h-[210px] w-full object-contain"
-                  />
-                </div>
-                <div className="p-6">
-                  <span className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                    Tip de aplicație
-                  </span>
-                  <h3 className="mt-4 text-xl font-bold text-slate-950">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">{item.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-5 grid gap-4 md:grid-cols-2">
-            {appTypes.additional.map((item) => (
-              <article
-                key={item.title}
-                className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 shadow-[0_10px_28px_rgba(15,23,42,0.04)]"
-              >
-                <h3 className="text-xl font-semibold text-slate-950">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <MobileAppTypesSection ctaHref="/contact" />
 
       <section className="bg-gradient-to-b from-slate-50 to-white py-14 sm:py-16">
         <div className="container px-5">

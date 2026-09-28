@@ -78,17 +78,6 @@ export const benefits = [
   },
 ];
 
-export const appTypes = [
-  "Aplicații pentru servicii",
-  "Aplicații pentru rezervări",
-  "Aplicații marketplace",
-  "Aplicații interne pentru companii",
-  "Aplicații pentru comenzi și livrări",
-  "Aplicații pentru comunități / membership",
-  "MVP pentru startup-uri",
-  "Aplicații integrate cu Firebase, Stripe, CRM, ERP și API-uri externe",
-];
-
 export const processSteps = [
   {
     title: "Discuție și obiective",
