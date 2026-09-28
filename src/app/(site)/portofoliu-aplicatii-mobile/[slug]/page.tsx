@@ -1,6 +1,7 @@
 import PageTitle from "@/components/Common/PageTitle";
 import {
   CaseStudyContact,
+  CaseStudyDownloads,
   PortfolioNavigation,
   RelatedProjectLinks,
 } from "@/components/Portfolio/CaseStudyExtras";
@@ -135,6 +136,7 @@ export default async function MobileCaseStudyPage(props: Props) {
           </div>
           <div className="relative mx-auto max-w-4xl overflow-hidden rounded-[2rem] border border-slate-200/80 bg-gradient-to-b from-slate-100 to-slate-50 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
             <DeviceScreenshotFrame
+              aspectRatio={study.screenshotAspectRatio}
               src={study.image}
               alt={study.imageAlt}
               variant="hero"
@@ -184,14 +186,20 @@ export default async function MobileCaseStudyPage(props: Props) {
                 {study.gallery.map((item) => (
                   <div
                     key={item.src}
-                    className="flex w-[75vw] max-w-[260px] shrink-0 justify-center sm:block sm:w-auto sm:max-w-none"
+                    className="flex w-[75vw] max-w-[260px] shrink-0 flex-col items-center sm:w-auto sm:max-w-none"
                   >
                     <DeviceScreenshotFrame
+                      aspectRatio={study.screenshotAspectRatio}
                       src={item.src}
                       alt={item.alt}
                       variant="gallery"
                       sizes="(max-width: 640px) 75vw, (max-width: 1024px) 40vw, 260px"
                     />
+                    {item.caption && (
+                      <p className="mt-4 max-w-[220px] text-sm leading-6 text-slate-600">
+                        {item.caption}
+                      </p>
+                    )}
                   </div>
                 ))}
               </div>
@@ -291,6 +299,7 @@ export default async function MobileCaseStudyPage(props: Props) {
               </ul>
             </section>
 
+            <CaseStudyDownloads downloads={study.downloads} />
             <RelatedProjectLinks projects={study.relatedProjects} />
             <section className="rounded-[2rem] border border-slate-200/80 bg-[linear-gradient(180deg,_#f8fbff_0%,_#ffffff_100%)] p-8 sm:p-10">
               <h2 className="text-xl font-bold tracking-tight text-slate-950 sm:text-2xl">

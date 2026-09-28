@@ -7,6 +7,7 @@ import JsonLd from "@/components/Common/JsonLd";
 import { getPortfolioServiceMeta } from "@/static-data/portfolio";
 import {
   CaseStudyContact,
+  CaseStudyDownloads,
   CaseStudyGallery,
   PortfolioNavigation,
   RelatedProjectLinks,
@@ -168,6 +169,7 @@ export default function CaseStudyPage({
                 ))}
               </ul>
             </section>
+            <CaseStudyDownloads downloads={study.downloads} />
             <RelatedProjectLinks projects={study.relatedProjects} />
             {study.supportedServices.length > 0 && (
               <section>

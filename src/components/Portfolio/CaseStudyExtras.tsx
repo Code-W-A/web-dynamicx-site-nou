@@ -104,3 +104,35 @@ export function CaseStudyGallery({
     </section>
   );
 }
+
+export function CaseStudyDownloads({
+  downloads,
+}: {
+  downloads?: Portfolio["downloads"];
+}) {
+  if (!downloads?.length) return null;
+  return (
+    <section className="rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
+      <h2 className="text-xl font-bold text-slate-950">
+        Prezentare de concept
+      </h2>
+      <p className="mt-3 text-sm leading-7 text-slate-600">
+        Documentul prezintă conceptul white label și direcțiile propuse pentru o
+        aplicație personalizată. Ilustrațiile din PDF sunt de concept; capturile
+        de pe această pagină arată aplicația demonstrativă.
+      </p>
+      <div className="mt-5 flex flex-col items-start gap-4">
+        {downloads.map((document) => (
+          <a
+            key={document.href}
+            href={document.href}
+            download
+            className="text-primary font-semibold underline underline-offset-4"
+          >
+            {document.label}
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}

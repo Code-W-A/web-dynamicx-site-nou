@@ -8,6 +8,7 @@ type Props = {
   sizes: string;
   priority?: boolean;
   variant?: DeviceFrameVariant;
+  aspectRatio?: number;
 };
 
 /** Cadru tip smartphone pentru capturi portrait — hub, hero studiu de caz, galerie. */
@@ -17,6 +18,7 @@ export default function DeviceScreenshotFrame({
   sizes,
   priority = false,
   variant = "hero",
+  aspectRatio,
 }: Props) {
   const outer =
     variant === "card"
@@ -37,7 +39,10 @@ export default function DeviceScreenshotFrame({
       <div
         className={`${bezel} rounded-[1.75rem] border-[3px] border-slate-800 bg-gradient-to-b from-slate-800 to-slate-900 p-1.5 shadow-[0_20px_50px_rgba(15,23,42,0.22)] ring-1 ring-black/15`}
       >
-        <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[1.35rem] bg-slate-950">
+        <div
+          style={aspectRatio ? { aspectRatio } : undefined}
+          className="relative aspect-[9/19] w-full overflow-hidden rounded-[1.35rem] bg-slate-950"
+        >
           <Image
             src={src}
             alt={alt}

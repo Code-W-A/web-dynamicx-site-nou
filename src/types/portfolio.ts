@@ -1,9 +1,12 @@
+export type CaseStudyDownload = { href: string; label: string };
+
 export type PortfolioSupportedService = {
   slug: string;
   reason: string;
 };
 
 export type Portfolio = {
+  downloads?: CaseStudyDownload[];
   status?: string;
   ctaLabel?: string;
   liveLabel?: string;

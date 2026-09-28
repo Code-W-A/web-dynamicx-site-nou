@@ -20,6 +20,7 @@ export default function CaseStudyCard({ study, showServiceLeadCta = true }: Prop
         className="relative block min-h-[200px] bg-gradient-to-b from-slate-100 to-slate-50/90 transition group-hover:from-slate-50 group-hover:to-white"
       >
         <DeviceScreenshotFrame
+          aspectRatio={study.screenshotAspectRatio}
           src={study.image}
           alt={study.imageAlt}
           variant="card"

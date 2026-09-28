@@ -1,3 +1,4 @@
+import type { CaseStudyDownload } from "@/types/portfolio";
 /** Hub + studii de caz aplicații mobile — conținut SEO (suport pentru /servicii/dezvoltare-aplicatii-mobile). */
 import { additionalMobileStudies } from "@/static-data/mobile-portfolio-additions";
 
@@ -5,9 +6,15 @@ export const mobileAppsServiceHref =
   "/servicii/dezvoltare-aplicatii-mobile" as const;
 export const mobilePortfolioHubPath = "/portofoliu-aplicatii-mobile" as const;
 
-export type MobileCaseStudyGalleryItem = { src: string; alt: string };
+export type MobileCaseStudyGalleryItem = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
 
 export type MobileCaseStudy = {
+  downloads?: CaseStudyDownload[];
+  screenshotAspectRatio?: number;
   status?: string;
   ctaLabel?: string;
   relatedProjects?: { href: string; label: string }[];

@@ -52,3 +52,26 @@ Checklist:
 - Check image loading, one H1, canonical metadata, JSON-LD, sitemap membership, links across categories and contact CTAs.
 - Unknown study slugs must return 404. New mobile Open Graph endpoints must return images.
 - No deployment, real lead submission, payment or production data change is part of this update.
+
+
+## ITP White Label — 2026-09-28
+
+- Software: `/portofoliu-software/itp-white-label`; mobile: `/portofoliu-aplicatii-mobile/itp-white-label`. Both are included in their existing hubs and sitemap, with reciprocal links.
+- Source applications: `/Users/code-with-a/Dev/ITP-WHITE-LABEL/next-js` and `expo-mobile-app`. No functional source changes were made to either application.
+- `itp-web-dashboard.webp`: local Next.js dashboard at `/`, 1440 × 1000.
+- `itp-web-appointments.webp`: `/programari`; `itp-web-clients.webp`: `/clienti`, Flote și companii; `itp-web-vehicle.webp`: `/vehicule`, Volkswagen Passat detail dialog; `itp-web-itp.webp`: `/itp`. All captured at 1440 × 1000 from the running application.
+- `itp-mobile-home.webp`, `itp-mobile-vehicles.webp`, `itp-mobile-vehicle.webp`, `itp-mobile-booking.webp`, `itp-mobile-appointment.webp`: fresh native screenshots from iPhone 17, iOS 26.5 Simulator, Expo Go SDK 57. Source resolution 1206 × 2622; WebP exports are 900 px wide. Expo's floating tools button was disabled for capture. No generated or reconstructed UI images were used.
+- Mobile capture routes: Acasă; Vehicule; Volkswagen Passat detail; booking step 1 (vehicle selection); existing 19 October 2026, 10:30 appointment detail. No new booking was submitted. Existing local demo state was retained.
+- The hero plus four gallery images provide five distinct screens per study. Mobile captions are optional, and an optional screenshot aspect ratio preserves the complete ITP screenshots without changing other projects' default frames.
+- The app uses local fictitious data and independent web/mobile persistence. Copy does not claim a synchronized backend, production authentication, externally delivered notifications, RAR integration, store publication, or measured commercial results.
+- PDF source: `/Users/code-with-a/Dev/WebApp/WHITE-LABEL-VARIANTS/ITP/WebDynamicX_Concept_Aplicatie_ITP.pdf`. All seven pages were rendered and visually reviewed. Copied unchanged to `public/downloads/itp-white-label-concept.pdf` (130375 bytes). Both studies identify it as a concept document; its illustrations are distinct from the current application screenshots.
+- Download support uses optional `downloads` records (`href`, `label`) on both case-study types and a shared server-rendered section. Links use the native `download` attribute, without lead forms.
+
+### ITP local acceptance results
+
+- Production build passed (84 generated pages), including lint/type validation; standalone `tsc --noEmit` and `git diff --check` passed.
+- Both new studies and both hubs passed eight route/viewport checks at 390 and 1440 px: one H1, canonical metadata, loaded images, correct portfolio links and no document-level horizontal overflow. JSON-LD is present on both studies.
+- Mobile gallery scrolls through all four secondary captures at 390 px. Visual review confirmed complete native screenshot proportions on desktop/mobile and readable PDF download sections.
+- Both native download links were clicked in a browser; downloaded files match the source byte for byte. Downloaded PDF opens as a seven-page document. The PDF endpoint and mobile Open Graph endpoint return HTTP 200 with the expected content types; sitemap contains both routes.
+- Contact CTA reaches `/contact#contact`; no form was submitted. Unknown study slugs return 404. Existing Operio mobile study was checked at both widths and has no unexpected download section or horizontal overflow. No browser page errors occurred during these checks.
+- All verification was local. No deployment or production data change was performed.

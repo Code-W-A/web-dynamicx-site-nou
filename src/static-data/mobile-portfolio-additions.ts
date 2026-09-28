@@ -2,6 +2,95 @@ import type { MobileCaseStudy } from "@/app/(site)/portofoliu-aplicatii-mobile/m
 
 export const additionalMobileStudies: MobileCaseStudy[] = [
   {
+    slug: "itp-white-label",
+    screenshotAspectRatio: 1206 / 2622,
+    cardTitle: "ITP White Label — aplicația clientului",
+    h1: "ITP White Label — vehiculele și programările clientului, pe telefon",
+    shortDescription:
+      "Aplicație Expo pentru clienții unei stații ITP sau ai unui service: vehicule, termene de întreținere și programarea vizitelor.",
+    metaTitle: "ITP White Label — aplicație mobilă auto | Web Dynamicx",
+    metaDescription:
+      "Studiu de caz Expo și React Native: vehicule, scadențe ITP și programări. Capturi reale din iOS Simulator și prezentare PDF a conceptului.",
+    tags: ["Expo", "React Native", "ITP și service"],
+    image: "/images/portofoliu/studii/itp-mobile-home.webp",
+    imageAlt:
+      "ITP White Label pe iOS: vehiculul clientului, termenul ITP și întreținerea",
+    status: "Produs demonstrativ · date fictive · persistență locală",
+    context:
+      "Clientul unei stații ITP are nevoie să regăsească rapid termenul vehiculului și să aleagă o vizită. Conceptul white label oferă firmei o aplicație proprie, concentrată pe relația cu clienții și pe serviciile sale.",
+    objectives: [
+      "Mai multe vehicule în același cont, fiecare cu propriile termene.",
+      "Acces la kilometraj, ITP și întreținere din fișa vehiculului.",
+      "Un parcurs de programare care păstrează contextul vehiculului și serviciului.",
+    ],
+    solution:
+      "Am construit o aplicație Expo și React Native în limba română. Ecranul Acasă pune în prim-plan vehiculul, scadența ITP și kilometrii rămași până la întreținere. Clientul poate consulta vehiculele, alege serviciul și locația unei vizite și regăsi programările. Datele și sesiunea se păstrează local, prin AsyncStorage. Este o aplicație demonstrativă: nu există încă sincronizare cu administrarea web sau trimitere de SMS, e-mail ori push către servicii externe.",
+    features: [
+      "Vehicule multiple și fișe cu kilometraj, scadență ITP și întreținere",
+      "Programare după vehicul, serviciu, locație și interval disponibil",
+      "Consultarea, reprogramarea și anularea vizitelor în scenariul local",
+      "Lista notificărilor și preferințele clientului",
+      "Cont și sesiune demonstrative, păstrate pe dispozitiv",
+    ],
+    featuresSectionLead:
+      "Funcții disponibile în aplicația demonstrativă, cu date fictive.",
+    technologies: [
+      "React Native și Expo",
+      "Expo Router pentru navigare",
+      "AsyncStorage pentru persistență locală",
+      "TypeScript și logică de domeniu comună cu panoul Next.js",
+    ],
+    impact: [
+      "Un parcurs mobil complet de la vehicul la programare.",
+      "Termenele și întreținerea vizibile în contextul mașinii clientului.",
+      "O bază demonstrativă pentru identitatea și serviciile unei stații.",
+    ],
+    cardBullets: [
+      "Vehicule și scadențe ITP",
+      "Programări și detaliile vizitei",
+      "Experiență dedicată clienților stației",
+    ],
+    gallerySectionLead:
+      "Capturi reale din aplicația Expo rulată în iOS Simulator, cu date fictive. Glisează galeria pe telefon pentru a vedea celelalte ecrane.",
+    gallery: [
+      {
+        src: "/images/portofoliu/studii/itp-mobile-vehicles.webp",
+        alt: "Lista vehiculelor clientului în aplicația ITP White Label",
+        caption: "Vehiculele clientului, cu starea ITP pentru fiecare.",
+      },
+      {
+        src: "/images/portofoliu/studii/itp-mobile-vehicle.webp",
+        alt: "Fișa vehiculului Volkswagen Passat în aplicația iOS",
+        caption: "Termenul ITP și întreținerea, în aceeași fișă.",
+      },
+      {
+        src: "/images/portofoliu/studii/itp-mobile-booking.webp",
+        alt: "Alegerea unei programări în aplicația ITP White Label",
+        caption: "Programarea pornește de la vehicul și serviciu.",
+      },
+      {
+        src: "/images/portofoliu/studii/itp-mobile-appointment.webp",
+        alt: "Detaliile unei programări existente în aplicația iOS",
+        caption: "Data, locația și acțiunile disponibile pentru vizită.",
+      },
+    ],
+    relatedSlugs: ["otp-parking-rezervari", "operio-tehnicieni"],
+    relatedProjects: [
+      {
+        href: "/portofoliu-software/itp-white-label",
+        label: "ITP White Label — platforma de administrare",
+      },
+    ],
+    ctaLabel: "Vreau o aplicație pentru stația mea",
+    serviceLinkPhrase: "aplicații mobile pentru stații ITP și service-uri",
+    downloads: [
+      {
+        href: "/downloads/itp-white-label-concept.pdf",
+        label: "Descarcă prezentarea conceptului — PDF",
+      },
+    ],
+  },
+  {
     slug: "operio-tehnicieni",
     cardTitle: "Operio — aplicația tehnicianului",
     h1: "Operio — lucrările zilei, fotografii și semnătură direct din teren",

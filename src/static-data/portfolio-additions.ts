@@ -240,6 +240,83 @@ export const additionalWebPortfolio: Portfolio[] = [
 export const softwarePortfolioHubPath = "/portofoliu-software";
 export const softwarePortfolio: Portfolio[] = [
   {
+    id: "itp-white-label",
+    slug: "itp-white-label",
+    title: "ITP White Label — administrare auto",
+    headline:
+      "ITP White Label — programări, vehicule și scadențe într-un singur panou",
+    sortDescription:
+      "Platformă demonstrativă pentru stații ITP și service-uri: agenda echipei, fișele vehiculelor și activitatea mai multor locații.",
+    image: "/images/portofoliu/studii/itp-web-dashboard.webp",
+    imageAlt:
+      "ITP White Label: dashboard cu agenda zilei și activitatea locațiilor",
+    tags: ["Next.js", "Administrare auto", "White label"],
+    clientLabel: "Stații ITP și service-uri",
+    status: "Produs demonstrativ · date fictive · persistență locală",
+    metaTitle:
+      "ITP White Label — platformă de administrare auto | Web Dynamicx",
+    metaDescription:
+      "Studiu de caz Next.js pentru stații ITP: programări, clienți și flote, întreținere și scadențe. Capturi reale și prezentare PDF descărcabilă.",
+    context:
+      "O stație ITP sau un service lucrează zilnic cu programări, termene și istoricul vehiculelor. Pentru firmele cu mai multe puncte de lucru, echipa are nevoie atât de o privire de ansamblu, cât și de acces rapid la datele fiecărei locații.",
+    challenge:
+      "Să reunim agenda, clienții individuali, flotele și termenele auto într-o interfață ușor de urmărit. Fișa vehiculului trebuie să păstreze împreună kilometrajul, scadența ITP, planul de întreținere și istoricul service, fără ca utilizatorul să caute în liste separate.",
+    solution:
+      "Am realizat un panou Next.js în limba română, cu dashboard, programări, clienți și flote, vehicule, scadențe ITP, întreținere, tahografe, locații și personal. Disponibilitatea ține cont de serviciu, program, capacitate și suprapuneri. Regulile de întreținere urmăresc kilometrajul sau perioada, la primul prag atins. Prototipul folosește date fictive salvate local. Aplicația web și cea mobilă pornesc de la același scenariu, dar persistă independent; conectarea prin backend și livrarea notificărilor externe reprezintă pași ulteriori.",
+    outcome: [
+      "O agendă filtrabilă pe locație și perioadă, cu export CSV.",
+      "Fișe de client și vehicul, inclusiv evidența flotelor și istoricul întreținerii.",
+      "Scadențe ITP și întreținere prezentate în contextul fiecărui vehicul.",
+      "Un flux demonstrativ pentru roluri și locații, pregătit ca punct de pornire pentru personalizarea unei firme.",
+    ],
+    gallery: [
+      {
+        src: "/images/portofoliu/studii/itp-web-appointments.webp",
+        alt: "Agenda programărilor în administrarea ITP White Label",
+        caption:
+          "Programările reunesc clientul, vehiculul, serviciul, locația și starea vizitei.",
+      },
+      {
+        src: "/images/portofoliu/studii/itp-web-clients.webp",
+        alt: "Clienți de tip flotă și companie în ITP White Label",
+        caption:
+          "Companiile și flotele au un traseu dedicat în evidența clienților.",
+      },
+      {
+        src: "/images/portofoliu/studii/itp-web-vehicle.webp",
+        alt: "Fișa Volkswagen Passat cu kilometraj și plan de întreținere",
+        caption:
+          "Fișa vehiculului aduce laolaltă scadența ITP și pragurile de întreținere.",
+      },
+      {
+        src: "/images/portofoliu/studii/itp-web-itp.webp",
+        alt: "Lista scadențelor ITP și stările de contactare",
+        caption:
+          "Termenele sunt calculate pe baza datelor demonstrative introduse în aplicație.",
+      },
+    ],
+    supportedServices: [
+      {
+        slug: "dezvoltare-aplicatii-mobile",
+        reason: "o aplicație dedicată clienților, alături de panoul echipei",
+      },
+    ],
+    relatedSlugs: ["fom", "operio"],
+    relatedProjects: [
+      {
+        href: "/portofoliu-aplicatii-mobile/itp-white-label",
+        label: "ITP White Label — aplicația clientului",
+      },
+    ],
+    ctaLabel: "Vreau o platformă pentru stația mea",
+    downloads: [
+      {
+        href: "/downloads/itp-white-label-concept.pdf",
+        label: "Descarcă prezentarea conceptului — PDF",
+      },
+    ],
+  },
+  {
     id: "operio",
     slug: "operio",
     title: "Operio — managementul serviciilor în teren",
