@@ -1,112 +1,124 @@
-export const leadPath = "/leads/creare-magazin-online";
+import type { LeadPageConfig } from "@/components/Leads/types";
 
+export const leadPath = "/leads/creare-magazin-online";
 export const contactData = {
   phoneDisplay: "0774 550 758",
   phoneHref: "tel:+40774550758",
-  whatsappHref: "https://wa.me/40774550758?text=Salut!%20Vreau%20o%20oferta%20pentru%20creare%20magazin%20online.",
+  whatsappHref:
+    "https://wa.me/40774550758?text=Salut!%20Vreau%20o%20oferta%20pentru%20creare%20magazin%20online.",
   email: "webdynamicx@gmail.com",
   emailHref: "mailto:webdynamicx@gmail.com",
 };
 
-export const trustPoints = [
-  "Magazine online orientate pe vanzari",
-  "Checkout optimizat pentru conversie",
-  "Integrare plati, livrare si administrare simpla",
-];
-
-export const trustBarItems = [
-  "Design premium",
-  "UX orientat pe vanzari",
-  "Integrare plati si livrare",
-  "Administrare simpla",
-  "Scalare catalog produse",
-  "Suport post-lansare",
-];
-
-export const benefits = [
-  {
-    title: "Magazin online construit pentru conversie",
-    description: "Transformam cerintele comerciale in flow-uri de cumparare clare, rapide si usor de folosit.",
-  },
-  {
-    title: "Checkout fluid cu abandon redus",
-    description: "Simplificam pasii critici pentru comanda si plata, in special pe mobil.",
-  },
-  {
-    title: "Implementare rapida si organizata",
-    description: "Lucram pe etape predictibile, cu livrabile clare si comunicare transparenta.",
-  },
-  {
-    title: "Integrare cu sistemele business-ului",
-    description: "Conectam magazinul la plati, curieri, ERP, CRM si alte fluxuri operationale.",
-  },
-  {
-    title: "Control si editare usoara",
-    description: "Admin simplu pentru produse, comenzi, promotii si continut actualizat rapid.",
-  },
-  {
-    title: "Suport dupa lansare",
-    description: "Optimizare continua, mentenanta si evolutie pe baza datelor din trafic si vanzari.",
-  },
-];
-
-export const services = [
-  "Creare magazin online",
-  "Migrare magazin online",
-  "Refacere checkout si flow comanda",
-  "Integrare plati online",
-  "Integrare curieri",
-  "Integrare ERP / CRM",
-  "Optimizare viteza si UX",
-  "Mentenanta si suport recurent",
-];
-
-export const processSteps = [
-  { title: "Analiza", description: "Clarificam obiectivele, tipurile de produse si fluxurile operationale." },
-  { title: "Wireframe", description: "Definim structura categoriilor, paginilor de produs si checkout-ului." },
-  { title: "UI Design", description: "Construim un design premium, aliniat cu brandul si conversia." },
-  { title: "Dezvoltare", description: "Implementam magazinul cu focus pe performanta, stabilitate si scalare." },
-  { title: "Testare", description: "Verificam comenzi, plati, livrare si scenarii critice inainte de lansare." },
-  { title: "Lansare", description: "Publicam controlat si monitorizam performanta comerciala." },
-  { title: "Suport", description: "Optimizam continuu pentru crestere, conversie si valoare medie comanda." },
-];
-
-export const pricingTiers = [
-  {
-    title: "Magazin online de start",
-    range: "de la 4.000 RON",
-    details: "Pentru lansare rapida cu catalog esential, checkout optimizat si administrare simpla.",
-    includes: ["Catalog produse", "Plati online", "Curieri", "Admin comenzi si produse"],
-  },
-  {
-    title: "Magazin online business",
-    range: "de la 7.000 RON",
-    details: "Pentru magazine cu volum mai mare, automatizari si integrare cu procese interne.",
-    includes: ["Filtrare avansata", "Automatizari", "Promotii", "Integrare CRM/ERP"],
-  },
-  {
-    title: "Platforma e-commerce avansata",
-    range: "de la 12.000 RON",
-    details: "Pentru proiecte complexe cu fluxuri custom, integrari multiple si scalare accelerata.",
-    includes: ["Functionalitati custom", "Integrare API", "Automatizari", "Roadmap post-lansare"],
-  },
-];
-
-export const faqs = [
-  {
-    question: "Cat dureaza crearea unui magazin online?",
-    answer: "Un magazin online bine structurat se livreaza de obicei in 5-10 saptamani, in functie de integrari.",
-  },
-  {
-    question: "Ce metode de plata si livrare puteti integra?",
-    answer: "Integrăm metodele de plata uzuale si curierii potriviti modelului tau operational.",
-  },
-  {
-    question: "Pot porni cu o varianta minima si extind ulterior?",
-    answer: "Da. Recomandam lansare etapizata: versiune initiala si evolutie pe baza rezultatelor reale.",
-  },
-  {
-    question: "Includeți mentenanta dupa lansare?",
-    answer: "Da, oferim suport tehnic, optimizari de performanta si update-uri periodice.",
-  },
-];
+export const leadConfig: LeadPageConfig = {
+  source: "lead-magazin-online",
+  path: leadPath,
+  thankYouPath: "/multumim-magazin-online",
+  formName: "lead_magazin_online_form",
+  submitEvent: "lead_magazin_online_form_submit",
+  label: "Creare magazin online",
+  title: "Creare magazin online, de la catalog la comandă",
+  description:
+    "Produse ușor de găsit, pași clari pentru comandă și administrare simplă. Construim magazinul în jurul produselor tale și al modului în care vinzi.",
+  cta: "Cere ofertă pentru magazin",
+  startingPrice: "4.000 lei",
+  heroProject: "d-toate-magazin-online",
+  heroCaption: "D-Toate · Magazin online cu produse diverse",
+  projects: [
+    {
+      slug: "d-toate-magazin-online",
+      description:
+        "Un catalog variat, organizat în categorii clare. Pagini de produs și un parcurs de cumpărare care ajută vizitatorul să se orienteze.",
+      features: [
+        "Categorii de produse",
+        "Pagini de produs",
+        "Parcurs către comandă",
+      ],
+    },
+    {
+      slug: "auto-detailing-parts",
+      description:
+        "Un magazin de piese și accesorii auto, cu accent pe organizarea catalogului și găsirea produselor potrivite.",
+      features: [
+        "Catalog de piese auto",
+        "Navigare pe categorii",
+        "Experiență pe mobil",
+      ],
+    },
+  ],
+  included: [
+    "Design pentru mobil și desktop",
+    "Catalog și pagini de produs",
+    "Plăți online și livrare",
+    "Administrare produse și comenzi",
+  ],
+  packages: [
+    {
+      name: "Magazin de start",
+      price: "4.000 lei",
+      audience: "Pentru primul tău magazin și un catalog esențial.",
+      items: [
+        "Catalog de produse",
+        "Configurare plăți online",
+        "Integrare curieri",
+        "Administrare produse și comenzi",
+      ],
+    },
+    {
+      name: "Magazin business",
+      price: "7.000 lei",
+      audience: "Pentru un catalog mai mare și procese conectate.",
+      items: [
+        "Filtrare avansată",
+        "Promoții",
+        "Automatizări",
+        "Integrare CRM / ERP, conform cerințelor",
+      ],
+    },
+    {
+      name: "E-commerce avansat",
+      price: "12.000 lei",
+      audience: "Pentru cerințe specifice și integrări multiple.",
+      items: [
+        "Funcționalități personalizate",
+        "Integrări API",
+        "Automatizări extinse",
+        "Plan de dezvoltare după lansare",
+      ],
+    },
+  ],
+  projectTypes: [
+    "Magazin nou",
+    "Refacere magazin existent",
+    "Migrare magazin",
+    "Integrări și funcții noi",
+  ],
+  messageHint: "Ce produse vinzi? Ai deja un magazin sau pornești de la zero?",
+  faqs: [
+    {
+      question: "Cât durează lansarea unui magazin?",
+      answer:
+        "Orientativ, 5–10 săptămâni, în funcție de catalog, materiale și integrări. Calendarul final se stabilește după analiza cerințelor; proiectele complexe pot dura mai mult.",
+    },
+    {
+      question: "Ce plăți și curieri pot folosi?",
+      answer:
+        "Alegem împreună serviciile potrivite și verificăm integrarea cu platforma magazinului. Abonamentele și comisioanele furnizorilor se clarifică separat de costul implementării.",
+    },
+    {
+      question: "Pot administra singur produsele și comenzile?",
+      answer:
+        "Da. Magazinul include administrarea produselor și comenzilor, iar la predare îți explicăm pașii uzuali de lucru.",
+    },
+    {
+      question: "Puteți reface sau migra un magazin existent?",
+      answer:
+        "Da. Verificăm platforma, produsele, datele și adresele existente înainte să stabilim ce se poate transfera și cum organizăm migrarea.",
+    },
+    {
+      question: "Ce include suportul după lansare?",
+      answer:
+        "Stabilim în ofertă perioada de suport și ce acoperă. Mentenanța recurentă, găzduirea și dezvoltările ulterioare se discută separat.",
+    },
+  ],
+};

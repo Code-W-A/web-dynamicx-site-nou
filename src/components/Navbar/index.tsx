@@ -1,5 +1,7 @@
 "use client";
 
+import { LeadHeader } from "@/components/Leads/chrome";
+import { getWebCommerceSource } from "@/components/Leads/types";
 import { navbarData } from "@/static-data/navbar";
 import { onScroll } from "@/utils/scrollActive";
 import Image from "next/image";
@@ -46,6 +48,9 @@ export default function Navbar() {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
+
+  const webCommerceSource = getWebCommerceSource(pathUrl);
+  if (webCommerceSource) return <LeadHeader source={webCommerceSource} />;
 
   if (isMobileAppsAdsLeadPage || isMobileAppsThankYouPage) {
     return (
