@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { pricingMicrocopy, pricingSummary, pricingTiers } from "./content";
+import {
+  mobileAppStartingPrice,
+  pricingMicrocopy,
+  pricingSummary,
+  pricingTiers,
+} from "./content";
 import SectionHeading from "./section-heading";
 
 export default function PricingEstimateSection() {
@@ -9,7 +14,7 @@ export default function PricingEstimateSection() {
         <SectionHeading
           eyebrow="Prețuri de pornire"
           title="Prețuri de pornire pentru dezvoltare aplicații mobile"
-          description="Prima versiune pornește de la 1.500 EUR. Prețul final se agrează înainte de dezvoltare, în funcție de funcții, complexitate și ce trebuie construit de la zero."
+          description={`Prima versiune pornește de la ${mobileAppStartingPrice}. Prețul final se agrează înainte de dezvoltare, în funcție de funcții, complexitate și ce trebuie construit de la zero.`}
           center
         />
 

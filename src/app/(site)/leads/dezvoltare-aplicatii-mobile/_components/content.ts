@@ -258,10 +258,12 @@ export const testimonials = [
   },
 ];
 
+export const mobileAppStartingPrice = "1.500 EUR";
+
 export const pricingTiers = [
   {
     title: "Primă versiune a aplicației",
-    range: "de la 1.500 EUR",
+    range: `de la ${mobileAppStartingPrice}`,
     details:
       "Potrivită pentru proiecte care trebuie lansate rapid, cu funcțiile esențiale și o structură bună de pornire.",
     includes: [
@@ -303,8 +305,7 @@ export const pricingMicrocopy =
 export const faqs = [
   {
     question: "Cât costă dezvoltarea unei aplicații mobile?",
-    answer:
-      "Costul depinde de complexitate, funcțiile dorite, partea tehnică necesară și numărul de platforme. O primă versiune a aplicației poate porni de la 1.500 EUR. Prețul final se agrează înainte de dezvoltare.",
+    answer: `Costul depinde de complexitate, funcțiile dorite, partea tehnică necesară și numărul de platforme. O primă versiune a aplicației poate porni de la ${mobileAppStartingPrice}. Prețul final se agrează înainte de dezvoltare.`,
   },
   {
     question: "Dezvoltați aplicații pentru iOS și Android?",
