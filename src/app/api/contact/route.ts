@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/app/libs/email";
 import { z } from "zod";
+import { isValidLeadPhone } from "@/app/libs/leadPhone";
 
 // Only the website landing uses this stricter contract; other callers are unchanged.
 const webSiteRequest = z
@@ -12,7 +13,7 @@ const webSiteRequest = z
       .max(100)
       .regex(/^[^\r\n]+$/),
     email: z.string().trim().max(200).default(""),
-    phone: z.string().trim().max(200).default(""),
+    phone: z.string().trim().max(30).refine(isValidLeadPhone),
     description: z.string().trim().min(10).max(5000),
     message: z.string().trim().min(10).max(6000),
     company: z.string().trim().max(200).default(""),
@@ -21,17 +22,10 @@ const webSiteRequest = z
     source: z.literal("lead-web-site"),
     page: z.literal("/leads/creare-site-web"),
   })
-  .refine(({ email, phone }) => {
-    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const digits = phone.replace(/\D/g, "").length;
-    const validPhone =
-      /^\+?[\d\s().-]+$/.test(phone) && digits >= 9 && digits <= 15;
-    return (
-      (validEmail || validPhone) &&
-      (!email || validEmail) &&
-      (!phone || validPhone)
-    );
-  }, "Introdu un telefon sau un e-mail valid.");
+  .refine(
+    ({ email }) => !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
+    "Introdu o adresă de e-mail validă.",
+  );
 
 function escapeHtml(value: string) {
   return value
@@ -67,6 +61,20 @@ export async function POST(request: Request) {
     const page = (body?.page || "").toString();
     const projectType = (body?.projectType || "").toString();
     const budget = (body?.budget || "").toString();
+
+    if (
+      (source === "lead-web-site" ||
+        source === "lead-magazin-online" ||
+        source === "lead-mobile-apps") &&
+      (phone.length > 30 || !isValidLeadPhone(phone))
+    ) {
+      return NextResponse.json(
+        {
+          error: "Numărul de telefon este obligatoriu și trebuie să fie valid.",
+        },
+        { status: 400 },
+      );
+    }
 
     if (!name || (!email && !phone) || !message) {
       return NextResponse.json(

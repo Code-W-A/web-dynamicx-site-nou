@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { isValidLeadPhone } from "@/app/libs/leadPhone";
 import type { LeadPageConfig } from "./types";
 import { emitLeadEvent } from "./events";
 import { useLeadSelection } from "./interactions";
@@ -12,7 +13,8 @@ import {
 
 const initialForm = {
   name: "",
-  contact: "",
+  phone: "",
+  email: "",
   message: "",
   company: "",
   budget: "",
@@ -22,10 +24,6 @@ const initialForm = {
 type Field = keyof typeof initialForm;
 type Errors = Partial<Record<Field, string>>;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const isPhone = (value: string) =>
-  /^\+?[\d\s().-]+$/.test(value) &&
-  value.replace(/\D/g, "").length >= 9 &&
-  value.replace(/\D/g, "").length <= 15;
 
 type FormConfig = Pick<
   LeadPageConfig,
@@ -80,13 +78,14 @@ export default function LeadForm({ config }: { config: FormConfig }) {
     if (requestLock.current) return;
     start();
     const next: Errors = {};
-    const contact = form.contact.trim();
-    const email = emailPattern.test(contact);
-    const phone = isPhone(contact);
+    const phone = form.phone.trim();
+    const email = form.email.trim();
     if (form.name.trim().length < 2)
       next.name = "Scrie numele tău (minimum 2 caractere).";
-    if (!email && !phone)
-      next.contact = "Introdu un e-mail valid sau un telefon de 9–15 cifre.";
+    if (!isValidLeadPhone(phone))
+      next.phone = "Introdu un număr de telefon valid (9–15 cifre).";
+    if (email && !emailPattern.test(email))
+      next.email = "Introdu o adresă de e-mail validă.";
     if (form.message.trim().length < 10)
       next.message = "Spune-ne puțin despre proiect (minimum 10 caractere).";
     if (!form.consent)
@@ -110,8 +109,8 @@ export default function LeadForm({ config }: { config: FormConfig }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: form.name.trim(),
-          email: email ? contact : "",
-          phone: phone ? contact : "",
+          email,
+          phone,
           company: form.company.trim(),
           projectType: form.projectType,
           budget: form.budget.trim(),
@@ -226,24 +225,37 @@ export default function LeadForm({ config }: { config: FormConfig }) {
           />
           {fieldError("name")}
         </label>
-        <label htmlFor="lead-contact">
-          Telefon sau e-mail <span aria-hidden="true">*</span>
+        <label htmlFor="lead-phone">
+          Telefon <span aria-hidden="true">*</span>
           <input
-            id="lead-contact"
-            name="contact"
-            type="text"
-            autoComplete="on"
-            autoCapitalize="none"
-            spellCheck={false}
+            id="lead-phone"
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            inputMode="tel"
             required
-            maxLength={200}
-            value={form.contact}
-            onChange={(e) => update("contact", e.target.value)}
-            {...accessibility("contact")}
+            maxLength={30}
+            value={form.phone}
+            onChange={(e) => update("phone", e.target.value)}
+            {...accessibility("phone")}
           />
-          {fieldError("contact")}
+          {fieldError("phone")}
         </label>
       </div>
+      <label htmlFor="lead-email">
+        E-mail (opțional)
+        <input
+          id="lead-email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          maxLength={200}
+          value={form.email}
+          onChange={(e) => update("email", e.target.value)}
+          {...accessibility("email")}
+        />
+        {fieldError("email")}
+      </label>
       <label htmlFor="lead-message">
         {isWebSite ? config.messageHint : "Ce ai vrea să construim?"}{" "}
         <span aria-hidden="true">*</span>

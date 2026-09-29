@@ -1,11 +1,12 @@
 "use client";
 
-import { type FormEvent, useEffect, useMemo, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { MessageCircle, PhoneCall } from "lucide-react";
 import validateEmail from "@/app/libs/validate";
+import { isValidLeadPhone } from "@/app/libs/leadPhone";
 import {
   trackCustomLeadEvent,
   trackLead,
@@ -16,8 +17,8 @@ const MESSAGE_MIN_LEN = 10;
 
 type FormState = {
   name: string;
-  /** Un singur câmp: fie email, fie telefon (ambele validate la trimitere). */
-  contact: string;
+  phone: string;
+  email: string;
   projectType: string;
   message: string;
   consent: boolean;
@@ -25,7 +26,8 @@ type FormState = {
 
 const initialState: FormState = {
   name: "",
-  contact: "",
+  phone: "",
+  email: "",
   projectType: "",
   message: "",
   consent: false,
@@ -68,22 +70,10 @@ export default function LeadFormSection() {
     };
   }, []);
 
-  const validatePhone = (phone: string) => {
-    const numeric = phone.replace(/\D/g, "");
-    return numeric.length >= 9 && numeric.length <= 15;
-  };
-
-  const contactTrim = form.contact.trim();
-
-  const hasValidEmail = useMemo(
-    () => Boolean(contactTrim && validateEmail(contactTrim)),
-    [contactTrim],
-  );
-  const hasValidPhone = useMemo(
-    () => Boolean(contactTrim && validatePhone(form.contact)),
-    [contactTrim, form.contact],
-  );
-  const hasValidContact = hasValidEmail || hasValidPhone;
+  const phoneTrim = form.phone.trim();
+  const emailTrim = form.email.trim();
+  const hasValidPhone = isValidLeadPhone(phoneTrim);
+  const hasValidEmail = !emailTrim || validateEmail(emailTrim);
 
   const messageTrim = form.message.trim();
   const messageLen = messageTrim.length;
@@ -92,7 +82,8 @@ export default function LeadFormSection() {
   const nameOk = form.name.trim().length >= 2;
   const canSubmit =
     nameOk &&
-    hasValidContact &&
+    hasValidPhone &&
+    hasValidEmail &&
     messageSufficient &&
     form.consent &&
     !loading;
@@ -110,11 +101,11 @@ export default function LeadFormSection() {
     if (!form.name.trim() || form.name.trim().length < 2) {
       nextErrors.name = "Introdu un nume valid.";
     }
-    if (!contactTrim) {
-      nextErrors.contact = "Completează email sau numărul de telefon.";
-    } else if (!hasValidContact) {
-      nextErrors.contact =
-        "Introdu o adresă de email validă sau un număr de telefon valid.";
+    if (!hasValidPhone) {
+      nextErrors.phone = "Introdu un număr de telefon valid (9–15 cifre).";
+    }
+    if (!hasValidEmail) {
+      nextErrors.email = "Introdu o adresă de email validă.";
     }
     if (!messageTrim || messageLen < MESSAGE_MIN_LEN) {
       nextErrors.message = `Descrierea trebuie să aibă cel puțin ${MESSAGE_MIN_LEN} caractere (fără spații la început/sfârșit).`;
@@ -137,8 +128,8 @@ export default function LeadFormSection() {
         {
           name: form.name.trim(),
           company: "",
-          email: hasValidEmail ? contactTrim : "",
-          phone: !hasValidEmail && hasValidPhone ? contactTrim : "",
+          email: emailTrim,
+          phone: phoneTrim,
           projectType: form.projectType,
           budget: "",
           source: "lead-mobile-apps",
@@ -321,34 +312,58 @@ export default function LeadFormSection() {
               </label>
 
               <label className="text-sm font-medium text-slate-700 sm:col-span-2">
-                Email sau telefon *
+                Telefon *
                 <input
-                  type="text"
-                  name="contact"
-                  value={form.contact}
+                  type="tel"
+                  name="phone"
+                  autoComplete="tel"
+                  inputMode="tel"
+                  required
+                  maxLength={30}
+                  value={form.phone}
                   onChange={(e) => {
-                    setForm((prev) => ({ ...prev, contact: e.target.value }));
-                    if (fieldErrors.contact)
+                    setForm((prev) => ({ ...prev, phone: e.target.value }));
+                    if (fieldErrors.phone)
                       setFieldErrors((prev) => ({
                         ...prev,
-                        contact: undefined,
+                        phone: undefined,
                       }));
                   }}
                   className={`focus:border-primary mt-2 w-full rounded-xl border px-4 py-3 text-sm transition outline-none ${
-                    fieldErrors.contact ? "border-red-400" : "border-slate-200"
+                    fieldErrors.phone ? "border-red-400" : "border-slate-200"
                   }`}
-                  placeholder="nume@companie.ro sau 07xx xxx xxx"
+                  placeholder="07xx xxx xxx"
                 />
-                {fieldErrors.contact ? (
+                {fieldErrors.phone ? (
                   <span className="mt-1 block text-xs text-red-600">
-                    {fieldErrors.contact}
+                    {fieldErrors.phone}
                   </span>
-                ) : (
-                  <span className="mt-1 block text-xs text-slate-500">
-                    Poți folosi fie adresa de email, fie numărul de telefon —
-                    ambele sunt acceptate.
+                ) : null}
+              </label>
+
+              <label className="text-sm font-medium text-slate-700 sm:col-span-2">
+                Email (opțional)
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  maxLength={200}
+                  value={form.email}
+                  onChange={(e) => {
+                    setForm((prev) => ({ ...prev, email: e.target.value }));
+                    if (fieldErrors.email)
+                      setFieldErrors((prev) => ({ ...prev, email: undefined }));
+                  }}
+                  className={`focus:border-primary mt-2 w-full rounded-xl border px-4 py-3 text-sm transition outline-none ${
+                    fieldErrors.email ? "border-red-400" : "border-slate-200"
+                  }`}
+                  placeholder="nume@companie.ro"
+                />
+                {fieldErrors.email ? (
+                  <span className="mt-1 block text-xs text-red-600">
+                    {fieldErrors.email}
                   </span>
-                )}
+                ) : null}
               </label>
             </div>
 
@@ -391,7 +406,7 @@ export default function LeadFormSection() {
                       className={
                         messageSufficient
                           ? "font-semibold text-emerald-700"
-                          : "tabular-nums text-slate-500"
+                          : "text-slate-500 tabular-nums"
                       }
                     >
                       {messageLen}/{MESSAGE_MIN_LEN}
