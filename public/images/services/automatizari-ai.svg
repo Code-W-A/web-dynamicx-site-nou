@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="690" viewBox="0 0 1020 690" fill="none">
+<rect width="1020" height="690" fill="#EEF2FC"/>
+<rect x="100" y="90" width="820" height="510" rx="28" fill="white" stroke="#D7DFFF" stroke-width="2"/>
+<path d="M100 166H920" stroke="#E3E9F5" stroke-width="2"/>
+<circle cx="140" cy="128" r="7" fill="#3F5FD7"/>
+<text x="162" y="136" fill="#52617C" font-family="Arial,sans-serif" font-size="20" letter-spacing="2">WORKFLOW / AI</text>
+<text x="146" y="234" fill="#090E34" font-family="Arial,sans-serif" font-weight="700" font-size="30">Procese conectate. Control uman.</text>
+<path d="M307 354H369M589 354H651M760 403V455H260" stroke="#8C9FCF" stroke-width="3"/>
+<path d="M358 347L369 354L358 361M640 347L651 354L640 361" stroke="#8C9FCF" stroke-width="3"/>
+<rect x="148" y="298" width="160" height="112" rx="14" fill="#F7F9FC" stroke="#D7DFFF"/>
+<rect x="369" y="298" width="220" height="112" rx="14" fill="#3F5FD7"/>
+<rect x="651" y="298" width="220" height="112" rx="14" fill="#F7F9FC" stroke="#D7DFFF"/>
+<g font-family="Arial,sans-serif" text-anchor="middle">
+<text x="228" y="346" fill="#090E34" font-size="22" font-weight="700">Solicitare</text>
+<text x="228" y="377" fill="#596579" font-size="17">Email / Formular</text>
+<text x="479" y="346" fill="white" font-size="22" font-weight="700">AI + reguli</text>
+<text x="479" y="377" fill="white" font-size="17">Date structurate</text>
+<text x="761" y="346" fill="#090E34" font-size="22" font-weight="700">CRM</text>
+<text x="761" y="377" fill="#596579" font-size="17">Actualizare</text>
+</g>
+<rect x="148" y="483" width="723" height="66" rx="12" fill="#FFFCF5" stroke="#D9CBAA"/>
+<text x="510" y="524" fill="#78602B" font-family="Arial,sans-serif" text-anchor="middle" font-size="20">Răspuns pregătit → Aprobare umană → Follow-up</text>
+</svg>

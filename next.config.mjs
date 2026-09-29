@@ -3,6 +3,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/automatizari-ai",
+        destination: "/servicii/automatizari-ai",
+        statusCode: 308,
+      },
+      {
         source: "/:path*",
         has: [
           {

@@ -1,3 +1,4 @@
+import AiAutomationContent from "../automatizari-ai/content";
 import PageTitle from "@/components/Common/PageTitle";
 import TopicClusterArticlesSection from "@/components/Blog/internal-linking/topic-cluster-articles-section";
 import ServiceLayout from "@/components/Service/ServiceLayout";
@@ -111,6 +112,7 @@ export default async function ServiceDetailPage(props: Props) {
   const isMobileAppsPage = params.slug === mobileAppsServiceSlug;
   const landingPage = isMobileAppsPage ? undefined : getServiceLandingPageData(params.slug);
   const isLandingPage = Boolean(landingPage);
+  const isAiAutomationPage = params.slug === "automatizari-ai";
   const clusterConfig = isMobileAppsPage ? null : resolveClusterConfigByServiceSlug(params.slug);
 
   if (!service) {
@@ -154,7 +156,7 @@ export default async function ServiceDetailPage(props: Props) {
 
   return (
     <>
-      {!isMobileAppsPage && !isLandingPage ? (
+      {!isMobileAppsPage && !isLandingPage && !isAiAutomationPage ? (
         <PageTitle
           pageTitle={pageTitle}
           pageDescription={pageDescription}
@@ -232,7 +234,9 @@ export default async function ServiceDetailPage(props: Props) {
           }}
         />
       )}
-      {isMobileAppsPage ? (
+      {isAiAutomationPage ? (
+        <AiAutomationContent breadcrumbs={breadcrumbs} />
+      ) : isMobileAppsPage ? (
         <MobileAppServicePageContent breadcrumbs={breadcrumbs} />
       ) : isLandingPage && landingPage ? (
         <ServiceLandingTemplate
@@ -248,7 +252,7 @@ export default async function ServiceDetailPage(props: Props) {
         </>
       )}
 
-      {!isMobileAppsPage && !isLandingPage ? (
+      {!isMobileAppsPage && !isLandingPage && !isAiAutomationPage ? (
         <>
           {portfolioSection}
           <section className="bg-gray-50 py-16">

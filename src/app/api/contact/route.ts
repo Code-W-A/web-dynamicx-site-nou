@@ -1,3 +1,4 @@
+import { aiAutomationRequest, aiAutomationSource } from "@/app/libs/aiAutomationContact";
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/app/libs/email";
 import { z } from "zod";
@@ -39,6 +40,16 @@ function escapeHtml(value: string) {
 export async function POST(request: Request) {
   try {
     let body = await request.json();
+    if (body?.source === aiAutomationSource) {
+      const parsed = aiAutomationRequest.safeParse(body);
+      if (!parsed.success) {
+        return NextResponse.json(
+          { error: "Verifică numele, contactul, descrierea și acordul pentru prelucrarea datelor." },
+          { status: 400 },
+        );
+      }
+      body = parsed.data;
+    }
     if (body?.source === "lead-web-site") {
       const parsed = webSiteRequest.safeParse(body);
       if (!parsed.success) {

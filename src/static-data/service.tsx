@@ -1,3 +1,4 @@
+import { aiFaqs } from "@/app/(site)/servicii/automatizari-ai/data";
 import { Service } from "@/types/service";
 import { v4 as uuid } from "uuid";
 import Link from "next/link";
@@ -1658,6 +1659,17 @@ const detailsCreareMagazinOnlineShopify = (
 );
 
 export const serviceData: Service[] = [
+  {
+    id: "automatizari-ai",
+    slug: "automatizari-ai",
+    title: "Automatizări AI",
+    description: "Automatizări personalizate pentru procese repetitive: lead-uri, email, CRM, documente și operațiuni interne.",
+    metaTitle: "Automatizări AI pentru companii | WebDynamicX",
+    metaDescription: "Automatizăm procese repetitive din vânzări, email, CRM, suport, documente și operațiuni. Soluții AI și integrări personalizate pentru companii.",
+    image: "/images/services/automatizari-ai.svg",
+    details: null,
+    faqs: aiFaqs,
+  },
   {
     id: uuid(),
     title: "Web design",

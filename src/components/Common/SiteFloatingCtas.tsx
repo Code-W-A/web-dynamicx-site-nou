@@ -8,7 +8,7 @@ export default function SiteFloatingCtas() {
   const isLeadPage = pathname?.startsWith("/leads");
   const isMobileAppsThankYou = pathname === "/multumim-aplicatie-mobile";
 
-  if (isLeadPage || isMobileAppsThankYou) {
+  if (isLeadPage || isMobileAppsThankYou || pathname === "/servicii/automatizari-ai") {
     return null;
   }
 
