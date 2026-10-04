@@ -75,3 +75,33 @@ Checklist:
 - Both native download links were clicked in a browser; downloaded files match the source byte for byte. Downloaded PDF opens as a seven-page document. The PDF endpoint and mobile Open Graph endpoint return HTTP 200 with the expected content types; sitemap contains both routes.
 - Contact CTA reaches `/contact#contact`; no form was submitted. Unknown study slugs return 404. Existing Operio mobile study was checked at both widths and has no unexpected download section or horizontal overflow. No browser page errors occurred during these checks.
 - All verification was local. No deployment or production data change was performed.
+
+## OTP Parking și Parcare White Label — 2026-10-04
+
+- Pagina existentă `/portofoliu-software/otp-parking` păstrează descrierea proiectului web/mobil și integrările implementate. Noua pagină `/portofoliu-software/parcare-white-label` prezintă exclusiv copia demonstrativă. Studiile au legături reciproce, iar legătura OTP către studiul aplicației mobile este păstrată.
+- Butonul „Testează demo-ul” din ambele studii deschide `https://exemplu-parcare.vercel.app`. Site-ul pentru clienții OTP rămâne disponibil ca legătură distinctă în studiul proiectului.
+- Capturi reale din demo-ul publicat, realizate pe 2026-10-04 la 1440 × 1000, într-o sesiune de browser nouă, fără operații asupra rezervărilor. Export WebP la aceeași rezoluție; nu sunt imagini generate sau interfețe reconstruite.
+
+| Asset | Ruta sursă în demo | Conținut |
+| --- | --- | --- |
+| `parking-demo-dashboard.webp` | `/admin/dashboard` | Capacitate, ocupare și configurarea rezervărilor; imagine principală OTP |
+| `parking-demo-bookings.webp` | `/admin/dashboard/bookings` | Statistici, filtre și rezervări fictive; imagine principală White Label |
+| `parking-demo-entries-exits.webp` | `/admin/dashboard/entries-exits` | Intrările zilei 2026-10-04 cu vehicule și contacte fictive |
+| `parking-demo-prices.webp` | `/admin/dashboard/prices` | Tarife, reduceri și prețuri finale de test |
+
+- Marca „white label” și indicatorul „Mediu de test” sunt vizibile în toate cele patru capturi. Nu sunt incluse date operaționale OTP.
+- Demo-ul folosește stocare locală în browser, cu sincronizare între taburile aceluiași browser; nu există sincronizare între dispozitive. Firebase, emailurile, plățile, facturile și conexiunile către parcare nu sunt servicii active în acest demo. Unele texte tehnice moștenite din interfață menționează furnizorii originali; acestea nu constituie dovadă de conectare.
+- Capturile ilustrează demo-ul, nu validarea unei tranzacții sau integrări în producție. Fără afirmații despre rezultate comerciale măsurate. Nu s-a publicat site-ul New WebDynamicx și nu s-a modificat aplicația demo.
+
+### Verificare locală — 2026-10-04
+
+- `npx tsc --noEmit`, `npm run build` (86 pagini), verificarea Prettier pentru fișierele modificate și `git diff --check`: trecute.
+- Cele două studii și hubul software au fost verificate în browser pe serverul local de producție la 1440 × 1000 și 390 × 844: șase combinații rută/ecran, un H1 per pagină, fără depășire orizontală, imagini lipsă, overlay de eroare sau erori de browser.
+- Verificate: canonicalele, JSON-LD, butoanele demo cu deschidere în tab nou și `noopener noreferrer`, legăturile reciproce, legătura OTP către studiul mobil, includerea în sitemap și răspunsurile HTTP 200 pentru studii și toate cele patru capturi.
+- Capturile de verificare ale paginilor au fost revizuite vizual; nu au fost trimise formulare de contact. Aceste rezultate sunt locale, fără publicare New WebDynamicx.
+
+### Legături spre demo din studiul aplicației mobile — 2026-10-04
+
+- Pagina `/portofoliu-aplicatii-mobile/otp-parking-rezervari` include butonul „Testează demo-ul panoului” către `https://exemplu-parcare.vercel.app`, deschis în tab nou.
+- Legăturile dintre paginile software OTP, Parcare White Label și aplicația mobilă OTP sunt reciproce, păstrând și accesul la pagina OTP existentă și Google Play.
+- După adăugarea legăturilor mobile: verificarea TypeScript și build-ul (86 pagini) au trecut; pagina aplicației OTP a fost inspectată la 390 px. Butonul demo se deschide în tab nou, linkurile OTP, White Label și Google Play sunt vizibile, imaginile paginii mobile se încarcă și nu apare overflow orizontal.

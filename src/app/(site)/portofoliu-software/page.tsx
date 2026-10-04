@@ -15,7 +15,7 @@ import {
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
 const title = "Software & platforme — studii de caz | Web Dynamicx";
 const description =
-  "Operio, OTP Parking și FOM: software pentru echipe în teren, rezervări, echipamente și integrări. Vezi fluxurile și soluțiile realizate.";
+  "Studii de caz și demo-uri software: Operio, OTP Parking, Parcare White Label, ITP White Label și FOM. Vezi administrarea, rezervările și integrările.";
 export const metadata: Metadata = {
   title,
   description,
@@ -105,12 +105,24 @@ export default function Page() {
                   <p className="mt-4 leading-7 text-slate-600">
                     {study.sortDescription}
                   </p>
-                  <Link
-                    href={`${softwarePortfolioHubPath}/${study.slug}`}
-                    className="text-primary mt-6 inline-flex font-semibold"
-                  >
-                    Vezi studiul de caz →
-                  </Link>
+                  <div className="mt-6 flex flex-wrap items-center gap-4">
+                    <Link
+                      href={`${softwarePortfolioHubPath}/${study.slug}`}
+                      className="text-primary inline-flex font-semibold"
+                    >
+                      Vezi studiul de caz →
+                    </Link>
+                    {study.liveUrl && (
+                      <a
+                        href={study.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex font-semibold text-slate-700 hover:text-primary"
+                      >
+                        {study.liveLabel || "Vezi site-ul live"} ↗
+                      </a>
+                    )}
+                  </div>
                 </div>
               </article>
             ))}

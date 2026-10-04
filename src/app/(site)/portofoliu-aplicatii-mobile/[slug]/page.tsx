@@ -130,6 +130,16 @@ export default async function MobileCaseStudyPage(props: Props) {
             <CaseStudyContact
               label={study.ctaLabel || "Vreau o aplicație similară"}
             />
+            {study.demoUrl ? (
+              <a
+                href={study.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:border-primary hover:text-primary ml-3 inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-3 text-center text-sm font-semibold text-slate-700 transition"
+              >
+                Testează demo-ul panoului ↗
+              </a>
+            ) : null}
             {study.status && (
               <p className="mt-4 text-sm text-slate-600">{study.status}</p>
             )}

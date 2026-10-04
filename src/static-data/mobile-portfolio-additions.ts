@@ -178,6 +178,7 @@ export const additionalMobileStudies: MobileCaseStudy[] = [
     tags: ["Rezervări", "Parcare", "Plăți"],
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=ro.otpparking.mobile",
+    demoUrl: "https://exemplu-parcare.vercel.app",
     image: "/images/portofoliu/studii/parking-mobile-1.webp",
     imageAlt: "OTP Parking: captură din aplicația publicată în Google Play",
     gallery: [
@@ -229,6 +230,10 @@ export const additionalMobileStudies: MobileCaseStudy[] = [
       {
         href: "/portofoliu-software/otp-parking",
         label: "OTP Parking — platforma și integrările",
+      },
+      {
+        href: "/portofoliu-software/parcare-white-label",
+        label: "Parcare White Label — demo-ul panoului de administrare",
       },
     ],
     ctaLabel: "Vreau o aplicație de rezervări",

@@ -253,6 +253,8 @@ export const softwarePortfolio: Portfolio[] = [
     tags: ["Next.js", "Administrare auto", "White label"],
     clientLabel: "Stații ITP și service-uri",
     status: "Produs demonstrativ · date fictive · persistență locală",
+    liveUrl: "https://next-js-phi-gules.vercel.app/",
+    liveLabel: "Testează aplicația demo",
     metaTitle:
       "ITP White Label — platformă de administrare auto | Web Dynamicx",
     metaDescription:
@@ -374,11 +376,12 @@ export const softwarePortfolio: Portfolio[] = [
     headline: "OTP Parking — rezervarea conectată la operațiunile parcării",
     sortDescription:
       "Sistem web și mobil pentru rezervări, opțiuni de plată și administrare, cu integrări pentru facturare și accesul în parcare.",
-    image: asset("parking"),
-    imageAlt: "Interfața publică de rezervări OTP Parking",
-    liveUrl: "https://www.otp-parking.ro/",
-    liveLabel: "Vezi intrarea în rezervare",
-    status: "Platformă web · aplicație Android publicată",
+    image: asset("parking-demo-dashboard"),
+    imageAlt:
+      "Panoul demonstrativ derivat din OTP Parking: dashboard și ocuparea parcării",
+    liveUrl: "https://exemplu-parcare.vercel.app",
+    liveLabel: "Testează demo-ul",
+    status: "Proiect web și mobil · capturi din demo cu date fictive",
     tags: ["Rezervări", "Plăți", "Integrări"],
     clientLabel: "Parcare privată la aeroport",
     metaTitle:
@@ -390,7 +393,7 @@ export const softwarePortfolio: Portfolio[] = [
     challenge:
       "Datele, tarifele, plata și accesul fizic trebuie corelate cu rezervarea corectă. O modificare de perioadă sau de vehicul afectează mai multe părți ale sistemului.",
     solution:
-      "Implementarea include fluxul public de rezervare și panoul de administrare, conectate cu aplicația mobilă. Integrarea cu Stripe acoperă plata online, Oblio este folosit pentru facturare, iar modulele LPR și MultiPark leagă evenimentele de acces de evidența rezervărilor. Captura publică arată începutul fluxului, fără date personale sau rezervări reale.",
+      "Implementarea include fluxul public de rezervare și panoul de administrare, conectate cu aplicația mobilă. Integrarea cu Stripe acoperă plata online, Oblio este folosit pentru facturare, iar modulele LPR și MultiPark leagă evenimentele de acces de evidența rezervărilor. Pentru prezentarea panoului am pregătit o copie demonstrativă white label, fără Firebase, cu date fictive salvate în browser. Capturile de mai jos și butonul de testare aparțin acestei copii: plățile, facturile și conexiunile externe sunt simulate. Demo-ul nu se conectează la sistemele operaționale OTP Parking.",
     outcome: [
       "Rezervări gestionate din interfețe web și mobile.",
       "Module pentru tarife, modificări de rezervare și evidența ocupării.",
@@ -398,21 +401,107 @@ export const softwarePortfolio: Portfolio[] = [
     ],
     gallery: [
       {
-        src: asset("parking"),
-        alt: "OTP Parking: alegerea perioadei de parcare",
+        src: asset("parking-demo-bookings"),
+        alt: "Panoul demonstrativ OTP Parking: lista rezervărilor fictive și filtrele",
         caption:
-          "Punctul de intrare în rezervare pe site-ul clientului. Studiul privește sistemul de rezervări și integrările, nu designul întregului website.",
+          "Copia white label prezintă rezervările, vehiculele, stările și valorile de test. Datele sunt fictive și persistă numai în browserul testerului.",
+      },
+      {
+        src: asset("parking-demo-entries-exits"),
+        alt: "Panoul demonstrativ OTP Parking: intrările planificate pentru o zi",
+        caption:
+          "Intrări și ieșiri urmărite pe zi, cu numere auto și contacte fictive. În demo, evenimentele de acces sunt simulate.",
+      },
+      {
+        src: asset("parking-demo-prices"),
+        alt: "Panoul demonstrativ OTP Parking: tarife pe durata parcării și reduceri",
+        caption:
+          "Administrarea tarifelor și reducerilor în copia demonstrativă, fără modificarea prețurilor din parcare.",
       },
     ],
     supportedServices: [],
     relatedSlugs: ["operio", "fom"],
     relatedProjects: [
       {
+        href: "/portofoliu-software/parcare-white-label",
+        label: "Parcare White Label — panoul demonstrativ",
+      },
+      {
+        href: "https://www.otp-parking.ro/",
+        label: "OTP Parking — site-ul pentru clienți",
+      },
+      {
         href: "/portofoliu-aplicatii-mobile/otp-parking-rezervari",
         label: "OTP Parking — aplicația mobilă",
       },
     ],
     ctaLabel: "Vreau un sistem de rezervări pentru afacerea mea",
+  },
+  {
+    id: "parcare-white-label",
+    slug: "parcare-white-label",
+    title: "Parcare White Label — panou de administrare",
+    headline:
+      "Parcare White Label — rezervări, tarife și ocupare într-un singur panou",
+    sortDescription:
+      "Demo interactiv pentru administrarea unei parcări: rezervări, intrări și ieșiri, tarife, statistici și echipă, cu date fictive salvate în browser.",
+    image: asset("parking-demo-bookings"),
+    imageAlt:
+      "Parcare White Label: lista rezervărilor și statisticile cu date fictive",
+    liveUrl: "https://exemplu-parcare.vercel.app",
+    liveLabel: "Testează demo-ul",
+    status:
+      "Produs demonstrativ · date fictive · persistență locală · integrări simulate",
+    tags: ["Next.js", "Administrare parcare", "White label"],
+    clientLabel: "Demo pentru operatori de parcări",
+    metaTitle: "Parcare White Label — demo administrare parcare | Web Dynamicx",
+    metaDescription:
+      "Testează panoul demonstrativ pentru parcări: rezervări, intrări și ieșiri, ocupare, tarife și statistici. Date fictive, salvare în browser și integrări simulate.",
+    context:
+      "Echipa unei parcări are nevoie să regăsească rapid o rezervare, să urmărească sosirile și plecările și să știe câte locuri sunt disponibile. Acest demo pornește din panoul proiectului OTP Parking și permite explorarea administrării fără acces la datele sau serviciile clientului.",
+    challenge:
+      "Să păstrăm fluxurile de administrare într-o demonstrație coerentă: o rezervare creată sau modificată trebuie să se regăsească în liste, statistici și evidența ocupării. Testerul trebuie să poată încerca operațiile și să revină ușor la setul inițial de date.",
+    solution:
+      "Am pregătit un panou Next.js care se deschide direct cu o identitate fictivă de administrator. Include 100 de rezervări de test, vehicule și contacte fictive, istoric, anulări, rezervări viitoare și erori recuperabile. Crearea, editarea, anularea, ștergerea, recuperarea și marcarea intrărilor sau ieșirilor actualizează aceeași stare locală. Tarifele, whitelistul, angajații și configurațiile se pot administra în demo. Modificările persistă în browser și se sincronizează între taburile lui, iar resetarea regenerează datele raportate la ziua curentă. Fiecare browser sau dispozitiv are propria copie. Dacă stocarea nu este disponibilă, aplicația funcționează în memorie. Emailurile, plățile, facturile, parcarea și testele API sunt simulate; nu există conexiuni Firebase sau acces la sistemele OTP Parking.",
+    outcome: [
+      "Rezervări filtrabile după client, vehicul, perioadă și stare, cu operații demonstrative de creare și modificare.",
+      "Intrări, ieșiri și ocupare calculate din aceleași date folosite de dashboard și statistici.",
+      "Tarife și reduceri, numere whitelist, angajați și cereri de modificare administrate local.",
+      "Modificări păstrate după reîncărcare în același browser și resetare pentru reluarea demonstrației.",
+    ],
+    gallery: [
+      {
+        src: asset("parking-demo-dashboard"),
+        alt: "Parcare White Label: dashboardul cu ocuparea și configurarea rezervărilor",
+        caption:
+          "Dashboardul afișează capacitatea și ocuparea calculate din datele demonstrative. Marca white label și indicatorul Mediu de test rămân vizibile.",
+      },
+      {
+        src: asset("parking-demo-entries-exits"),
+        alt: "Parcare White Label: intrările zilei cu vehicule și contacte fictive",
+        caption:
+          "Evidența zilnică a intrărilor și ieșirilor folosește același set de rezervări. Evenimentele parcării sunt simulate.",
+      },
+      {
+        src: asset("parking-demo-prices"),
+        alt: "Parcare White Label: lista tarifelor, reducerilor și prețurilor finale",
+        caption:
+          "Tarife pe număr de zile, reduceri și prețuri finale disponibile pentru testarea administrării locale.",
+      },
+    ],
+    supportedServices: [],
+    relatedSlugs: ["otp-parking", "itp-white-label"],
+    relatedProjects: [
+      {
+        href: "/portofoliu-software/otp-parking",
+        label: "OTP Parking — proiectul din care pornește demo-ul",
+      },
+      {
+        href: "/portofoliu-aplicatii-mobile/otp-parking-rezervari",
+        label: "OTP Parking — aplicația mobilă",
+      },
+    ],
+    ctaLabel: "Vreau un panou pentru parcarea mea",
   },
   {
     id: "fom",

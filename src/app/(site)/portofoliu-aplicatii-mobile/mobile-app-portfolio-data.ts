@@ -16,6 +16,7 @@ export type MobileCaseStudy = {
   downloads?: CaseStudyDownload[];
   screenshotAspectRatio?: number;
   status?: string;
+  demoUrl?: string;
   ctaLabel?: string;
   relatedProjects?: { href: string; label: string }[];
   slug: string;
