@@ -55,8 +55,9 @@ export default function MobileAppsPortfolioHubPage() {
 
   const featuredStudies = getFeaturedPortfolioStudies();
   const featuredSlugSet = new Set<string>(featuredMobilePortfolioSlugs);
+  // Ascundere temporară pe acest hub; repune Operio când utilizatorul cere.
   const otherStudies = mobileAppCaseStudies.filter(
-    (s) => !featuredSlugSet.has(s.slug),
+    (s) => !featuredSlugSet.has(s.slug) && s.slug !== "operio-tehnicieni",
   );
 
   return (

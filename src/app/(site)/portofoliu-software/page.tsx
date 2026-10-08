@@ -12,10 +12,20 @@ import {
   softwarePortfolioHubPath,
 } from "@/static-data/portfolio-additions";
 
+// Ascundere temporară: păstrăm doar ITP și Parcare White Label vizibile aici.
+// Repune celelalte proiecte când utilizatorul cere acest lucru.
+const visibleSoftwarePortfolioSlugs = new Set([
+  "itp-white-label",
+  "parcare-white-label",
+]);
+const visibleSoftwarePortfolio = softwarePortfolio.filter((study) =>
+  visibleSoftwarePortfolioSlugs.has(study.slug),
+);
+
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
 const title = "Software & platforme — studii de caz | Web Dynamicx";
 const description =
-  "Studii de caz și demo-uri software: Operio, OTP Parking, Parcare White Label, ITP White Label și FOM. Vezi administrarea, rezervările și integrările.";
+  "Studii de caz software: ITP White Label și Parcare White Label. Vezi interfețele și funcționalitățile platformelor.";
 export const metadata: Metadata = {
   title,
   description,
@@ -26,13 +36,13 @@ export const metadata: Metadata = {
     url: `${siteURL}${softwarePortfolioHubPath}`,
     type: "website",
     locale: "ro_RO",
-    images: [{ url: `${siteURL}${softwarePortfolio[0].image}` }],
+    images: [{ url: `${siteURL}${visibleSoftwarePortfolio[0].image}` }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: [`${siteURL}${softwarePortfolio[0].image}`],
+    images: [`${siteURL}${visibleSoftwarePortfolio[0].image}`],
   },
 };
 export default function Page() {
@@ -57,8 +67,8 @@ export default function Page() {
         data={{
           "@context": "https://schema.org",
           "@type": "ItemList",
-          numberOfItems: softwarePortfolio.length,
-          itemListElement: softwarePortfolio.map((item, index) => ({
+          numberOfItems: visibleSoftwarePortfolio.length,
+          itemListElement: visibleSoftwarePortfolio.map((item, index) => ({
             "@type": "ListItem",
             position: index + 1,
             name: item.title,
@@ -78,7 +88,7 @@ export default function Page() {
       <section className="bg-[#f8f9ff] py-14 sm:py-20">
         <div className="container px-5">
           <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
-            {softwarePortfolio.map((study) => (
+            {visibleSoftwarePortfolio.map((study) => (
               <article
                 key={study.slug}
                 className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"
