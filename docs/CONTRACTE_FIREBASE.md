@@ -87,6 +87,19 @@ Fiecare cerere admin verifică atât sesiunea, cât și acest document.
 
 ## Verificări reproductibile
 
+Verificarea compatibilității CommonJS a dependențelor Firebase în runtime-uri
+serverless, fără acces la Firebase sau la rețea:
+
+```sh
+npm run test:contracts:runtime
+```
+
+`package.json` fixează `jose` la `4.15.9` numai pentru `jwks-rsa`.
+Această versiune oferă export CommonJS și evită `ERR_REQUIRE_ESM` din Vercel.
+Nu elimina override-ul până când dependența din amonte poate fi încărcată
+în runtime-ul serverless folosit. După modificarea dependențelor este necesar
+un redeploy, fără reutilizarea cache-ului de build/dependențe al versiunii vechi.
+
 Terminal 1, emulatoare izolate de Firebase real:
 
 ```sh
