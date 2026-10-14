@@ -11,6 +11,7 @@
 
 # next.js
 /.next/
+/.next-contracts-test/
 /out/
 
 # production
@@ -41,3 +42,11 @@ yarn.lock
 
 .idea
 .vscode
+
+# Firebase local diagnostics and credentials
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+.firebase/
+*-service-account.json
+.contracts-credentials.local.json

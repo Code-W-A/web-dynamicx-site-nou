@@ -1,0 +1,156 @@
+[
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/creare-magazin-online",
+    "errors": [],
+    "faqCount": 6,
+    "h1": "Creare magazin online pentru branduri care vor să vândă mai clar, mai rapid și mai predictibil",
+    "path": "/servicii/creare-magazin-online",
+    "serviceLinksChecked": 11,
+    "title": "Creare magazin online: preț și livrabile | Web Dynamicx",
+    "viewport": 1440,
+    "view": "desktop"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/creare-magazin-online-shopify",
+    "errors": [],
+    "faqCount": 6,
+    "h1": "Creare magazin online Shopify pentru business-uri care vor să intre repede în piață fără haos tehnic",
+    "path": "/servicii/creare-magazin-online-shopify",
+    "serviceLinksChecked": 11,
+    "title": "Creare magazin online Shopify: preț și configurare | Web Dynamicx",
+    "viewport": 1440,
+    "view": "desktop"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/dezvoltare-aplicatii-mobile",
+    "errors": [],
+    "faqCount": 8,
+    "h1": "Dezvoltare aplicații mobile pentru firme care vor un MVP clar și un produs pregătit să crească",
+    "path": "/servicii/dezvoltare-aplicatii-mobile",
+    "serviceLinksChecked": 11,
+    "title": "Dezvoltare aplicații mobile iOS și Android pentru firme | Web Dynamicx",
+    "viewport": 1440,
+    "view": "desktop"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/creare-site-web",
+    "errors": [],
+    "faqCount": 4,
+    "h1": "Creare site web pentru companii care au nevoie de mai mult decât un site simplu de prezentare",
+    "path": "/servicii/creare-site-web",
+    "serviceLinksChecked": 11,
+    "title": "Creare site web personalizat: preț și ofertă | Web Dynamicx",
+    "viewport": 1440,
+    "view": "desktop"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/creare-site-prezentare",
+    "errors": [],
+    "faqCount": 5,
+    "h1": "Creare site de prezentare pentru firme care vor să arate profesionist și să explice rapid ce oferă",
+    "path": "/servicii/creare-site-prezentare",
+    "serviceLinksChecked": 11,
+    "title": "Creare site de prezentare: preț și livrabile | Web Dynamicx",
+    "viewport": 1440,
+    "view": "desktop"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/web-design",
+    "errors": [],
+    "faqCount": 4,
+    "h1": "Web design pentru business-uri care vor pagini mai clare, mai rapide și mai convingătoare",
+    "path": "/servicii/web-design",
+    "serviceLinksChecked": 11,
+    "title": "Servicii web design: UX/UI și redesign | Web Dynamicx",
+    "viewport": 1440,
+    "view": "desktop"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/mentenanta-website",
+    "errors": [],
+    "faqCount": 6,
+    "h1": "Mentenanță site cu întreținere recurentă și intervenții agreate",
+    "path": "/servicii/mentenanta-website",
+    "serviceLinksChecked": 11,
+    "title": "Mentenanță site: intervenții și estimarea costului | Web Dynamicx",
+    "viewport": 1440,
+    "view": "desktop"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/creare-magazin-online",
+    "errors": [],
+    "faqCount": 6,
+    "h1": "Creare magazin online pentru branduri care vor să vândă mai clar, mai rapid și mai predictibil",
+    "path": "/servicii/creare-magazin-online",
+    "serviceLinksChecked": 11,
+    "title": "Creare magazin online: preț și livrabile | Web Dynamicx",
+    "viewport": 390,
+    "view": "mobile"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/creare-magazin-online-shopify",
+    "errors": [],
+    "faqCount": 6,
+    "h1": "Creare magazin online Shopify pentru business-uri care vor să intre repede în piață fără haos tehnic",
+    "path": "/servicii/creare-magazin-online-shopify",
+    "serviceLinksChecked": 11,
+    "title": "Creare magazin online Shopify: preț și configurare | Web Dynamicx",
+    "viewport": 390,
+    "view": "mobile"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/dezvoltare-aplicatii-mobile",
+    "errors": [],
+    "faqCount": 8,
+    "h1": "Dezvoltare aplicații mobile pentru firme care vor un MVP clar și un produs pregătit să crească",
+    "path": "/servicii/dezvoltare-aplicatii-mobile",
+    "serviceLinksChecked": 11,
+    "title": "Dezvoltare aplicații mobile iOS și Android pentru firme | Web Dynamicx",
+    "viewport": 390,
+    "view": "mobile"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/creare-site-web",
+    "errors": [],
+    "faqCount": 4,
+    "h1": "Creare site web pentru companii care au nevoie de mai mult decât un site simplu de prezentare",
+    "path": "/servicii/creare-site-web",
+    "serviceLinksChecked": 11,
+    "title": "Creare site web personalizat: preț și ofertă | Web Dynamicx",
+    "viewport": 390,
+    "view": "mobile"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/creare-site-prezentare",
+    "errors": [],
+    "faqCount": 5,
+    "h1": "Creare site de prezentare pentru firme care vor să arate profesionist și să explice rapid ce oferă",
+    "path": "/servicii/creare-site-prezentare",
+    "serviceLinksChecked": 11,
+    "title": "Creare site de prezentare: preț și livrabile | Web Dynamicx",
+    "viewport": 390,
+    "view": "mobile"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/web-design",
+    "errors": [],
+    "faqCount": 4,
+    "h1": "Web design pentru business-uri care vor pagini mai clare, mai rapide și mai convingătoare",
+    "path": "/servicii/web-design",
+    "serviceLinksChecked": 11,
+    "title": "Servicii web design: UX/UI și redesign | Web Dynamicx",
+    "viewport": 390,
+    "view": "mobile"
+  },
+  {
+    "canonical": "https://www.webdynamicx.ro/servicii/mentenanta-website",
+    "errors": [],
+    "faqCount": 6,
+    "h1": "Mentenanță site cu întreținere recurentă și intervenții agreate",
+    "path": "/servicii/mentenanta-website",
+    "serviceLinksChecked": 11,
+    "title": "Mentenanță site: intervenții și estimarea costului | Web Dynamicx",
+    "viewport": 390,
+    "view": "mobile"
+  }
+]

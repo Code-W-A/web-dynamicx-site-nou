@@ -282,13 +282,13 @@ export const mobileAppsServicePageData = {
       },
     ],
     outro:
-      "Pe scurt: primești un produs digital complet, gândit pentru lansare, operare și evoluție, nu doar o aplicație pusă în store.",
+      "Oferta stabilește funcțiile, platformele, backend-ul și livrabilele primei versiuni. Publicarea și suportul după lansare se planifică în funcție de proiect.",
   },
   pricing: {
     title: "Buget și durată estimativă",
-    budgetTitle: "Ce buget are sens pentru o aplicație mobilă?",
+    budgetTitle: "Cât costă dezvoltarea unei aplicații mobile?",
     budgetText:
-      "Costul depinde de complexitatea produsului, numărul de platforme, integrări și logica necesară în backend. Un MVP cu fluxuri bine definite și funcționalități esențiale are alt buget decât o aplicație cu roluri multiple, plăți, administrare și procese mai complexe.",
+      "MVP-urile bine definite pot porni de la aproximativ 1.500 EUR pentru funcționalitățile agreate. Oferta de dezvoltare aplicații mobile precizează ecranele, platformele iOS/Android, backend-ul, administrarea și integrările incluse. Produsele mai ample se estimează individual; infrastructura, conturile de publicare, serviciile externe și mentenanța se bugetează separat.",
     budgetHighlight: "MVP-urile bine definite pot porni de la aproximativ 1.500 EUR.",
     budgetFactors: [
       "ce funcționalități intră efectiv în prima lansare",
@@ -346,6 +346,18 @@ export const mobileAppsServicePageData = {
       "Dacă proiectul mobil are nevoie și de UX, website de lansare sau suport e-commerce, poți continua natural cu serviciile relevante de mai jos.",
   },
   faqs: [
+    {
+      question: "Cât costă dezvoltarea unei aplicații mobile?",
+      answer: "Un MVP bine delimitat poate porni de la aproximativ 1.500 EUR. Acest reper acoperă funcțiile stabilite în ofertă; conturile, plățile, rolurile, administrarea și integrările pot modifica bugetul.",
+    },
+    {
+      question: "Ce trebuie să trimit pentru o estimare iOS și Android?",
+      answer: "Trimite obiectivul, utilizatorii, fluxurile esențiale, platformele dorite și integrările. Stabilim apoi ce intră în MVP, ce backend este necesar și ce rămâne pentru etape ulterioare.",
+    },
+    {
+      question: "Ce costuri apar după lansarea aplicației?",
+      answer: "Pot exista costuri pentru infrastructură, conturi de publicare, servicii externe, mentenanță și funcții noi. Le separăm de implementare; condițiile furnizorilor se verifică pentru configurația aleasă.",
+    },
     {
       question: "Dezvoltați aplicații mobile pentru iOS și Android sau doar pentru una dintre platforme?",
       answer:

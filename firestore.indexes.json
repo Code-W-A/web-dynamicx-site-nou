@@ -1,0 +1,22 @@
+{
+  "indexes": [],
+  "fieldOverrides": [
+    { "collectionGroup": "contracts", "fieldPath": "template", "indexes": [] },
+    { "collectionGroup": "contracts", "fieldPath": "finalText", "indexes": [] },
+    {
+      "collectionGroup": "contracts",
+      "fieldPath": "providerSignature",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "contracts",
+      "fieldPath": "clientSignature",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "contractTemplates",
+      "fieldPath": "body",
+      "indexes": []
+    }
+  ]
+}

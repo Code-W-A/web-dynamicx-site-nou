@@ -17,7 +17,7 @@ const serviceLandingPagesBySlug = {
     slug: "web-design",
     title: "Web design profesional pentru site-uri mai clare și mai convingătoare",
     description: "Servicii de web design orientate pe UX, conversie și consistență vizuală pentru website-uri moderne.",
-    metaTitle: "Web design profesional pentru website-uri orientate pe conversie | Web Dynamicx",
+    metaTitle: "Servicii web design: UX/UI și redesign | Web Dynamicx",
     metaDescription:
       "Servicii de web design cu audit UX, wireframe, design system și ecrane pregătite pentru implementare. Design clar, rapid și orientat pe conversii.",
     image: "/images/services/agentie-web-design.webp",
@@ -27,7 +27,7 @@ const serviceLandingPagesBySlug = {
       eyebrow: "Web design orientat pe UX și conversie",
       title: "Web design pentru business-uri care vor pagini mai clare, mai rapide și mai convingătoare",
       subtitle:
-        "Construim interfețe web care explică rapid valoarea ofertei, reduc fricțiunea și pregătesc implementarea într-un mod curat, coerent și ușor de scalat.",
+        "Proiectăm structura paginilor, wireframe-urile și interfețele UX/UI pentru website-uri noi sau redesign. Primești ecranele și componentele agreate, cu explicații pentru implementare. Dezvoltarea website-ului se stabilește ca etapă separată.",
       bullets: [
         "Clarificăm mesajul și ierarhia informației înainte de design",
         "Definim ecrane, componente și pattern-uri reutilizabile",
@@ -221,7 +221,7 @@ const serviceLandingPagesBySlug = {
     deliverables: {
       eyebrow: "Livrabile",
       title: "Ce include, de regulă, un proiect de web design",
-      intro: "În funcție de amploarea proiectului, pachetul poate acoperi atât strategia de pagină, cât și designul complet.",
+      intro: "Livrabilele de design includ structura, wireframe-urile, ecranele UX/UI și componentele agreate. Predarea pentru dezvoltare precizează stările și comportamentele importante; implementarea se stabilește separat.",
       groups: [
         {
           title: "Strategie și structură",
@@ -242,7 +242,7 @@ const serviceLandingPagesBySlug = {
       eyebrow: "Buget",
       budgetTitle: "Ce buget are sens pentru un proiect de web design?",
       budgetText:
-        "Bugetul depinde de numărul de pagini, nivelul de redesign, câte componente trebuie definite și cât de multă clarificare strategică intră în proiect.",
+        "Proiectele de web design bine delimitate pot porni de la aproximativ 500 EUR. Estimarea acoperă paginile și stările de interfață agreate; implementarea, brandingul și redactarea conținutului se stabilesc separat.",
       budgetHighlight: "Proiectele de web design bine definite pot porni de la aproximativ 500 EUR.",
       budgetFactors: [
         "câte pagini trebuie desenate cap-coadă",
@@ -284,20 +284,20 @@ const serviceLandingPagesBySlug = {
         "Răspunsuri scurte la întrebările pe care le primim cel mai des despre redesign, livrabile și colaborarea dintre design și development.",
       items: [
         {
-          question: "Serviciul de web design include și wireframe, nu doar designul final?",
-          answer: "Da. În majoritatea proiectelor începem cu structură și wireframe, tocmai ca să validăm fluxul de informații înainte de direcția vizuală finală.",
+          question: "Ce includ serviciile de web design?",
+          answer: "În funcție de ofertă, livrăm audit UX, structură de pagină, wireframe, design UX/UI, componente și explicații pentru dezvoltare. Numărul de ecrane, stările și reviziile se stabilesc înainte.",
         },
         {
-          question: "Puteți intra și doar pe redesign-ul unor pagini existente?",
-          answer: "Da. Putem lucra punctual pe homepage, pagini de servicii, pagini de ofertă sau landing pages care au nevoie de claritate mai bună și CTA-uri mai convingătoare.",
+          question: "Web design include și dezvoltarea site-ului?",
+          answer: "Oferta de design precizează livrabilele vizuale. Putem continua cu dezvoltarea în cadrul serviciului de creare site web sau de creare site de prezentare, ca etapă distinctă.",
         },
         {
-          question: "Primesc și handoff pentru implementare?",
-          answer: "Da. Pregătim fișierele și clarificările necesare astfel încât implementarea să poată continua fără blocaje inutile.",
+          question: "Puteți face redesign pentru un site existent?",
+          answer: "Da. Putem lucra pe paginile prioritare sau pe o interfață mai amplă, după evaluarea structurii și a nevoilor utilizatorilor.",
         },
         {
-          question: "Puteți continua și cu dezvoltarea website-ului după design?",
-          answer: "Da. Dacă vrei, putem continua cu implementarea completă a designului în cadrul serviciului nostru de creare site web.",
+          question: "Cât costă web designul?",
+          answer: "Proiectele bine definite pot porni de la aproximativ 500 EUR. Prețul depinde de numărul de pagini, stările interfeței și amploarea redesignului.",
         },
       ],
     },
@@ -676,9 +676,9 @@ const serviceLandingPagesBySlug = {
     slug: "creare-magazin-online",
     title: "Creare magazin online pentru business-uri care vor structură bună și conversii mai bune",
     description: "Servicii de creare magazin online cu platformă potrivită, UX clar, integrări și bază SEO bună pentru e-commerce.",
-    metaTitle: "Creare magazin online profesional cu structură SEO și conversie | Web Dynamicx",
+    metaTitle: "Creare magazin online: preț și livrabile | Web Dynamicx",
     metaDescription:
-      "Servicii de creare magazin online cu Shopify, WooCommerce sau soluții custom, optimizate pentru UX, conversii, SEO și integrări e-commerce.",
+      "Creare magazin online: preț orientativ, catalog, plăți, livrare și livrabile. Vezi ce intră în ofertă și ce costuri se bugetează separat.",
     image: "/images/services/creare-magazin-online.webp",
     ogImage: "/images/services/creare-magazin-online.webp",
     ogAlt: "Servicii de creare magazin online pentru e-commerce",
@@ -888,28 +888,40 @@ const serviceLandingPagesBySlug = {
       eyebrow: "Livrabile",
       title: "Ce poate include un proiect complet de creare magazin online",
       intro:
-        "În funcție de proiect, livrabilele pot acoperi atât partea comercială și vizuală, cât și infrastructura și integrarea necesare după lansare.",
+        "Oferta stabilește catalogul, paginile, plățile și livrarea configurate. Precizăm produsele introduse, materialele necesare și verificările de lansare.",
       groups: [
         {
-          title: "Structură și experiență",
-          items: ["arhitectură de catalog și navigare", "design pentru pagini cheie", "checkout și flux de comandă optimizate"],
+          title: "Catalog și pagini comerciale",
+          items: [
+            "structură de categorii, filtre și navigare agreate",
+            "pagini de produs și variante conform catalogului stabilit",
+            "număr de produse și responsabilități pentru texte și imagini precizate în ofertă"
+          ]
         },
         {
-          title: "Implementare și integrare",
-          items: ["configurare platformă și storefront", "plăți, livrare și facturare", "tracking și evenimente e-commerce"],
+          title: "Comandă și integrări",
+          items: [
+            "coș și checkout configurate pentru platforma aleasă",
+            "metode de plată, livrare și facturare agreate",
+            "integrări externe și accesuri necesare stabilite înainte de implementare"
+          ]
         },
         {
-          title: "Lansare și bază SEO",
-          items: ["setări tehnice pentru indexare", "meta-uri și structură on-page", "testare și suport pentru lansare"],
-        },
+          title: "Testare și predare",
+          items: [
+            "verificarea fluxului de comandă și a afișării pe mobil",
+            "metadate și structură SEO de bază pentru paginile incluse",
+            "predarea accesurilor și explicarea administrării magazinului"
+          ]
+        }
       ],
       outro: "Magazinul trebuie să fie pregătit atât pentru lansare, cât și pentru operare și optimizare după primele comenzi.",
     },
     pricing: {
       eyebrow: "Buget",
-      budgetTitle: "Ce buget are sens pentru creare magazin online?",
+      budgetTitle: "Cât costă crearea unui magazin online?",
       budgetText:
-        "Costul depinde de platformă, numărul de produse, nivelul de personalizare, integrații și cât de multă complexitate comercială intră încă din prima etapă.",
+        "Pentru o ofertă de creare magazin online, stabilim platforma, catalogul, paginile și integrările incluse. Reperul de aproximativ 1.200 EUR se aplică implementărilor standard bine delimitate. Domeniul, găzduirea sau abonamentul platformei, licențele și serviciile externe se bugetează separat, dacă oferta nu le include explicit.",
       budgetHighlight: "Magazinele online standard bine definite pot porni de la aproximativ 1.200 EUR.",
       budgetFactors: [
         "platforma aleasă și nivelul de personalizare",
@@ -951,20 +963,28 @@ const serviceLandingPagesBySlug = {
       intro: "Răspunsuri scurte despre platformă, costuri, integrare și optimizare ulterioară pentru proiectele e-commerce.",
       items: [
         {
-          question: "Ce platformă recomandați pentru magazin online?",
-          answer: "Recomandarea depinde de catalog, nevoile de operare, buget și ritmul de lansare. În unele cazuri Shopify este mai potrivit, în altele WooCommerce sau o soluție custom.",
+          question: "Cât costă crearea unui magazin online?",
+          answer: "Implementările standard bine delimitate pot porni de la aproximativ 1.200 EUR. Prețul final depinde de catalog, personalizare, migrare și integrări. Oferta precizează livrabilele și costurile separate.",
         },
         {
-          question: "Serviciul include și integrarea cu plăți și curieri?",
-          answer: "Da. Putem configura plățile, livrarea și alte integrări esențiale pentru operarea magazinului în funcție de proiect.",
+          question: "Ce informații sunt necesare pentru o ofertă?",
+          answer: "Avem nevoie de tipul produselor, dimensiunea catalogului, variantele de produs, metodele de plată și livrare și integrările dorite. Dacă există un magazin, evaluăm și migrarea datelor.",
         },
         {
-          question: "Puteți ajuta și cu SEO pentru magazinul online?",
-          answer: "Da. Punem baza SEO încă din implementare și putem continua ulterior cu servicii dedicate de optimizare SEO pentru creșterea vizibilității organice.",
+          question: "Ce înseamnă un magazin online la cheie?",
+          answer: "Stabilim în ofertă ce intră în lansare: configurarea platformei, paginile comerciale, catalogul agreat, plățile, livrarea și testarea unei comenzi. Numărul de produse introduse și pregătirea conținutului se stabilesc explicit.",
         },
         {
-          question: "Puteți face și migrarea de pe altă platformă?",
-          answer: "Da. Dacă proiectul cere migrare, planificăm transferul structurii și al datelor astfel încât să reducem riscurile și blocajele în lansare.",
+          question: "Sunt incluse plățile, livrarea și facturarea?",
+          answer: "Putem configura integrările agreate, în funcție de platformă și furnizori. Activarea conturilor și contractele cu procesatorii, curierii sau serviciile de facturare rămân în responsabilitatea comerciantului; taxele lor sunt separate.",
+        },
+        {
+          question: "Ce verificăm înainte de lansare?",
+          answer: "Verificăm navigarea, paginile de produs, coșul, checkout-ul și o comandă de test în configurația agreată. Testarea nu implică încasări reale fără acordul comerciantului.",
+        },
+        {
+          question: "Cum alegem platforma și ce costuri apar după lansare?",
+          answer: "Alegerea depinde de catalog, operare și buget. Shopify are o pagină de serviciu dedicată. După lansare pot exista costuri de platformă, găzduire, licențe, mentenanță și promovare; le separăm de implementare.",
         },
       ],
     },
@@ -1018,9 +1038,9 @@ const serviceLandingPagesBySlug = {
     slug: "creare-magazin-online-shopify",
     title: "Creare magazin online Shopify pentru branduri care vor lansare rapidă și operare clară",
     description: "Serviciu dedicat de creare magazin online Shopify pentru branduri care vor un storefront clar, rapid și ușor de administrat.",
-    metaTitle: "Creare magazin online Shopify cu structură clară și conversie bună | Web Dynamicx",
+    metaTitle: "Creare magazin online Shopify: preț și configurare | Web Dynamicx",
     metaDescription:
-      "Creare magazin online Shopify pentru branduri care vor lansare rapidă, UX bun, structură SEO corectă și un storefront ușor de administrat.",
+      "Creare magazin online Shopify: temă, produse, colecții și integrări. Vezi prețul implementării și costurile separate pentru platformă și aplicații.",
     image: "/images/services/creare-magazin-online.webp",
     ogImage: "/images/services/creare-magazin-online.webp",
     ogAlt: "Servicii de creare magazin online Shopify",
@@ -1214,28 +1234,40 @@ const serviceLandingPagesBySlug = {
       eyebrow: "Livrabile",
       title: "Ce poate include un proiect Shopify",
       intro:
-        "Livrabilele se stabilesc în funcție de proiect, însă un storefront Shopify bun acoperă atât partea vizuală, cât și setup-ul operațional de bază.",
+        "Livrăm tema și paginile Shopify agreate, catalogul și configurările compatibile. Oferta separă implementarea de licențe, abonamente și servicii externe.",
       groups: [
         {
-          title: "Storefront",
-          items: ["homepage și colecții", "pagini de produs clare", "zone de ofertă și conținut comercial"],
+          title: "Temă și pagini Shopify",
+          items: [
+            "selectarea și configurarea temei agreate",
+            "homepage, colecții și pagini de produs incluse în ofertă",
+            "adaptarea elementelor vizuale la materialele brandului"
+          ]
         },
         {
-          title: "Configurare Shopify",
-          items: ["produse, colecții și navigare", "plăți și livrare", "aplicații relevante și setup tehnic"],
+          title: "Catalog și aplicații",
+          items: [
+            "produse și variante în limita catalogului agreat",
+            "navigare, plăți și reguli de livrare stabilite",
+            "aplicații și integrări compatibile, cu licențe bugetate separat"
+          ]
         },
         {
-          title: "Lansare",
-          items: ["tracking de bază", "testare fluxuri critice", "suport pentru publicare și verificare finală"],
-        },
+          title: "Verificare și administrare",
+          items: [
+            "verificarea coșului și checkout-ului",
+            "metadate și tracking în configurația agreată",
+            "predarea magazinului și explicarea administrării"
+          ]
+        }
       ],
       outro: "Rezultatul trebuie să fie un magazin Shopify ușor de administrat și suficient de bun pentru a susține lansarea și primele etape de creștere.",
     },
     pricing: {
       eyebrow: "Buget",
-      budgetTitle: "Ce buget are sens pentru un proiect Shopify?",
+      budgetTitle: "Cât costă crearea unui magazin online Shopify?",
       budgetText:
-        "Bugetul depinde de cât de personalizat trebuie să fie storefront-ul, câte produse sau colecții sunt implicate și ce aplicații sau integrări trebuie configurate.",
+        "Implementarea Shopify poate porni de la aproximativ 900 EUR pentru un proiect bine delimitat. Oferta stabilește tema, paginile, produsele și aplicațiile configurate. Abonamentul Shopify, temele sau aplicațiile plătite și eventualele comisioane ale platformei ori procesatorilor sunt costuri separate, în funcție de plan și furnizori.",
       budgetHighlight: "Magazinele Shopify bine definite pot porni de la aproximativ 900 EUR.",
       budgetFactors: [
         "nivelul de personalizare al storefront-ului",
@@ -1276,20 +1308,28 @@ const serviceLandingPagesBySlug = {
       intro: "Răspunsuri rapide despre lansare, configurare și scenariile în care Shopify are sens pentru proiectul tău.",
       items: [
         {
-          question: "Shopify este potrivit și pentru business-uri la început?",
-          answer: "Da. În multe cazuri este chiar o alegere bună pentru lansare rapidă și administrare simplificată, dacă modelul comercial se potrivește ecosistemului Shopify.",
+          question: "Cât costă un magazin online Shopify?",
+          answer: "Proiectele Shopify bine definite pot porni de la aproximativ 900 EUR pentru implementare. Personalizarea temei, catalogul, migrarea și integrările influențează oferta finală.",
         },
         {
-          question: "Puteți configura și aplicațiile importante pentru Shopify?",
-          answer: "Da. Putem selecta și configura aplicațiile necesare pentru plăți, review-uri, retenție, tracking sau alte nevoi comerciale relevante.",
+          question: "Prețul include abonamentul Shopify și aplicațiile?",
+          answer: "Reperul descrie implementarea. Abonamentul, o eventuală temă plătită, aplicațiile și comisioanele se bugetează separat. Oferta precizează ce configurăm și ce servicii plătește comerciantul.",
+        },
+        {
+          question: "Ce livrați pentru tema și catalogul Shopify?",
+          answer: "Configurăm tema și paginile agreate, navigarea, colecțiile și structura produselor. Stabilim înainte numărul de produse, variantele și cine pregătește textele și imaginile.",
+        },
+        {
+          question: "Puteți integra plăți, curieri și alte aplicații?",
+          answer: "Evaluăm compatibilitatea cu Shopify și configurăm integrările incluse în ofertă. Disponibilitatea și condițiile depind de furnizori; comerciantul asigură conturile și contractele necesare.",
         },
         {
           question: "Puteți migra un magazin existent în Shopify?",
-          answer: "Da. Dacă proiectul cere migrare, planificăm transferul și reorganizarea structurii astfel încât noul storefront să pornească mai bine.",
+          answer: "Da, după evaluarea datelor și a platformei sursă. Oferta stabilește datele transferate, maparea adreselor și verificările necesare. Migrarea nu este inclusă automat în reperul de pornire.",
         },
         {
-          question: "Puteți continua și cu SEO sau promovarea magazinului după lansare?",
-          answer: "Da. Putem continua cu servicii SEO sau cu promovare, în funcție de etapa în care vrei să duci magazinul după lansare.",
+          question: "Ce verificați înainte de publicare?",
+          answer: "Verificăm paginile, afișarea pe mobil, coșul, checkout-ul și setările comerciale agreate. Lansarea urmează după verificări și confirmarea comerciantului.",
         },
       ],
     },
@@ -1676,7 +1716,7 @@ const serviceLandingPagesBySlug = {
     slug: "creare-site-prezentare",
     title: "Creare site de prezentare pentru business-uri care vor un website clar și credibil",
     description: "Servicii de creare site de prezentare cu structură bună, mesaj clar, bază SEO și design orientat pe conversie.",
-    metaTitle: "Creare site de prezentare profesional, clar și optimizat SEO | Web Dynamicx",
+    metaTitle: "Creare site de prezentare: preț și livrabile | Web Dynamicx",
     metaDescription:
       "Servicii de creare site de prezentare cu design modern, structură clară, optimizare SEO și setup tehnic pregătit pentru lead-uri și încredere.",
     image: "/images/services/creare-site-prezentare.webp",
@@ -1686,7 +1726,7 @@ const serviceLandingPagesBySlug = {
       eyebrow: "Site de prezentare clar și orientat pe lead-uri",
       title: "Creare site de prezentare pentru firme care vor să arate profesionist și să explice rapid ce oferă",
       subtitle:
-        "Construim website-uri de prezentare pentru companii care au nevoie de pagini clare, mesaje bine ordonate, încredere vizuală și bază tehnică bună pentru SEO și contacte.",
+        "Construim site-uri de prezentare pentru firme: pagini despre companie, servicii, proiecte și contact. Organizăm informațiile și metodele de contact astfel încât vizitatorul să înțeleagă oferta și să poată cere detalii.",
       bullets: [
         "Clarificăm structura paginilor și mesajul ofertei",
         "Construim un site de prezentare curat, rapid și ușor de administrat",
@@ -1872,7 +1912,7 @@ const serviceLandingPagesBySlug = {
       eyebrow: "Livrabile",
       title: "Ce include, de regulă, un proiect de creare site de prezentare",
       intro:
-        "Pachetul poate varia în funcție de proiect, dar un site de prezentare bun acoperă atât paginația și mesajul, cât și setup-ul tehnic de bază.",
+        "Livrăm paginile agreate pentru prezentarea firmei și serviciilor, metodele de contact și baza SEO. Oferta precizează materialele necesare, formularele și predarea pentru administrare.",
       groups: [
         {
           title: "Structură și conținut",
@@ -1893,7 +1933,7 @@ const serviceLandingPagesBySlug = {
       eyebrow: "Buget",
       budgetTitle: "Ce buget are sens pentru un site de prezentare?",
       budgetText:
-        "Bugetul depinde de numărul de pagini, nivelul de design, dacă există deja branding și cât de multă clarificare intră în partea de structură și conținut.",
+        "Un site de prezentare bine delimitat poate porni de la aproximativ 800 EUR. Stabilim paginile, designul și formularele incluse, precum și cine pregătește conținutul. Domeniul, găzduirea, redactarea și mentenanța se precizează separat dacă nu sunt incluse în ofertă.",
       budgetHighlight: "Site-urile de prezentare bine delimitate pot porni de la aproximativ 800 EUR.",
       budgetFactors: [
         "numărul de pagini și complexitatea conținutului",
@@ -1934,20 +1974,24 @@ const serviceLandingPagesBySlug = {
       intro: "Răspunsuri rapide despre cost, durată și felul în care structurăm website-urile de prezentare pentru firme și servicii.",
       items: [
         {
-          question: "Site-ul de prezentare include și pagini de servicii?",
-          answer: "Da. În funcție de proiect, putem include paginile importante de servicii încă din prima etapă, astfel încât oferta să fie mai bine înțeleasă și mai ușor de promovat.",
+          question: "Cât costă un site de prezentare?",
+          answer: "Proiectele bine delimitate pot porni de la aproximativ 800 EUR. Prețul depinde de pagini, design, formulare și materialele disponibile; oferta precizează livrabilele și costurile separate.",
         },
         {
-          question: "Puteți continua și cu SEO după lansare?",
-          answer: "Da. Website-ul este construit cu bază SEO bună și putem continua ulterior și cu servicii dedicate de optimizare SEO sau promovare.",
+          question: "Ce pagini include un site de prezentare?",
+          answer: "Stabilim paginile potrivite firmei: acasă, despre, servicii, proiecte și contact, în configurația agreată. Textele, imaginile și numărul de pagini sunt precizate în ofertă.",
         },
         {
-          question: "Serviciul include și formular de contact sau metode de lead?",
-          answer: "Da. Formularele și CTA-urile sunt parte din arhitectura proiectului, tocmai pentru ca site-ul să poată genera contacte, nu doar vizite.",
+          question: "Include formular de contact și afișare pe mobil?",
+          answer: "Da, în configurația agreată. Verificăm afișarea pe mobil și metodele de contact incluse înainte de lansare.",
         },
         {
-          question: "Pot porni cu un site de prezentare și extinde ulterior proiectul?",
-          answer: "Da. Site-ul este gândit astfel încât să poată fi extins cu pagini noi, servicii noi sau optimizări fără să fie reconstruit complet.",
+          question: "Când este mai potrivit un site web personalizat?",
+          answer: "Când proiectul cere structură sau integrări care depășesc prezentarea firmei. Pentru aceste cerințe evaluăm serviciul de creare site web; pentru design separat, serviciul de web design.",
+        },
+        {
+          question: "Ce costuri apar după lansare?",
+          answer: "Pot exista costuri de domeniu, găzduire, licențe și mentenanță. Dezvoltările noi și serviciile SEO recurente se estimează separat.",
         },
       ],
     },
@@ -1999,17 +2043,17 @@ const serviceLandingPagesBySlug = {
   },
   "mentenanta-website": {
     slug: "mentenanta-website",
-    title: "Mentenanță website pentru business-uri care vor stabilitate, securitate și evoluție controlată",
+    title: "Mentenanță site pentru întreținere și intervenții tehnice",
     description: "Servicii de mentenanță website cu update-uri, monitorizare, securitate și optimizări continue pentru website-uri active.",
-    metaTitle: "Mentenanță website cu update-uri, securitate și optimizare | Web Dynamicx",
+    metaTitle: "Mentenanță site: intervenții și estimarea costului | Web Dynamicx",
     metaDescription:
-      "Servicii de mentenanță website cu audit inițial, update-uri, monitorizare uptime, optimizare și suport pentru website-uri care trebuie să rămână stabile.",
+      "Mentenanță site: întreținere recurentă, modificări punctuale și intervenții la cerere. Cost personalizat după audit, cu operațiuni și responsabilități clare.",
     image: "/images/services/mentenanta-site-web.webp",
     ogImage: "/images/services/mentenanta-site-web.webp",
     ogAlt: "Servicii de mentenanță website și optimizare continuă",
     hero: {
       eyebrow: "Mentenanță și suport continuu pentru website",
-      title: "Mentenanță website pentru companii care vor un site stabil, sigur și actualizat",
+      title: "Mentenanță site cu întreținere recurentă și intervenții agreate",
       subtitle:
         "Gestionăm partea de update-uri, monitorizare, securitate și optimizări astfel încât website-ul tău să rămână funcțional și să nu acumuleze probleme care costă mai mult mai târziu.",
       bullets: [
@@ -2197,29 +2241,41 @@ const serviceLandingPagesBySlug = {
       eyebrow: "Livrabile",
       title: "Ce poate include un serviciu de mentenanță website",
       intro:
-        "Pachetul exact depinde de site și de ritmul necesar, dar mentenanța bună acoperă atât partea de întreținere, cât și claritatea intervențiilor făcute.",
+        "Alegem după audit întreținerea recurentă, întreținerea cu modificări punctuale sau intervențiile la cerere. Oferta definește operațiunile și responsabilitățile pentru accesuri, licențe și backupuri.",
       groups: [
         {
-          title: "Audit și stabilizare",
-          items: ["evaluare inițială a riscurilor", "prioritizarea problemelor existente", "clarificare a setup-ului de suport"],
-        },
-        {
           title: "Întreținere recurentă",
-          items: ["update-uri și verificări", "monitorizare și semnale importante", "gestionarea zonelor cu risc operațional"],
+          items: [
+            "actualizări și verificări compatibile cu platforma",
+            "monitorizare și verificarea backupurilor conform ofertei",
+            "raportarea problemelor și recomandărilor identificate"
+          ]
         },
         {
-          title: "Optimizare și suport",
-          items: ["recomandări și ajustări mici", "suport pentru evoluții punctuale", "continuitate după lansare sau după stabilizare"],
+          title: "Întreținere cu modificări punctuale",
+          items: [
+            "operațiunile recurente agreate",
+            "ajustări de conținut sau interfață în volumul stabilit",
+            "estimare separată pentru extinderi și integrări ample"
+          ]
         },
+        {
+          title: "Intervenții la cerere",
+          items: [
+            "evaluarea problemei și accesurilor necesare",
+            "estimare înainte de intervenție",
+            "verificarea rezultatului și explicarea schimbărilor"
+          ]
+        }
       ],
       outro: "Rezultatul urmărit este simplu: un website care rămâne stabil și gestionabil, nu unul care devine tot mai fragil după fiecare lună.",
     },
     pricing: {
       eyebrow: "Buget",
-      budgetTitle: "Cum estimăm un serviciu de mentenanță website?",
+      budgetTitle: "Cât costă mentenanța unui site?",
       budgetText:
-        "Costul depinde de platformă, volumul de intervenții, nivelul de risc, frecvența update-urilor și dacă mentenanța include doar întreținere sau și îmbunătățiri punctuale.",
-      budgetHighlight: "Planurile de mentenanță pornesc, de regulă, de la niveluri diferite în funcție de complexitatea website-ului și ritmul de suport necesar.",
+        "Prețul pentru mentenanță site se stabilește după audit, în funcție de platformă, starea proiectului și volumul de intervenții. Oferta precizează frecvența verificărilor, operațiunile incluse și modul de estimare a solicitărilor suplimentare. Găzduirea, licențele și serviciile externe se bugetează separat.",
+      budgetHighlight: "Ofertă personalizată după audit, cu intervenții și responsabilități stabilite înainte de începere.",
       budgetFactors: [
         "tipul website-ului și complexitatea tehnică",
         "volumul de update-uri și verificări necesare",
@@ -2259,20 +2315,28 @@ const serviceLandingPagesBySlug = {
       intro: "Răspunsuri rapide despre audit, frecvență, intervenții și modul în care abordăm mentenanța pe termen scurt și lung.",
       items: [
         {
-          question: "Serviciul începe cu auditul site-ului?",
-          answer: "Da. În cele mai multe cazuri începem cu auditul și înțelegerea stării actuale, ca să știm ce trebuie stabilizat și ce ritm de mentenanță are sens.",
+          question: "Cât costă mentenanța unui site?",
+          answer: "Estimăm după auditul platformei, stării tehnice și volumului de lucru. Oferta definește operațiunile recurente și ce se facturează separat; nu există un tarif unic pentru toate website-urile.",
         },
         {
-          question: "Mentenanța include doar update-uri?",
-          answer: "Nu. Poate include și monitorizare, verificări, recomandări și intervenții punctuale, în funcție de pachetul și ritmul agreat.",
+          question: "Ce include întreținerea recurentă?",
+          answer: "Poate include actualizări compatibile cu platforma, verificări tehnice, monitorizare și verificarea backupurilor, conform ofertei. Frecvența și responsabilitățile se stabilesc pentru proiectul preluat.",
         },
         {
-          question: "Puteți prelua mentenanța unui site construit de altă echipă?",
-          answer: "Da. Tocmai de aceea auditul inițial este important, ca să înțelegem corect starea proiectului și riscurile existente.",
+          question: "Pot include și modificări ale site-ului?",
+          answer: "Da, putem agrea întreținere cu modificări punctuale. Tipurile de modificări și volumul inclus se precizează în ofertă; paginile noi, redesignul și integrările ample se estimează separat.",
         },
         {
-          question: "Puteți continua și cu optimizări sau dezvoltări mici?",
-          answer: "Da. În funcție de setup, mentenanța poate merge împreună cu modificări punctuale, optimizări sau evoluții mici ale site-ului.",
+          question: "Acceptați intervenții la cerere sau site-uri făcute de altă echipă?",
+          answer: "Da, după evaluare și obținerea accesurilor necesare. Pentru intervenții la cerere stabilim problema și estimarea înainte de lucru. Preluarea unui site poate necesita stabilizare inițială separată.",
+        },
+        {
+          question: "Ce responsabilități rămân la proprietarul site-ului?",
+          answer: "Proprietarul asigură accesurile, licențele și plățile către furnizori și confirmă schimbările care afectează conținutul sau funcționarea. Datele și accesurile se gestionează conform înțelegerii pentru proiect.",
+        },
+        {
+          question: "Ce nu este inclus automat în mentenanță?",
+          answer: "Redesignul, funcțiile noi, administrarea conținutului, SEO recurent și costurile furnizorilor se includ doar dacă oferta le prevede. Volumul de lucru și timpii de răspuns se stabilesc contractual.",
         },
       ],
     },
@@ -2326,7 +2390,7 @@ const serviceLandingPagesBySlug = {
     slug: "creare-site-web",
     title: "Creare site web personalizat pentru companii care vor structură bună și bază SEO serioasă",
     description: "Servicii de creare site web cu arhitectură clară, pagini orientate pe conversie, performanță și extensibilitate.",
-    metaTitle: "Creare site web personalizat, rapid și optimizat SEO | Web Dynamicx",
+    metaTitle: "Creare site web personalizat: preț și ofertă | Web Dynamicx",
     metaDescription:
       "Servicii de creare site web personalizat cu structură clară, pagini de servicii, optimizare SEO on-page și performanță bună pentru lead-uri și creștere.",
     image: "/images/services/creare-site-web.webp",
@@ -2336,7 +2400,7 @@ const serviceLandingPagesBySlug = {
       eyebrow: "Site web personalizat pentru creștere",
       title: "Creare site web pentru companii care au nevoie de mai mult decât un site simplu de prezentare",
       subtitle:
-        "Construim website-uri personalizate cu structură clară, pagini importante pentru vânzare, bază SEO bună și arhitectură pregătită pentru extindere în timp.",
+        "Dezvoltăm website-uri personalizate cu pagini, componente și integrări stabilite pentru afacerea ta. Definim structura, implementarea și baza SEO; pentru un website concentrat pe prezentarea firmei, poți alege serviciul de site de prezentare.",
       bullets: [
         "Clarificăm arhitectura paginilor și rolul fiecărei secțiuni importante",
         "Construim design și implementare într-o logică orientată pe performanță și lead-uri",
@@ -2538,7 +2602,7 @@ const serviceLandingPagesBySlug = {
       eyebrow: "Livrabile",
       title: "Ce include, de regulă, un proiect de creare site web personalizat",
       intro:
-        "În funcție de amploarea proiectului, livrabilele acoperă atât zona de structură și design, cât și implementarea și setup-ul tehnic de bază.",
+        "Oferta de dezvoltare personalizată stabilește arhitectura, paginile, componentele și integrările implementate. Precizăm responsabilitățile pentru conținut și verificările înainte de lansare.",
       groups: [
         {
           title: "Structură și design",
@@ -2559,7 +2623,7 @@ const serviceLandingPagesBySlug = {
       eyebrow: "Buget",
       budgetTitle: "Ce buget are sens pentru un proiect de creare site web?",
       budgetText:
-        "Costul depinde de numărul de pagini importante, nivelul de personalizare, complexitatea structurii și cât de multă integrare și clarificare intră în proiect.",
+        "Pentru creare site web, oferta pornește de la paginile, componentele și integrările necesare. Reperul de aproximativ 600 EUR se aplică unui build bine delimitat; proiectele cu arhitectură amplă se estimează individual. Domeniul, găzduirea, licențele și serviciile recurente se precizează separat.",
       budgetHighlight: "Proiectele de creare site web personalizat pot porni de la aproximativ 600 EUR pentru build-uri bine delimitate.",
       budgetFactors: [
         "numărul de pagini și rolul lor comercial",
@@ -2600,20 +2664,20 @@ const serviceLandingPagesBySlug = {
       intro: "Răspunsuri scurte despre structură, durată, SEO și felul în care abordăm proiectele de website custom.",
       items: [
         {
-          question: "Care este diferența față de un site de prezentare simplu?",
-          answer: "În general, proiectul de creare site web personalizat acoperă o arhitectură mai amplă, mai multe pagini importante și o fundație mai puternică pentru creștere, SEO și extindere.",
+          question: "Cât costă crearea unui site web personalizat?",
+          answer: "Build-urile bine delimitate pot porni de la aproximativ 600 EUR. Numărul de pagini, designul, integrările și conținutul influențează oferta; reperul nu acoperă automat un proiect extins.",
         },
         {
-          question: "Serviciul include și pagini de servicii optimizate pentru SEO?",
-          answer: "Da. Putem include pagini de servicii și structură on-page gândite astfel încât website-ul să pornească bine atât pentru utilizatori, cât și pentru Google.",
+          question: "Cum diferă acest serviciu de un site de prezentare?",
+          answer: "Aici definim o structură personalizată și integrările cerute de proiect. Serviciul de site de prezentare este concentrat pe explicarea firmei, serviciilor și contactului. Alegem oferta după livrabile, nu doar după numărul de pagini.",
         },
         {
-          question: "Puteți continua și cu mentenanță sau optimizare după lansare?",
-          answer: "Da. După lansare putem continua cu mentenanță, optimizare SEO, ajustări de pagini sau extinderi noi, în funcție de proiect.",
+          question: "Ce trebuie să trimit pentru o ofertă de creare site web?",
+          answer: "Trimite obiectivul, paginile dorite, funcțiile, materialele disponibile și eventualul website existent. Stabilim responsabilitățile pentru texte, imagini și accesuri înainte de implementare.",
         },
         {
-          question: "Puteți prelua și refacerea unui site existent?",
-          answer: "Da. Dacă site-ul actual nu mai susține bine oferta sau creșterea, putem intra pe reorganizare și reconstrucție într-o variantă mai sănătoasă.",
+          question: "Ce include baza SEO și ce se plătește separat?",
+          answer: "Pentru paginile agreate pregătim structura on-page, metadatele și setup-ul tehnic. Strategia SEO continuă, conținutul nou, găzduirea și mentenanța se stabilesc separat în ofertă.",
         },
       ],
     },

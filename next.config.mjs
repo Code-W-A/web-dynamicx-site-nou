@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Keep isolated browser-test servers from sharing artifacts with normal builds.
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   async redirects() {
     return [
       {
@@ -32,6 +34,25 @@ const nextConfig = {
   },
   async headers() {
     return [
+      {
+        source: "/contracte/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+          { key: "Cache-Control", value: "private, no-store" },
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+        ],
+      },
+      {
+        source: "/api/contracte/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+          { key: "Cache-Control", value: "private, no-store" },
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+        ],
+      },
       {
         source: "/apps/my-butterfly/legal",
         headers: [
