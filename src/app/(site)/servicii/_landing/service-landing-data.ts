@@ -3,6 +3,7 @@ import type {
   ServiceLandingData,
   ServiceLandingLink,
 } from "./service-landing-types";
+import { softwareServiceLandingData } from "./software-service-data";
 
 const phoneHref = "tel:+40774550758";
 
@@ -13,6 +14,7 @@ const serviceLink = (href: string, label: string): ServiceLandingLink => ({ href
 const portfolioLink = (label: string): ServiceLandingLink => ({ href: "/portofoliu", label });
 
 const serviceLandingPagesBySlug = {
+  "dezvoltare-software-la-comanda": softwareServiceLandingData,
   "web-design": {
     slug: "web-design",
     title: "Web design profesional pentru site-uri mai clare și mai convingătoare",
@@ -2711,6 +2713,7 @@ const serviceLandingPagesBySlug = {
       title: "Servicii care se leagă natural de un proiect de site web",
       description: "Poți continua cu aceste servicii dacă proiectul are nevoie și de design dedicat, identitate vizuală sau creștere organică după lansare.",
       items: [
+        serviceLink("/servicii/dezvoltare-software-la-comanda", "Dezvoltare software la comandă"),
         serviceLink("/servicii/web-design", "Web design"),
         serviceLink("/servicii/creare-logo-branding", "Creare logo & branding"),
         serviceLink("/servicii/creare-site-prezentare", "Creare site de prezentare"),

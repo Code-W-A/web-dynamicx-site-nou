@@ -43,6 +43,29 @@ const DEFAULT_CLUSTER_MINIMUM_POST_COUNT = 3;
 
 export const TOPIC_CLUSTER_ENTRIES: TopicClusterEntry[] = [
   {
+    id: "software",
+    minimumPostCountToIndex: 3,
+    match: { categories: ["software-development"], topicClusters: ["software"] },
+    serviceSlugs: ["dezvoltare-software-la-comanda"],
+    serviceHref: "/servicii/dezvoltare-software-la-comanda",
+    serviceBlockTitle: "Ai nevoie de software adaptat proceselor firmei?",
+    serviceBlockDescription: "Vezi cum definim aplicațiile web, portalurile și modulele personalizate, de la cerințe până la predare.",
+    serviceCtaLabel: "Vezi serviciul de software la comandă",
+    hub: {
+      title: "Ghiduri despre software și digitalizarea afacerilor",
+      metaTitle: "Ghiduri despre software, CRM și digitalizare | Web Dynamicx",
+      metaDescription: "Articole pentru firme despre digitalizare, CRM, aplicații web și alegerea unei soluții software. Criterii pentru prioritizarea și estimarea proiectelor.",
+      intro: "Ghiduri pentru deciziile dinaintea implementării: ce proces digitalizezi, cum alegi un CRM și când merită dezvoltarea personalizată.",
+      ctaLabel: "Vezi serviciul de software la comandă",
+    },
+    serviceSection: {
+      eyebrow: "Resurse utile",
+      title: "Ghiduri pentru alegerea unei soluții software",
+      intro: "Aprofundează deciziile despre digitalizare și CRM înainte de a stabili cerințele proiectului.",
+      ctaLabel: "Vezi ghidurile despre software",
+    },
+  },
+  {
     id: "mobile-apps",
     minimumPostCountToIndex: 3,
     match: {

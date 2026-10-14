@@ -1,0 +1,140 @@
+import type { ServiceLandingData } from "./service-landing-types";
+
+const contact = { label: "Cere o estimare pentru proiect", href: "/contact" };
+const phone = { label: "Discută cerințele cu noi", href: "tel:+40774550758" };
+
+export const softwareServiceLandingData = {
+  slug: "dezvoltare-software-la-comanda",
+  title: "Dezvoltare software la comandă pentru firme",
+  description: "Software personalizat pentru aplicații web, portaluri și procese interne, cu livrabile stabilite în ofertă.",
+  metaTitle: "Dezvoltare software la comandă pentru firme | Web Dynamicx",
+  metaDescription: "Dezvoltare software la comandă: aplicații web, portaluri și procese interne. Vezi livrabilele, exemplele demonstrative și cum estimăm proiectul.",
+  image: "/images/portofoliu/studii/itp-web-dashboard.webp",
+  ogAlt: "Panou demonstrativ ITP White Label, exemplu de aplicație web personalizată",
+  hero: {
+    eyebrow: "Software personalizat pentru procesele firmei",
+    title: "Dezvoltare software la comandă pentru firme cu fluxuri și integrări proprii",
+    subtitle: "Construim aplicații web și module care leagă utilizatorii, datele și operațiunile firmei. Stabilim ce trebuie să facă prima versiune, ce sisteme conectăm și ce se predă la final, înainte de implementare.",
+    bullets: ["Aplicații web și portaluri cu acces pe roluri", "Module CRM, documente și fluxuri de aprobare agreate", "Integrări, verificări și predare definite în ofertă"],
+    ctaPrimary: contact,
+    ctaSecondary: phone,
+    ctaMicrocopy: "Trimite procesul pe care vrei să îl îmbunătățești, utilizatorii implicați și instrumentele folosite acum.",
+    trustLine: "Captura prezintă ITP White Label: produs demonstrativ, cu date fictive și persistență locală.",
+    trustLinkLabel: "Vezi studiul de caz",
+    trustLinkHref: "/portofoliu-software/itp-white-label",
+    stats: [{ label: "Ofertă", value: "După cerințe" }, { label: "Livrabile", value: "Stabilite pe etape" }, { label: "Exemple", value: "Demo-uri explicate" }],
+  },
+  context: {
+    eyebrow: "Când are sens",
+    title: "Un sistem construit în jurul modului tău de lucru",
+    intro: "Dezvoltarea software la comandă este potrivită când configurarea unui produs existent nu acoperă procesele necesare. Evaluăm întâi ce poate fi reutilizat și ce merită construit.",
+    cards: [
+      { title: "Date în același context", description: "Clienții, lucrările și documentele pot fi legate într-un flux, în funcție de cerințele proiectului." },
+      { title: "Acces pe roluri", description: "Definim ce pot vedea și modifica administratorii, echipa și clienții în aplicație." },
+      { title: "Reguli operaționale", description: "Documentăm stările, validările și aprobările care trebuie respectate de sistem." },
+      { title: "Conexiuni între sisteme", description: "Evaluăm API-urile, accesurile și limitele furnizorilor înainte de a promite o integrare." },
+    ],
+    proofTitle: "Exemple de scenarii",
+    proofItems: ["administrare și programări", "portal pentru clienți", "documente și rapoarte", "module CRM"],
+    proofLink: { label: "Vezi exemplele software", href: "/portofoliu-software" },
+  },
+  valueProps: {
+    eyebrow: "Ce definim împreună",
+    title: "De la procesul actual la o primă versiune utilizabilă",
+    intro: "Oferta descrie funcțiile și responsabilitățile proiectului. Exemplele de mai jos sunt capacități posibile, nu un pachet inclus automat în orice implementare.",
+    items: [
+      { title: "Aplicații web", description: "Interfețe folosite din browser, cu formulare, liste, căutare și operațiuni stabilite pentru utilizatori." },
+      { title: "Portaluri pentru clienți", description: "Acces la datele proprii, solicitări și documente, cu permisiuni și trasee clare." },
+      { title: "Module CRM", description: "Organizarea clienților, contactelor și activităților în funcție de fluxul comercial agreat." },
+      { title: "Management de documente", description: "Fișiere asociate înregistrărilor, stări de aprobare și rapoarte, conform regulilor proiectului." },
+      { title: "Integrări evaluate", description: "Schimb de date cu sisteme externe, după verificarea API-urilor și a accesurilor disponibile." },
+      { title: "Evoluție pe etape", description: "Separăm prima versiune de extinderi și stabilim cum se evaluează cerințele noi." },
+    ],
+  },
+  audience: {
+    title: "Pentru firme care au cerințe dincolo de configurarea unui produs standard",
+    intro: "Pornim de la proces și de la oamenii care îl folosesc, nu de la o listă de tehnologii.",
+    items: ["Echipe care lucrează cu date în mai multe instrumente", "Firme cu roluri, aprobări sau reguli operaționale specifice", "Business-uri care au nevoie de un portal pentru clienți", "Produse digitale cu integrări și administrare proprie"],
+    outro: "Un website de prezentare, o aplicație mobilă și o automatizare punctuală au oferte distincte. Alegem serviciul după funcțiile necesare.",
+  },
+  useCases: {
+    title: "Ce poate include software-ul personalizat",
+    intro: "Fiecare scenariu se estimează după date, roluri și fluxuri. Nu presupunem că toate funcțiile intră în prima versiune.",
+    featured: [
+      { title: "Aplicație web pentru operațiuni", description: "Echipa urmărește înregistrări și stări din browser; regulile de modificare și validare sunt agreate înainte de dezvoltare." },
+      { title: "CRM adaptat firmei", description: "Clienți, contacte și activități legate de procesul comercial. Comparăm configurarea unui CRM existent cu dezvoltarea unui modul propriu." },
+      { title: "Documente și portal client", description: "Solicitări, fișiere și aprobări asociate clientului, cu acces limitat la informațiile relevante." },
+    ],
+  },
+  comparison: {
+    title: "Ce serviciu se potrivește cerințelor tale?",
+    intro: "Delimităm scopul proiectului pentru ca oferta să acopere exact ce trebuie construit.",
+    items: [
+      { title: "Software la comandă", description: "Date, roluri, procese și integrări într-un sistem personalizat." },
+      { title: "Website de prezentare", description: "Pagini care explică firma și oferta și permit vizitatorului să ia legătura." },
+      { title: "Aplicație mobilă", description: "Produs pentru iOS și Android, cu experiență și cerințe de publicare dedicate." },
+      { title: "Automatizări AI", description: "Fluxuri repetitive și conectarea instrumentelor, cu intervenția AI doar unde este utilă." },
+    ],
+    outro: "Putem combina aceste componente într-un proiect, cu livrabile și bugete separate pe etape.",
+  },
+  process: {
+    title: "Cum decurge dezvoltarea software",
+    intro: "Clarificăm cerințele înainte de implementare și verificăm fluxurile înainte de predare.",
+    steps: [
+      { id: "requirements", title: "Analiză și delimitare", description: "Definim utilizatorii, datele, regulile și obiectivul primei versiuni.", tags: ["Cerințe", "Roluri"] },
+      { id: "structure", title: "Structură și prototip", description: "Stabilim ecranele, fluxurile și comportamentele importante pentru validarea propunerii.", tags: ["UX", "Fluxuri"] },
+      { id: "implementation", title: "Implementare și integrări", description: "Construim funcțiile agreate și verificăm conexiunile cu serviciile externe disponibile.", tags: ["Aplicație web", "Backend"] },
+      { id: "verification", title: "Testare și acceptare", description: "Verificăm permisiunile, validările și fluxurile de succes și eroare din livrabilele stabilite.", tags: ["Testare", "Acceptare"] },
+      { id: "handover", title: "Predare și suport", description: "Predăm accesurile și documentația agreate și stabilim separat mentenanța și extinderile.", tags: ["Predare", "Suport"] },
+    ],
+  },
+  deliverables: {
+    title: "Ce trebuie să apară în oferta de software la comandă",
+    intro: "Numărul de ecrane, funcțiile și responsabilitățile se precizează înainte de lucru.",
+    groups: [
+      { title: "Definirea proiectului", items: ["utilizatori, roluri și fluxuri agreate", "ecrane și funcții incluse în prima versiune", "date, validări și integrări evaluate"] },
+      { title: "Implementare și verificări", items: ["aplicație și backend conform cerințelor", "configurări și accesuri necesare identificate", "scenarii de acceptare pentru funcțiile incluse"] },
+      { title: "Predare și responsabilități", items: ["accesuri, cod și documentație conform contractului", "responsabilități pentru date, licențe și infrastructură", "condiții de suport și estimare a extinderilor"] },
+    ],
+  },
+  pricing: {
+    budgetTitle: "Cum estimăm costul dezvoltării software?",
+    budgetText: "Estimăm după proces, utilizatori, funcții și integrări. Oferta separă implementarea de infrastructură, licențe, servicii externe și mentenanță. Nu există un preț unic pentru orice aplicație personalizată.",
+    budgetHighlight: "Ofertă după cerințe, cu livrabile și excluderi explicite.",
+    budgetFactors: ["complexitatea fluxurilor și a drepturilor de acces", "ecranele și volumul de date necesar", "sistemele externe și migrarea datelor", "testarea, predarea și suportul solicitat"],
+    durationTitle: "Cum stabilim calendarul?",
+    durationText: "Planificăm după delimitarea primei versiuni și disponibilitatea materialelor, accesurilor și furnizorilor. Separăm implementarea de verificările și aprobările necesare lansării.",
+    durationHighlight: "Calendar stabilit pe etape, după analiza cerințelor.",
+    durationNote: "Schimbările de funcții, date sau integrări se evaluează înainte de a modifica estimarea.",
+    cta: { title: "Descrie procesul pe care vrei să îl digitalizezi", text: "Trimite utilizatorii implicați, instrumentele existente și rezultatul urmărit. Putem delimita o primă versiune și o estimare.", primary: contact, secondary: phone, microcopy: "Nu este necesar un brief tehnic complet pentru prima discuție." },
+  },
+  reasons: {
+    title: "Criterii pentru un proiect care poate fi evaluat și predat",
+    intro: "Punem deciziile importante în ofertă și în scenariile de acceptare.",
+    items: ["Funcții și excluderi stabilite înainte de implementare", "Roluri și responsabilități explicite", "Integrări evaluate înainte de angajarea livrării", "Verificări pentru fluxuri de succes și eroare", "Accesuri și condiții de predare agreate", "Mentenanță și extinderi estimate separat"],
+  },
+  faq: {
+    title: "Întrebări despre software la comandă",
+    intro: "Clarificări despre ofertă, aplicații web, integrări și predare.",
+    items: [
+      { question: "Cât costă dezvoltarea software la comandă?", answer: "Estimăm după funcții, utilizatori, roluri, date și integrări. Oferta precizează ce intră în implementare și ce costuri de infrastructură, licențe sau suport sunt separate." },
+      { question: "Dezvoltați și aplicații web folosite din browser?", answer: "Da. Putem construi aplicații web cu autentificare, roluri, date și fluxuri operaționale, în funcție de cerințele agreate. Un website de prezentare are o ofertă distinctă." },
+      { question: "Puteți construi un CRM sau un portal pentru clienți?", answer: "Da, ca module definite în ofertă. Evaluăm mai întâi dacă un produs existent configurat poate acoperi cerințele, apoi delimităm ce trebuie dezvoltat personalizat." },
+      { question: "Managementul documentelor și aprobările sunt incluse?", answer: "Sunt posibile funcții ale proiectului, nu un pachet inclus automat. Stabilim fișierele, accesul, stările și aprobările necesare înainte de estimare." },
+      { question: "Puteți conecta software-ul la alte sisteme?", answer: "Evaluăm API-urile, permisiunile și limitele furnizorilor. Oferta include numai integrările analizate și agreate; conturile și eventualele costuri externe se stabilesc separat." },
+      { question: "Ce primesc la predare și cum funcționează suportul?", answer: "Contractul precizează accesurile, codul, documentația și condițiile de utilizare. Mentenanța și funcțiile noi se definesc separat, cu responsabilități și volum de lucru agreate." },
+    ],
+  },
+  relatedServices: {
+    title: "Servicii care pot completa proiectul software",
+    description: "Alege oferta pentru componenta de care ai nevoie: prezentare, experiență mobilă sau automatizarea unui flux.",
+    items: [{ label: "Creare site de prezentare", href: "/servicii/creare-site-prezentare" }, { label: "Dezvoltare aplicații mobile", href: "/servicii/dezvoltare-aplicatii-mobile" }, { label: "Automatizări AI", href: "/servicii/automatizari-ai" }],
+  },
+  finalCta: {
+    title: "Ce proces trebuie să susțină software-ul tău?",
+    text: "Descrie activitatea, utilizatorii și instrumentele existente. Stabilim ce poate fi configurat și ce merită construit personalizat.",
+    supporting: "Estimarea se bazează pe cerințe și pe livrabilele primei versiuni.",
+    primary: contact,
+    secondary: phone,
+  },
+} satisfies ServiceLandingData;

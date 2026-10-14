@@ -1,6 +1,6 @@
 # Optimizare SEO — 14 octombrie 2026
 
-Cele șapte pagini de servicii au fost optimizate local. Cele șapte revizii de articole sunt pregătite și validate local, dar **nu sunt salvate în Sanity**: tokenul disponibil a primit `403 Insufficient permissions; permission "create" required`. Tranzacția atomică a fost respinsă integral. Nu s-au publicat articole și nu s-a făcut deploy.
+Cele șapte pagini de servicii au fost optimizate local. Cele șapte revizii de articole sunt **salvate ca drafturi în Sanity**, folosind tokenul privat Editor configurat în `.env.local`. Recitirea confirmă că toate câmpurile drafturilor coincid cu reviziile pregătite și că reviziile articolelor publicate sunt neschimbate. Nu s-au publicat articole și nu s-a făcut deploy. Tentativa inițială cu tokenul Viewer a fost respinsă integral; tokenul Editor a rezolvat blocajul.
 
 ## Pagini optimizate
 
@@ -16,11 +16,11 @@ Cele șapte pagini de servicii au fost optimizate local. Cele șapte revizii de 
 
 Prețurile și paginile de Ads nu au fost modificate. Nu s-au adăugat rute, scheme sau API-uri. Legăturile existente dintre serviciile complementare au fost păstrate și verificate.
 
-## Revizii pregătite și identificatori propuși
+## Revizii salvate și identificatori
 
-Acești identificatori reprezintă drafturi propuse, nu documente salvate.
+Acești identificatori reprezintă drafturile salvate și recitite din Sanity.
 
-| Revizie | ID draft propus |
+| Revizie | ID draft |
 | --- | --- |
 | [Cost aplicație mobilă](cat-costa-dezvoltarea-unei-aplicatii-mobile.md) | `drafts.32e9f3ef-b259-4b24-a72e-4493d9966cb9` |
 | [Durată aplicație mobilă](cat-dureaza-dezvoltarea-unei-aplicatii-mobile.md) | `drafts.3059954a-d559-493e-b308-1a9bf056affc` |
@@ -49,7 +49,9 @@ node docs/seo/2026-10-14/save-drafts.cjs
 node docs/seo/2026-10-14/save-drafts.cjs --write
 ```
 
-Prima comandă verifică reviziile și salvează local un snapshot proaspăt, fără scrieri în Sanity. A doua salvează atomic drafturile. Scriptul refuză un articol publicat modificat sau un draft apărut între timp; pentru drafturi existente folosește `ifRevisionID`. Nu modifică documentele publicate. Dacă sursa s-a schimbat, conținutul pregătit trebuie revizuit înainte de import.
+Prima comandă verifică reviziile și salvează local un snapshot proaspăt, fără scrieri în Sanity. A doua salvează atomic drafturile. Pentru drafturile deja identice, reluarea nu produce alte scrieri. Scriptul refuză un articol publicat modificat sau un draft diferit apărut între timp; pentru drafturi existente folosește `ifRevisionID`. Nu modifică documentele publicate. Dacă sursa s-a schimbat, conținutul pregătit trebuie revizuit înainte de import.
+
+`sanity-saved.json` conține snapshotul celor șapte drafturi recitite după salvare. Verificarea compară structural câmpurile, independent de ordinea proprietăților JSON.
 
 ## Verificări
 
@@ -62,4 +64,4 @@ Prima comandă verifică reviziile și salvează local un snapshot proaspăt, f�
 - Scriptul de import a trecut verificarea de sintaxă și verificarea fără scrieri pentru toate cele șapte documente, folosind accesul de citire existent.
 - Rezultatele celor 14 verificări sunt în `browser-checks.json`; capturile sunt în `/tmp/webdynamicx-seo/desktop-*.png` și `/tmp/webdynamicx-seo/mobile-*.png`.
 
-Verificările nu demonstrează creșterea clasărilor sau absența canibalizării în Google. După publicare și deploy, evaluarea se face în Search Console pe relația căutare → URL. Conținutul live al articolelor rămâne cel original până la salvarea și publicarea separată a reviziilor.
+Verificările nu demonstrează creșterea clasărilor sau absența canibalizării în Google. După publicare și deploy, evaluarea se face în Search Console pe relația căutare → URL. Conținutul live al articolelor rămâne cel original până la publicarea separată a drafturilor salvate.

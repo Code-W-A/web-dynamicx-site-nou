@@ -1,10 +1,10 @@
 # Cum estimezi bugetul total al unui site web
 
-**Statut: revizie pregătită local, nesalvată în Sanity.**
+**Statut: revizie salvată ca draft în Sanity, nepublicată.**
 
 Slug: `cum-estimezi-costurile-unui-site-web`
 
-Draft propus: `drafts.ac3137ae-c25c-4de7-9210-780596e9697f`
+Draft salvat: `drafts.ac3137ae-c25c-4de7-9210-780596e9697f`
 
 Meta title: Cum estimezi bugetul total al unui site web
 

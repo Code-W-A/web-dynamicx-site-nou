@@ -1,10 +1,10 @@
 # De ce au nevoie firmele de aplicații mobile
 
-**Statut: revizie pregătită local, nesalvată în Sanity.**
+**Statut: revizie salvată ca draft în Sanity, nepublicată.**
 
 Slug: `de-ce-au-nevoie-firmele-de-aplicatii-mobile`
 
-Draft propus: `drafts.a8f00de6-d5b4-46e0-89e1-3ba4ef5a2656`
+Draft salvat: `drafts.a8f00de6-d5b4-46e0-89e1-3ba4ef5a2656`
 
 Meta title: De ce au nevoie firmele de aplicații mobile
 

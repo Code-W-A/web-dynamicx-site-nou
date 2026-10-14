@@ -1,10 +1,10 @@
 # Cât costă un site de prezentare: preț și livrabile
 
-**Statut: revizie pregătită local, nesalvată în Sanity.**
+**Statut: revizie salvată ca draft în Sanity, nepublicată.**
 
 Slug: `cat-cost-un-site-de-prezentare-ghid-complet-pentru-2025`
 
-Draft propus: `drafts.cccdab11-e738-42a5-91f3-8b4cdc90a610`
+Draft salvat: `drafts.cccdab11-e738-42a5-91f3-8b4cdc90a610`
 
 Meta title: Cât costă un site de prezentare: preț și livrabile
 

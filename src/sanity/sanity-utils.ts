@@ -94,6 +94,7 @@ export async function sanityFetch<QueryResponse>({
   if (integrations?.isSanityEnabled) {
     const client = createClient({
       ...clientConfig,
+      perspective: "published",
       useCdn: typeof useCdnOverride === "boolean" ? useCdnOverride : (clientConfig as any).useCdn,
     } as any);
     return client.fetch<QueryResponse>(query, qParams as any, {

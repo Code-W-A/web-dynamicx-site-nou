@@ -1,10 +1,10 @@
 # Cât costă dezvoltarea unei aplicații mobile în 2026 (ghid complet pentru firme)
 
-**Statut: revizie pregătită local, nesalvată în Sanity.**
+**Statut: revizie salvată ca draft în Sanity, nepublicată.**
 
 Slug: `cat-costa-dezvoltarea-unei-aplicatii-mobile`
 
-Draft propus: `drafts.32e9f3ef-b259-4b24-a72e-4493d9966cb9`
+Draft salvat: `drafts.32e9f3ef-b259-4b24-a72e-4493d9966cb9`
 
 Meta title: Cât costă o aplicație mobilă? MVP și buget | Web Dynamicx
 

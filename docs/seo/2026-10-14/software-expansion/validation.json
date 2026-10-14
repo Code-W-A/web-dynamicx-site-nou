@@ -1,0 +1,25 @@
+[
+  {
+    "slug": "digitalizarea-afacerilor-cu-ce-procese-incepi",
+    "cluster": "software",
+    "serviceLinks": {
+      "/servicii/dezvoltare-software-la-comanda": 2,
+      "/servicii/automatizari-ai": 1
+    }
+  },
+  {
+    "slug": "ce-inseamna-crm-si-cand-merita-o-solutie-personalizata",
+    "cluster": "software",
+    "serviceLinks": {
+      "/servicii/dezvoltare-software-la-comanda": 2
+    }
+  },
+  {
+    "slug": "aplicatie-web-vs-aplicatie-mobila",
+    "cluster": "mobile-apps",
+    "serviceLinks": {
+      "/servicii/dezvoltare-software-la-comanda": 1,
+      "/servicii/dezvoltare-aplicatii-mobile": 2
+    }
+  }
+]

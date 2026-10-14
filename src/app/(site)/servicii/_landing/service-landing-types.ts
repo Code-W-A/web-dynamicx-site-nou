@@ -152,6 +152,7 @@ export type ServiceLandingData = {
 };
 
 export type NonMobileServiceSlug =
+  | "dezvoltare-software-la-comanda"
   | "web-design"
   | "creare-logo-branding"
   | "creare-magazin-online"

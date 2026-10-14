@@ -1,10 +1,10 @@
 # Etapele dezvoltării unei aplicații mobile (Ghid complet pentru firme)
 
-**Statut: revizie pregătită local, nesalvată în Sanity.**
+**Statut: revizie salvată ca draft în Sanity, nepublicată.**
 
 Slug: `etapele-dezvoltarii-unei-aplicatii-mobile`
 
-Draft propus: `drafts.552dcb21-207a-4797-94e4-5cc0e952aae9`
+Draft salvat: `drafts.552dcb21-207a-4797-94e4-5cc0e952aae9`
 
 Meta title: Etapele dezvoltării unei aplicații mobile pentru firme
 

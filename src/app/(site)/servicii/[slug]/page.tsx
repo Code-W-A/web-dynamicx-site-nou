@@ -12,6 +12,7 @@ import Link from "next/link";
 import JsonLd from "@/components/Common/JsonLd";
 import { Phone, MessageCircle, Mail } from "lucide-react";
 import ServiceRelatedPortfolioSection from "@/components/Portfolio/service-related-portfolio-section";
+import SoftwareServicePortfolioSection from "@/components/Portfolio/software-service-portfolio-section";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServiceLandingTemplate from "../_landing/service-landing-template";
@@ -130,7 +131,9 @@ export default async function ServiceDetailPage(props: Props) {
         hubCtaLabel={clusterConfig.serviceSection.ctaLabel}
       />
     ) : null;
-  const portfolioSection = !isMobileAppsPage ? <ServiceRelatedPortfolioSection serviceSlug={params.slug} /> : null;
+  const portfolioSection = params.slug === "dezvoltare-software-la-comanda"
+    ? <SoftwareServicePortfolioSection />
+    : !isMobileAppsPage ? <ServiceRelatedPortfolioSection serviceSlug={params.slug} /> : null;
 
   const seoPage = isMobileAppsPage ? mobileAppsServicePageData : landingPage || service;
   const pageTitle = seoPage.title;

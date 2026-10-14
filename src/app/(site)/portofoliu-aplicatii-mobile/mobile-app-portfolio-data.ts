@@ -296,13 +296,13 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
   {
     slug: "styleconnect-rezervari-saloane",
     cardTitle: "StyleConnect — programări saloane",
-    h1: "Aplicație de programări pentru saloane — mai puține telefoane, mai multe rezervări | studiu de caz",
+    h1: "Aplicație de programări pentru salon: StyleConnect — studiu de caz",
     shortDescription:
-      "O aplicație care permite clienților să rezerve rapid, iar salonului să gestioneze programările mai clar și cu mai puține întreruperi.",
+      "Aplicație Android pentru alegerea serviciului, rezervarea unui interval și gestionarea programărilor salonului.",
     metaTitle:
-      "StyleConnect — programări saloane | Studiu de caz | Web Dynamicx",
+      "Aplicație programări salon: StyleConnect | Web Dynamicx",
     metaDescription:
-      "Rezervări salon fără haos la telefon: clientul alege slotul, echipa vede programul clar. Studiu de caz StyleConnect — exemplu livrat, disponibil în Google Play.",
+      "Studiu de caz StyleConnect: aplicație de programări pentru salon, disponibilitate și fișe client. Vezi fluxurile și cerințele unei dezvoltări personalizate.",
     tags: ["Programări", "Salon & beauty", "Servicii locale", "Clienți"],
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.style.connect.saloon&hl=ro",
@@ -325,7 +325,7 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
     gallerySectionLead:
       "Ecrane din aplicație care arată procesul de rezervare și modul în care clientul interacționează cu salonul.",
     context:
-      "În multe saloane, programările sunt gestionate prin telefon sau mesaje. Asta înseamnă întreruperi constante, rezervări pierdute și timp consumat inutil. În același timp, clienții caută soluții rapide. Dacă nu pot face o programare imediat, există șanse mari să aleagă alt salon. Fără un sistem clar, atât experiența clientului, cât și organizarea internă devin greu de controlat. Pentru client, asta înseamnă timp pierdut. Pentru salon, înseamnă întreruperi, rezervări ratate și oportunități lăsate în mâna concurenței.",
+      "Un salon trebuie să coreleze serviciile, specialiștii și intervalele disponibile. Pentru client, traseul pornește de la alegerea serviciului și se încheie cu o rezervare. Pentru echipă, aceeași programare trebuie să apară în agenda și fișa clientului. Studiul prezintă fluxurile aplicației, fără a atribui economii de timp sau rezultate comerciale nemăsurate.",
     objectives: [
       "Reducerea dependenței de telefon pentru programări.",
       "Experiență rapidă și simplă pentru client.",
@@ -334,16 +334,16 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
       "Crearea unui sistem clar de gestionare a clienților.",
     ],
     solution:
-      "Aplicația a fost construită pentru a simplifica complet procesul de programare. Clientul poate vedea serviciile disponibile, își alege intervalul dorit și finalizează rezervarea în câțiva pași.\n\nÎn același timp, salonul are o imagine clară asupra programărilor și poate gestiona eficient fluxul de clienți. Calendarul devine un instrument central, nu o sursă de confuzie.\n\nExperiența este gândită astfel încât atât clientul, cât și salonul să economisească timp și să reducă fricțiunea din proces.",
+      "Clientul vede serviciile și intervalele disponibile și parcurge fluxul de rezervare. Datele programării sunt asociate clientului, iar aplicația oferă calendar, istoric și recenzii. Notificările și mesajele depind de configurarea proiectului.\n\nPentru dezvoltarea unei aplicații personalizate pentru salon, se definesc durata serviciilor, specialiștii, capacitatea, regulile de anulare și accesul echipei la fișele clienților. Acestea sunt cerințe de evaluat pentru o nouă implementare, nu funcții promise automat în orice ofertă.",
     featuresSectionLead:
-      "Funcționalități construite pentru a face programările rapide și ușor de gestionat.",
+      "Funcții prezentate în aplicație; canalele de notificare depind de configurarea proiectului.",
     features: [
-      "Programator: sloturi vizibile rapid, fără apel la recepție",
-      "Rezervare online în pași scurți",
-      "Mementouri (app și SMS unde e configurat) pentru neprezentări mai rare",
-      "Calendar sincronizat în aplicație",
+      "Alegerea serviciului și a intervalului disponibil",
+      "Flux de rezervare online",
+      "Calendarul programărilor",
       "Fișe client și istoric vizite",
-      "Recenzii pentru salon și pentru specialiști",
+      "Recenzii pentru salon și specialiști",
+      "Notificări în aplicație și SMS unde sunt configurate",
     ],
     technologies: [
       "Aplicație mobilă Android, publicată în Google Play",
@@ -352,21 +352,20 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
       "Flux de actualizări și mentenanță în magazin",
     ],
     impact: [
-      "Mai puține apeluri și mesaje în timpul programului.",
-      "Programări mai rapide și mai simple pentru clienți.",
-      "Vizibilitate mai clară asupra intervalelor disponibile.",
-      "Reducerea confuziilor și a rezervărilor ratate.",
-      "O experiență mai profesionistă pentru salon și client.",
+      "Serviciul și intervalul sunt prezentate înaintea rezervării.",
+      "Programările pot fi urmărite în calendar.",
+      "Datele clientului și istoricul vizitelor sunt accesibile în context.",
+      "Recenziile sunt asociate salonului și specialiștilor.",
     ],
     cardBullets: [
-      "Clientul rezervă singur; salonul vede agenda la zi",
-      "Mai puține întreruperi la telefon în timpul programului",
-      "Fișe client, istoric și recenzii într-un singur flux",
+      "Servicii și intervale disponibile pentru rezervare",
+      "Calendar și fișe de client",
+      "Istoric și recenzii în aplicație",
     ],
     goodForLabel: "saloane și servicii locale",
     problemSolved: "gestionarea programărilor",
     hubSpotlightParagraph:
-      "Mai puține telefoane, rezervări clare pe telefon și programul sub control — pentru salon și pentru client.",
+      "Clientul alege serviciul și intervalul; salonul urmărește programările și informațiile asociate clienților.",
     cardPrimaryCtaLabel: "Vezi proiectul",
     relatedSlugs: [
       "cristina-zurba-tarot-lecturi-ai",
@@ -377,7 +376,7 @@ export const mobileAppCaseStudies: MobileCaseStudy[] = [
     relatedSectionIntro:
       "Alte aplicații dezvoltate pentru business-uri care au nevoie de procese mai clare și experiențe mai simple pentru utilizatori.",
     nextStepIntro:
-      "Dacă ai un salon și vrei să reduci timpul pierdut cu programările și să oferi clienților o experiență mai simplă, o aplicație mobilă poate face diferența. Poți vedea cum construim ",
+      "Dacă vrei o aplicație adaptată salonului tău, descrie serviciile, specialiștii, regulile de disponibilitate și administrarea necesară. Vezi cum dezvoltăm ",
     nextStepOutro:
       " sau ne poți scrie direct pentru a discuta o soluție adaptată salonului tău.",
     serviceLinkPhrase: "aplicații mobile pentru business",

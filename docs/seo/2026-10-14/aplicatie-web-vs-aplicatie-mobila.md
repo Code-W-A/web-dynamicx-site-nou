@@ -1,10 +1,10 @@
 # Aplicație web vs aplicație mobilă: ce alegi pentru business
 
-**Statut: revizie pregătită local, nesalvată în Sanity.**
+**Statut: revizie salvată ca draft în Sanity, nepublicată.**
 
 Slug: `aplicatie-web-vs-aplicatie-mobila`
 
-Draft propus: `drafts.b35b233c-8e55-4d80-a4ed-8826e3193484`
+Draft salvat: `drafts.b35b233c-8e55-4d80-a4ed-8826e3193484`
 
 Meta title: Aplicație web vs aplicație mobilă: cum alegi?
 

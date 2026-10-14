@@ -1660,6 +1660,16 @@ const detailsCreareMagazinOnlineShopify = (
 
 export const serviceData: Service[] = [
   {
+    id: "dezvoltare-software-la-comanda",
+    slug: "dezvoltare-software-la-comanda",
+    title: "Dezvoltare software la comandă",
+    description: "Software personalizat pentru firme: aplicații web, portaluri, module CRM, documente și integrări, cu funcții stabilite în ofertă.",
+    metaTitle: "Dezvoltare software la comandă pentru firme | Web Dynamicx",
+    metaDescription: "Dezvoltare software la comandă: aplicații web, portaluri și procese interne. Vezi livrabilele, exemplele demonstrative și cum estimăm proiectul.",
+    image: "/images/portofoliu/studii/itp-web-dashboard.webp",
+    details: null,
+  },
+  {
     id: "automatizari-ai",
     slug: "automatizari-ai",
     title: "Automatizări AI",

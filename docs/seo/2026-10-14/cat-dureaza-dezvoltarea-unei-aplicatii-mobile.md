@@ -1,10 +1,10 @@
 # Cât durează dezvoltarea unei aplicații mobile (estimări reale pentru firme)
 
-**Statut: revizie pregătită local, nesalvată în Sanity.**
+**Statut: revizie salvată ca draft în Sanity, nepublicată.**
 
 Slug: `cat-dureaza-dezvoltarea-unei-aplicatii-mobile`
 
-Draft propus: `drafts.3059954a-d559-493e-b308-1a9bf056affc`
+Draft salvat: `drafts.3059954a-d559-493e-b308-1a9bf056affc`
 
 Meta title: Cât durează dezvoltarea unei aplicații mobile?
 

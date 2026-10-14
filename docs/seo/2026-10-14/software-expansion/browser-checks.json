@@ -1,0 +1,60 @@
+[
+  {
+    "view": "desktop",
+    "route": "servicii/dezvoltare-software-la-comanda",
+    "result": {
+      "canonical": "https://www.webdynamicx.ro/servicii/dezvoltare-software-la-comanda",
+      "errors": [],
+      "faqCount": 6,
+      "h1": "Dezvoltare software la comandă pentru firme cu fluxuri și integrări proprii",
+      "path": "/servicii/dezvoltare-software-la-comanda",
+      "serviceLinksChecked": 12,
+      "title": "Dezvoltare software la comandă pentru firme | Web Dynamicx",
+      "viewport": 1440
+    }
+  },
+  {
+    "view": "desktop",
+    "route": "portofoliu-aplicatii-mobile/styleconnect-rezervari-saloane",
+    "result": {
+      "broken": [],
+      "canonical": "https://www.webdynamicx.ro/portofoliu-aplicatii-mobile/styleconnect-rezervari-saloane",
+      "h1": "Aplicație de programări pentru salon: StyleConnect — studiu de caz",
+      "h1Count": 1,
+      "overflow": false,
+      "path": "/portofoliu-aplicatii-mobile/styleconnect-rezervari-saloane",
+      "personalizedContent": true,
+      "title": "Aplicație programări salon: StyleConnect | Web Dynamicx",
+      "viewport": 1440
+    }
+  },
+  {
+    "view": "mobile",
+    "route": "servicii/dezvoltare-software-la-comanda",
+    "result": {
+      "canonical": "https://www.webdynamicx.ro/servicii/dezvoltare-software-la-comanda",
+      "errors": [],
+      "faqCount": 6,
+      "h1": "Dezvoltare software la comandă pentru firme cu fluxuri și integrări proprii",
+      "path": "/servicii/dezvoltare-software-la-comanda",
+      "serviceLinksChecked": 12,
+      "title": "Dezvoltare software la comandă pentru firme | Web Dynamicx",
+      "viewport": 390
+    }
+  },
+  {
+    "view": "mobile",
+    "route": "portofoliu-aplicatii-mobile/styleconnect-rezervari-saloane",
+    "result": {
+      "broken": [],
+      "canonical": "https://www.webdynamicx.ro/portofoliu-aplicatii-mobile/styleconnect-rezervari-saloane",
+      "h1": "Aplicație de programări pentru salon: StyleConnect — studiu de caz",
+      "h1Count": 1,
+      "overflow": false,
+      "path": "/portofoliu-aplicatii-mobile/styleconnect-rezervari-saloane",
+      "personalizedContent": true,
+      "title": "Aplicație programări salon: StyleConnect | Web Dynamicx",
+      "viewport": 390
+    }
+  }
+]

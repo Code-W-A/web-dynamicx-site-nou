@@ -1,6 +1,7 @@
 // Dry run by default. Use --write only with a private Sanity token that can create drafts.
 const fs = require("node:fs");
 const path = require("node:path");
+const { isDeepStrictEqual } = require("node:util");
 const { loadEnvConfig } = require("@next/env");
 const { createClient } = require("@sanity/client");
 
@@ -26,6 +27,7 @@ async function main() {
   // Keep a fresh local snapshot before any attempt to write.
   fs.writeFileSync(path.join(__dirname, "sanity-before-save.json"), JSON.stringify(current, null, 2));
   let transaction = client.transaction();
+  let pendingCount = 0;
   for (const p of prepared) {
     if (p.document._id !== `drafts.${p.publishedId}` || p.document._type !== "post") {
       throw new Error(`Document invalid: ${p.slug}`);
@@ -36,6 +38,9 @@ async function main() {
       throw new Error(`Articolul publicat s-a schimbat; revizuiește conținutul pregătit: ${p.slug}`);
     }
     if (draft) {
+      if (Object.entries(p.document).every(([key, value]) => isDeepStrictEqual(draft[key], value))) {
+        continue;
+      }
       if (!p.existingDraftRev || draft._rev !== p.existingDraftRev) {
         throw new Error(`Există un draft nou sau modificat; nu îl suprascriem: ${p.slug}`);
       }
@@ -48,19 +53,20 @@ async function main() {
       // Create fails atomically if a draft appears between this read and the commit.
       transaction = transaction.create(p.document);
     }
+    pendingCount += 1;
   }
   if (!process.argv.includes("--write")) {
     console.log(`Verificare reușită: ${prepared.length} drafturi pregătite. Nicio scriere în Sanity.`);
     return;
   }
-  await transaction.commit({ visibility: "sync" });
+  if (pendingCount > 0) await transaction.commit({ visibility: "sync" });
   const after = await client.fetch("*[_id in $ids]", { ids });
   for (const p of prepared) {
     const published = after.find((d) => d._id === p.publishedId);
     const draft = after.find((d) => d._id === p.document._id);
     if (published?._rev !== p.publishedRev || !draft) throw new Error(`Verifică rezultatul salvării: ${p.slug}`);
     for (const [key, value] of Object.entries(p.document)) {
-      if (JSON.stringify(draft[key]) !== JSON.stringify(value)) throw new Error(`Diferență după salvare: ${p.slug}/${key}`);
+      if (!isDeepStrictEqual(draft[key], value)) throw new Error(`Diferență după salvare: ${p.slug}/${key}`);
     }
   }
   console.log(JSON.stringify({ savedDrafts: prepared.map((p) => p.document._id), publishedUnchanged: true }, null, 2));
