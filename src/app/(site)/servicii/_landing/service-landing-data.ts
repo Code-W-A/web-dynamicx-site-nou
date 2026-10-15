@@ -17,7 +17,7 @@ const serviceLandingPagesBySlug = {
     slug: "web-design",
     title: "Web design profesional pentru site-uri mai clare și mai convingătoare",
     description: "Servicii de web design orientate pe UX, conversie și consistență vizuală pentru website-uri moderne.",
-    metaTitle: "Web design profesional pentru website-uri orientate pe conversie | Web Dynamicx",
+    metaTitle: "Web design profesional | Web Dynamicx",
     metaDescription:
       "Servicii de web design cu audit UX, wireframe, design system și ecrane pregătite pentru implementare. Design clar, rapid și orientat pe conversii.",
     image: "/images/services/agentie-web-design.webp",
@@ -351,7 +351,7 @@ const serviceLandingPagesBySlug = {
     slug: "creare-logo-branding",
     title: "Creare logo și branding pentru business-uri care vor o imagine coerentă",
     description: "Servicii de branding, creare logo și identitate vizuală pentru companii care vor consistență și încredere.",
-    metaTitle: "Creare logo și branding pentru identitate vizuală coerentă | Web Dynamicx",
+    metaTitle: "Creare logo și branding | Web Dynamicx",
     metaDescription:
       "Servicii de branding și creare logo cu paletă, tipografie, direcție vizuală și materiale de bază pentru o identitate coerentă.",
     image: "/images/services/creare-site-prezentare.webp",
@@ -676,7 +676,7 @@ const serviceLandingPagesBySlug = {
     slug: "creare-magazin-online",
     title: "Creare magazin online pentru business-uri care vor structură bună și conversii mai bune",
     description: "Servicii de creare magazin online cu platformă potrivită, UX clar, integrări și bază SEO bună pentru e-commerce.",
-    metaTitle: "Creare magazin online profesional cu structură SEO și conversie | Web Dynamicx",
+    metaTitle: "Creare magazin online profesional | Web Dynamicx",
     metaDescription:
       "Servicii de creare magazin online cu Shopify, WooCommerce sau soluții custom, optimizate pentru UX, conversii, SEO și integrări e-commerce.",
     image: "/images/services/creare-magazin-online.webp",
@@ -1018,7 +1018,7 @@ const serviceLandingPagesBySlug = {
     slug: "creare-magazin-online-shopify",
     title: "Creare magazin online Shopify pentru branduri care vor lansare rapidă și operare clară",
     description: "Serviciu dedicat de creare magazin online Shopify pentru branduri care vor un storefront clar, rapid și ușor de administrat.",
-    metaTitle: "Creare magazin online Shopify cu structură clară și conversie bună | Web Dynamicx",
+    metaTitle: "Creare magazin online Shopify | Web Dynamicx",
     metaDescription:
       "Creare magazin online Shopify pentru branduri care vor lansare rapidă, UX bun, structură SEO corectă și un storefront ușor de administrat.",
     image: "/images/services/creare-magazin-online.webp",
@@ -1343,7 +1343,7 @@ const serviceLandingPagesBySlug = {
     slug: "optimizare-seo",
     title: "Servicii SEO profesionale pentru site-uri care vor trafic calificat și creștere reală",
     description: "Servicii SEO profesionale cu audit tehnic, optimizare on-page, conținut și structură de interlinking.",
-    metaTitle: "Servicii SEO profesionale pentru trafic calificat și creștere organică | Web Dynamicx",
+    metaTitle: "Servicii SEO și optimizare site | Web Dynamicx",
     metaDescription:
       "Servicii SEO profesionale cu audit tehnic, optimizare on-page, strategie de conținut, interlinking și raportare orientată pe rezultate.",
     image: "/images/services/creare-site-prezentare.webp",
@@ -1676,7 +1676,7 @@ const serviceLandingPagesBySlug = {
     slug: "creare-site-prezentare",
     title: "Creare site de prezentare pentru business-uri care vor un website clar și credibil",
     description: "Servicii de creare site de prezentare cu structură bună, mesaj clar, bază SEO și design orientat pe conversie.",
-    metaTitle: "Creare site de prezentare profesional, clar și optimizat SEO | Web Dynamicx",
+    metaTitle: "Creare site de prezentare | Web Dynamicx",
     metaDescription:
       "Servicii de creare site de prezentare cu design modern, structură clară, optimizare SEO și setup tehnic pregătit pentru lead-uri și încredere.",
     image: "/images/services/creare-site-prezentare.webp",
@@ -2001,7 +2001,7 @@ const serviceLandingPagesBySlug = {
     slug: "mentenanta-website",
     title: "Mentenanță website pentru business-uri care vor stabilitate, securitate și evoluție controlată",
     description: "Servicii de mentenanță website cu update-uri, monitorizare, securitate și optimizări continue pentru website-uri active.",
-    metaTitle: "Mentenanță website cu update-uri, securitate și optimizare | Web Dynamicx",
+    metaTitle: "Mentenanță website | Web Dynamicx",
     metaDescription:
       "Servicii de mentenanță website cu audit inițial, update-uri, monitorizare uptime, optimizare și suport pentru website-uri care trebuie să rămână stabile.",
     image: "/images/services/mentenanta-site-web.webp",
@@ -2326,7 +2326,7 @@ const serviceLandingPagesBySlug = {
     slug: "creare-site-web",
     title: "Creare site web personalizat pentru companii care vor structură bună și bază SEO serioasă",
     description: "Servicii de creare site web cu arhitectură clară, pagini orientate pe conversie, performanță și extensibilitate.",
-    metaTitle: "Creare site web personalizat, rapid și optimizat SEO | Web Dynamicx",
+    metaTitle: "Creare site web personalizat | Web Dynamicx",
     metaDescription:
       "Servicii de creare site web personalizat cu structură clară, pagini de servicii, optimizare SEO on-page și performanță bună pentru lead-uri și creștere.",
     image: "/images/services/creare-site-web.webp",
@@ -2667,7 +2667,7 @@ const serviceLandingPagesBySlug = {
     slug: "promovare-site",
     title: "Promovare site pentru business-uri care vor mai mult trafic și o direcție de creștere mai clară",
     description: "Servicii de promovare site care combină trafic, ofertă, landing pages și măsurare pentru creștere predictibilă.",
-    metaTitle: "Promovare site cu focus pe trafic calificat și conversii | Web Dynamicx",
+    metaTitle: "Promovare site | Web Dynamicx",
     metaDescription:
       "Servicii de promovare site pentru business-uri care vor mix mai bun între trafic, landing pages, ofertă și măsurare. Strategie orientată pe rezultate.",
     image: "/images/services/creare-site-prezentare.webp",
