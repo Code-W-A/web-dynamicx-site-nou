@@ -21,12 +21,12 @@ const siteName = process.env.SITE_NAME || "Web Dynamicx";
 const siteURL = process.env.SITE_URL || "https://www.webdynamicx.ro";
 
 export const metadata: Metadata = {
-  title: `Web Dynamicx | Agenție web pentru website-uri, SEO și proiecte digitale`,
+  title: `Agenție web pentru website-uri și SEO | Web Dynamicx`,
   description:
     "Pagina principală Web Dynamicx: agenție web cu focus pe website-uri rapide, structură clară, SEO și proiecte digitale care susțin creșterea business-ului.",
   alternates: { canonical: siteURL },
   openGraph: {
-    title: `Web Dynamicx | Agenție web pentru website-uri, SEO și proiecte digitale`,
+    title: `Agenție web pentru website-uri și SEO | Web Dynamicx`,
     description:
       "Pagina principală Web Dynamicx: agenție web cu focus pe website-uri rapide, structură clară, SEO și proiecte digitale care susțin creșterea business-ului.",
     url: siteURL,
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: `Web Dynamicx | Agenție web pentru website-uri, SEO și proiecte digitale`,
+    title: `Agenție web pentru website-uri și SEO | Web Dynamicx`,
     description:
       "Pagina principală Web Dynamicx: agenție web cu focus pe website-uri rapide, structură clară, SEO și proiecte digitale care susțin creșterea business-ului.",
     images: [`${siteURL}/images/hero/hero-image.png`],
