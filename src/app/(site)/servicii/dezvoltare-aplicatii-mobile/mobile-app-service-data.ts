@@ -4,7 +4,7 @@ export const mobileAppsServicePageData = {
   title: "Dezvoltare aplicații mobile iOS și Android pentru firme",
   description:
     "Dezvoltăm aplicații mobile iOS și Android pentru firme, startup-uri și produse digitale scalabile.",
-  metaTitle: "Dezvoltare aplicații mobile iOS și Android pentru firme | Web Dynamicx",
+  metaTitle: "Dezvoltare aplicații mobile iOS și Android | Web Dynamicx",
   metaDescription:
     "Oferim servicii de dezvoltare aplicații mobile pentru iOS și Android: MVP, UX/UI, sistem backend, integrări, publicare în App Store și Google Play și mentenanță. Cere ofertă.",
   image: "/images/services/dezvoltare-aplicatii-mobile.webp",
